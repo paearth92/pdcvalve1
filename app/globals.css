@@ -1,0 +1,536 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 150 22% 95%;
+    --foreground: 159 19% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 159 19% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 159 19% 12%;
+
+    --primary: 147 71% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 196 42% 38%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 150 16% 90%;
+    --muted-foreground: 200 25% 30%;
+
+    --accent: 160 80% 13%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 150 16% 82%;
+    --input: 150 16% 82%;
+    --ring: 147 71% 30%;
+
+    --chart-1: 147 71% 30%;
+    --chart-2: 196 42% 38%;
+    --chart-3: 200 57% 15%;
+    --chart-4: 160 80% 13%;
+    --chart-5: 150 22% 60%;
+
+    --radius: 0.5rem;
+
+    /* PDC Valve & Actuators brand palette */
+    --brand-green: 147 71% 30%;
+    --brand-green-dark: 160 80% 13%;
+    --brand-navy: 200 57% 15%;
+    --brand-steel: 196 42% 38%;
+    --brand-light-bg: 150 22% 95%;
+    --brand-graphite: 159 19% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    /* Slightly smaller root so the whole site reads tighter, closer to the
+       80%-zoom feel the user preferred, without going as small as a true 80%. */
+    font-size: 14px;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+@layer utilities {
+  /* Nav link underline animation */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background-color: hsl(var(--brand-green));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Blueprint grid — fine + coarse layers */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(
+        hsla(160, 80%, 13%, 0.12) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsla(160, 80%, 13%, 0.12) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        hsla(160, 80%, 13%, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsla(160, 80%, 13%, 0.06) 1px,
+        transparent 1px
+      );
+    background-size:
+      80px 80px,
+      80px 80px,
+      16px 16px,
+      16px 16px;
+  }
+
+  /* Hide scrollbar for snap-scroll carousels */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* Floating motion — extremely subtle */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes float-slower {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.7; }
+  }
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: float-slower 10s ease-in-out infinite;
+  }
+  .animate-spin-slow {
+    animation: spin-slow 60s linear infinite;
+  }
+  .animate-pulse-soft {
+    animation: pulse-soft 7s ease-in-out infinite;
+  }
+
+  /* Product card stagger entrance */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Preserve minimal transitions for interactive state feedback */
+  [data-state],
+  [role="dialog"],
+  [role="menu"],
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition-duration: 0.1ms !important;
+  }
+}
+
+/* ─── Print styles ────────────────────────────────────────────── */
+@media print {
+  /* Remove navigation, decorative backgrounds, and sticky CTAs */
+  header,
+  footer,
+  nav,
+  [role="dialog"],
+  .blueprint-grid,
+  .noise-overlay,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-spin-slow,
+  .animate-pulse-soft {
+    display: none !important;
+  }
+
+  /* Preserve headings and specifications */
+  main {
+    display: block !important;
+  }
+
+  /* Remove decorative backgrounds and shadows */
+  * {
+    background: white !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure text is black for print readability */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  li,
+  td,
+  th,
+  dd,
+  dt {
+    color: black !important;
+  }
+
+  /* Keep links showing their URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #333;
+  }
+
+  /* Avoid splitting tables across pages */
+  table,
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* Expand accordions and hidden content for print */
+  [data-accordion-content],
+  [data-state="collapsed"] {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Full width for print */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl {
+    max-width: 100% !important;
+  }
+}
+/* =========================================================
+   PDC CINEMATIC VIDEO HERO
+   ========================================================= */
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation-name: hero-reveal;
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+  will-change: opacity, transform, filter;
+}
+
+.hero-reveal-1 {
+  animation-delay: 80ms;
+}
+
+.hero-reveal-2 {
+  animation-delay: 160ms;
+}
+
+.hero-reveal-3 {
+  animation-delay: 250ms;
+}
+
+.hero-reveal-4 {
+  animation-delay: 340ms;
+}
+
+.hero-reveal-5 {
+  animation-delay: 430ms;
+}
+
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: hero-marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.hero-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  .hero-marquee-track {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HERO VIDEO FADE-IN
+   ========================================================= */
+
+@keyframes heroVideoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pdc-hero-video {
+  opacity: 0;
+  animation: heroVideoFadeIn 1.2s ease-out 0.4s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdc-hero-video {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HERO HEADING LINE RISE
+   ========================================================= */
+
+@keyframes pdcHeroLineRise {
+  from {
+    transform: translate3d(0, 110%, 0);
+    filter: blur(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.pdc-hero-line-inner {
+  transform: translate3d(0, 110%, 0);
+  filter: blur(8px);
+  opacity: 0;
+  animation-name: pdcHeroLineRise;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+  will-change: transform, opacity, filter;
+}
+
+.pdc-hero-line-1 .pdc-hero-line-inner {
+  animation-delay: 220ms;
+}
+
+.pdc-hero-line-2 .pdc-hero-line-inner {
+  animation-delay: 360ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdc-hero-line-inner {
+    transform: none;
+    filter: none;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HERO CTA ENTRANCE
+   ========================================================= */
+
+@keyframes pdcHeroCtaIn {
+  from {
+    transform: translate3d(0, 16px, 0) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.pdc-hero-cta {
+  transform: translate3d(0, 16px, 0) scale(0.96);
+  opacity: 0;
+  animation-name: pdcHeroCtaIn;
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+  animation-delay: 520ms;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdc-hero-cta {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   SCROLL CUE
+   ========================================================= */
+
+@keyframes pdcScrollDot {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translate3d(0, 12px, 0); opacity: 0; }
+}
+
+.pdc-scroll-dot {
+  animation: pdcScrollDot 1900ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.pdc-scroll-cue {
+  opacity: 0;
+  animation: pdcHeroCtaIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 900ms forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdc-scroll-dot { animation: none; }
+  .pdc-scroll-cue { opacity: 1; animation: none; }
+}
+
+/* =========================================================
+   TRUST MARQUEE
+   ========================================================= */
+
+@keyframes pdcTrustMarquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.pdc-trust-marquee-track {
+  animation: pdcTrustMarquee 38s linear infinite;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.pdc-trust-marquee:hover .pdc-trust-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdc-trust-marquee-track {
+    animation: none;
+    transform: none;
+  }
+  .pdc-trust-marquee-copy {
+    display: none;
+  }
+  .pdc-trust-marquee {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .pdc-trust-marquee::-webkit-scrollbar {
+    display: none;
+  }
+}
