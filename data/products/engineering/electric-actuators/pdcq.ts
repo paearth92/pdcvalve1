@@ -1,0 +1,81 @@
+import type { ProductEngineeringData } from '@/types/content';
+
+export const pdcqEngineering: ProductEngineeringData = {
+  tables: [
+    {
+      id: 'model-performance',
+      title: 'PDCQ Model Performance',
+      tabLabel: 'Model Data',
+      kind: 'models',
+      description:
+        'Published PDCQ output torque, weight, ISO mounting base, manual override and 90° running time by model.',
+      columns: [
+        'Model',
+        'Torque N·m',
+        'Torque in·lbs',
+        'Weight kg',
+        'Weight lb',
+        'ISO 5211 Base',
+        'Manual Override',
+        'Running Time sec/90°',
+      ],
+      rows: [
+        ['PDCQ-A', '6', '53', '1.5', '3.3', 'F03 / F05', 'Lever', '8'],
+        ['PDCQ-B', '15', '132', '1.5', '3.3', 'F03 / F05', 'Lever', '19'],
+        ['PDCQ-C', '35', '310', '2', '4.4', 'F03 / F05', 'Lever', '12'],
+        ['PDCQ-D', '50', '445', '3', '6.6', 'F05 / F07', 'Lever', '27'],
+        ['PDCQ-E', '65', '575', '11', '25', 'F07 / F10', 'Handwheel', '6'],
+        ['PDCQ-F', '90', '800', '11', '25', 'F07 / F10', 'Handwheel', '17'],
+        ['PDCQ-G', '120', '1,065', '11', '25', 'F07 / F10', 'Handwheel', '8'],
+        ['PDCQ-H', '150', '1,330', '11', '25', 'F07 / F10', 'Handwheel', '26'],
+        ['PDCQ-I', '300', '2,665', '17', '38', 'F07 / F10', 'Handwheel', '24'],
+        ['PDCQ-J', '400', '3,540', '20', '45', 'F10 / F12', 'Handwheel', '19'],
+        ['PDCQ-K', '500', '4,430', '20', '45', 'F10 / F12', 'Handwheel', '26'],
+        ['PDCQ-L', '650', '5,755', '20', '45', 'F10 / F12', 'Handwheel', '34'],
+        ['PDCQ-M', '1,000', '8,855', '32', '71', 'F12 or F14', 'Handwheel', '50'],
+        ['PDCQ-N', '1,500', '13,280', '32', '71', 'F12 or F14', 'Handwheel', '51'],
+        ['PDCQ-O', '2,000', '17,710', '71', '157', 'F14 or F16', 'Handwheel', '62'],
+        ['PDCQ-P', '2,500', '22,140', '71', '157', 'F14 or F16', 'Handwheel', '62'],
+        ['PDCQ-Q', '3,000', '26,565', '72', '159', 'F14 or F16', 'Handwheel', '62'],
+        ['PDCQ-R', '3,500', '31,000', '72', '159', 'F14 or F16', 'Handwheel', '62'],
+      ],
+      notes: [
+        'Running time is based on the published 110V AC / 60Hz configuration at 30% duty.',
+      ],
+    },
+  ],
+  optionGroups: [
+    {
+      title: 'Standard Operating & Control Features',
+      items: [
+        'CSA and NEMA Type 4X enclosure sealing with IP67 ingress protection',
+        'Manual override as standard',
+        'PDCQ-A through D use a lever; larger models use a non-clutch handwheel',
+        'Visual position indicator standard except on PDCQ-A and B',
+        'ISO 5211 mounting base',
+        'Space heater and thermostat standard except on PDCQ-A and B',
+        'Standard operating temperature: -30°C to +65°C (-22°F to +149°F)',
+        'Standard voltages: 24V DC, 24V AC, 110V/220V AC, 1PH, 60Hz ±10%',
+        'ON/OFF control standard',
+        'Standard 30% duty cycle at 30% rated torque',
+        '30 to 120 starts/movements per hour for inching control with cyclic duration factor of at least 25%',
+        'Built-in resettable motor thermal protection',
+        'Four standard limit switches: 2 operational + 2 SPDT extra dry contacts, except PDCQ-A and B',
+      ],
+    },
+    {
+      title: 'Available Options',
+      items: [
+        'Explosionproof enclosures for hazardous environments: CSA / NEMA Type 7 for Class I Div 1 Groups C & D and CSA / NEMA Type 9 for Class II Div 1 Groups E, F & G',
+        'Modulating control rated for 300 to 1,200 starts/movements per hour',
+        '50% and 75% duty cycles at 30% rated torque for ON/OFF and modulating control',
+        'Local controls',
+        'Torque switches',
+        '4–20 mA current position transmitter or 1K / 5K potentiometer',
+        'Interrupter timer to slow cycle time',
+        'Chainwheel with 5 m of chain, except PDCQ-A, B, C and D',
+        'IP68 ingress protection standard with explosionproof enclosures',
+      ],
+    },
+  ],
+};
