@@ -115,6 +115,9 @@ export interface ProductDownload {
 export interface ProductGalleryImage {
   src?: string;
   alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface ProductDetail {

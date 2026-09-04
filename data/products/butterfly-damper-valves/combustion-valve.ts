@@ -149,7 +149,24 @@ export const combustionValve: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/combustion-valve/standard-configuration.webp',
+        alt: 'PDC Combustion Valve standard manual configuration',
+        kind: 'gallery',
+        caption: 'Standard Manual Configuration',
+        width: 1536,
+        height: 1024,
+      },
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/combustion-valve/lock-lever-configuration.webp',
+        alt: 'PDC Combustion Valve with lock-lever configuration',
+        kind: 'gallery',
+        caption: 'Lock-Lever Configuration',
+        width: 1536,
+        height: 1024,
+      },
+    ],
     transparentPng: undefined,
     technicalDrawings: undefined,
     thumbnail: undefined,

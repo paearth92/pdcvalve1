@@ -105,6 +105,9 @@ export function productContentToDetail(
     gallery: content.images?.gallery?.map((img) => ({
       src: img.src,
       alt: img.alt,
+      caption: img.caption,
+      width: img.width,
+      height: img.height,
     })),
     related: getRelatedProductsForDetail(content),
   };

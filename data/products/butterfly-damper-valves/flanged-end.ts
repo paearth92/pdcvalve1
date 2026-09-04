@@ -131,7 +131,24 @@ export const flangedEnd: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/flanged-end/isometric-view.webp',
+        alt: 'PDC Flanged End butterfly damper valve isometric view with lock lever',
+        kind: 'gallery',
+        caption: 'Lock-Lever Isometric View',
+        width: 1536,
+        height: 1024,
+      },
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/flanged-end/alternate-isometric-view.webp',
+        alt: 'PDC Flanged End butterfly damper valve alternate isometric view',
+        kind: 'gallery',
+        caption: 'Alternate Isometric View',
+        width: 1536,
+        height: 1024,
+      },
+    ],
     transparentPng: undefined,
     technicalDrawings: undefined,
     thumbnail: undefined,

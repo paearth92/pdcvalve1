@@ -1,5 +1,6 @@
 import Breadcrumbs, { type BreadcrumbItem } from '@/components/products/ProductBreadcrumbs';
 import ProductHero from '@/components/products/ProductHero';
+import ProductGallery from '@/components/products/ProductGallery';
 import SectionNav from '@/components/products/SectionNav';
 import type { SpecNavItem } from '@/components/products/SpecNav';
 import ProductSidebar from '@/components/products/ProductSidebar';
@@ -62,8 +63,11 @@ export default function ProductDetailTemplate({
       (product.engineering.optionGroups?.length ?? 0) > 0);
   const hasDownloads = product.downloads && product.downloads.length > 0;
   const hasRelated = product.related && product.related.length > 0;
+  const gallery = product.gallery ?? [];
+  const hasGallery = gallery.length > 0;
 
   const navItems: SpecNavItem[] = [
+    ...(hasGallery ? [{ id: 'gallery', label: 'Product Views' }] : []),
     { id: 'overview', label: 'Overview' },
     ...(hasFeatures ? [{ id: 'features', label: 'Design Features' }] : []),
     ...(hasSpecs ? [{ id: 'specifications', label: 'Specifications' }] : []),
@@ -85,6 +89,26 @@ export default function ProductDetailTemplate({
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <SectionNav items={navItems} />
       </div>
+
+      {hasGallery && (
+        <SectionShell id="gallery">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Product Gallery"
+                title="Product Views & Configurations"
+              />
+            </Reveal>
+            <p className="max-w-xl text-sm leading-6 text-brand-graphite/55 lg:text-right">
+              Official PDC product views showing available positions,
+              configurations, and construction details.
+            </p>
+          </div>
+          <div className="mt-6 lg:mt-8">
+            <ProductGallery images={gallery} productName={product.name} />
+          </div>
+        </SectionShell>
+      )}
 
       {/* Overview */}
       <section id="overview" className="scroll-mt-32 bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">

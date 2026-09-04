@@ -353,6 +353,54 @@ const productAssets: AssetEntry[] = productRefs.flatMap((ref) => {
   ];
 });
 
+interface GalleryAssetRef {
+  id: string;
+  name: string;
+  productSlug: string;
+  fileName: string;
+  alt: string;
+  fileSizeBytes: number;
+}
+
+const galleryAssetRefs: GalleryAssetRef[] = [
+  { id: 'econotrol-6-inch-front', name: 'Econotrol 6-Inch Front View', productSlug: 'econotrol', fileName: '6-inch-front.webp', alt: 'PDC Econotrol 6-inch butterfly damper valve front view', fileSizeBytes: 163258 },
+  { id: 'combustion-standard', name: 'Combustion Valve Standard Configuration', productSlug: 'combustion-valve', fileName: 'standard-configuration.webp', alt: 'PDC Combustion Valve standard manual configuration', fileSizeBytes: 69678 },
+  { id: 'combustion-lock-lever', name: 'Combustion Valve Lock-Lever Configuration', productSlug: 'combustion-valve', fileName: 'lock-lever-configuration.webp', alt: 'PDC Combustion Valve with lock-lever configuration', fileSizeBytes: 57884 },
+  { id: 'flanged-end-isometric', name: 'Flanged End Isometric View', productSlug: 'flanged-end', fileName: 'isometric-view.webp', alt: 'PDC Flanged End butterfly damper valve isometric view with lock lever', fileSizeBytes: 109940 },
+  { id: 'flanged-end-alternate', name: 'Flanged End Alternate Isometric View', productSlug: 'flanged-end', fileName: 'alternate-isometric-view.webp', alt: 'PDC Flanged End butterfly damper valve alternate isometric view', fileSizeBytes: 86920 },
+  { id: 'medium-duty-step-seat', name: 'Medium Duty 8-Inch Step-Seat Configuration', productSlug: 'medium-duty', fileName: '8-inch-step-seat.webp', alt: 'PDC Medium Duty 8-inch butterfly damper valves with step-seat configuration', fileSizeBytes: 101906 },
+  { id: 'medium-duty-step-seat-open', name: 'Medium Duty 8-Inch Step Seat Partially Open', productSlug: 'medium-duty', fileName: '8-inch-step-seat-partially-open.webp', alt: 'PDC Medium Duty 8-inch step-seat butterfly damper valves partially open', fileSizeBytes: 58456 },
+  { id: 'medium-duty-tadpole-open', name: 'Medium Duty 10-Inch Tadpole Seat Open', productSlug: 'medium-duty', fileName: '10-inch-tadpole-open.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat butterfly damper valve open', fileSizeBytes: 78968 },
+  { id: 'medium-duty-tadpole-closed', name: 'Medium Duty 10-Inch Tadpole Seat Closed', productSlug: 'medium-duty', fileName: '10-inch-tadpole-closed.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat butterfly damper valve closed', fileSizeBytes: 78154 },
+  { id: 'medium-duty-heat-gasket', name: 'Medium Duty Heat-Gasket and Lock-Lever Assembly', productSlug: 'medium-duty', fileName: 'heat-gasket-c-bracket-lock-lever.webp', alt: 'PDC Medium Duty butterfly damper valve with heat gasket C-bracket and lock lever assembly', fileSizeBytes: 89734 },
+];
+
+const galleryAssets: AssetEntry[] = galleryAssetRefs.map((ref) => {
+  const processedFilePath = `/images/products/butterfly-damper-valves/gallery/${ref.productSlug}/${ref.fileName}`;
+
+  return {
+    id: `product-gallery-${ref.id}`,
+    name: ref.name,
+    category: 'product',
+    sourceType: 'derived-from-official',
+    sourceUrl: null,
+    originalFilePath: null,
+    processedFilePath,
+    associatedProductFamily: 'butterfly-damper-valves',
+    associatedProduct: ref.productSlug,
+    associatedCompanySection: null,
+    imageType: 'product-gallery',
+    format: 'webp',
+    width: 1536,
+    height: 1024,
+    transparentBackground: false,
+    alt: ref.alt,
+    status: 'official-processed',
+    fileSizeBytes: ref.fileSizeBytes,
+    notes: 'Client-provided official product photo cleaned and restaged on the approved PDC green/graphite CAD background.',
+  };
+});
+
 /* ============================================================
  * Company assets
  * ========================================================== */
@@ -420,6 +468,7 @@ export const assetRegistry: AssetEntry[] = [
   ...brandAssets,
   ...familyAssets,
   ...productAssets,
+  ...galleryAssets,
   ...companyAssets,
   ...resourceAssets,
 ];
