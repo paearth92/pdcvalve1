@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import HeroVideo from '@/components/home/HeroVideo';
 import RFQButton from '@/components/rfq/RFQButton';
 import {
   ArrowRight,
@@ -77,11 +76,27 @@ const marqueeItems: MarqueeItem[] = [
 export default function Hero() {
   return (
     <section className="relative isolate min-h-[calc(100svh-84px)] overflow-hidden bg-[#020b07] text-white md:min-h-[calc(100svh-118px)]">
-      {/* =====================================================
-          BACKGROUND VIDEO
-      ====================================================== */}
+      {/* Dedicated desktop and mobile compositions prevent the ultra-wide
+          artwork from being awkwardly cropped on a portrait screen. */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#020b07]">
-        <HeroVideo />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/home/hero-flow-desktop.webp"
+          />
+          <img
+            src="/images/home/hero-flow-mobile.webp"
+            alt=""
+            aria-hidden="true"
+            width={941}
+            height={1672}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
       </div>
 
       {/* =====================================================
@@ -89,7 +104,7 @@ export default function Hero() {
       ====================================================== */}
 
       {/* Smooth left-side gradient */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(2,11,7,0.94)_0%,rgba(2,11,7,0.86)_18%,rgba(2,11,7,0.70)_34%,rgba(2,11,7,0.40)_49%,rgba(2,11,7,0.14)_65%,rgba(2,11,7,0.02)_82%,rgba(2,11,7,0)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] hidden bg-[linear-gradient(90deg,rgba(2,11,7,0.94)_0%,rgba(2,11,7,0.86)_18%,rgba(2,11,7,0.70)_34%,rgba(2,11,7,0.40)_49%,rgba(2,11,7,0.14)_65%,rgba(2,11,7,0.02)_82%,rgba(2,11,7,0)_100%)] lg:block" />
 
       {/* Cinematic top and bottom shading */}
       <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(1,7,5,0.24)_0%,rgba(1,7,5,0.02)_35%,rgba(1,7,5,0.10)_68%,rgba(1,7,5,0.68)_100%)]" />
