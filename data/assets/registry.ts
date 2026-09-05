@@ -363,7 +363,7 @@ interface GalleryAssetRef {
 }
 
 const galleryAssetRefs: GalleryAssetRef[] = [
-  { id: 'econotrol-6-inch-front', name: 'Econotrol 6-Inch Front View', productSlug: 'econotrol', fileName: '6-inch-front.webp', alt: 'PDC Econotrol 6-inch butterfly damper valve front view', fileSizeBytes: 163258 },
+  { id: 'econotrol-6-inch-front', name: 'Econotrol 6-Inch Front View', productSlug: 'econotrol', fileName: '6-inch-front.webp', alt: 'PDC Econotrol 6-inch butterfly damper valve front view with tapered machined-steel seat', fileSizeBytes: 121742 },
   { id: 'combustion-standard', name: 'Combustion Valve Standard Configuration', productSlug: 'combustion-valve', fileName: 'standard-configuration.webp', alt: 'PDC Combustion Valve standard manual configuration', fileSizeBytes: 69678 },
   { id: 'combustion-lock-lever', name: 'Combustion Valve Lock-Lever Configuration', productSlug: 'combustion-valve', fileName: 'lock-lever-configuration.webp', alt: 'PDC Combustion Valve with lock-lever configuration', fileSizeBytes: 57884 },
   { id: 'flanged-end-isometric', name: 'Flanged End Isometric View', productSlug: 'flanged-end', fileName: 'isometric-view.webp', alt: 'PDC Flanged End butterfly damper valve isometric view with lock lever', fileSizeBytes: 109940 },

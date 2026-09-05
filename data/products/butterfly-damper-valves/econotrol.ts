@@ -147,7 +147,7 @@ export const econotrol: ProductContent = {
     gallery: [
       {
         src: '/images/products/butterfly-damper-valves/gallery/econotrol/6-inch-front.webp',
-        alt: 'PDC Econotrol 6-inch butterfly damper valve front view',
+        alt: 'PDC Econotrol 6-inch butterfly damper valve front view with tapered machined-steel seat',
         kind: 'gallery',
         caption: '6-Inch Econotrol — Front View',
         width: 1536,
