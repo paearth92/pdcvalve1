@@ -1,4 +1,5 @@
 import type { NavLink, CoreFunction, ProductFamily, Industry, Capability, Differentiator, MegaMenuColumn, MegaMenuFeature } from '@/types/site';
+import { industryNav } from '@/data/industries/content';
 
 export const siteConfig = {
   name: 'PDC Valve & Actuators',
@@ -48,13 +49,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
   },
   {
     title: 'Industries',
-    links: [
-      { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
-      { label: 'Power Generation', href: '/industries/power-generation' },
-      { label: 'Chemical', href: '/industries/chemical' },
-      { label: 'Water & Wastewater', href: '/industries/water-and-wastewater' },
-      { label: 'OEM & Engineered Systems', href: '/industries/oem' },
-    ],
+    links: industryNav,
   },
   {
     title: 'Support',

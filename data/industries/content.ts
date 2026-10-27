@@ -2,26 +2,6 @@ import type { IndustryContent } from '@/types/content';
 import type { NavLink } from '@/types/site';
 
 /**
- * Industries section navigation.
- * Reused across all industry pages. Active page highlighted by IndustryNav.
- */
-export const industryNav: NavLink[] = [
-  { label: 'Automotive', href: '/industries/automotive' },
-  { label: 'Chemical', href: '/industries/chemical' },
-  { label: 'Downstream Hydrocarbons', href: '/industries/downstream-hydrocarbons' },
-  { label: 'Food & Beverage', href: '/industries/food-and-beverage' },
-  { label: 'Energy & Utilities', href: '/industries/energy-and-utilities' },
-  { label: 'Life Sciences', href: '/industries/life-sciences' },
-  { label: 'Mining & Metals', href: '/industries/mining-metals' },
-  { label: 'Water & Wastewater', href: '/industries/water-and-wastewater' },
-  { label: 'OEM', href: '/industries/oem' },
-  { label: 'Marine', href: '/industries/marine' },
-  { label: 'Oil & Gas', href: '/industries/oil-and-gas' },
-  { label: 'Power Generation', href: '/industries/power-generation' },
-  { label: 'Pulp & Paper', href: '/industries/pulp-and-paper' },
-];
-
-/**
  * Canonical industry content registry.
  *
  * SOURCE NOTES (private):
@@ -94,6 +74,67 @@ const automotive: IndustryContent = {
   },
 };
 
+const airManagement: IndustryContent = {
+  name: 'Air Management',
+  slug: 'air-management',
+  route: '/industries/air-management',
+  eyebrow: 'Industries',
+  heroTitle: 'Flow Control for Industrial Air Management',
+  heroDescription:
+    'PDC dampers and valves support industrial air handling and process airflow where dependable control and isolation are needed.',
+  shortDescription:
+    'Precision dampers and valves for industrial air-handling systems.',
+  overview:
+    'Industrial air systems move ventilation, process, and combustion air through equipment and plant infrastructure. PDC dampers and valves support airflow control and isolation across these applications.',
+  overviewParagraphs: [
+    'Industrial air systems move ventilation, process, and combustion air through equipment and plant infrastructure.',
+    'PDC dampers and valves support airflow control and isolation in these applications. Product selection depends on the system design and operating conditions.',
+  ],
+  challenges: [
+    'Maintaining controlled flow through air-handling systems',
+    'Coordinating flow control and isolation with connected equipment',
+    'Matching product selection to system design and operating conditions',
+    'Planning maintenance access in active facilities',
+  ],
+  applications: [
+    'Industrial air-handling systems',
+    'Process airflow',
+    'Combustion air',
+    'Ventilation and exhaust',
+    'Equipment isolation',
+  ],
+  productFamilies: [
+    'butterfly-damper-valves',
+    'butterfly-valves',
+    'pneumatic-actuators',
+    'electric-actuators',
+  ],
+  images: {
+    hero: {
+      src: 'https://images.pexels.com/photos/32032996/pexels-photo-32032996.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Industrial air-handling equipment and ductwork',
+      kind: 'hero',
+    },
+    thumbnail: {
+      src: 'https://images.pexels.com/photos/32032996/pexels-photo-32032996.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
+      alt: 'Industrial air-handling equipment and ductwork',
+      kind: 'thumbnail',
+    },
+  },
+  seo: {
+    title: 'Air Management | PDC Valve & Actuators',
+    description:
+      'Precision dampers and valves for industrial air handling, process airflow, ventilation, and combustion air applications.',
+    canonicalUrl: 'https://www.pdcvalve.com/industries/air-management',
+    noIndex: false,
+    openGraph: {
+      title: 'Air Management | PDC Valve & Actuators',
+      description:
+        'Flow-control solutions for industrial air handling and process airflow.',
+    },
+  },
+};
+
 const chemical: IndustryContent = {
   name: 'Chemical',
   slug: 'chemical',
@@ -152,6 +193,67 @@ const chemical: IndustryContent = {
       title: 'Chemical Processing | PDC Valve & Actuators',
       description:
         'Flow-control valves and actuators for chemical processing environments.',
+    },
+  },
+};
+
+const petrochemical: IndustryContent = {
+  name: 'Petrochemical',
+  slug: 'petrochemical',
+  route: '/industries/petrochemical',
+  eyebrow: 'Industries',
+  heroTitle: 'Flow Control for Petrochemical Processing',
+  heroDescription:
+    'PDC valves and actuators support flow control, isolation, and automation across petrochemical production and supporting utility systems.',
+  shortDescription:
+    'Flow-control solutions for petrochemical production, processing, and plant utilities.',
+  overview:
+    'Petrochemical facilities include process units as well as utility, storage, and transfer systems. PDC valves and actuators support flow-control applications across these process and supporting systems.',
+  overviewParagraphs: [
+    'Petrochemical facilities include process units as well as utility, storage, and transfer systems.',
+    'PDC valves and actuators support flow control and isolation across these applications. Product selection depends on process media, operating conditions, and installation requirements.',
+  ],
+  challenges: [
+    'Selecting materials compatible with process media',
+    'Coordinating flow control and isolation across process systems',
+    'Supporting utility, storage, and transfer applications',
+    'Planning equipment access and maintenance',
+  ],
+  applications: [
+    'Petrochemical process units',
+    'Plant utility systems',
+    'Storage and transfer systems',
+    'Equipment skids',
+    'Flow control and isolation',
+  ],
+  productFamilies: [
+    'butterfly-valves',
+    'butterfly-damper-valves',
+    'pneumatic-actuators',
+    'electric-actuators',
+  ],
+  images: {
+    hero: {
+      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Petrochemical processing facility with refinery equipment',
+      kind: 'hero',
+    },
+    thumbnail: {
+      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
+      alt: 'Petrochemical processing facility with refinery equipment',
+      kind: 'thumbnail',
+    },
+  },
+  seo: {
+    title: 'Petrochemical | PDC Valve & Actuators',
+    description:
+      'Flow-control valves and actuators for petrochemical production, process systems, storage, transfer, and plant utilities.',
+    canonicalUrl: 'https://www.pdcvalve.com/industries/petrochemical',
+    noIndex: false,
+    openGraph: {
+      title: 'Petrochemical | PDC Valve & Actuators',
+      description:
+        'Flow-control solutions for petrochemical processing and supporting systems.',
     },
   },
 };
@@ -797,7 +899,9 @@ const pulpAndPaper: IndustryContent = {
 
 export const industryContent: IndustryContent[] = [
   automotive,
+  airManagement,
   chemical,
+  petrochemical,
   downstreamHydrocarbons,
   foodAndBeverage,
   energyAndUtilities,
@@ -810,6 +914,15 @@ export const industryContent: IndustryContent[] = [
   powerGeneration,
   pulpAndPaper,
 ];
+
+/**
+ * Shared navigation generated from the canonical industry page registry.
+ * This keeps every displayed industry link backed by a real route.
+ */
+export const industryNav: NavLink[] = industryContent.map((industry) => ({
+  label: industry.name,
+  href: industry.route,
+}));
 
 /** Look up an industry content object by slug. */
 export function getIndustryContent(

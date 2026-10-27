@@ -12,11 +12,17 @@ export default function IndustryApplications({
   if (!industry.applications || industry.applications.length === 0) return null;
 
   return (
-    <section className="bg-brand-green-dark py-16 text-white sm:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(22,132,71,0.12),transparent_55%)]" />
-      <div className="blueprint-grid absolute inset-0 opacity-20" />
+    <section className="relative isolate overflow-hidden bg-brand-green-dark py-16 text-white sm:py-20">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(22,132,71,0.12),transparent_55%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="blueprint-grid pointer-events-none absolute inset-0 opacity-20"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
