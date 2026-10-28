@@ -44,9 +44,9 @@ export default function HomeCTA() {
             </h2>
 
             <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/70">
-              Send us pressure, temperature, media and line size. Our
-              application engineers will specify the right valve and actuator
-              package — and tell you plainly if we are not the right fit.
+              Send us pressure, temperature, media and line size. Our PDC sales
+              team will review your requirements, identify suitable valve and
+              actuator options, and coordinate engineering review when needed.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

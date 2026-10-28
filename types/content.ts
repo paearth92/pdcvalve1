@@ -1,506 +1,1 @@
-/**
- * Content migration framework â€” reusable type system.
- *
- * This module establishes the canonical content interfaces for the PDC
- * website migration. Every page can receive real engineering content
- * without changing layouts by conforming to these structures.
- *
- * Design principles:
- * - All engineering fields are optional until verified data is imported.
- * - No field should contain placeholder or invented engineering values.
- * - Interfaces are composed, not duplicated, across content types.
- */
-
-/* ============================================================
- * Shared primitives
- * ========================================================== */
-
-/** Canonical download file types supported by the content system. */
-export type DownloadFileType =
-  | 'pdf'
-  | 'datasheet'
-  | 'cad'
-  | 'step'
-  | 'dwg'
-  | 'installation-manual'
-  | 'maintenance-manual'
-  | 'certificate'
-  | 'technical-bulletin'
-  | 'application-guide'
-  | 'guide';
-
-/** A single downloadable resource attached to a product, family, or page. */
-export interface DownloadEntry {
-  label: string;
-  type: DownloadFileType;
-  filename: string;
-  url?: string;
-  /** File size in bytes, when known. */
-  sizeBytes?: number;
-  /** ISO date string of last revision. */
-  updatedAt?: string;
-}
-
-/** A label/value specification row. */
-export interface SpecRow {
-  label: string;
-  value: string;
-}
-
-/** A grouped specification table. */
-export interface SpecGroup {
-  heading: string;
-  /** Optional category tag for standard grouping (General, Materials, Pressure, etc.). */
-  category?: SpecGroupCategory;
-  rows: SpecRow[];
-}
-
-/** Standard specification group categories for consistent grouping. */
-export type SpecGroupCategory =
-  | 'general'
-  | 'construction'
-  | 'materials'
-  | 'pressure'
-  | 'temperature'
-  | 'connections'
-  | 'operation'
-  | 'dimensions'
-  | 'performance'
-  | 'certifications';
-
-/** A named feature with a short description. */
-export interface FeatureEntry {
-  iconSlug?: string;
-  title: string;
-  description: string;
-}
-
-/** A named product benefit (distinct from a feature â€” the "why", not the "what"). */
-export interface BenefitEntry {
-  title: string;
-  description: string;
-}
-
-/** A reference to a related product by family + product slug. */
-export interface RelatedProductRef {
-  familySlug: string;
-  productSlug: string;
-  /** Optional display override; falls back to the referenced product's name. */
-  name?: string;
-  description?: string;
-}
-
-/* ============================================================
- * Image system
- * ========================================================== */
-
-export type ImageKind =
-  | 'hero'
-  | 'gallery'
-  | 'transparent-png'
-  | 'technical-drawing'
-  | 'cad-preview'
-  | 'thumbnail';
-
-/** A single image with kind classification and accessibility metadata. */
-export interface ContentImage {
-  src: string;
-  alt: string;
-  kind: ImageKind;
-  /** Optional caption for gallery / technical drawing display. */
-  caption?: string;
-  /** Optional width/height in pixels for layout stability. */
-  width?: number;
-  height?: number;
-}
-
-/** A reusable image set for any content object. */
-export interface ImageSet {
-  hero?: ContentImage;
-  thumbnail?: ContentImage;
-  gallery?: ContentImage[];
-  technicalDrawings?: ContentImage[];
-  cadPreview?: ContentImage;
-  transparentPng?: ContentImage;
-}
-
-/* ============================================================
- * SEO system
- * ========================================================== */
-
-/** Open Graph metadata for social sharing. */
-export interface OpenGraphData {
-  title?: string;
-  description?: string;
-  image?: string;
-  type?: 'website' | 'article' | 'product';
-  siteName?: string;
-}
-
-/** JSON-LD structured data placeholder for rich results. */
-export interface JsonLdData {
-  /** The schema.org type, e.g. 'Product', 'Organization', 'BreadcrumbList'. */
-  type: string;
-  /** Raw JSON-LD object to be serialized to a script tag. */
-  data: Record<string, unknown>;
-}
-
-/** Canonical SEO metadata supported by every content object. */
-export interface SEOData {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  canonicalUrl?: string;
-  openGraph?: OpenGraphData;
-  jsonLd?: JsonLdData[];
-  /** When true, search engines are instructed not to index this page. */
-  noIndex?: boolean;
-}
-
-/* ============================================================
- * Application / industry references
- * ========================================================== */
-
-/** An application card shown on family and product pages. */
-export interface ApplicationCard {
-  iconSlug: string;
-  title: string;
-  description: string;
-}
-
-/** An industry reference attached to products and families. */
-export interface IndustryRef {
-  iconSlug?: string;
-  slug: string;
-  title: string;
-  description?: string;
-}
-
-/** A grouped application list (industries, applications, benefits). */
-export interface ApplicationGroup {
-  heading: string;
-  items: string[];
-}
-
-/* ============================================================
- * Product Families
- * ========================================================== */
-
-/** Narrative overview sections for a product family page. */
-export interface FamilyOverviewSections {
-  introduction: string;
-  advantages: string[];
-  applications: string[];
-  customization: string;
-}
-
-/** A product family content object. */
-export interface ProductFamilyContent {
-  name: string;
-  slug: string;
-  shortDescription: string;
-  route: string;
-  imageRef: string;
-  /** Optional eyebrow label shown above the hero title. */
-  eyebrow?: string;
-  /** Optional hero title override; falls back to name. */
-  heroTitle?: string;
-  /** Optional hero description override; falls back to shortDescription. */
-  heroDescription?: string;
-  overview?: string;
-  overviewSections?: FamilyOverviewSections;
-  applications?: ApplicationCard[];
-  industries?: IndustryRef[];
-  /** Slugs of products belonging to this family. */
-  productRefs?: string[];
-  downloads?: DownloadEntry[];
-  trustBadges?: string[];
-  images?: ImageSet;
-  seo?: SEOData;
-}
-
-/* ============================================================
- * Individual Products
- * ========================================================== */
-
-/** Lifecycle status of a product in the catalog. */
-export type ProductLifecycleStatus =
-  | 'active'
-  | 'discontinued'
-  | 'obsolete'
-  | 'limited-availability'
-  | 'made-to-order';
-
-/** A product content object â€” supports all future engineering fields. */
-export interface ProductContent {
-  id: string;
-  slug: string;
-  familySlug: string;
-  /** Display name of the parent family, for convenience. */
-  familyName?: string;
-  /** Full route path for this product detail page. */
-  route?: string;
-  name: string;
-  series?: string;
-  shortDescription?: string;
-  overview?: string;
-  /** Multi-paragraph overview for detail pages. */
-  overviewParagraphs?: string[];
-  features?: FeatureEntry[];
-  benefits?: BenefitEntry[];
-  applications?: string[];
-  applicationGroups?: ApplicationGroup[];
-  industries?: IndustryRef[];
-  specifications?: SpecRow[];
-  specGroups?: SpecGroup[];
-  downloads?: DownloadEntry[];
-  relatedProducts?: RelatedProductRef[];
-  images?: ImageSet;
-  badges?: string[];
-  trustBadges?: string[];
-  /** Product lifecycle status. */
-  lifecycleStatus?: ProductLifecycleStatus;
-  engineering?: ProductEngineeringData;
-  seo?: SEOData;
-}
-
-/* ============================================================
- * Industries
- * ========================================================== */
-
-/** An industry content object for the Industries section. */
-export interface IndustryContent {
-  name: string;
-  slug: string;
-  shortDescription: string;
-  route: string;
-  /** Eyebrow label shown above the hero title. */
-  eyebrow?: string;
-  /** Hero title override; falls back to name. */
-  heroTitle?: string;
-  /** Hero description override; falls back to shortDescription. */
-  heroDescription?: string;
-  overview?: string;
-  overviewParagraphs?: string[];
-  /** Operating challenges as a list of concise statements. */
-  challenges?: string[];
-  solutions?: FeatureEntry[];
-  /** Common application areas as concise strings. */
-  applications?: string[];
-  /** Application cards with icons (legacy support). */
-  applicationCards?: ApplicationCard[];
-  /** Slugs of relevant product families (canonical family slugs). */
-  productFamilies?: string[];
-  images?: ImageSet;
-  seo?: SEOData;
-}
-
-/* ============================================================
- * Company Pages
- * ========================================================== */
-
-export type CompanyPageSlug =
-  | 'about'
-  | 'engineering'
-  | 'manufacturing'
-  | 'quality'
-  | 'careers'
-  | 'news'
-  | 'warranty'
-  | 'contact';
-
-/** A company page content object (About, Careers, News, etc.). */
-export interface CompanyPageContent {
-  slug: CompanyPageSlug;
-  title: string;
-  subtitle?: string;
-  /** Eyebrow label shown above the hero title. */
-  eyebrow?: string;
-  /** Hero title override; falls back to title. */
-  heroTitle?: string;
-  /** Hero description override; falls back to subtitle or overview. */
-  heroDescription?: string;
-  overview?: string;
-  overviewParagraphs?: string[];
-  sections?: CompanyPageSection[];
-  /** Feature cards displayed in a grid below the intro. */
-  featureCards?: CompanyFeatureCard[];
-  images?: ImageSet;
-  seo?: SEOData;
-}
-
-/** A modular section within a company page. */
-export interface CompanyPageSection {
-  heading: string;
-  /** Optional eyebrow label shown above the heading. */
-  eyebrow?: string;
-  body?: string;
-  bodyParagraphs?: string[];
-  items?: string[];
-  features?: FeatureEntry[];
-  /** When true, renders with a dark background. */
-  dark?: boolean;
-}
-
-/** A feature card for company page grids. */
-export interface CompanyFeatureCard {
-  iconSlug: string;
-  title: string;
-  description: string;
-}
-
-/* ============================================================
- * Resources
- * ========================================================== */
-
-export type ResourceCategory =
-  | 'technical-article'
-  | 'case-study'
-  | 'white-paper'
-  | 'video'
-  | 'faq'
-  | 'documentation';
-
-/** A resource content object (articles, case studies, white papers, etc.). */
-export interface ResourceContent {
-  slug: string;
-  title: string;
-  category: ResourceCategory;
-  excerpt?: string;
-  body?: string;
-  bodyParagraphs?: string[];
-  author?: string;
-  publishedAt?: string;
-  updatedAt?: string;
-  tags?: string[];
-  relatedProducts?: RelatedProductRef[];
-  downloads?: DownloadEntry[];
-  images?: ImageSet;
-  seo?: SEOData;
-}
-
-/* ============================================================
- * Resource Center (engineering document library)
- * ========================================================== */
-
-/** Categories used by the Resources Center document library. */
-export type ResourceCenterCategory =
-  | 'brochures'
-  | 'datasheets'
-  | 'manuals'
-  | 'cad'
-  | 'certifications';
-
-/** File formats supported by the Resources Center. */
-export type ResourceFileType =
-  | 'pdf'
-  | 'dwg'
-  | 'dxf'
-  | 'step'
-  | 'iges'
-  | 'zip'
-  | 'doc'
-  | 'xls';
-
-/** Download availability states for the DownloadButton component. */
-export type DownloadStatus =
-  | 'available'
-  | 'unavailable'
-  | 'coming-soon'
-  | 'upon-request';
-
-/** Canonical resource entry for the engineering document library. */
-export interface ResourceItem {
-  id: string;
-  title: string;
-  slug: string;
-  category: ResourceCenterCategory;
-  /** Canonical product family slug, or null for company-wide documents. */
-  productFamily: string | null;
-  /** Optional specific product slug within the family. */
-  product?: string | null;
-  description: string;
-  /** The kind of document (brochure, datasheet, installation manual, etc.). */
-  documentType: string;
-  /** The file format of the downloadable document. */
-  fileType: ResourceFileType;
-  /** Human-readable file size, or null when unknown. */
-  fileSize: string | null;
-  language: string;
-  /** Revision identifier, or null when unknown. */
-  revision: string | null;
-  /** ISO date string of publication, or null when unknown. */
-  publishedDate: string | null;
-  /** URL to the downloadable file, or null when no file exists. */
-  downloadUrl: string | null;
-  /** Thumbnail image URL, or null. */
-  thumbnail: string | null;
-  /** Shown in the Featured section of the landing page. */
-  featured: boolean;
-  /** SEO title for the resource. */
-  seoTitle?: string | null;
-  /** SEO description for the resource. */
-  seoDescription?: string | null;
-  /** Download availability state. Defaults to 'unavailable'. */
-  downloadStatus?: DownloadStatus;
-}
-
-/* ============================================================
- * Engineering data (interactive charts & exact tables)
- * ========================================================== */
-
-/** Category of an engineering data table, used for ordering and iconography. */
-export type EngineeringTableKind =
-  | 'torque'
-  | 'flow'
-  | 'performance'
-  | 'dimensions'
-  | 'models'
-  | 'general'
-  | 'materials';
-
-/** A single published engineering dataset rendered as a table or chart source. */
-export interface EngineeringDataTable {
-  id: string;
-  title: string;
-  /** Short label shown on the tab/selector button. */
-  tabLabel?: string;
-  kind: EngineeringTableKind;
-  description?: string;
-  columns: string[];
-  rows: string[][];
-  notes?: string[];
-}
-
-/** A named group of option items (standard features, available options, etc.). */
-export interface EngineeringOptionGroup {
-  title: string;
-  items: string[];
-}
-
-/** Engineering data attached to a product â€” interactive datasets and option lists. */
-export interface ProductEngineeringData {
-  tables?: EngineeringDataTable[];
-  optionGroups?: EngineeringOptionGroup[];
-}
-
-/* ============================================================
- * Downloads (standalone library)
- * ========================================================== */
-
-/** A standalone download entry with full metadata for a downloads library. */
-export interface DownloadResource {
-  slug: string;
-  label: string;
-  type: DownloadFileType;
-  filename: string;
-  url?: string;
-  description?: string;
-  /** Associated product family slug, if applicable. */
-  familySlug?: string;
-  /** Associated product slug, if applicable. */
-  productSlug?: string;
-  sizeBytes?: number;
-  updatedAt?: string;
-  seo?: SEOData;
-}
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíç^vN‹Z–‹­¦ëeŠw¬Ô¼¨¨4(€¨½¹Ñ•¹Ğµ¥É…Ñ¥½¸™É…µ•İ½É¬ƒŠPÉ•ÕÍ…‰±”ÑåÁ”ÍåÍÑ•´¸4(€¨4(€¨Q¡¥Ìµ½‘Õ±”•ÍÑ…‰±¥Í¡•ÌÑ¡”…¹½¹¥…°½¹Ñ•¹Ğ¥¹Ñ•É™…•Ì™½ÈÑ¡”A4(€¨İ•‰Í¥Ñ”µ¥É…Ñ¥½¸¸Ù•ÉäÁ…”…¸É••¥Ù”É•…°•¹¥¹••É¥¹œ½¹Ñ•¹Ğ4(€¨İ¥Ñ¡½ÕĞ¡…¹¥¹œ±…å½ÕÑÌ‰ä½¹™½Éµ¥¹œÑ¼Ñ¡•Í”ÍÑÉÕÑÕÉ•Ì¸4(€¨4(€¨•Í¥¸ÁÉ¥¹¥Á±•Ìè4(€¨€´±°•¹¥¹••É¥¹œ™¥•±‘Ì…É”½ÁÑ¥½¹…°Õ¹Ñ¥°Ù•É¥™¥•‘…Ñ„¥Ì¥µÁ½ÉÑ•¸4(€¨€´9¼™¥•±Í¡½Õ±½¹Ñ…¥¸Á±…•¡½±‘•È½È¥¹Ù•¹Ñ••¹¥¹••É¥¹œÙ…±Õ•Ì¸4(€¨€´%¹Ñ•É™…•Ì…É”½µÁ½Í•°¹½Ğ‘ÕÁ±¥…Ñ•°…É½ÍÌ½¹Ñ•¹ĞÑåÁ•Ì¸4(€¨¼4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨M¡…É•ÁÉ¥µ¥Ñ¥Ù•Ì4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨…¹½¹¥…°‘½İ¹±½…™¥±”ÑåÁ•ÌÍÕÁÁ½ÉÑ•‰äÑ¡”½¹Ñ•¹ĞÍåÍÑ•´¸€¨¼4)•áÁ½ÉĞÑåÁ”½İ¹±½…‘¥±•QåÁ”€ô4(€ğ€Á‘˜œ4(€ğ€‘…Ñ…Í¡••Ğœ4(€ğ€…œ4(€ğ€ÍÑ•Àœ4(€ğ€‘İœœ4(€ğ€¥¹ÍÑ…±±…Ñ¥½¸µµ…¹Õ…°œ4(€ğ€µ…¥¹Ñ•¹…¹”µµ…¹Õ…°œ4(€ğ€•ÉÑ¥™¥…Ñ”œ4(€ğ€Ñ•¡¹¥…°µ‰Õ±±•Ñ¥¸œ4(€ğ€…ÁÁ±¥…Ñ¥½¸µÕ¥‘”œ4(€ğ€Õ¥‘”œì4(4(¼¨¨Í¥¹±”‘½İ¹±½…‘…‰±”É•Í½ÕÉ”…ÑÑ…¡•Ñ¼„ÁÉ½‘ÕĞ°™…µ¥±ä°½ÈÁ…”¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½İ¹±½…‘¹ÑÉäì4(€±…‰•°èÍÑÉ¥¹œì4(€ÑåÁ”è½İ¹±½…‘¥±•QåÁ”ì4(€™¥±•¹…µ”èÍÑÉ¥¹œì4(€ÕÉ°üèÍÑÉ¥¹œì4(€€¼¨¨¥±”Í¥é”¥¸‰åÑ•Ì°İ¡•¸­¹½İ¸¸€¨¼4(€Í¥é•	åÑ•Ìüè¹Õµ‰•Èì4(€€¼¨¨%M<‘…Ñ”ÍÑÉ¥¹œ½˜±…ÍĞÉ•Ù¥Í¥½¸¸€¨¼4(€ÕÁ‘…Ñ•‘ĞüèÍÑÉ¥¹œì4)ô4(4(¼¨¨±…‰•°½Ù…±Õ”ÍÁ•¥™¥…Ñ¥½¸É½Ü¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”MÁ•I½Üì4(€±…‰•°èÍÑÉ¥¹œì4(€Ù…±Õ”èÍÑÉ¥¹œì4)ô4(4(¼¨¨É½ÕÁ•ÍÁ•¥™¥…Ñ¥½¸Ñ…‰±”¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”MÁ•É½ÕÀì4(€¡•…‘¥¹œèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°…Ñ•½ÉäÑ…œ™½ÈÍÑ…¹‘…ÉÉ½ÕÁ¥¹œ€¡•¹•É…°°5…Ñ•É¥…±Ì°AÉ•ÍÍÕÉ”°•ÑŒ¸¤¸€¨¼4(€…Ñ•½ÉäüèMÁ•É½ÕÁ…Ñ•½Éäì4(€É½İÌèMÁ•I½İmtì4)ô4(4(¼¨¨MÑ…¹‘…ÉÍÁ•¥™¥…Ñ¥½¸É½ÕÀ…Ñ•½É¥•Ì™½È½¹Í¥ÍÑ•¹ĞÉ½ÕÁ¥¹œ¸€¨¼4)•áÁ½ÉĞÑåÁ”MÁ•É½ÕÁ…Ñ•½Éä€ô4(€ğ€•¹•É…°œ4(€ğ€½¹ÍÑÉÕÑ¥½¸œ4(€ğ€µ…Ñ•É¥…±Ìœ4(€ğ€ÁÉ•ÍÍÕÉ”œ4(€ğ€Ñ•µÁ•É…ÑÕÉ”œ4(€ğ€½¹¹•Ñ¥½¹Ìœ4(€ğ€½Á•É…Ñ¥½¸œ4(€ğ€‘¥µ•¹Í¥½¹Ìœ4(€ğ€Á•É™½Éµ…¹”œ4(€ğ€•ÉÑ¥™¥…Ñ¥½¹Ìœì4(4(¼¨¨¹…µ•™•…ÑÕÉ”İ¥Ñ „Í¡½ÉĞ‘•ÍÉ¥ÁÑ¥½¸¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”•…ÑÕÉ•¹ÑÉäì4(€¥½¹M±ÕœüèÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4)ô4(4(¼¨¨¹…µ•ÁÉ½‘ÕĞ‰•¹•™¥Ğ€¡‘¥ÍÑ¥¹Ğ™É½´„™•…ÑÕÉ”ƒŠPÑ¡”€‰İ¡äˆ°¹½ĞÑ¡”€‰İ¡…Ğˆ¤¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”	•¹•™¥Ñ¹ÑÉäì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4)ô4(4(¼¨¨É•™•É•¹”Ñ¼„É•±…Ñ•ÁÉ½‘ÕĞ‰ä™…µ¥±ä€¬ÁÉ½‘ÕĞÍ±Õœ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”I•±…Ñ•‘AÉ½‘ÕÑI•˜ì4(€™…µ¥±åM±ÕœèÍÑÉ¥¹œì4(€ÁÉ½‘ÕÑM±ÕœèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°‘¥ÍÁ±…ä½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼Ñ¡”É•™•É•¹•ÁÉ½‘ÕĞÌ¹…µ”¸€¨¼4(€¹…µ”üèÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨%µ…”ÍåÍÑ•´4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4)•áÁ½ÉĞÑåÁ”%µ…•-¥¹€ô4(€ğ€¡•É¼œ4(€ğ€…±±•Éäœ4(€ğ€ÑÉ…¹ÍÁ…É•¹ĞµÁ¹œœ4(€ğ€Ñ•¡¹¥…°µ‘É…İ¥¹œœ4(€ğ€…µÁÉ•Ù¥•Üœ4(€ğ€Ñ¡Õµ‰¹…¥°œì4(4(¼¨¨Í¥¹±”¥µ…”İ¥Ñ ­¥¹±…ÍÍ¥™¥…Ñ¥½¸…¹…•ÍÍ¥‰¥±¥Ñäµ•Ñ…‘…Ñ„¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½¹Ñ•¹Ñ%µ…”ì4(€ÍÉŒèÍÑÉ¥¹œì4(€…±ĞèÍÑÉ¥¹œì4(€­¥¹è%µ…•-¥¹ì4(€€¼¨¨=ÁÑ¥½¹…°…ÁÑ¥½¸™½È…±±•Éä€¼Ñ•¡¹¥…°‘É…İ¥¹œ‘¥ÍÁ±…ä¸€¨¼4(€…ÁÑ¥½¸üèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°İ¥‘Ñ ½¡•¥¡Ğ¥¸Á¥á•±Ì™½È±…å½ÕĞÍÑ…‰¥±¥Ñä¸€¨¼4(€İ¥‘Ñ üè¹Õµ‰•Èì4(€¡•¥¡Ğüè¹Õµ‰•Èì4)ô4(4(¼¨¨É•ÕÍ…‰±”¥µ…”Í•Ğ™½È…¹ä½¹Ñ•¹Ğ½‰©•Ğ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”%µ…•M•Ğì4(€¡•É¼üè½¹Ñ•¹Ñ%µ…”ì4(€Ñ¡Õµ‰¹…¥°üè½¹Ñ•¹Ñ%µ…”ì4(€…±±•Éäüè½¹Ñ•¹Ñ%µ…•mtì4(€Ñ•¡¹¥…±É…İ¥¹Ìüè½¹Ñ•¹Ñ%µ…•mtì4(€…‘AÉ•Ù¥•Üüè½¹Ñ•¹Ñ%µ…”ì4(€ÑÉ…¹ÍÁ…É•¹ÑA¹œüè½¹Ñ•¹Ñ%µ…”ì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨M<ÍåÍÑ•´4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨=Á•¸É…Á µ•Ñ…‘…Ñ„™½ÈÍ½¥…°Í¡…É¥¹œ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”=Á•¹É…Á¡…Ñ„ì4(€Ñ¥Ñ±”üèÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€¥µ…”üèÍÑÉ¥¹œì4(€ÑåÁ”üè€İ•‰Í¥Ñ”œğ€…ÉÑ¥±”œğ€ÁÉ½‘ÕĞœì4(€Í¥Ñ•9…µ”üèÍÑÉ¥¹œì4)ô4(4(¼¨¨)M=8µ1ÍÑÉÕÑÕÉ•‘…Ñ„Á±…•¡½±‘•È™½ÈÉ¥ É•ÍÕ±ÑÌ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”)Í½¹1‘…Ñ„ì4(€€¼¨¨Q¡”Í¡•µ„¹½ÉœÑåÁ”°”¹œ¸€AÉ½‘ÕĞœ°€=É…¹¥é…Ñ¥½¸œ°€	É•…‘ÉÕµ‰1¥ÍĞœ¸€¨¼4(€ÑåÁ”èÍÑÉ¥¹œì4(€€¼¨¨I…Ü)M=8µ1½‰©•ĞÑ¼‰”Í•É¥…±¥é•Ñ¼„ÍÉ¥ÁĞÑ…œ¸€¨¼4(€‘…Ñ„èI•½ÉñÍÑÉ¥¹œ°Õ¹­¹½İ¸øì4)ô4(4(¼¨¨…¹½¹¥…°M<µ•Ñ…‘…Ñ„ÍÕÁÁ½ÉÑ•‰ä•Ù•Éä½¹Ñ•¹Ğ½‰©•Ğ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”M=…Ñ„ì4(€Ñ¥Ñ±”üèÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€­•åİ½É‘ÌüèÍÑÉ¥¹mtì4(€…¹½¹¥…±UÉ°üèÍÑÉ¥¹œì4(€½Á•¹É…Á üè=Á•¹É…Á¡…Ñ„ì4(€©Í½¹1üè)Í½¹1‘…Ñ…mtì4(€€¼¨¨]¡•¸ÑÉÕ”°Í•…É •¹¥¹•Ì…É”¥¹ÍÑÉÕÑ•¹½ĞÑ¼¥¹‘•àÑ¡¥ÌÁ…”¸€¨¼4(€¹½%¹‘•àüè‰½½±•…¸ì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨ÁÁ±¥…Ñ¥½¸€¼¥¹‘ÕÍÑÉäÉ•™•É•¹•Ì4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨¸…ÁÁ±¥…Ñ¥½¸…ÉÍ¡½İ¸½¸™…µ¥±ä…¹ÁÉ½‘ÕĞÁ…•Ì¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”ÁÁ±¥…Ñ¥½¹…Éì4(€¥½¹M±ÕœèÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4)ô4(4(¼¨¨¸¥¹‘ÕÍÑÉäÉ•™•É•¹”…ÑÑ…¡•Ñ¼ÁÉ½‘ÕÑÌ…¹™…µ¥±¥•Ì¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”%¹‘ÕÍÑÉåI•˜ì4(€¥½¹M±ÕœüèÍÑÉ¥¹œì4(€Í±ÕœèÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4)ô4(4(¼¨¨É½ÕÁ•…ÁÁ±¥…Ñ¥½¸±¥ÍĞ€¡¥¹‘ÕÍÑÉ¥•Ì°…ÁÁ±¥…Ñ¥½¹Ì°‰•¹•™¥ÑÌ¤¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”ÁÁ±¥…Ñ¥½¹É½ÕÀì4(€¡•…‘¥¹œèÍÑÉ¥¹œì4(€¥Ñ•µÌèÍÑÉ¥¹mtì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨AÉ½‘ÕĞ…µ¥±¥•Ì4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨9…ÉÉ…Ñ¥Ù”½Ù•ÉÙ¥•ÜÍ•Ñ¥½¹Ì™½È„ÁÉ½‘ÕĞ™…µ¥±äÁ…”¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”…µ¥±å=Ù•ÉÙ¥•İM•Ñ¥½¹Ìì4(€¥¹ÑÉ½‘ÕÑ¥½¸èÍÑÉ¥¹œì4(€…‘Ù…¹Ñ…•ÌèÍÑÉ¥¹mtì4(€…ÁÁ±¥…Ñ¥½¹ÌèÍÑÉ¥¹mtì4(€ÕÍÑ½µ¥é…Ñ¥½¸èÍÑÉ¥¹œì4)ô4(4(¼¨¨ÁÉ½‘ÕĞ™…µ¥±ä½¹Ñ•¹Ğ½‰©•Ğ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”AÉ½‘ÕÑ…µ¥±å½¹Ñ•¹Ğì4(€¹…µ”èÍÑÉ¥¹œì4(€Í±ÕœèÍÑÉ¥¹œì4(€Í¡½ÉÑ•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4(€É½ÕÑ”èÍÑÉ¥¹œì4(€¥µ…•I•˜èÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°•å•‰É½Ü±…‰•°Í¡½İ¸…‰½Ù”Ñ¡”¡•É¼Ñ¥Ñ±”¸€¨¼4(€•å•‰É½ÜüèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°¡•É¼Ñ¥Ñ±”½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼¹…µ”¸€¨¼4(€¡•É½Q¥Ñ±”üèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°¡•É¼‘•ÍÉ¥ÁÑ¥½¸½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼Í¡½ÉÑ•ÍÉ¥ÁÑ¥½¸¸€¨¼4(€¡•É½•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•ÜüèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•İM•Ñ¥½¹Ìüè…µ¥±å=Ù•ÉÙ¥•İM•Ñ¥½¹Ìì4(€…ÁÁ±¥…Ñ¥½¹ÌüèÁÁ±¥…Ñ¥½¹…É‘mtì4(€¥¹‘ÕÍÑÉ¥•Ìüè%¹‘ÕÍÑÉåI•™mtì4(€€¼¨¨M±ÕÌ½˜ÁÉ½‘ÕÑÌ‰•±½¹¥¹œÑ¼Ñ¡¥Ì™…µ¥±ä¸€¨¼4(€ÁÉ½‘ÕÑI•™ÌüèÍÑÉ¥¹mtì4(€‘½İ¹±½…‘Ìüè½İ¹±½…‘¹ÑÉåmtì4(€ÑÉÕÍÑ	…‘•ÌüèÍÑÉ¥¹mtì4(€¥µ…•Ìüè%µ…•M•Ğì4(€Í•¼üèM=…Ñ„ì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨%¹‘¥Ù¥‘Õ…°AÉ½‘ÕÑÌ4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨1¥™•å±”ÍÑ…ÑÕÌ½˜„ÁÉ½‘ÕĞ¥¸Ñ¡”…Ñ…±½œ¸€¨¼4)•áÁ½ÉĞÑåÁ”AÉ½‘ÕÑ1¥™•å±•MÑ…ÑÕÌ€ô4(€ğ€…Ñ¥Ù”œ4(€ğ€‘¥Í½¹Ñ¥¹Õ•œ4(€ğ€½‰Í½±•Ñ”œ4(€ğ€±¥µ¥Ñ•µ…Ù…¥±…‰¥±¥Ñäœ4(€ğ€µ…‘”µÑ¼µ½É‘•Èœì4(4(¼¨¨ÁÉ½‘ÕĞ½¹Ñ•¹Ğ½‰©•ĞƒŠPÍÕÁÁ½ÉÑÌ…±°™ÕÑÕÉ”•¹¥¹••É¥¹œ™¥•±‘Ì¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”AÉ½‘ÕÑ½¹Ñ•¹Ğì4(€¥èÍÑÉ¥¹œì4(€Í±ÕœèÍÑÉ¥¹œì4(€™…µ¥±åM±ÕœèÍÑÉ¥¹œì4(€€¼¨¨¥ÍÁ±…ä¹…µ”½˜Ñ¡”Á…É•¹Ğ™…µ¥±ä°™½È½¹Ù•¹¥•¹”¸€¨¼4(€™…µ¥±å9…µ”üèÍÑÉ¥¹œì4(€€¼¨¨Õ±°É½ÕÑ”Á…Ñ ™½ÈÑ¡¥ÌÁÉ½‘ÕĞ‘•Ñ…¥°Á…”¸€¨¼4(€É½ÕÑ”üèÍÑÉ¥¹œì4(€¹…µ”èÍÑÉ¥¹œì4(€Í•É¥•ÌüèÍÑÉ¥¹œì4(€Í¡½ÉÑ•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•ÜüèÍÑÉ¥¹œì4(€€¼¨¨5Õ±Ñ¤µÁ…É…É…Á ½Ù•ÉÙ¥•Ü™½È‘•Ñ…¥°Á…•Ì¸€¨¼4(€½Ù•ÉÙ¥•İA…É…É…Á¡ÌüèÍÑÉ¥¹mtì4(€™•…ÑÕÉ•Ìüè•…ÑÕÉ•¹ÑÉåmtì4(€‰•¹•™¥ÑÌüè	•¹•™¥Ñ¹ÑÉåmtì4(€…ÁÁ±¥…Ñ¥½¹ÌüèÍÑÉ¥¹mtì4(€…ÁÁ±¥…Ñ¥½¹É½ÕÁÌüèÁÁ±¥…Ñ¥½¹É½ÕÁmtì4(€¥¹‘ÕÍÑÉ¥•Ìüè%¹‘ÕÍÑÉåI•™mtì4(€ÍÁ•¥™¥…Ñ¥½¹ÌüèMÁ•I½İmtì4(€ÍÁ•É½ÕÁÌüèMÁ•É½ÕÁmtì4(€‘½İ¹±½…‘Ìüè½İ¹±½…‘¹ÑÉåmtì4(€É•±…Ñ•‘AÉ½‘ÕÑÌüèI•±…Ñ•‘AÉ½‘ÕÑI•™mtì4(€¥µ…•Ìüè%µ…•M•Ğì4(€‰…‘•ÌüèÍÑÉ¥¹mtï^v¶‰Ëkºwµçh€Í¡½ÉÑ•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4(€É½ÕÑ”èÍÑÉ¥¹œì4(€€¼¨¨å•‰É½Ü±…‰•°Í¡½İ¸…‰½Ù”Ñ¡”¡•É¼Ñ¥Ñ±”¸€¨¼4(€•å•‰É½ÜüèÍÑÉ¥¹œì4(€€¼¨¨!•É¼Ñ¥Ñ±”½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼¹…µ”¸€¨¼4(€¡•É½Q¥Ñ±”üèÍÑÉ¥¹œì4(€€¼¨¨!•É¼‘•ÍÉ¥ÁÑ¥½¸½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼Í¡½ÉÑ•ÍÉ¥ÁÑ¥½¸¸€¨¼4(€¡•É½•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°Í•Ñ¥½¸¡•…‘¥¹œ½Ù•ÉÉ¥‘”™½ÈÑ¡”½Ù•ÉÙ¥•Ü¸€¨¼4(€½Ù•ÉÙ¥•İQ¥Ñ±”üèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•ÜüèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•İA…É…É…Á¡ÌüèÍÑÉ¥¹mtì4(€€¼¨¨=ÁÑ¥½¹…°Í•Ñ¥½¸¡•…‘¥¹œ½Ù•ÉÉ¥‘”™½È½Á•É…Ñ¥¹œ¡…±±•¹•Ì¸€¨¼4(€¡…±±•¹•ÍQ¥Ñ±”üèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°•å•‰É½Ü½Ù•ÉÉ¥‘”İ¡•¸„ÕÍÑ½´¡…±±•¹•ÌÑ¥Ñ±”¥ÌÍÕÁÁ±¥•¸€¨¼4(€¡…±±•¹•Íå•‰É½ÜüèÍÑÉ¥¹œì4(€€¼¨¨=Á•É…Ñ¥¹œ¡…±±•¹•Ì…Ì„±¥ÍĞ½˜½¹¥Í”ÍÑ…Ñ•µ•¹ÑÌ¸€¨¼4(€¡…±±•¹•ÌüèÍÑÉ¥¹mtì4(€Í½±ÕÑ¥½¹Ìüè•…ÑÕÉ•¹ÑÉåmtì4(€€¼¨¨%¹‘ÕÍÑÉäµÍÁ•¥™¥ŒÁÉ½‘ÕĞÍ½±ÕÑ¥½¸‘•ÍÉ¥ÁÑ¥½¹Ì¸€¨¼4(€ÁÉ½‘ÕÑM½±ÕÑ¥½¹Ìüè•…ÑÕÉ•¹ÑÉåmtì4(€€¼¨¨½µµ½¸…ÁÁ±¥…Ñ¥½¸…É•…Ì…Ì½¹¥Í”ÍÑÉ¥¹Ì¸€¨¼4(€…ÁÁ±¥…Ñ¥½¹ÌüèÍÑÉ¥¹mtì4(€€¼¨¨ÁÁ±¥…Ñ¥½¸…É‘Ìİ¥Ñ ¥½¹Ì€¡±•…äÍÕÁÁ½ÉĞ¤¸€¨¼4(€…ÁÁ±¥…Ñ¥½¹…É‘ÌüèÁÁ±¥…Ñ¥½¹…É‘mtì4(€€¼¨¨M±ÕÌ½˜É•±•Ù…¹ĞÁÉ½‘ÕĞ™…µ¥±¥•Ì€¡…¹½¹¥…°™…µ¥±äÍ±ÕÌ¤¸€¨¼4(€ÁÉ½‘ÕÑ…µ¥±¥•ÌüèÍÑÉ¥¹mtì4(€€¼¨¨=ÁÑ¥½¹…°¥¹‘ÕÍÑÉäµÍÁ•¥™¥Œ‘•ÍÉ¥ÁÑ¥½¹Ì™½ÈÉ•±•Ù…¹ĞÁÉ½‘ÕĞ™…µ¥±¥•Ì¸€¨¼4(€ÁÉ½‘ÕÑ…µ¥±å•ÍÉ¥ÁÑ¥½¹ÌüèI•½ÉñÍÑÉ¥¹œ°ÍÑÉ¥¹œøì4(€¥µ…•Ìüè%µ…•M•Ğì4(€Í•¼üèM=…Ñ„ì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨½µÁ…¹äA…•Ì4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4)•áÁ½ÉĞÑåÁ”½µÁ…¹åA…•M±Õœ€ô4(€ğ€…‰½ÕĞœ4(€ğ€•¹¥¹••É¥¹œœ4(€ğ€µ…¹Õ™…ÑÕÉ¥¹œœ4(€ğ€ÅÕ…±¥Ñäœ4(€ğ€…É••ÉÌœ4(€ğ€¹•İÌœ4(€ğ€İ…ÉÉ…¹Ñäœ4(€ğ€½¹Ñ…Ğœì4(4(¼¨¨½µÁ…¹äÁ…”½¹Ñ•¹Ğ½‰©•Ğ€¡‰½ÕĞ°…É••ÉÌ°9•İÌ°•ÑŒ¸¤¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½µÁ…¹åA…•½¹Ñ•¹Ğì4(€Í±Õœè½µÁ…¹åA…•M±Õœì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€ÍÕ‰Ñ¥Ñ±”üèÍÑÉ¥¹œì4(€€¼¨¨å•‰É½Ü±…‰•°Í¡½İ¸…‰½Ù”Ñ¡”¡•É¼Ñ¥Ñ±”¸€¨¼4(€•å•‰É½ÜüèÍÑÉ¥¹œì4(€€¼¨¨!•É¼Ñ¥Ñ±”½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼Ñ¥Ñ±”¸€¨¼4(€¡•É½Q¥Ñ±”üèÍÑÉ¥¹œì4(€€¼¨¨!•É¼‘•ÍÉ¥ÁÑ¥½¸½Ù•ÉÉ¥‘”ì™…±±Ì‰…¬Ñ¼ÍÕ‰Ñ¥Ñ±”½È½Ù•ÉÙ¥•Ü¸€¨¼4(€¡•É½•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•ÜüèÍÑÉ¥¹œì4(€½Ù•ÉÙ¥•İA…É…É…Á¡ÌüèÍÑÉ¥¹mtì4(€Í•Ñ¥½¹Ìüè½µÁ…¹åA…•M•Ñ¥½¹mtì4(€€¼¨¨•…ÑÕÉ”…É‘Ì‘¥ÍÁ±…å•¥¸„É¥‰•±½ÜÑ¡”¥¹ÑÉ¼¸€¨¼4(€™•…ÑÕÉ•…É‘Ìüè½µÁ…¹å•…ÑÕÉ•…É‘mtì4(€¥µ…•Ìüè%µ…•M•Ğì4(€Í•¼üèM=…Ñ„ì4)ô4(4(¼¨¨µ½‘Õ±…ÈÍ•Ñ¥½¸İ¥Ñ¡¥¸„½µÁ…¹äÁ…”¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½µÁ…¹åA…•M•Ñ¥½¸ì4(€¡•…‘¥¹œèÍÑÉ¥¹œì4(€€¼¨¨=ÁÑ¥½¹…°•å•‰É½Ü±…‰•°Í¡½İ¸…‰½Ù”Ñ¡”¡•…‘¥¹œ¸€¨¼4(€•å•‰É½ÜüèÍÑÉ¥¹œì4(€‰½‘äüèÍÑÉ¥¹œì4(€‰½‘åA…É…É…Á¡ÌüèÍÑÉ¥¹mtì4(€¥Ñ•µÌüèÍÑÉ¥¹mtì4(€™•…ÑÕÉ•Ìüè•…ÑÕÉ•¹ÑÉåmtì4(€€¼¨¨]¡•¸ÑÉÕ”°É•¹‘•ÉÌİ¥Ñ „‘…É¬‰…­É½Õ¹¸€¨¼4(€‘…É¬üè‰½½±•…¸ì4)ô4(4(¼¨¨™•…ÑÕÉ”…É™½È½µÁ…¹äÁ…”É¥‘Ì¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½µÁ…¹å•…ÑÕÉ•…Éì4(€¥½¹M±ÕœèÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨I•Í½ÕÉ•Ì4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4)•áÁ½ÉĞÑåÁ”I•Í½ÕÉ•…Ñ•½Éä€ô4(€ğ€Ñ•¡¹¥…°µ…ÉÑ¥±”œ4(€ğ€…Í”µÍÑÕ‘äœ4(€ğ€İ¡¥Ñ”µÁ…Á•Èœ4(€ğ€Ù¥‘•¼œ4(€ğ€™…Äœ4(€ğ€‘½Õµ•¹Ñ…Ñ¥½¸œì4(4(¼¨¨É•Í½ÕÉ”½¹Ñ•¹Ğ½‰©•Ğ€¡…ÉÑ¥±•Ì°…Í”ÍÑÕ‘¥•Ì°İ¡¥Ñ”Á…Á•ÉÌ°•ÑŒ¸¤¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”I•Í½ÕÉ•½¹Ñ•¹Ğì4(€Í±ÕœèÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€…Ñ•½ÉäèI•Í½ÕÉ•…Ñ•½Éäì4(€•á•ÉÁĞüèÍÑÉ¥¹œì4(€‰½‘äüèÍÑÉ¥¹œì4(€‰½‘åA…É…É…Á¡ÌüèÍÑÉ¥¹mtì4(€…ÕÑ¡½ÈüèÍÑÉ¥¹œì4(€ÁÕ‰±¥Í¡•‘ĞüèÍÑÉ¥¹œì4(€ÕÁ‘…Ñ•‘ĞüèÍÑÉ¥¹œì4(€Ñ…ÌüèÍÑÉ¥¹mtì4(€É•±…Ñ•‘AÉ½‘ÕÑÌüèI•±…Ñ•‘AÉ½‘ÕÑI•™mtì4(€‘½İ¹±½…‘Ìüè½İ¹±½…‘¹ÑÉåmtì4(€¥µ…•Ìüè%µ…•M•Ğì4(€Í•¼üèM=…Ñ„ì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨I•Í½ÕÉ”•¹Ñ•È€¡•¹¥¹••É¥¹œ‘½Õµ•¹Ğ±¥‰É…Éä¤4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨…Ñ•½É¥•ÌÕÍ•‰äÑ¡”I•Í½ÕÉ•Ì•¹Ñ•È‘½Õµ•¹Ğ±¥‰É…Éä¸€¨¼4)•áÁ½ÉĞÑåÁ”I•Í½ÕÉ••¹Ñ•É…Ñ•½Éä€ô4(€ğ€‰É½¡ÕÉ•Ìœ4(€ğ€‘…Ñ…Í¡••ÑÌœ4(€ğ€µ…¹Õ…±Ìœ4(€ğ€…œ4(€ğ€•ÉÑ¥™¥…Ñ¥½¹Ìœì4(4(¼¨¨¥±”™½Éµ…ÑÌÍÕÁÁ½ÉÑ•‰äÑ¡”I•Í½ÕÉ•Ì•¹Ñ•È¸€¨¼4)•áÁ½ÉĞÑåÁ”I•Í½ÕÉ•¥±•QåÁ”€ô4(€ğ€Á‘˜œ4(€ğ€‘İœœ4(€ğ€‘á˜œ4(€ğ€ÍÑ•Àœ4(€ğ€¥•Ìœ4(€ğ€é¥Àœ4(€ğ€‘½Œœ4(€ğ€á±Ìœì4(4(¼¨¨½İ¹±½……Ù…¥±…‰¥±¥ÑäÍÑ…Ñ•Ì™½ÈÑ¡”½İ¹±½…‘	ÕÑÑ½¸½µÁ½¹•¹Ğ¸€¨¼4)•áÁ½ÉĞÑåÁ”½İ¹±½…‘MÑ…ÑÕÌ€ô4(€ğ€…Ù…¥±…‰±”œ4(€ğ€Õ¹…Ù…¥±…‰±”œ4(€ğ€½µ¥¹œµÍ½½¸œ4(€ğ€ÕÁ½¸µÉ•ÅÕ•ÍĞœì4(4(¼¨¨…¹½¹¥…°É•Í½ÕÉ”•¹ÑÉä™½ÈÑ¡”•¹¥¹••É¥¹œ‘½Õµ•¹Ğ±¥‰É…Éä¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”I•Í½ÕÉ•%Ñ•´ì4(€¥èÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€Í±ÕœèÍÑÉ¥¹œì4(€…Ñ•½ÉäèI•Í½ÕÉ••¹Ñ•É…Ñ•½Éäì4(€€¼¨¨…¹½¹¥…°ÁÉ½‘ÕĞ™…µ¥±äÍ±Õœ°½È¹Õ±°™½È½µÁ…¹äµİ¥‘”‘½Õµ•¹ÑÌ¸€¨¼4(€ÁÉ½‘ÕÑ…µ¥±äèÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨=ÁÑ¥½¹…°ÍÁ•¥™¥ŒÁÉ½‘ÕĞÍ±Õœİ¥Ñ¡¥¸Ñ¡”™…µ¥±ä¸€¨¼4(€ÁÉ½‘ÕĞüèÍÑÉ¥¹œğ¹Õ±°ì4(€‘•ÍÉ¥ÁÑ¥½¸èÍÑÉ¥¹œì4(€€¼¨¨Q¡”­¥¹½˜‘½Õµ•¹Ğ€¡‰É½¡ÕÉ”°‘…Ñ…Í¡••Ğ°¥¹ÍÑ…±±…Ñ¥½¸µ…¹Õ…°°•ÑŒ¸¤¸€¨¼4(€‘½Õµ•¹ÑQåÁ”èÍÑÉ¥¹œì4(€€¼¨¨Q¡”™¥±”™½Éµ…Ğ½˜Ñ¡”‘½İ¹±½…‘…‰±”‘½Õµ•¹Ğ¸€¨¼4(€™¥±•QåÁ”èI•Í½ÕÉ•¥±•QåÁ”ì4(€€¼¨¨!Õµ…¸µÉ•…‘…‰±”™¥±”Í¥é”°½È¹Õ±°İ¡•¸Õ¹­¹½İ¸¸€¨¼4(€™¥±•M¥é”èÍÑÉ¥¹œğ¹Õ±°ì4(€±…¹Õ…”èÍÑÉ¥¹œì4(€€¼¨¨I•Ù¥Í¥½¸¥‘•¹Ñ¥™¥•È°½È¹Õ±°İ¡•¸Õ¹­¹½İ¸¸€¨¼4(€É•Ù¥Í¥½¸èÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨%M<‘…Ñ”ÍÑÉ¥¹œ½˜ÁÕ‰±¥…Ñ¥½¸°½È¹Õ±°İ¡•¸Õ¹­¹½İ¸¸€¨¼4(€ÁÕ‰±¥Í¡•‘…Ñ”èÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨UI0Ñ¼Ñ¡”‘½İ¹±½…‘…‰±”™¥±”°½È¹Õ±°İ¡•¸¹¼™¥±”•á¥ÍÑÌ¸€¨¼4(€‘½İ¹±½…‘UÉ°èÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨Q¡Õµ‰¹…¥°¥µ…”UI0°½È¹Õ±°¸€¨¼4(€Ñ¡Õµ‰¹…¥°èÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨M¡½İ¸¥¸Ñ¡”•…ÑÕÉ•Í•Ñ¥½¸½˜Ñ¡”±…¹‘¥¹œÁ…”¸€¨¼4(€™•…ÑÕÉ•è‰½½±•…¸ì4(€€¼¨¨M<Ñ¥Ñ±”™½ÈÑ¡”É•Í½ÕÉ”¸€¨¼4(€Í•½Q¥Ñ±”üèÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨M<‘•ÍÉ¥ÁÑ¥½¸™½ÈÑ¡”É•Í½ÕÉ”¸€¨¼4(€Í•½•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œğ¹Õ±°ì4(€€¼¨¨½İ¹±½……Ù…¥±…‰¥±¥ÑäÍÑ…Ñ”¸•™…Õ±ÑÌÑ¼€Õ¹…Ù…¥±…‰±”œ¸€¨¼4(€‘½İ¹±½…‘MÑ…ÑÕÌüè½İ¹±½…‘MÑ…ÑÕÌì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨¹¥¹••É¥¹œ‘…Ñ„€¡¥¹Ñ•É…Ñ¥Ù”¡…ÉÑÌ€˜•á…ĞÑ…‰±•Ì¤4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨…Ñ•½Éä½˜…¸•¹¥¹••É¥¹œ‘…Ñ„Ñ…‰±”°ÕÍ•™½È½É‘•É¥¹œ…¹¥½¹½É…Á¡ä¸€¨¼4)•áÁ½ÉĞÑåÁ”¹¥¹••É¥¹Q…‰±•-¥¹€ô4(€ğ€Ñ½ÉÅÕ”œ4(€ğ€™±½Üœ4(€ğ€Á•É™½Éµ…¹”œ4(€ğ€‘¥µ•¹Í¥½¹Ìœ4(€ğ€µ½‘•±Ìœ4(€ğ€•¹•É…°œ4(€ğ€µ…Ñ•É¥…±Ìœì4(4(¼¨¨Í¥¹±”ÁÕ‰±¥Í¡••¹¥¹••É¥¹œ‘…Ñ…Í•ĞÉ•¹‘•É•…Ì„Ñ…‰±”½È¡…ÉĞÍ½ÕÉ”¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”¹¥¹••É¥¹…Ñ…Q…‰±”ì4(€¥èÍÑÉ¥¹œì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€€¼¨¨M¡½ÉĞ±…‰•°Í¡½İ¸½¸Ñ¡”Ñ…ˆ½Í•±•Ñ½È‰ÕÑÑ½¸¸€¨¼4(€Ñ…‰1…‰•°üèÍÑÉ¥¹œì4(€­¥¹è¹¥¹••É¥¹Q…‰±•-¥¹ì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€½±Õµ¹ÌèÍÑÉ¥¹mtì4(€É½İÌèÍÑÉ¥¹mumtì4(€¹½Ñ•ÌüèÍÑÉ¥¹mtì4)ô4(4(¼¨¨¹…µ•É½ÕÀ½˜½ÁÑ¥½¸¥Ñ•µÌ€¡ÍÑ…¹‘…É™•…ÑÕÉ•Ì°…Ù…¥±…‰±”½ÁÑ¥½¹Ì°•ÑŒ¸¤¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”¹¥¹••É¥¹=ÁÑ¥½¹É½ÕÀì4(€Ñ¥Ñ±”èÍÑÉ¥¹œì4(€¥Ñ•µÌèÍÑÉ¥¹mtì4)ô4(4(¼¨¨¹¥¹••É¥¹œ‘…Ñ„…ÑÑ…¡•Ñ¼„ÁÉ½‘ÕĞƒŠP¥¹Ñ•É…Ñ¥Ù”‘…Ñ…Í•ÑÌ…¹½ÁÑ¥½¸±¥ÍÑÌ¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”AÉ½‘ÕÑ¹¥¹••É¥¹…Ñ„ì4(€Ñ…‰±•Ìüè¹¥¹••É¥¹…Ñ…Q…‰±•mtì4(€½ÁÑ¥½¹É½ÕÁÌüè¹¥¹••É¥¹=ÁÑ¥½¹É½ÕÁmtì4)ô4(4(¼¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô4(€¨½İ¹±½…‘Ì€¡ÍÑ…¹‘…±½¹”±¥‰É…Éä¤4(€¨€ôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôôô€¨¼4(4(¼¨¨ÍÑ…¹‘…±½¹”‘½İ¹±½…•¹ÑÉäİ¥Ñ ™Õ±°µ•Ñ…‘…Ñ„™½È„‘½İ¹±½…‘Ì±¥‰É…Éä¸€¨¼4)•áÁ½ÉĞ¥¹Ñ•É™…”½İ¹±½…‘I•Í½ÕÉ”ì4(€Í±ÕœèÍÑÉ¥¹œì4(€±…‰•°èÍÑÉ¥¹œì4(€ÑåÁ”è½İ¹±½…‘¥±•QåÁ”ì4(€™¥±•¹…µ”èÍÑÉ¥¹œì4(€ÕÉ°üèÍÑÉ¥¹œì4(€‘•ÍÉ¥ÁÑ¥½¸üèÍÑÉ¥¹œì4(€€¼¨¨ÍÍ½¥…Ñ•ÁÉ½‘ÕĞ™…µ¥±äÍ±Õœ°¥˜…ÁÁ±¥…‰±”¸€¨¼4(€™…µ¥±åM±ÕœüèÍÑÉ¥¹œì4(€€¼¨¨ÍÍ½¥…Ñ•ÁÉ½‘ÕĞÍ±Õœ°¥˜…ÁÁ±¥…‰±”¸€¨¼4(€ÁÉ½‘ÕÑM±ÕœüèÍÑÉ¥¹œì4(€Í¥é•	åÑ•Ìüè¹Õµ‰•Èì4(€ÕÁ‘…Ñ•‘ĞüèÍÑÉ¥¹œì4(€Í•¼üèM=…Ñ„ì4)ô4(

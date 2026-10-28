@@ -4,6 +4,7 @@ import IndustryNav from '@/components/industries/IndustryNav';
 import IndustryOverview from '@/components/industries/IndustryOverview';
 import IndustryChallenges from '@/components/industries/IndustryChallenges';
 import IndustryApplications from '@/components/industries/IndustryApplications';
+import IndustryProductSolutions from '@/components/industries/IndustryProductSolutions';
 import IndustryProductFamilies from '@/components/industries/IndustryProductFamilies';
 import IndustryCTA from '@/components/industries/IndustryCTA';
 
@@ -39,6 +40,8 @@ export default function IndustryPageLayout({
       <IndustryChallenges industry={industry} />
 
       <IndustryApplications industry={industry} />
+
+      <IndustryProductSolutions industry={industry} />
 
       <IndustryProductFamilies industry={industry} />
 

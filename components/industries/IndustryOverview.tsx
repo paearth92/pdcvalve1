@@ -24,7 +24,7 @@ export default function IndustryOverview({
               Overview
             </span>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
-              {industry.name}
+              {industry.overviewTitle ?? industry.name}
             </h2>
             <div className="mt-3 h-px w-12 bg-brand-green/40" />
           </div>

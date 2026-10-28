@@ -1,932 +1,11 @@
-import type { IndustryContent } from '@/types/content';
-import type { NavLink } from '@/types/site';
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×té:-jZ.¶›­–)Þ³V–×÷'BG—R²–æGW7G'”6öçFVçBÒg&öÒt÷G—W2ö6öçFVçBs°Ð¦–×÷'BG—R²ædÆ–æ²Òg&öÒt÷G—W2÷6—FRs°Ð Ð¢ò¢ Ð¢¢6æöæ–6Â–æGW7G'’6öçFVçB&Vv—7G'’àÐ¢ Ð¢¢4õU$4RäõDU2‡&—fFR“ Ð¢¢Ò6öçFVçB—2Æ–6F–öâÖfö7W6VBæB6öç6W'fF—fRàÐ¢¢Òæò7W7FöÖW"æÖW2Â&ö¦V7B†—7F÷'’Â–ç7FÆÆF–öâ6÷VçG2ÂÖ&¶WB6†&RÀÐ¢¢W&f÷&Öæ6R7FF—7F–72Â6W'F–f–6F–öç2Â66R7GVF–W2Â&W77W&R÷FV×W&GW&PÐ¢¢6&–Æ—F–W2Â÷"&VwVÆF÷'’&÷fÇ2&Rf'&–6FVBàÐ¢¢Ò&öGV7BfÖ–Ç’6ÇVw2&VfW&Væ6R6æöæ–6ÂfÖ–Ç’&÷WFW2öæÇ’àÐ¢¢ðÐ Ð¦6öç7BWFöÖ÷F—fS¢–æGW7G'”6öçFVçBÒ°Ð¢æÖS¢tWFöÖ÷F—fRrÀÐ¢6ÇVs¢vWFöÖ÷F—fRrÀÐ¢&÷WFS¢rö–æGW7G&–W2öWFöÖ÷F—fRrÀÐ¢W–V'&÷s¢t–æGW7G&–W2rÀÐ¢†W&õF—FÆS¢tfÆ÷r6öçG&öÂf÷"WFöÖ÷F—fRÖçVf7GW&–ærrÀÐ¢†W&ôFW67&—F–öã Ð¢uD2fÇfW2æB7GVF÷'27W÷'BfÆ÷rÖ6öçG&öÂÆ–6F–öç27&÷72WFöÖ÷F—fR&öGV7F–öâÂ76VÖ&Ç’7W÷'B7—7FV×2ÂÆçBWF–Æ—F–W2ÂæBÖçVf7GW&–ærVçf—&öæÖVçG2ârÀÐ¢6†÷'DFW67&—F–öã Ð¢tfÆ÷rÖ6öçG&öÂ6öÇWF–öç2f÷"WFöÖ÷F—fRÖçVf7GW&–ærÂÆçBWF–Æ—F–W2ÂæB&öGV7F–öâ7W÷'B7—7FV×2ârÀÐ¢÷fW'f–Ws Ð¢tWFöÖ÷F—fRÖçVf7GW&–ærf6–Æ—F–W2&VÇ’öâfÆ÷rÖ6öçG&öÂ6ö×öæVçG2f÷"ÆçBWF–Æ—F–W2Â&ö6W72vFW"Â6ö×&W76VB—"Â–çB÷W&F–öç2ÂæBWV—ÖVçB7W÷'B7—7FV×2âD2fÇfW2æB7GVF÷'2&RW6VB–âF†W6R7W÷'F–ærWF–Æ—G’æB&ö6W72Æ–6F–öç2F‡&÷Vv†÷WBF†R&öGV7F–öâVçf—&öæÖVçBârÀÐ¢÷fW'f–Wu&w&‡3¢°Ð¢tWFöÖ÷F—fRÖçVf7GW&–ærf6–Æ—F–W2&VÇ’öâfÆ÷rÖ6öçG&öÂ6ö×öæVçG2f÷"ÆçBWF–Æ—F–W2Â&ö6W72vFW"Â6ö×&W76VB—"Â–çB÷W&F–öç2ÂæBWV—ÖVçB7W÷'B7—7FV×2ârÀÐ¢uD2fÇfW2æB7GVF÷'2&RW6VB–âF†W6R7W÷'F–ærWF–Æ—G’æB&ö6W72Æ–6F–öç2F‡&÷Vv†÷WBF†R&öGV7F–öâVçf—&öæÖVçBÂ†VÇ–ærÖ–çF–â&WVF&ÆR&ö6W726öçG&öÂæB&öGV7F–öâWF–ÖRârÀÐ¢ÒÀÐ¢6†ÆÆVævW3¢°Ð¢u&WVF&ÆR&ö6W726öçG&öÂ7&÷72&öGV7F–öâÆ–æW2rÀÐ¢u&öGV7F–öâWF–ÖRæB7—7FVÒ&VÆ–&–Æ—G’rÀÐ¢uWF–Æ—G’ÖævVÖVçBf÷"ÆçB7W÷'B7—7FV×2rÀÐ¢tÖ–çFVææ6R66W72–â&öGV7F–öâVçf—&öæÖVçG2rÀÐ¢ÒÀÐ¢Æ–6F–öç3¢°Ð¢uÆçBWF–Æ—G’7—7FV×2rÀÐ¢u&ö6W72vFW"rÀÐ¢t6ö×&W76VB—"rÀÐ¢u–çBæBf–æ—6†–ær7W÷'B7—7FV×2rÀÐ¢tWV—ÖVçB6¶–G2rÀÐ¢tWFöÖFVBÖçVf7GW&–ær7—7FV×2rÀÐ¢ÒÀÐ¢&öGV7DfÖ–Æ–W3¢°Ð¢v'WGFW&fÇ’×fÇfW2rÀÐ¢v'WGFW&fÇ’ÖF×W"×fÇfW2rÀÐ¢wæWVÖF–2Ö7GVF÷'2rÀÐ¢vVÆV7G&–2Ö7GVF÷'2rÀÐ¢ÒÀÐ¢–ÖvW3¢°Ð¢†W&ó¢°Ð¢7&3¢v‡GG3¢òö–ÖvW2çW†VÇ2æ6öÒ÷†÷F÷2ó“#33Sr÷W†VÇ2×†÷FòÓ“#33Sræ§VsöWFóÖ6ö×&W72f73×F–ç—7&v"fƒÓcSgsÓ“CrÀÐ¢ÇC¢tWFöÖFVB&ö&÷F–2&×276VÖ&Æ–ærfV†–6ÆW2öâf7F÷'’&öGV7F–öâÆ–æRrÀÐ¢¶–æC¢v†W&òrÀÐ¢ÒÀÐ¢F‡VÖ&æ–Ã¢°Ð¢7&3¢v‡GG3¢òö–ÖvW2çW†VÇ2æ6öÒ÷†÷F÷2ó“#33Sr÷W†VÇ2×†÷FòÓ“#33Sræ§VsöWFóÖ6ö×&W72f73×F–ç—7&v"fƒÓ3SgsÓSrÀÐ¢ÇC¢tWFöÖFVB&ö&÷F–2&×276VÖ&Æ–ærfV†–6ÆW2öâf7F÷'’&öGV7F–öâÆ–æRrÀÐ¢¶–æC¢wF‡VÖ&æ–ÂrÀÐ¢ÒÀÐ¢ÒÀÐ¢6Vó¢°Ð¢F—FÆS¢tWFöÖ÷F—fRÖçVf7GW&–ærÂD2fÇfRb7GVF÷'2rÀÐ¢FW67&—F–öã Ð¢tfÆ÷rÖ6öçG&öÂfÇfW2æB7GVF÷'2f÷"WFöÖ÷F—fRÖçVf7GW&–ærÂÆçBWF–Æ—F–W2Â&ö6W72vFW"Â6ö×&W76VB—"ÂæB&öGV7F–öâ7W÷'B7—7FV×2ârÀÐ¢6æöæ–6ÅW&Ã¢v‡GG3¢ò÷wwrçF7fÇfRæ6öÒö–æGW7G&–W2öWFöÖ÷F—fRrÀÐ¢æô–æFWƒ¢fÇ6RÀÐ¢÷Väw&ƒ¢°Ð¢F—FÆS¢tWFöÖ÷F—fRÖçVf7GW&–ærÂD2fÇfRb7GVF÷'2rÀÐ¢FW67&—F–öã Ð¢tfÆ÷rÖ6öçG&öÂfÇfW2æB7GVF÷'2f÷"WFöÖ÷F—fRÖçVf7GW&–ærÂÆçBWF–Æ—F–W2ÂæB&öGV7F–öâ7W÷'B7—7FV×2ârÀÐ¢ÒÀÐ¢ÒÀÐ§Ó°Ð Ð¦6öç7B—$ÖævVÖVçC¢–æGW7G'”6öçFVçBÒ°Ð¢æÖS¢t—"ÖævVÖVçBrÀÐ¢6ÇVs¢v—"ÖÖævVÖVçBrÀÐ¢&÷WFS¢rö–æGW7G&–W2ö—"ÖÖævVÖVçBrÀÐ¢W–V'&÷s¢t–æGW7G&–W2rÀÐ¢†W&õF—FÆS¢tfÆ÷r6öçG&öÂf÷"–æGW7G&–Â—"ÖævVÖVçBrÀÐ¢†W&ôFW67&—F–öã Ð¢uD2F×W'2æBfÇfW27W÷'B–æGW7G&–Â—"†æFÆ–æræB&ö6W72—&fÆ÷rv†W&RFWVæF&ÆR6öçG&öÂæB—6öÆF–öâ&RæVVFVBârÀÐ¢6†÷'DFW67&—F–öã Ð¢u&V6—6–öâF×W'2æBfÇfW2f÷"–æGW7G&–Â—"Ö†æFÆ–ær7—7FV×2ârÀÐ¢÷fW'f–Ws Ð¢t–æGW7G&–Â—"7—7FV×2Ö÷fRfVçF–ÆF–öâÂ&ö6W72ÂæB6öÖ'W7F–öâ—"F‡&÷Vv‚WV—ÖVçBæBÆçB–æg&7G'V7GW&RâD2F×W'2æBfÇfW27W÷'B—&fÆ÷r6öçG&öÂæB—6öÆF–öâ7&÷72F†W6RÆ–6F–öç2ârÀÐ¢÷fW'f–Wu&w&‡3¢°Ð¢t–æGW7G&–Â—"7—7FV×2Ö÷fRfVçF–ÆF–öâÂ&ö6W72ÂæB6öÖ'W7F–öâ—"F‡&÷Vv‚WV—ÖVçBæBÆçB–æg&7G'V7GW&RârÀÐ¢uD2F×W'2æBfÇfW27W÷'B—&fÆ÷r6öçG&öÂæB—6öÆF–öâ–âF†W6RÆ–6F–öç2â&öGV7B6VÆV7F–öâFWVæG2öâF†R7—7FVÒFW6–vâæB÷W&F–ær6öæF—F–öç2ârÀÐ¢ÒÀÐ¢6†ÆÆVævW3¢°Ð¢tÖ–çF–æ–ær6öçG&öÆÆVBfÆ÷rF‡&÷Vv‚—"Ö†æFÆ–ær7—7FV×2rÀÐ¢t6ö÷&F–æF–ærfÆ÷r6öçG&öÂæB—6öÆF–öâv—F‚6öææV7FVBWV—ÖVçBrÀÐ¢tÖF6†–ær&öGV7B6VÆV7F–öâFò7—7FVÒFW6–vâæB÷W&F–ær6öæF—F–öç2rÀÐ¢uÆææ–ærÖ–çFVææ6R66W72–â7F—fRf6–Æ—F–W2rÀÐ¢ÒÀÐ¢Æ–6F–öç3¢°Ð¢t–æGW7G&–Â—"Ö†æFÆ–ær7—7FV×2rÀÐ¢u&ö6W72—&fÆ÷rrÀÐ¢t6öÖ'W7F–öâ—"rÀÐ¢ufVçF–ÆF–öâæBW††W7BrÀÐ¢tWV—ÖVçB—6öÆF–öârÀÐ¢ÒÀÐ¢&öGV7DfÖ–Æ–W3¢°Ð¢v'WGFW&fÇ’ÖF×W"×fÇfW2rÀÐ¢v'WGFW&fÇ’×fÇfW2rÀÐ¢wæWVÖF–2Ö7GVF÷'2rÀÐ¢vVÆV7G&–2Ö7GVF÷'2rÀÐ¢ÒÀÐ¢–ÖvW3¢°Ð¢†W&ó¢°Ð¢7&3¢v‡GG3¢òö–ÖvW2çW†VÇ2æ6öÒ÷†÷F÷2ó3#3#““b÷W†VÇ2×†÷FòÓ3#3#““bæ§VsöWFóÖ6ö×&W72f73×F–ç—7&v"fƒÓcSgsÓ“CrÀÐ¢ÇC¢t–æGW7G&–Â—"Ö†æFÆ–ærWV—ÖVçBæBGV7Gv÷&²rÀÐ¢¶–æC¢v†W&òrÀÐ¢ÒÀÐ¢F‡VÖ&æ–Ã¢°Ð¢7&3¢v‡GG3¢òö–ÖvW2çW†VÇ2æ6öÒ÷†÷F÷2ó3#3#““b÷W†VÇ2×†÷FòÓ3#3#““bæ§VsöWFóÖ6ö×&W72f73×F–ç—7&v"fƒÓ3SgsÓSrÀÐ¢ÇC¢t–æGW7G&–Â—"Ö†æFÆ–ærWV—ÖVçBæBGV7Gv÷&²rÀÐ¢¶–æC¢wF‡VÖ&æ–ÂrÀÐ¢ÒÀÐ¢ÒÀÐ¢6Vó¢°Ð¢F—FÆS¢t—"ÖævVÖVçBÂD2fÇfRb7GVF÷'2rÀÐ¢FW67&—F–öã Ð¢u&V6—6–öâF×W'2æBfÇfW2f÷"–æGW7G&–Â—"†æFÆ–ærÂ&ö6W72—&fÆ÷rÂfVçF–ÆF–öâÂæB6öÖ'W7F–öâ—"Æ–6F–öç2ârÀÐ¢6æöæ–6ÅW&Ã¢v‡GG3¢ò÷wwrçF7fÇfRæ6öÒö–æGW7G&–W2ö—"ÖÖævVÖVçBrÀÐ¢æô–æFWƒ¢fÇ6RÀÐ¢÷Väw&ƒ¢°Ð¢F—FÆS¢t—"ÖævVÖVçBÂD2fÇfRb7GVF÷'2rÀÐ¢FW67&—F–öã Ð¢tfÆ÷rÖ6öçG&öÂ6öÇWF–öç2f÷"–æGW7G&–Â—"†æFÆ–æræB&ö6W72—&fÆ÷rârÀÐ¢ÒÀÐ¢ÒÀÐ§Ó°Ð Ð¦6öç7B6†VÖ–6Ã¢–æGW7G'”6öçFVçBÒ°Ð¢æÖS¢t6†VÖ–6ÂrÀÐ¢6ÇVs¢v6†VÖ–6ÂrÀÐ¢&÷WFS¢rö–æGW7G&–W2ö6†VÖ–6ÂrÀÐ¢W–V'&÷s¢t–æGW7G&–W2rÀÐ¢†W&õF—FÆS¢tfÆ÷r6öçG&öÂf÷"6†VÖ–6Â&ö6W76–ærrÀÐ¢†W&ôFW67&—F–öã Ð¢uD2fÇfW2æB7GVF÷'27W÷'B&ö6W726öçG&öÂÂ—6öÆF–öâÂ&W77W&RÖævVÖVçBÂæBWV—ÖVçB&÷FV7F–öâ–â6†VÖ–6Â×&ö6W76–ærVçf—&öæÖVçG2ârÀÐ¢6†÷'DFW67&—F–öã Ð¢tfÆ÷rÖ6öçG&öÂ6öÇWF–öç2f÷"6†VÖ–6Â&ö6W76–ærÂ&ö6W726öçG&öÂÂæBWF–Æ—G’6W'f–6RârÀÐ¢÷fW'f–Ws Ð¢t6†VÖ–6Â&ö6W76–ærf6–Æ—F–W2&WV—&R&VÆ–&ÆRfÆ÷r6öçG&öÂf÷"&ö6W72Æ–æW2ÂG&ç6fW"7—7FV×2ÂWF–Æ—G’6W'f–6RÂæBWV—ÖVçB&÷FV7F–öââD2fÇfW2æB7GVF÷'2&RÆ–VB–âF†W6R7W÷'F–ær&öÆW2Fò†VÇÖævRfÆ÷rÂ—6öÆF–öâÂæB&W77W&R7&÷72&ö6W72æBWF–Æ—G’7—7FV×2ârÀÐ¢÷fW'f–Wu&w&‡3¢°Ð¢t6†VÖ–6Â&ö6W76–ærf6–Æ—F–W2&WV—&R&VÆ–&ÆRfÆ÷r6öçG&öÂf÷"&ö6W72Æ–æW2ÂG&ç6fW"7—7FV×2ÂWF–Æ—G’6W'f–6RÂæBWV—ÖVçB&÷FV7F–öâârÀÐ¢uD2fÇfW2æB7GVF÷'2&RÆ–VB–âF†W6R7W÷'F–ær&öÆW2Fò†VÇÖævRfÆ÷rÂ—6öÆF–öâÂæB&W77W&R7&÷72&ö6W72æBWF–Æ—G’7—7FV×2ârÀÐ¢ÒÀÐ¢6†ÆÆVævW3¢°Ð¢uf'––ær&ö6W726öæF—F–öç27&÷72&öGV7F–öâ7–6ÆW2rÀÐ¢t6†VÖ–6Â6ö×F–&–Æ—G’&WV—&VÖVçG2f÷"&ö6W72ÖVF–rÀÐ¢u&VÆ–&ÆR6‡WFöfbæB6öçG&öÂf÷"&ö6W72—6öÆF–öârÀÐ¢u&W77W&RÖævVÖVçB7&÷72&ö6W727—7FV×2rÀÐ¢tÖ–çFVææ6RÆææ–ærf÷"6öçF–çV÷W2÷_}Ó«h‘éì¶»§q«^vˆ	ÓÚ[[™Ø\È›ÙXÝ[Ûˆ˜XÚ[]Y\È™\]Z\™H\[™X›H›ÝÈÛÛ›Û›ÜˆÙ[XYÞ\Ý[\Ë›ÙXÙYY›ZY™YÝ[][Û‹™\ÜÝ\™H™YXÝ[Û‹›ØÙ\ÜÈ\[™Ë[™][]HÞ\Ý[\Ë‰ËBˆ	ÔÈ˜[™\È[™XÝX]ÜœÈ\™H\YYXÜ›ÜÜÈ\ÙH\Ý™X[H›ÙXÝ[Ûˆ\XØ][ÛœËÝ\Ü[™È›ÝX[X[[™™[[ÝHÜ\˜][Û‹‰ËBˆKBˆ\XØ][ÛœÎˆÃBˆ	ÕÙ[XY›ÙXÝ[ÛˆÛÛ›Û	ËBˆ	Ô›ÙXÙYY›ZY™YÝ[][Û‰ËBˆ	Ô™\ÜÝ\™H™YXÝ[Û‰ËBˆ	Ô›ØÙ\ÜÈ\[™ÉËBˆ	Õ][]HÞ\Ý[\ÉËBˆ	Ô™[[ÝHÜ\˜][Û‰ËBˆKBˆ›ÙXÝ˜[Z[Y\ÎˆÃBˆ	Ø]\™›K]˜[™\ÉËBˆ	Ü™][X]XËXXÝX]ÜœÉËBˆ	Ù[XÝšXËXXÝX]ÜœÉËBˆKBˆ[XYÙ\ÎˆÃBˆ\›ÎˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌMNMŒLLKÜ^[Ë\ÝËLMNMŒLLKšœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šML	ÏNM	ËBˆ[ˆ	ÓÙ™œÚÜ™HÚ[[™Ø\È]›Ü›HÝ\œ›Ý[™YžHÜ[ˆØÙX[‰ËBˆÚ[™ˆ	Ú\›ÉËBˆKBˆ[X›˜Z[ˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌMNMŒLLKÜ^[Ë\ÝËLMNMŒLLKšœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šLÍL	ÏML	ËBˆ[ˆ	ÓÙ™œÚÜ™HÚ[[™Ø\È]›Ü›HÝ\œ›Ý[™YžHÜ[ˆØÙX[‰ËBˆÚ[™ˆ	Ý[X›˜Z[	ËBˆKBˆKBˆÙ[ÎˆÃBˆ]Nˆ	ÓÚ[[™Ø\È›ÙXÝ[ÛˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›ÜˆÚ[[™Ø\È›ÙXÝ[Ûˆ8 %Ù[XYÞ\Ý[\Ë›ÙXÙYY›ZYÛÛ›Û™\ÜÝ\™H™YXÝ[Û‹[™™[[ÝHÜ\˜][Û‹‰ËBˆØ[›ÛšXØ[\›ˆ	ÚÎ‹ËÝÝÝËœÝ˜[™K˜ÛÛKÚ[™\ÝšY\ËÛÚ[X[™YØ\ÉËBˆ›Ò[™^ˆ˜[ÙKBˆÜ[‘Ü˜\ˆÃBˆ]Nˆ	ÓÚ[[™Ø\È›ÙXÝ[ÛˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›ÜˆÚ[[™Ø\È›ÙXÝ[Ûˆ[™Ù[XYÞ\Ý[\Ë‰ËBˆKBˆKBŸNÃBƒB˜ÛÛœÝÝÙ\‘Ù[™\˜][ÛŽˆ[™\ÝžPÛÛ[HÃBˆ˜[YNˆ	ÔÝÙ\ˆÙ[™\˜][Û‰ËBˆÛYÎˆ	ÜÝÙ\‹YÙ[™\˜][Û‰ËBˆ›Ý]Nˆ	ËÚ[™\ÝšY\ËÜÝÙ\‹YÙ[™\˜][Û‰ËBˆ^YXœ›ÝÎˆ	Ò[™\ÝšY\ÉËBˆ\›Õ]Nˆ	Ñ›ÝÈÛÛ›Û›ÜˆÝÙ\ˆÙ[™\˜][Û‰ËBˆ\›Ñ\ØÜš\[ÛŽƒBˆ	ÔÈ˜[™\È[™XÝX]ÜœÈÝ\ÜÛÛÛ[™ÈØ]\‹ÛÛX\Ý[ÛˆÝ\Ü[][]Y\ËZ\ˆÞ\Ý[\ËØ]\ˆÞ\Ý[\Ë[™]]ÛX]Y›ØÙ\ÜÈÛÛ›Û‰ËBˆÚÜ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›ÛÛÛ][ÛœÈ›ÜˆÝÙ\ˆÙ[™\˜][Ûˆ[Þ\Ý[\È[™][]Y\Ë‰ËBˆÝ™\šY]ÎƒBˆ	ÔÝÙ\ˆÙ[™\˜][Ûˆ˜XÚ[]Y\È™\]Z\™H™[XX›H›ÝÈÛÛ›Û›ÜˆÛÛÛ[™ÈØ]\‹ÛÛX\Ý[ÛˆZ\‹][]HÞ\Ý[\Ë›ØÙ\ÜÈØ]\‹\]Z\Y[\ÛÛ][Û‹[™]]ÛX]Y›ØÙ\ÜÈÛÛ›ÛˆÈ˜[™\È[™XÝX]ÜœÈ\™H\YYXÜ›ÜÜÈ\ÙH[][]H[™›ØÙ\ÜÈ\XØ][ÛœË‰ËBˆÝ™\šY]Ô\˜YÜ˜\ÎˆÃBˆ	ÔÝÙ\ˆÙ[™\˜][Ûˆ˜XÚ[]Y\È™\]Z\™H™[XX›H›ÝÈÛÛ›Û›ÜˆÛÛÛ[™ÈØ]\‹ÛÛX\Ý[ÛˆZ\‹][]HÞ\Ý[\Ë›ØÙ\ÜÈØ]\‹\]Z\Y[\ÛÛ][Û‹[™]]ÛX]Y›ØÙ\ÜÈÛÛ›Û‰ËBˆ	ÔÈ˜[™\È[™XÝX]ÜœÈ\™H\YYXÜ›ÜÜÈ\ÙH[][]H[™›ØÙ\ÜÈ\XØ][ÛœËÝ\Ü[™ÈÛÛX\Ý[ÛˆÝ\ÜÛÛÛ[™ÈÞ\Ý[\Ë[™]]ÛX]Y›ÝÈÛÛ›Û‰ËBˆKBˆ\XØ][ÛœÎˆÃBˆ	ÐÛÛÛ[™ÈØ]\‰ËBˆ	ÐÛÛX\Ý[ÛˆZ\‰ËBˆ	Õ][]HÞ\Ý[\ÉËBˆ	Ô›ØÙ\ÜÈØ]\‰ËBˆ	Ñ\]Z\Y[\ÛÛ][Û‰ËBˆ	Ð]]ÛX]Y›ÝÈÛÛ›Û	ËBˆKBˆ›ÙXÝ˜[Z[Y\ÎˆÃBˆ	Ø]\™›K]˜[™\ÉËBˆ	Ø]\™›KY[\\‹]˜[™\ÉËBˆ	Ü™][X]XËXXÝX]ÜœÉËBˆ	Ù[XÝšXËXXÝX]ÜœÉËBˆKBˆ[XYÙ\ÎˆÃBˆ\›ÎˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌMÌNŽKÜ^[Ë\ÝËLMÌNŽKšœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šML	ÏNM	ËBˆ[ˆ	ÔÝÙ\ˆ[Ú]ÛÛÛ[™ÈÝÙ\œÈ[™[XÝšXÚ]H[ÛœÉËBˆÚ[™ˆ	Ú\›ÉËBˆKBˆ[X›˜Z[ˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌMÌNŽKÜ^[Ë\ÝËLMÌNŽKšœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šLÍL	ÏML	ËBˆ[ˆ	ÔÝÙ\ˆ[Ú]ÛÛÛ[™ÈÝÙ\œÈ[™[XÝšXÚ]H[ÛœÉËBˆÚ[™ˆ	Ý[X›˜Z[	ËBˆKBˆKBˆÙ[ÎˆÃBˆ]Nˆ	ÔÝÙ\ˆÙ[™\˜][ÛˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›ÜˆÝÙ\ˆÙ[™\˜][Ûˆ8 %ÛÛÛ[™ÈØ]\‹ÛÛX\Ý[ÛˆZ\‹[][]Y\Ë[™]]ÛX]Y›ØÙ\ÜÈÛÛ›Û‰ËBˆØ[›ÛšXØ[\›ˆ	ÚÎ‹ËÝÝÝËœÝ˜[™K˜ÛÛKÚ[™\ÝšY\ËÜÝÙ\‹YÙ[™\˜][Û‰ËBˆ›Ò[™^ˆ˜[ÙKBˆÜ[‘Ü˜\ˆÃBˆ]Nˆ	ÔÝÙ\ˆÙ[™\˜][ÛˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›ÜˆÝÙ\ˆÙ[™\˜][Ûˆ[Þ\Ý[\È[™][]Y\Ë‰ËBˆKBˆKBŸNÃBƒB˜ÛÛœÝ[[™\\Žˆ[™\ÝžPÛÛ[HÃBˆ˜[YNˆ	Ô[[™\\‰ËBˆÛYÎˆ	Ü[X[™\\\‰ËBˆ›Ý]Nˆ	ËÚ[™\ÝšY\ËÜ[X[™\\\‰ËBˆ^YXœ›ÝÎˆ	Ò[™\ÝšY\ÉËBˆ\›Õ]Nˆ	Ñ›ÝÈÛÛ›Û›Üˆ[[™\\ˆ›ØÙ\ÜÚ[™ÉËBˆ\›Ñ\ØÜš\[ÛŽƒBˆ	ÔÈ˜[™\È[™XÝX]ÜœÈÝ\ÜØ]\ˆÞ\Ý[\Ë[][]Y\ËZ\ˆÞ\Ý[\Ë›ØÙ\ÜÈÝ\ÜžZ[™ÈÜ\˜][ÛœË[™\]Z\Y[[YÜ˜][Û‹‰ËBˆÚÜ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›ÛÛÛ][ÛœÈ›Üˆ[[™\\ˆ›ØÙ\ÜÚ[™È[™[][]Y\Ë‰ËBˆÝ™\šY]ÎƒBˆ	Ô[[™\\ˆ›ØÙ\ÜÚ[™È˜XÚ[]Y\È™\]Z\™H›ÝËXÛÛ›ÛÛÛ\Û™[È›ÜˆØ]\ˆÞ\Ý[\Ë[][]Y\ËÛÛ\™\ÜÙYZ\‹žZ[™È[™™[[][ÛˆÝ\Ü[™\]Z\Y[ÚÚYËˆÈ˜[™\È[™XÝX]ÜœÈ\™H\YYXÜ›ÜÜÈ\ÙH›ØÙ\ÜÈ[™][]H\XØ][ÛœË‰ËBˆÝ™\šY]Ô\˜YÜ˜\ÎˆÃBˆ	Ô[[™\\ˆ›ØÙ\ÜÚ[™È˜XÚ[]Y\È™\]Z\™H›ÝËXÛÛ›ÛÛÛ\Û™[È›ÜˆØ]\ˆÞ\Ý[\Ë[][]Y\ËÛÛ\™\ÜÙYZ\‹žZ[™È[™™[[][ÛˆÝ\Ü[™\]Z\Y[ÚÚYË‰ËBˆ	ÔÈ˜[™\È[™XÝX]ÜœÈ\™H\YYXÜ›ÜÜÈ\ÙH›ØÙ\ÜÈ[™][]H\XØ][ÛœËÝ\Ü[™È]]ÛX]Y˜[™HÛÛ›Û›Üˆ[Þ\Ý[\Ë‰ËBˆKBˆ\XØ][ÛœÎˆÃBˆ	Ô›ØÙ\ÜÈØ]\‰ËBˆ	Ô[][]Y\ÉËBˆ	ÐÛÛ\™\ÜÙYZ\‰ËBˆ	ÑžZ[™È[™™[[][ÛˆÝ\Ü	ËBˆ	Ñ\]Z\Y[ÚÚYÉËBˆ	Ð]]ÛX]Y˜[™HÛÛ›Û	ËBˆKBˆ›ÙXÝ˜[Z[Y\ÎˆÃBˆ	Ø]\™›K]˜[™\ÉËBˆ	Ø]\™›KY[\\‹]˜[™\ÉËBˆ	Ü™][X]XËXXÝX]ÜœÉËBˆ	Ù[XÝšXËXXÝX]ÜœÉËBˆKBˆ[XYÙ\ÎˆÃBˆ\›ÎˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌŽLMÍŒ‹Ü^[Ë\ÝËLŽLMÍŒ‹šœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šML	ÏNM	ËBˆ[ˆ	Ò[™\ÝšX[[˜XÚ[]HÝ\œ›Ý[™YžH›Ü™\Ý	ËBˆÚ[™ˆ	Ú\›ÉËBˆKBˆ[X›˜Z[ˆÃBˆÜ˜Îˆ	ÚÎ‹ËÚ[XYÙ\Ëœ^[Ë˜ÛÛKÜÝÜËÌŽLMÍŒ‹Ü^[Ë\ÝËLŽLMÍŒ‹šœYÏØ]]ÏXÛÛ\™\ÜÉ˜ÜÏ][ž\Ü™Ø‰šLÍL	ÏML	ËBˆ[ˆ	Ò[™\ÝšX[[˜XÚ[]HÝ\œ›Ý[™YžH›Ü™\Ý	ËBˆÚ[™ˆ	Ý[X›˜Z[	ËBˆKBˆKBˆÙ[ÎˆÃBˆ]Nˆ	Ô[[™\\ˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›Üˆ[[™\\ˆ›ØÙ\ÜÚ[™È8 %Ø]\ˆÞ\Ý[\Ë[][]Y\ËZ\ˆÞ\Ý[\ËžZ[™Ë[™\]Z\Y[[YÜ˜][Û‹‰ËBˆØ[›ÛšXØ[\›ˆ	ÚÎ‹ËÝÝÝËœÝ˜[™K˜ÛÛKÚ[™\ÝšY\ËÜ[X[™\\\‰ËBˆ›Ò[™^ˆ˜[ÙKBˆÜ[‘Ü˜\ˆÃBˆ]Nˆ	Ô[[™\\ˆÈ˜[™H	ˆXÝX]ÜœÉËBˆ\ØÜš\[ÛŽƒBˆ	Ñ›ÝËXÛÛ›Û˜[™\È[™XÝX]ÜœÈ›Üˆ[[™\\ˆ›ØÙ\ÜÚ[™È[™[][]Y\Ë‰ËBˆKBˆKBŸNÃBƒB™^ÜÛÛœÝ[™\ÝžPÛÛ[ˆ[™\ÝžPÛÛ[×HHÃBˆ]]Û[Ý]™KBˆZ\“X[˜YÙ[Y[BˆÚ[ZXØ[Bˆ]›ØÚ[ZXØ[BˆÝÛœÝ™X[RY›ØØ\˜›ÛœËBˆ›ÛÙ[™™]™\˜YÙKBˆ[™\™ÞP[™][]Y\ËBˆY™TØÚY[˜Ù\ËBˆZ[š[™ÓY][ËBˆØ]\[™Ø\Ý]Ø]\‹BˆÙ[KBˆX\š[™KBˆÚ[[™Ø\ËBˆÝÙ\‘Ù[™\˜][Û‹Bˆ[[™\\‹B—NÃBƒB‹ÊŠƒBˆ
+ˆÚ\™Y˜]šYØ][ÛˆÙ[™\˜]Yœ›ÛHHØ[›ÛšXØ[[™\ÝžHYÙH™YÚ\ÝžKƒBˆ
+ˆ\ÈÙY\È]™\žH\Ü^YY[™\ÝžH[šÈ˜XÚÙYžHH™X[›Ý]KƒBˆ
+‹ÃB™^ÜÛÛœÝ[™\ÝžS˜]Žˆ˜]“[šÖ×HH[™\ÝžPÛÛ[›X\
 
-/**
- * Canonical industry content registry.
- *
- * SOURCE NOTES (private):
- * - Content is application-focused and conservative.
- * - No customer names, project history, installation counts, market share,
- *   performance statistics, certifications, case studies, pressure/temperature
- *   capabilities, or regulatory approvals are fabricated.
- * - Product family slugs reference canonical family routes only.
- */
+[™\ÝžJHOˆ
+ÃBˆX™[ˆ[™\ÝžK›˜[YKBˆ™YŽˆ[™\ÝžKœ›Ý]KBŸJJNÃBƒB‹ÊŠˆÛÚÈ\[ˆ[™\ÝžHÛÛ[Øš™XÝžHÛYËˆ
+‹ÃB™^Ü[˜Ý[ÛˆÙ][™\ÝžPÛÛ[
+BˆÛYÎˆÝš[™ËBŠNˆ[™\ÝžPÛÛ[[™Yš[™YÃBˆ™]\›ˆ[™\ÝžPÛÛ[™š[™
 
-const automotive: IndustryContent = {
-  name: 'Automotive',
-  slug: 'automotive',
-  route: '/industries/automotive',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Automotive Manufacturing',
-  heroDescription:
-    'PDC valves and actuators support flow-control applications across automotive production, assembly support systems, plant utilities, and manufacturing environments.',
-  shortDescription:
-    'Flow-control solutions for automotive manufacturing, plant utilities, and production support systems.',
-  overview:
-    'Automotive manufacturing facilities rely on flow-control components for plant utilities, process water, compressed air, paint operations, and equipment support systems. PDC valves and actuators are used in these supporting utility and process applications throughout the production environment.',
-  overviewParagraphs: [
-    'Automotive manufacturing facilities rely on flow-control components for plant utilities, process water, compressed air, paint operations, and equipment support systems.',
-    'PDC valves and actuators are used in these supporting utility and process applications throughout the production environment, helping maintain repeatable process control and production uptime.',
-  ],
-  challenges: [
-    'Repeatable process control across production lines',
-    'Production uptime and system reliability',
-    'Utility management for plant support systems',
-    'Maintenance access in production environments',
-  ],
-  applications: [
-    'Plant utility systems',
-    'Process water',
-    'Compressed air',
-    'Paint and finishing support systems',
-    'Equipment skids',
-    'Automated manufacturing systems',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Automated robotic arms assembling vehicles on a factory production line',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Automated robotic arms assembling vehicles on a factory production line',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Automotive Manufacturing | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for automotive manufacturing, plant utilities, process water, compressed air, and production support systems.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/automotive',
-    noIndex: false,
-    openGraph: {
-      title: 'Automotive Manufacturing | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for automotive manufacturing, plant utilities, and production support systems.',
-    },
-  },
-};
-
-const airManagement: IndustryContent = {
-  name: 'Air Management',
-  slug: 'air-management',
-  route: '/industries/air-management',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Industrial Air Management',
-  heroDescription:
-    'PDC dampers and valves support industrial air handling and process airflow where dependable control and isolation are needed.',
-  shortDescription:
-    'Precision dampers and valves for industrial air-handling systems.',
-  overview:
-    'Industrial air systems move ventilation, process, and combustion air through equipment and plant infrastructure. PDC dampers and valves support airflow control and isolation across these applications.',
-  overviewParagraphs: [
-    'Industrial air systems move ventilation, process, and combustion air through equipment and plant infrastructure.',
-    'PDC dampers and valves support airflow control and isolation in these applications. Product selection depends on the system design and operating conditions.',
-  ],
-  challenges: [
-    'Maintaining controlled flow through air-handling systems',
-    'Coordinating flow control and isolation with connected equipment',
-    'Matching product selection to system design and operating conditions',
-    'Planning maintenance access in active facilities',
-  ],
-  applications: [
-    'Industrial air-handling systems',
-    'Process airflow',
-    'Combustion air',
-    'Ventilation and exhaust',
-    'Equipment isolation',
-  ],
-  productFamilies: [
-    'butterfly-damper-valves',
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/32032996/pexels-photo-32032996.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Industrial air-handling equipment and ductwork',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/32032996/pexels-photo-32032996.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Industrial air-handling equipment and ductwork',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Air Management | PDC Valve & Actuators',
-    description:
-      'Precision dampers and valves for industrial air handling, process airflow, ventilation, and combustion air applications.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/air-management',
-    noIndex: false,
-    openGraph: {
-      title: 'Air Management | PDC Valve & Actuators',
-      description:
-        'Flow-control solutions for industrial air handling and process airflow.',
-    },
-  },
-};
-
-const chemical: IndustryContent = {
-  name: 'Chemical',
-  slug: 'chemical',
-  route: '/industries/chemical',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Chemical Processing',
-  heroDescription:
-    'PDC valves and actuators support process control, isolation, pressure management, and equipment protection in chemical-processing environments.',
-  shortDescription:
-    'Flow-control solutions for chemical processing, process control, and utility service.',
-  overview:
-    'Chemical processing facilities require reliable flow control for process lines, transfer systems, utility service, and equipment protection. PDC valves and actuators are applied in these supporting roles to help manage flow, isolation, and pressure across process and utility systems.',
-  overviewParagraphs: [
-    'Chemical processing facilities require reliable flow control for process lines, transfer systems, utility service, and equipment protection.',
-    'PDC valves and actuators are applied in these supporting roles to help manage flow, isolation, and pressure across process and utility systems.',
-  ],
-  challenges: [
-    'Varying process conditions across production cycles',
-    'Chemical compatibility requirements for process media',
-    'Reliable shutoff and control for process isolation',
-    'Pressure management across process systems',
-    'Maintenance planning for continuous operations',
-  ],
-  applications: [
-    'Process lines',
-    'Transfer systems',
-    'Utility systems',
-    'Reactor support systems',
-    'Storage and handling systems',
-    'Pressure and flow regulation',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/10666081/pexels-photo-10666081.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Large chemical processing factory with industrial piping and equipment',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/10666081/pexels-photo-10666081.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Large chemical processing factory with industrial piping and equipment',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Chemical Processing | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for chemical processing â€” process control, isolation, pressure management, and utility service.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/chemical',
-    noIndex: false,
-    openGraph: {
-      title: 'Chemical Processing | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for chemical processing environments.',
-    },
-  },
-};
-
-const petrochemical: IndustryContent = {
-  name: 'Petrochemical',
-  slug: 'petrochemical',
-  route: '/industries/petrochemical',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Petrochemical Processing',
-  heroDescription:
-    'PDC valves and actuators support flow control, isolation, and automation across petrochemical production and supporting utility systems.',
-  shortDescription:
-    'Flow-control solutions for petrochemical production, processing, and plant utilities.',
-  overview:
-    'Petrochemical facilities include process units as well as utility, storage, and transfer systems. PDC valves and actuators support flow-control applications across these process and supporting systems.',
-  overviewParagraphs: [
-    'Petrochemical facilities include process units as well as utility, storage, and transfer systems.',
-    'PDC valves and actuators support flow control and isolation across these applications. Product selection depends on process media, operating conditions, and installation requirements.',
-  ],
-  challenges: [
-    'Selecting materials compatible with process media',
-    'Coordinating flow control and isolation across process systems',
-    'Supporting utility, storage, and transfer applications',
-    'Planning equipment access and maintenance',
-  ],
-  applications: [
-    'Petrochemical process units',
-    'Plant utility systems',
-    'Storage and transfer systems',
-    'Equipment skids',
-    'Flow control and isolation',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Petrochemical processing facility with refinery equipment',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Petrochemical processing facility with refinery equipment',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Petrochemical | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for petrochemical production, process systems, storage, transfer, and plant utilities.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/petrochemical',
-    noIndex: false,
-    openGraph: {
-      title: 'Petrochemical | PDC Valve & Actuators',
-      description:
-        'Flow-control solutions for petrochemical processing and supporting systems.',
-    },
-  },
-};
-
-const downstreamHydrocarbons: IndustryContent = {
-  name: 'Downstream Hydrocarbons',
-  slug: 'downstream-hydrocarbons',
-  route: '/industries/downstream-hydrocarbons',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Downstream Hydrocarbon Processing',
-  heroDescription:
-    'PDC valves and actuators support applications across refining, processing, storage, transfer, terminals, and supporting utility systems.',
-  shortDescription:
-    'Flow-control solutions for downstream hydrocarbon processing, storage, and transfer.',
-  overview:
-    'Downstream hydrocarbon facilities â€” including refineries, processing plants, storage terminals, and transfer stations â€” require dependable flow control for process piping, utility systems, and equipment isolation. PDC valves and actuators are applied across these process and utility applications.',
-  overviewParagraphs: [
-    'Downstream hydrocarbon facilities â€” including refineries, processing plants, storage terminals, and transfer stations â€” require dependable flow control for process piping, utility systems, and equipment isolation.',
-    'PDC valves and actuators are applied across these process and utility applications, supporting pressure management, combustion air control, and equipment protection.',
-  ],
-  challenges: [
-    'Pressure and flow control across process systems',
-    'Production continuity and equipment protection',
-    'Remote operation for distributed facilities',
-    'Maintenance access in processing environments',
-  ],
-  applications: [
-    'Process piping',
-    'Storage and transfer',
-    'Utility systems',
-    'Combustion air',
-    'Pressure reduction',
-    'Equipment isolation',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Refinery towers and process structures against a dusk sky',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Refinery towers and process structures against a dusk sky',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Downstream Hydrocarbons | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for downstream hydrocarbon processing â€” refining, storage, transfer, terminals, and utility systems.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/downstream-hydrocarbons',
-    noIndex: false,
-    openGraph: {
-      title: 'Downstream Hydrocarbons | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for downstream hydrocarbon processing and refining.',
-    },
-  },
-};
-
-const foodAndBeverage: IndustryContent = {
-  name: 'Food and Beverage',
-  slug: 'food-and-beverage',
-  route: '/industries/food-and-beverage',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Food and Beverage Processing',
-  heroDescription:
-    'PDC valves and actuators support process utilities, water, air, heating, cooling, and non-product-contact support systems in food and beverage facilities.',
-  shortDescription:
-    'Flow-control solutions for food and beverage processing utilities and support systems.',
-  overview:
-    'Food and beverage processing facilities use flow-control components for process utilities, water systems, compressed air, heating and cooling, and equipment support. PDC valves and actuators are applied in these utility and support system roles.',
-  overviewParagraphs: [
-    'Food and beverage processing facilities use flow-control components for process utilities, water systems, compressed air, heating and cooling, and equipment support.',
-    'PDC valves and actuators are applied in these utility and support system roles, helping maintain process consistency and repeatable operation.',
-  ],
-  challenges: [
-    'Cleanliness in processing environments',
-    'Repeatable operation for production consistency',
-    'Maintenance access for utility systems',
-    'Utility reliability across production cycles',
-  ],
-  applications: [
-    'Process water',
-    'Plant utilities',
-    'Heating and cooling systems',
-    'Compressed air',
-    'Equipment skids',
-    'Clean-room support systems where applicable',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/38336747/pexels-photo-38336747.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Automated beverage bottling line with conveyor systems in a processing facility',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/38336747/pexels-photo-38336747.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Automated beverage bottling line with conveyor systems in a processing facility',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Food and Beverage Processing | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for food and beverage processing â€” process utilities, water, air, heating, cooling, and support systems.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/food-and-beverage',
-    noIndex: false,
-    openGraph: {
-      title: 'Food and Beverage Processing | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for food and beverage processing utilities and support systems.',
-    },
-  },
-};
-
-const energyAndUtilities: IndustryContent = {
-  name: 'Energy and Utilities',
-  slug: 'energy-and-utilities',
-  route: '/industries/energy-and-utilities',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Energy and Onsite Utilities',
-  heroDescription:
-    'PDC valves and actuators support plant utility systems, steam support, water, air, cooling, fuel support, and facility infrastructure.',
-  shortDescription:
-    'Flow-control solutions for energy and onsite utility systems.',
-  overview:
-    'Energy and onsite utility systems require reliable flow control for cooling water, compressed air, utility water, heating systems, combustion support, and facility process systems. PDC valves and actuators are used across these plant utility and facility infrastructure applications.',
-  overviewParagraphs: [
-    'Energy and onsite utility systems require reliable flow control for cooling water, compressed air, utility water, heating systems, combustion support, and facility process systems.',
-    'PDC valves and actuators are used across these plant utility and facility infrastructure applications, supporting consistent operation of facility systems.',
-  ],
-  applications: [
-    'Cooling water',
-    'Compressed air',
-    'Utility water',
-    'Heating systems',
-    'Combustion support',
-    'Facility process systems',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/9889066/pexels-photo-9889066.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Industrial electric power substation at sunset with transmission infrastructure',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/9889066/pexels-photo-9889066.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Industrial electric power substation at sunset with transmission infrastructure',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Energy and Utilities | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for energy and onsite utilities â€” cooling water, compressed air, heating, combustion support, and facility systems.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/energy-and-utilities',
-    noIndex: false,
-    openGraph: {
-      title: 'Energy and Utilities | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for energy and onsite utility systems.',
-    },
-  },
-};
-
-const lifeSciences: IndustryContent = {
-  name: 'Life Sciences',
-  slug: 'life-sciences',
-  route: '/industries/life-sciences',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Life Sciences and Medical Manufacturing',
-  heroDescription:
-    'PDC valves and actuators support facility utilities, controlled environments, equipment support, clean-room infrastructure, water systems, and air systems.',
-  shortDescription:
-    'Flow-control solutions for life sciences facility utilities and controlled environments.',
-  overview:
-    'Life sciences and medical manufacturing facilities rely on flow-control components for facility utilities, controlled environments, equipment support, clean-room infrastructure, water systems, and air systems. PDC valves and actuators are applied in these facility and utility support roles.',
-  overviewParagraphs: [
-    'Life sciences and medical manufacturing facilities rely on flow-control components for facility utilities, controlled environments, equipment support, clean-room infrastructure, water systems, and air systems.',
-    'PDC valves and actuators are applied in these facility and utility support roles, helping maintain consistent operation of controlled environment systems.',
-  ],
-  applications: [
-    'Clean-room support',
-    'Process utilities',
-    'Facility water',
-    'Compressed air',
-    'Equipment skids',
-    'Heating and cooling',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/8539059/pexels-photo-8539059.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Scientist in protective equipment working in a pharmaceutical laboratory',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/8539059/pexels-photo-8539059.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Scientist in protective equipment working in a pharmaceutical laboratory',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Life Sciences | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for life sciences and medical manufacturing â€” facility utilities, controlled environments, and support systems.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/life-sciences',
-    noIndex: false,
-    openGraph: {
-      title: 'Life Sciences | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for life sciences facility utilities and controlled environments.',
-    },
-  },
-};
-
-const miningMetals: IndustryContent = {
-  name: 'Mining, Minerals, and Metals',
-  slug: 'mining-metals',
-  route: '/industries/mining-metals',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Mining, Minerals, and Metals',
-  heroDescription:
-    'PDC valves and actuators support process water, air systems, material-processing support, plant utilities, and equipment skids in demanding industrial environments.',
-  shortDescription:
-    'Flow-control solutions for mining, minerals, and metals processing.',
-  overview:
-    'Mining, minerals, and metals processing facilities require durable flow-control components for process water, compressed air, plant utilities, material-handling support, and equipment skids. PDC valves and actuators are applied in these demanding industrial environments.',
-  overviewParagraphs: [
-    'Mining, minerals, and metals processing facilities require durable flow-control components for process water, compressed air, plant utilities, material-handling support, and equipment skids.',
-    'PDC valves and actuators are applied in these demanding industrial environments, supporting plant uptime and equipment operation.',
-  ],
-  challenges: [
-    'Abrasive environments in material processing',
-    'Heavy-duty operation requirements',
-    'Plant uptime across remote equipment',
-    'Maintenance access in industrial settings',
-  ],
-  applications: [
-    'Process water',
-    'Compressed air',
-    'Plant utilities',
-    'Material-handling support',
-    'Equipment skids',
-    'Ventilation and combustion support',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/17146231/pexels-photo-17146231.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Excavators working in a rocky quarry under a cloudy sky',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/17146231/pexels-photo-17146231.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Excavators working in a rocky quarry under a cloudy sky',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Mining, Minerals, and Metals | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for mining, minerals, and metals â€” process water, air systems, plant utilities, and material-processing support.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/mining-metals',
-    noIndex: false,
-    openGraph: {
-      title: 'Mining, Minerals, and Metals | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for mining, minerals, and metals processing.',
-    },
-  },
-};
-
-const waterAndWastewater: IndustryContent = {
-  name: 'Water and Wastewater',
-  slug: 'water-and-wastewater',
-  route: '/industries/water-and-wastewater',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Water and Wastewater Systems',
-  heroDescription:
-    'PDC valves and actuators support treatment systems, distribution support, process water, pumping systems, isolation, backflow prevention, and automated operation.',
-  shortDescription:
-    'Flow-control solutions for water and wastewater treatment and distribution.',
-  overview:
-    'Water and wastewater systems require reliable flow control for treatment processes, pumping stations, distribution support, isolation service, and backflow prevention. PDC valves and actuators â€” including automated valve packages â€” are applied across these treatment and distribution applications.',
-  overviewParagraphs: [
-    'Water and wastewater systems require reliable flow control for treatment processes, pumping stations, distribution support, isolation service, and backflow prevention.',
-    'PDC valves and actuators â€” including automated valve packages â€” are applied across these treatment and distribution applications, supporting both manual and automated valve control.',
-  ],
-  applications: [
-    'Treatment systems',
-    'Pumping stations',
-    'Process water',
-    'Utility water',
-    'Isolation service',
-    'Backflow prevention',
-    'Automated valve control',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/12975471/pexels-photo-12975471.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Aerial view of a water treatment plant near a river',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/12975471/pexels-photo-12975471.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Aerial view of a water treatment plant near a river',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Water and Wastewater | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for water and wastewater â€” treatment systems, pumping stations, isolation, backflow prevention, and automated valve control.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/water-and-wastewater',
-    noIndex: false,
-    openGraph: {
-      title: 'Water and Wastewater | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for water and wastewater treatment and distribution systems.',
-    },
-  },
-};
-
-const oem: IndustryContent = {
-  name: 'OEM and Engineered Systems',
-  slug: 'oem',
-  route: '/industries/oem',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for OEM and Engineered Systems',
-  heroDescription:
-    'PDC supports equipment manufacturers, system integrators, packaged systems, skids, and custom application requirements.',
-  shortDescription:
-    'Flow-control solutions for OEM equipment, engineered systems, and packaged solutions.',
-  overview:
-    'Original equipment manufacturers, system integrators, and engineered-system builders require flow-control components that integrate into packaged equipment, process skids, burner systems, automated machinery, and custom assemblies. PDC works with OEM customers to support application matching, actuator selection, and custom configurations.',
-  overviewParagraphs: [
-    'Original equipment manufacturers, system integrators, and engineered-system builders require flow-control components that integrate into packaged equipment, process skids, burner systems, automated machinery, and custom assemblies.',
-    'PDC works with OEM customers to support application matching, actuator selection, and custom configurations for specific equipment requirements.',
-  ],
-  challenges: [
-    'Compact integration within equipment packages',
-    'Repeatable sourcing for production volumes',
-    'Application matching for specific equipment requirements',
-    'Actuator selection for torque and control needs',
-    'Documentation for equipment submittals',
-    'Custom configurations for unique applications',
-  ],
-  applications: [
-    'Packaged equipment',
-    'Process skids',
-    'Burner systems',
-    'Automated machinery',
-    'Engineered assemblies',
-    'Custom flow-control systems',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/28048720/pexels-photo-28048720.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Close-up of heavy industrial rotor machinery in a workshop',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/28048720/pexels-photo-28048720.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Close-up of heavy industrial rotor machinery in a workshop',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'OEM and Engineered Systems | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for OEM equipment manufacturers, system integrators, packaged systems, skids, and custom engineered solutions.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/oem',
-    noIndex: false,
-    openGraph: {
-      title: 'OEM and Engineered Systems | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for OEM equipment, engineered systems, and packaged solutions.',
-    },
-  },
-};
-
-const marine: IndustryContent = {
-  name: 'Marine',
-  slug: 'marine',
-  route: '/industries/marine',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Marine Applications',
-  heroDescription:
-    'PDC valves and actuators support onboard utility systems, water systems, ventilation, machinery support, and equipment integration.',
-  shortDescription:
-    'Flow-control solutions for marine utility, ventilation, and machinery support systems.',
-  overview:
-    'Marine vessels and offshore platforms require flow-control components for onboard utility systems, cooling water, ventilation, machinery support, and equipment integration. PDC valves and actuators are applied in these shipboard and offshore support applications.',
-  overviewParagraphs: [
-    'Marine vessels and offshore platforms require flow-control components for onboard utility systems, cooling water, ventilation, machinery support, and equipment integration.',
-    'PDC valves and actuators are applied in these shipboard and offshore support applications, supporting automated flow control for utility and machinery systems.',
-  ],
-  applications: [
-    'Cooling water',
-    'Utility water',
-    'Ventilation',
-    'Machinery support',
-    'Equipment skids',
-    'Automated flow control',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/11139595/pexels-photo-11139595.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Offshore platform with cranes in a harbor at sunset',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/11139595/pexels-photo-11139595.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Offshore platform with cranes in a harbor at sunset',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Marine Applications | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for marine applications â€” onboard utility systems, water, ventilation, machinery support, and equipment integration.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/marine',
-    noIndex: false,
-    openGraph: {
-      title: 'Marine Applications | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for marine utility, ventilation, and machinery support systems.',
-    },
-  },
-};
-
-const oilAndGas: IndustryContent = {
-  name: 'Oil and Gas',
-  slug: 'oil-and-gas',
-  route: '/industries/oil-and-gas',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Oil and Gas Production',
-  heroDescription:
-    'PDC valves and actuators support upstream production, wellhead systems, produced-fluid control, pressure reduction, process support, and automated operation.',
-  shortDescription:
-    'Flow-control solutions for oil and gas production and wellhead systems.',
-  overview:
-    'Oil and gas production facilities require dependable flow control for wellhead systems, produced-fluid regulation, pressure reduction, process piping, and utility systems. PDC valves and actuators are applied across these upstream production applications.',
-  overviewParagraphs: [
-    'Oil and gas production facilities require dependable flow control for wellhead systems, produced-fluid regulation, pressure reduction, process piping, and utility systems.',
-    'PDC valves and actuators are applied across these upstream production applications, supporting both manual and remote operation.',
-  ],
-  applications: [
-    'Wellhead production control',
-    'Produced-fluid regulation',
-    'Pressure reduction',
-    'Process piping',
-    'Utility systems',
-    'Remote operation',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/15961091/pexels-photo-15961091.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Offshore oil and gas platform surrounded by open ocean',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/15961091/pexels-photo-15961091.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Offshore oil and gas platform surrounded by open ocean',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Oil and Gas Production | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for oil and gas production â€” wellhead systems, produced-fluid control, pressure reduction, and remote operation.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/oil-and-gas',
-    noIndex: false,
-    openGraph: {
-      title: 'Oil and Gas Production | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for oil and gas production and wellhead systems.',
-    },
-  },
-};
-
-const powerGeneration: IndustryContent = {
-  name: 'Power Generation',
-  slug: 'power-generation',
-  route: '/industries/power-generation',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Power Generation',
-  heroDescription:
-    'PDC valves and actuators support cooling water, combustion support, plant utilities, air systems, water systems, and automated process control.',
-  shortDescription:
-    'Flow-control solutions for power generation plant systems and utilities.',
-  overview:
-    'Power generation facilities require reliable flow control for cooling water, combustion air, utility systems, process water, equipment isolation, and automated process control. PDC valves and actuators are applied across these plant utility and process applications.',
-  overviewParagraphs: [
-    'Power generation facilities require reliable flow control for cooling water, combustion air, utility systems, process water, equipment isolation, and automated process control.',
-    'PDC valves and actuators are applied across these plant utility and process applications, supporting combustion support, cooling systems, and automated flow control.',
-  ],
-  applications: [
-    'Cooling water',
-    'Combustion air',
-    'Utility systems',
-    'Process water',
-    'Equipment isolation',
-    'Automated flow control',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/16705829/pexels-photo-16705829.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Power plant with cooling towers and electricity pylons',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/16705829/pexels-photo-16705829.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Power plant with cooling towers and electricity pylons',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Power Generation | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for power generation â€” cooling water, combustion air, plant utilities, and automated process control.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/power-generation',
-    noIndex: false,
-    openGraph: {
-      title: 'Power Generation | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for power generation plant systems and utilities.',
-    },
-  },
-};
-
-const pulpAndPaper: IndustryContent = {
-  name: 'Pulp and Paper',
-  slug: 'pulp-and-paper',
-  route: '/industries/pulp-and-paper',
-  eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Pulp and Paper Processing',
-  heroDescription:
-    'PDC valves and actuators support water systems, plant utilities, air systems, process support, drying operations, and equipment integration.',
-  shortDescription:
-    'Flow-control solutions for pulp and paper processing and plant utilities.',
-  overview:
-    'Pulp and paper processing facilities require flow-control components for water systems, plant utilities, compressed air, drying and ventilation support, and equipment skids. PDC valves and actuators are applied across these process and utility applications.',
-  overviewParagraphs: [
-    'Pulp and paper processing facilities require flow-control components for water systems, plant utilities, compressed air, drying and ventilation support, and equipment skids.',
-    'PDC valves and actuators are applied across these process and utility applications, supporting automated valve control for plant systems.',
-  ],
-  applications: [
-    'Process water',
-    'Plant utilities',
-    'Compressed air',
-    'Drying and ventilation support',
-    'Equipment skids',
-    'Automated valve control',
-  ],
-  productFamilies: [
-    'butterfly-valves',
-    'butterfly-damper-valves',
-    'pneumatic-actuators',
-    'electric-actuators',
-  ],
-  images: {
-    hero: {
-      src: 'https://images.pexels.com/photos/29257462/pexels-photo-29257462.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      alt: 'Industrial plant facility surrounded by forest',
-      kind: 'hero',
-    },
-    thumbnail: {
-      src: 'https://images.pexels.com/photos/29257462/pexels-photo-29257462.jpeg?auto=compress&cs=tinysrgb&h=350&w=500',
-      alt: 'Industrial plant facility surrounded by forest',
-      kind: 'thumbnail',
-    },
-  },
-  seo: {
-    title: 'Pulp and Paper | PDC Valve & Actuators',
-    description:
-      'Flow-control valves and actuators for pulp and paper processing â€” water systems, plant utilities, air systems, drying, and equipment integration.',
-    canonicalUrl: 'https://www.pdcvalve.com/industries/pulp-and-paper',
-    noIndex: false,
-    openGraph: {
-      title: 'Pulp and Paper | PDC Valve & Actuators',
-      description:
-        'Flow-control valves and actuators for pulp and paper processing and plant utilities.',
-    },
-  },
-};
-
-export const industryContent: IndustryContent[] = [
-  automotive,
-  airManagement,
-  chemical,
-  petrochemical,
-  downstreamHydrocarbons,
-  foodAndBeverage,
-  energyAndUtilities,
-  lifeSciences,
-  miningMetals,
-  waterAndWastewater,
-  oem,
-  marine,
-  oilAndGas,
-  powerGeneration,
-  pulpAndPaper,
-];
-
-/**
- * Shared navigation generated from the canonical industry page registry.
- * This keeps every displayed industry link backed by a real route.
- */
-export const industryNav: NavLink[] = industryContent.map((industry) => ({
-  label: industry.name,
-  href: industry.route,
-}));
-
-/** Look up an industry content object by slug. */
-export function getIndustryContent(
-  slug: string,
-): IndustryContent | undefined {
-  return industryContent.find((i) => i.slug === slug);
-}
+JHOˆKœÛYÈOOHÛYÊNÃBŸCB

@@ -1,4 +1,4 @@
-import { Phone, Mail, Wrench } from 'lucide-react';
+import { Phone, Mail, SlidersHorizontal } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import RFQButton from '@/components/rfq/RFQButton';
 
@@ -15,15 +15,17 @@ export default function IndustryCTA() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
-            <Wrench className="h-4 w-4" />
-            Engineering Support
+            <SlidersHorizontal className="h-4 w-4" />
+            Application Support
           </span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Need Engineering Assistance?
+            Let&apos;s Find the Right Solution for Your Application
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/65">
-            Our engineering team can help you identify the right PDC products for
-            your industry and application requirements.
+            Not sure which valve or actuator fits your application? Our
+            experienced PDC sales team can help review your operating
+            requirements, identify suitable options, and coordinate engineering
+            review when needed.
           </p>
           <div className="mx-auto mt-6 h-px w-16 bg-brand-green/40" />
         </div>
@@ -35,7 +37,7 @@ export default function IndustryCTA() {
             className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all hover:border-brand-green/40 hover:bg-brand-green/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
           >
             <Mail className="h-4 w-4 text-brand-green" />
-            Contact Engineering
+            Talk to PDC Sales
           </a>
         </div>
 

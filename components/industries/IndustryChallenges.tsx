@@ -17,28 +17,42 @@ export default function IndustryChallenges({
         <Reveal>
           <div className="max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
-              Operating Challenges
+              {industry.challengesEyebrow ?? 'Operating Challenges'}
             </span>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
-              Key Challenges in {industry.name}
+              {industry.challengesTitle ?? `Key Challenges in ${industry.name}`}
             </h2>
             <div className="mt-3 h-px w-12 bg-brand-green/40" />
           </div>
         </Reveal>
         <Reveal delay={80}>
           <ul className="mt-8 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2">
-            {industry.challenges.map((challenge, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 rounded-lg border border-brand-green-dark/10 bg-white p-4 text-sm text-brand-graphite/75"
-              >
-                <span
-                  className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green"
-                  aria-hidden="true"
-                />
-                {challenge}
-              </li>
-            ))}
+            {industry.challenges.map((challenge, i) => {
+              const [label, ...detailParts] = challenge.split(':');
+              const detail = detailParts.join(':').trim();
+
+              return (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 rounded-lg border border-brand-green-dark/10 bg-white p-4 text-sm text-brand-graphite/75"
+                >
+                  <span
+                    className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green"
+                    aria-hidden="true"
+                  />
+                  {detail ? (
+                    <span>
+                      <strong className="font-semibold text-brand-graphite/90">
+                        {label}:
+                      </strong>{' '}
+                      {detail}
+                    </span>
+                  ) : (
+                    challenge
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </Reveal>
       </div>

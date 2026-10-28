@@ -37,7 +37,11 @@ export default function IndustryProductFamilies({
           </div>
         </Reveal>
         <Reveal delay={80}>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={`mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 ${
+              families.length === 4 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+            }`}
+          >
             {families.map((family) => (
               <Link
                 key={family.slug}
@@ -49,7 +53,8 @@ export default function IndustryProductFamilies({
                 </h3>
                 <div className="mt-2 h-px w-8 bg-brand-green/30 transition-all duration-300 group-hover:w-12" />
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-graphite/70">
-                  {family.shortDescription}
+                  {industry.productFamilyDescriptions?.[family.slug] ??
+                    family.shortDescription}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-all group-hover:gap-2.5">
                   Explore
