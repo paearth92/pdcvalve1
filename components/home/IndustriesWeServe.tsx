@@ -355,25 +355,14 @@ export default function IndustriesWeServe() {
           <Reveal>
             <div className="grid items-end gap-5 lg:grid-cols-[1fr_auto] lg:gap-10">
               <div className="max-w-[780px]">
-                <div className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-green shadow-[0_0_14px_rgba(22,132,71,0.9)]" />
-                  <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-brand-green">
-                    Markets
-                  </span>
-                  <span className="h-px w-10 bg-brand-green/35 sm:w-12" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/35">
-                    {String(industries.length).padStart(2, '0')} industries
-                  </span>
-                </div>
-
-                <div className="mt-3 flex items-end gap-7">
+                <div className="flex items-end gap-7">
                   <h2 className="shrink-0 text-[1.85rem] font-extrabold leading-none tracking-[-0.045em] sm:text-[2.35rem] lg:text-[2.7rem] xl:text-[3.15rem]">
                     Industries We Serve
                   </h2>
 
                   <p className="hidden max-w-[380px] pb-0.5 text-[13px] leading-5 text-white/52 xl:block">
                     Engineered flow-control solutions for demanding industrial
-                    environments and mission-critical infrastructure.
+                    applications across a wide range of process industries.
                   </p>
                 </div>
               </div>

@@ -31,6 +31,7 @@ export default function IndustryHero({
           muted
           playsInline
           preload="auto"
+          poster={imageSrc}
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
         />

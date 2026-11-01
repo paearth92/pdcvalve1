@@ -1,5 +1,6 @@
 import type { NavLink, CoreFunction, ProductFamily, Industry, Capability, Differentiator, MegaMenuColumn, MegaMenuFeature } from '@/types/site';
 import { industryNav } from '@/data/industries/content';
+import { homepageIndustryImages } from '@/data/industries/homepage-images';
 
 export const siteConfig = {
   name: 'PDC Valve & Actuators',
@@ -114,61 +115,49 @@ export const industries: Industry[] = [
     name: 'Power Generation',
     slug: 'power-generation',
     description:
-      'Critical flow control for steam, cooling, and combustion systems.',
-    image:
-      'https://images.pexels.com/photos/16705829/pexels-photo-16705829.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Power plant with cooling towers and electricity pylons',
+      'Flow-control solutions for steam, cooling, combustion air, and plant utility systems.',
+    image: homepageIndustryImages['power-generation'].src,
+    imageAlt: homepageIndustryImages['power-generation'].alt,
   },
   {
     name: 'Air Management',
     slug: 'air-management',
     description:
-      'Precision dampers and valves for industrial air handling systems.',
-    image:
-      'https://images.pexels.com/photos/32032996/pexels-photo-32032996.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Modern metallic ventilation system in an industrial setting',
+      'Precision dampers and butterfly valves for industrial air-handling and ventilation systems.',
+    image: homepageIndustryImages['air-management'].src,
+    imageAlt: homepageIndustryImages['air-management'].alt,
   },
   {
     name: 'Oil & Gas',
     slug: 'oil-and-gas',
     description:
-      'Severe-service valves engineered for upstream and midstream operations.',
-    image:
-      'https://images.pexels.com/photos/15961091/pexels-photo-15961091.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Offshore oil and gas platform surrounded by open ocean',
+      'Reliable flow-control solutions for process, combustion, and auxiliary systems.',
+    image: homepageIndustryImages['oil-and-gas'].src,
+    imageAlt: homepageIndustryImages['oil-and-gas'].alt,
   },
   {
     name: 'Chemical',
     slug: 'chemical',
     description:
-      'Corrosion-resistant flow control for aggressive chemical processes.',
-    image:
-      'https://images.pexels.com/photos/10666081/pexels-photo-10666081.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Large chemical processing factory with industrial piping and equipment',
+      'Durable valve solutions for corrosive, demanding, and high-cycle process applications.',
+    image: homepageIndustryImages.chemical.src,
+    imageAlt: homepageIndustryImages.chemical.alt,
   },
   {
     name: 'Petrochemical',
     slug: 'petrochemical',
     description:
-      'High-integrity valves for refining and petrochemical production.',
-    image:
-      'https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Refinery towers and process structures against a dusk sky',
+      'Reliable valve solutions for refining, petrochemical, and process applications.',
+    image: homepageIndustryImages.petrochemical.src,
+    imageAlt: homepageIndustryImages.petrochemical.alt,
   },
   {
     name: 'Water & Wastewater',
     slug: 'water-and-wastewater',
     description:
-      'Durable valves for municipal and industrial water treatment.',
-    image:
-      'https://images.pexels.com/photos/12975471/pexels-photo-12975471.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    imageAlt:
-      'Aerial view of a water treatment plant near a river',
+      'Durable butterfly valves for municipal, industrial water, and wastewater systems.',
+    image: homepageIndustryImages['water-and-wastewater'].src,
+    imageAlt: homepageIndustryImages['water-and-wastewater'].alt,
   },
 ];
 

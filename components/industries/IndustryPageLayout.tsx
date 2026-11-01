@@ -7,6 +7,7 @@ import IndustryApplications from '@/components/industries/IndustryApplications';
 import IndustryProductSolutions from '@/components/industries/IndustryProductSolutions';
 import IndustryProductFamilies from '@/components/industries/IndustryProductFamilies';
 import IndustryCTA from '@/components/industries/IndustryCTA';
+import { homepageIndustryImages } from '@/data/industries/homepage-images';
 
 /**
  * Reusable industry page layout.
@@ -21,6 +22,9 @@ export default function IndustryPageLayout({
 }) {
   const heroTitle = industry.heroTitle ?? industry.name;
   const heroDescription = industry.heroDescription ?? industry.shortDescription ?? '';
+  const homepageImage =
+    homepageIndustryImages[industry.slug as keyof typeof homepageIndustryImages];
+  const heroImage = homepageImage ?? industry.images?.hero;
 
   return (
     <>
@@ -28,8 +32,8 @@ export default function IndustryPageLayout({
         eyebrow={industry.eyebrow ?? 'Industries'}
         title={heroTitle}
         description={heroDescription}
-        imageSrc={industry.images?.hero?.src}
-        imageAlt={industry.images?.hero?.alt}
+        imageSrc={heroImage?.src}
+        imageAlt={heroImage?.alt}
         videoSrc={`/videos/industries/${industry.slug}.webm`}
       />
 
