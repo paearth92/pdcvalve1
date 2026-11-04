@@ -60,7 +60,7 @@ export default function SectionNav({ items }: { items: SpecNavItem[] }) {
           className="flex min-w-0 flex-1 gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           aria-label="Product sections"
         >
-          {items.map((item, index) => {
+          {items.map((item) => {
             const active = activeId === item.id;
 
             return (
@@ -75,14 +75,6 @@ export default function SectionNav({ items }: { items: SpecNavItem[] }) {
                     : 'border-[#ccd9cf] bg-white/80 text-[#284438] shadow-sm hover:border-[#8db39a] hover:bg-white hover:text-[#123823]',
                 )}
               >
-                <span
-                  className={cn(
-                    'font-mono text-[9px] font-black tracking-[0.05em]',
-                    active ? 'text-white/70' : 'text-[#168447]',
-                  )}
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 <span>{item.label}</span>
               </a>
             );

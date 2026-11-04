@@ -13,30 +13,43 @@ import FlexibleImage from '@/components/shared/FlexibleImage';
 export default function ProductCard({
   product,
   familyRoute,
+  appearance = 'standard',
 }: {
   product: Product;
   familyRoute: string;
+  appearance?: 'standard' | 'showcase';
 }) {
   const href = `${familyRoute}/${product.slug}`;
   const familySlug = familyRoute.split('/').pop() ?? '';
   const family = productFamiliesData.find((f) => f.slug === familySlug);
   const familyName = family?.name ?? '';
   const cardBasePath = getProductCardBasePath(familySlug, product.slug);
+  const isShowcase = appearance === 'showcase';
 
   return (
     <Link
       href={href}
-      className="group flex h-full flex-col overflow-hidden rounded-none border-b border-brand-green-dark/10 bg-white shadow-sm shadow-brand-green-dark/5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green-dark/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30 sm:rounded-xl sm:border"
+      className={
+        isShowcase
+          ? 'group flex h-full flex-col text-brand-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/50'
+          : 'group flex h-full flex-col overflow-hidden rounded-none border-b border-brand-green-dark/10 bg-white shadow-sm shadow-brand-green-dark/5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green-dark/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30 sm:rounded-xl sm:border'
+      }
     >
-      {/* Image area — edge to edge, no padding */}
-      <div className="relative h-48 overflow-hidden border-b border-brand-green-dark/8">
+      {/* Product image sits directly on the family page without a card frame. */}
+      <div
+        className={
+          isShowcase
+            ? 'relative aspect-[3/2] overflow-hidden'
+            : 'relative h-48 overflow-hidden border-b border-brand-green-dark/8'
+        }
+      >
         {cardBasePath ? (
           <FlexibleImage
             basePath={cardBasePath}
             alt={product.name}
-            className="h-full w-full object-cover"
-            width={800}
-            height={800}
+            className={`h-full w-full ${isShowcase ? 'object-contain' : 'object-cover'}`}
+            width={isShowcase ? 1200 : 800}
+            height={isShowcase ? 800 : 800}
           />
         ) : (
           <AssetPlaceholder
@@ -51,18 +64,21 @@ export default function ProductCard({
             {product.series}
           </span>
         )}
-        {/* Corner registration marks */}
-        <span className="absolute right-2 top-2 h-3 w-3 border-r border-t border-brand-green/25" />
-        <span className="absolute bottom-2 left-2 h-3 w-3 border-b border-l border-brand-green/25" />
-        <span className="absolute bottom-2 right-2 h-3 w-3 border-b border-r border-brand-green/25" />
+        {!isShowcase && (
+          <>
+            <span className="absolute right-2 top-2 h-3 w-3 border-r border-t border-brand-green/25" />
+            <span className="absolute bottom-2 left-2 h-3 w-3 border-b border-l border-brand-green/25" />
+            <span className="absolute bottom-2 right-2 h-3 w-3 border-b border-r border-brand-green/25" />
+          </>
+        )}
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-5">
+      <div className={`flex flex-1 flex-col ${isShowcase ? 'pt-5' : 'p-5'}`}>
         <h3 className="text-lg font-bold tracking-tight text-brand-green-dark">
           {product.name}
         </h3>
-        <div className="mt-2 h-px w-6 bg-brand-green/40" />
+        {!isShowcase && <div className="mt-2 h-px w-6 bg-brand-green/40" />}
         <p className="mt-3 text-sm leading-relaxed text-brand-graphite/70">
           {product.shortDescription ?? 'Product information is being prepared.'}
         </p>
@@ -99,7 +115,7 @@ export default function ProductCard({
         {/* Actions */}
         <div className="mt-5 flex flex-col gap-2 pt-1 sm:flex-row">
           <span
-            className="inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-md border border-brand-green-dark/15 bg-white px-4 py-2.5 text-sm font-semibold text-brand-green-dark transition-all group-hover:border-brand-green/30 group-hover:text-brand-green"
+            className={`inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold transition-all group-hover:text-brand-green ${isShowcase ? 'justify-start border-b border-brand-green-dark/20 text-brand-green-dark' : 'rounded-md border border-brand-green-dark/15 bg-white text-brand-green-dark group-hover:border-brand-green/30'}`}
           >
             <FileText className="h-4 w-4" />
             Learn More

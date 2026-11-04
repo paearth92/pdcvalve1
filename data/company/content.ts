@@ -287,63 +287,72 @@ const engineeringPage: CompanyPageContent = {
 
 const manufacturingPage: CompanyPageContent = {
   slug: 'manufacturing',
-  title: 'Manufacturing',
+  title: 'Manufacturing & Assembly',
   eyebrow: 'Manufacturing Capability',
-  heroTitle: 'Manufacturing Built for Product Variety',
+  heroTitle: 'Manufacturing & Assembly',
   heroDescription:
-    'PDC combines in-house machining, a broad pattern inventory, configurable product options, and valve-and-actuator inventory to support custom and integrated flow control assemblies.',
+    'PDC combines in-house manual machining, valve assembly, actuator integration, painting, inspection, and customization to support standard and application-specific valve packages.',
   overview:
-    'The current PDC website specifically identifies in-house machining as a manufacturing capability. It also publishes a broad inventory of casting patterns and flame-cut body variations, plus a large stock of valves and actuators used to support short lead times and fast turnaround.',
+    'PDC’s manufacturing capabilities bring manual machining, valve and actuator assembly, customization, and inspection together to support standard products and application-specific packages.',
   overviewParagraphs: [
-    'PDC’s current public manufacturing claims center on in-house machining, product variety, customization, inventory, and integrated valve assemblies.',
-    'The company publishes more than 300 casting patterns and flame-cut body variations supporting ten core product lines, with multiple seating, bracket, and actuator configuration options.',
+    'PDC combines in-house manual machining, valve assembly, actuator integration, painting, and inspection to support standard products and application-specific builds.',
+    'PDC does not cast in-house. A broad pattern inventory and stocked cast components support product variety and the assembly of configured valve packages.',
   ],
   sections: [
     {
       heading: 'In-House Machining',
-      eyebrow: 'Core Capability',
+      eyebrow: 'Machining',
       body:
-        'PDC identifies in-house machining as a key capability. This supports customization and allows PDC to act as a single-source supplier for fully integrated valve assemblies.',
+        'PDC performs manual machining to prepare and modify valve bodies and components for standard and application-specific assemblies. Work includes milling, drilling, lathe work, and boring.',
       items: [
-        'In-house machining capability',
-        'Support for engineered valve modifications',
-        'Integrated valve assemblies',
-        'Single-source valve and actuation packages',
+        'Machining for valve bodies, discs, brackets, and couplings',
+        'Broad casting-pattern access and stocked cast components',
+        'PDC does not perform casting in-house',
       ],
     },
     {
-      heading: 'Patterns, Bodies & Product Variation',
-      eyebrow: 'Range',
+      heading: 'Valve & Actuator Assembly',
+      eyebrow: 'Integration',
       body:
-        'PDC publishes an inventory of more than 300 casting patterns along with flame-cut body variations. These support ten core product lines and a broad range of configuration choices.',
+        'PDC assembles valves with pneumatic and electric actuators, mounting hardware, controls, and accessories to create a complete package for the application.',
       items: [
-        '300+ casting patterns',
-        'Flame-cut body variations',
-        'Ten core product lines',
-        'Multiple seating options',
-        'Bracket configuration choices',
-        'Multiple actuator styles',
+        'Brackets, couplings, and linkages',
+        'Solenoids, limit switches, positioners, and controls',
+        'Manual operators and accessories',
+        'Painting and final assembly',
       ],
       dark: true,
     },
     {
-      heading: 'Inventory & Turnaround',
-      eyebrow: 'Responsiveness',
+      heading: 'Custom Configuration',
+      eyebrow: 'Application Fit',
       body:
-        'PDC states that it maintains a large inventory of valves and actuators to support short lead times and fast turnaround. That inventory works alongside in-house machining and configuration capability when customer requirements call for an integrated assembly.',
+        'PDC can configure application-specific packages with nonstandard mounting, brackets, couplings, linkages, shaft arrangements, multi-valve assemblies, and controls.',
+      items: [
+        'Special mounting and shaft arrangements',
+        'Custom brackets, couplings, and linkages',
+        'Multi-valve packages and controls',
+      ],
     },
     {
-      heading: 'Custom & Integrated Assemblies',
-      eyebrow: 'Assembly',
+      heading: 'Inspection & Production Support',
+      eyebrow: 'Quality',
       body:
-        'PDC supports customized actuation packages and engineered valve modifications, with seating, bracket, and actuator choices used to tailor assemblies to the application.',
+        'PDC checks dimensions against drawings and specifications and verifies actuator and accessory functionality as part of assembly and inspection. ISO 9001:2015 certified processes support consistent production.',
       items: [
-        'Customized actuation packages',
-        'Engineered valve modifications',
-        'Seating configuration options',
-        'Bracket configuration options',
-        'Actuator style options',
+        'Dimensional checks against drawings and specifications',
+        'Actuator and accessory function checks',
+        'Inventory of castings, actuators, accessories, and components',
       ],
+    },
+    {
+      heading: 'A Flexible Assembly Shop',
+      eyebrow: 'How We Work',
+      bodyParagraphs: [
+        'PDC’s shop supports a range of product configurations and application requirements rather than relying on high-volume automated machining.',
+        'Product knowledge, manual machining, assembly, actuator integration, customization, and inspection work together to prepare valve packages for customer applications.',
+      ],
+      dark: true,
     },
   ],
   featureCards: [
@@ -351,49 +360,37 @@ const manufacturingPage: CompanyPageContent = {
       iconSlug: 'machining',
       title: 'In-House Machining',
       description:
-        'A published PDC capability supporting customization and fully integrated valve assemblies.',
-    },
-    {
-      iconSlug: 'patterns',
-      title: '300+ Casting Patterns',
-      description:
-        'A broad pattern inventory supports product variety across ten published core product lines.',
-    },
-    {
-      iconSlug: 'variation',
-      title: 'Flame-Cut Variations',
-      description:
-        'Flame-cut body variations expand the range of configurations available for application requirements.',
-    },
-    {
-      iconSlug: 'inventory',
-      title: 'Valve & Actuator Inventory',
-      description:
-        'PDC states that it maintains a large inventory to support short lead times and fast turnaround.',
+        'Manual milling, drilling, lathe work, and boring for valve components and assemblies.',
     },
     {
       iconSlug: 'assembly',
-      title: 'Integrated Assemblies',
+      title: 'Valve & Actuator Assembly',
       description:
-        'In-house machining helps PDC operate as a single-source supplier for fully integrated valve assemblies.',
+        'Pneumatic and electric actuator integration with brackets, couplings, controls, and accessories.',
     },
     {
       iconSlug: 'custom',
-      title: 'Configurable Packages',
+      title: 'Custom Configurations',
       description:
-        'Seating options, brackets, actuator styles, and custom actuation packages support application-specific builds.',
+        'Special mounting, shaft arrangements, linkages, and multi-valve packages tailored to application requirements.',
+    },
+    {
+      iconSlug: 'quality',
+      title: 'Inspection & Quality',
+      description:
+        'Dimensional and function checks support consistent assembly and documented quality processes.',
     },
   ],
   seo: {
-    title: 'Manufacturing | PDC Valve & Actuators',
+    title: 'Manufacturing & Assembly | PDC Valve & Actuators',
     description:
-      'PDC manufacturing capabilities include in-house machining, 300+ casting patterns, flame-cut body variations, inventory, and integrated valve assemblies.',
+      'PDC manufacturing capabilities include manual machining, valve and actuator assembly, application-specific configurations, painting, and inspection.',
     canonicalUrl: 'https://pdcvalve.com/company/manufacturing',
     noIndex: false,
     openGraph: {
-      title: 'Manufacturing | PDC Valve & Actuators',
+      title: 'Manufacturing & Assembly | PDC Valve & Actuators',
       description:
-        'In-house machining, configurable product options, and inventory for responsive integrated flow control assemblies.',
+        'In-house machining, actuator integration, custom configurations, and inspection for industrial valve packages.',
     },
   },
 };

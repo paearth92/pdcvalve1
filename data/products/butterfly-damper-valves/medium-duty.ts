@@ -12,24 +12,25 @@ export const mediumDuty: ProductContent = {
   name: 'Medium Duty',
   series: '01',
   shortDescription:
-    'A configurable wafer-style butterfly damper valve for moderate to high cycling applications.',
+    'A configurable wafer-style butterfly damper valve for mid-range differential-pressure applications, with a broad range of material, seat, and actuation options.',
   overview:
-    'The PDC Medium Duty Series 01 butterfly valve is available in sizes from 2 inches through 24 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Medium Duty Series 01 is a wafer-style butterfly damper valve available in sizes from 2 inches through 24 inches. Material, seating, and configuration options suit a broad range of mid-range differential-pressure applications.',
   overviewParagraphs: [
-    'The PDC Medium Duty Series 01 butterfly valve is available in sizes from 2 inches through 24 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Medium Duty Series 01 is a wafer-style butterfly damper valve available in sizes from 2 inches through 24 inches.',
+    'Material, seating, and configuration options suit a broad range of mid-range differential-pressure applications.',
   ],
   features: [
     {
       title: 'Inboard graphited-bronze bushings',
-      description: '',
+      description: 'Support long service life, low torque, and non-freezing operation.',
     },
     {
       title: 'Close-tolerance machining',
-      description: '',
+      description: 'Supports minimal leakage and dependable flow characteristics.',
     },
     {
-      title: 'Adjustable graphited TEFLON braid packing',
-      description: '',
+      title: 'Adjustable graphited Teflon braid packing',
+      description: 'Packing adjustment supports ongoing sealing performance.',
     },
     {
       title: 'Repackable without line removal',
@@ -37,60 +38,61 @@ export const mediumDuty: ProductContent = {
     },
     {
       title: 'Drilled and tapped actuator mounting pads',
-      description: '',
+      description: 'Provide a sturdy mounting interface for actuation equipment.',
     },
     {
-      title: 'Optional DIN and 300 lb. flange drilling',
-      description: '',
+      title: 'Multiple shaft-end configurations',
+      description: 'Flatted, keywayed, and hex ends support different actuation arrangements.',
     },
     {
-      title: 'Optional high-temperature material options',
-      description:
-        'High-temperature iron, stainless steel, and carbon-steel body and disc materials.',
+      title: 'Lightweight solid-ring wafer design',
+      description: 'A compact wafer-style body for standard flange installations.',
     },
     {
-      title: 'Optional grease fittings and coatings',
-      description: '',
+      title: 'Four alignment holes',
+      description: 'Help reduce transfer of pipe stress to the valve body.',
     },
     {
-      title: 'Step and tadpole seat options',
-      description: '',
+      title: 'High-temperature material options',
+      description: 'Iron, carbon steel, and stainless-steel configurations are available.',
     },
     {
-      title: 'Horizontal shaft installation',
-      description:
-        'Recommended installation with the shaft horizontal to the ground.',
+      title: 'Multiple seat options',
+      description: 'Swing-thru, Angle, Metal Step, and Tadpole Step options vary by size.',
     },
   ],
   benefits: [],
   applications: [
-    'Flow control in low-pressure systems with moderate to high cycling around 500,000 cycles',
+    'Flow control and isolation in mid-range differential-pressure applications',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
-    { label: 'Size Range', value: '2" through 14" and 16" through 24" for 125/150 lb. flanging' },
-    { label: 'Temperature', value: 'Up to 450°F with standard materials; Up to 900°F with optional materials' },
-    { label: 'Pressure Rating', value: 'Varies with size' },
+    { label: 'Size Range', value: '2" through 24"' },
+    { label: 'Flanging', value: '125/150 lb.' },
+    { label: 'Temperature', value: '450°F standard; optional configurations up to 900°F' },
+    { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to Series 01 engineering data' },
     { label: 'Body Style', value: 'Wafer' },
-    { label: 'Shutoff Rating', value: 'ANSI Class II based on calculated leakage; ANSI Class III available with optional seats on sizes 6 inches and larger' },
+    { label: 'Shutoff', value: 'Low-leakage configurations depend on seat, size, and service conditions' },
+    { label: 'Seat Options', value: 'Swing-thru, Angle, Metal Step, and Tadpole Step; varies by size' },
   ],
   specGroups: [
     {
       heading: 'General',
       category: 'general',
       rows: [
-        { label: 'Size Range', value: '2" through 14" and 16" through 24" for 125/150 lb. flanging' },
+        { label: 'Size Range', value: '2" through 24"' },
+        { label: 'Flanging', value: '125/150 lb.' },
         { label: 'Body Style', value: 'Wafer' },
-        { label: 'Shutoff Rating', value: 'ANSI Class II based on calculated leakage' },
-        { label: 'Shutoff Rating', value: 'ANSI Class III available with optional seats on sizes 6 inches and larger' },
+        { label: 'Shutoff', value: 'Low-leakage configurations depend on seat, size, and service conditions' },
+        { label: 'Seat Options', value: 'Swing-thru, Angle, Metal Step, and Tadpole Step; varies by size' },
       ],
     },
     {
       heading: 'Temperature',
       category: 'temperature',
       rows: [
-        { label: 'Temperature', value: 'Up to 450°F with standard materials' },
+        { label: 'Temperature', value: '450°F standard' },
         { label: 'Temperature', value: 'Up to 900°F with optional materials' },
       ],
     },
@@ -98,16 +100,16 @@ export const mediumDuty: ProductContent = {
       heading: 'Pressure',
       category: 'pressure',
       rows: [
-        { label: 'Pressure Rating', value: 'Varies with size' },
+        { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to Series 01 engineering data' },
       ],
     },
   ],
   downloads: [
     {
-      label: 'PDC Damper Valve Brochure',
+      label: 'PDC Medium Duty Series 01 Brochure',
       type: 'pdf',
-      filename: 'PDC-Damper-Valve-Brochure.pdf',
-      url: 'https://pdcvalve.com/wp-content/uploads/2021/10/PDC-Damper-Valve-Brochure.pdf',
+      filename: 'pdc-medium-duty-series-01-butterfly-valve.pdf',
+      url: '/documents/brochures/pdc-medium-duty-series-01-butterfly-valve.pdf',
     },
   ],
   relatedProducts: [],

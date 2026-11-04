@@ -65,48 +65,51 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
 export const coreFunctions: CoreFunction[] = [
   {
     number: '01',
-    title: 'Control',
+    title: 'Industrial Flow Control',
     description:
-      'Flow regulation solutions for demanding industrial applications.',
+      'Butterfly and damper valves engineered for reliable flow control across demanding industrial applications.',
   },
   {
     number: '02',
-    title: 'Automation',
+    title: 'Engineered Valve Automation',
     description:
-      'Electric and pneumatic actuation engineered for dependable operation.',
+      'Complete electric and pneumatic automation packages matched to the valve, application, and control requirements.',
   },
   {
     number: '03',
-    title: 'Isolation',
+    title: 'Reliable Process Isolation',
     description:
-      'Reliable valve systems designed for safe process isolation.',
+      'Manual and automated butterfly valves for dependable process isolation and shutoff service.',
   },
 ];
 
 export const productFamilies: ProductFamily[] = [
   {
     name: 'Butterfly Damper Valves',
+    displayName: 'Damper & Control Valves',
     slug: 'butterfly-damper-valves',
     description:
-      'Heavy-duty dampers engineered for high-temperature gas and air flow control.',
+      'Heavy-duty butterfly and damper valves engineered for modulating flow, high-temperature service, and demanding industrial applications.',
   },
   {
     name: 'Butterfly Valves',
     slug: 'butterfly-valves',
     description:
-      'Precision-machined butterfly valves for reliable shutoff and throttling.',
+      'Industrial butterfly valves for reliable shutoff, isolation, and general process service.',
   },
   {
     name: 'Pneumatic Actuators',
+    displayName: 'Pneumatic Actuation',
     slug: 'pneumatic-actuators',
     description:
-      'High-torque pneumatic actuators built for fast, dependable valve operation.',
+      'Pneumatic actuator packages sized, mounted, and configured for reliable valve operation.',
   },
   {
     name: 'Electric Actuators',
+    displayName: 'Electric Actuation',
     slug: 'electric-actuators',
     description:
-      'Electric actuation with precise positioning and integrated control.',
+      'Electric actuator packages engineered for accurate positioning, dependable operation, and application-specific control.',
   },
 ];
 
@@ -131,7 +134,7 @@ export const industries: Industry[] = [
     name: 'Oil & Gas',
     slug: 'oil-and-gas',
     description:
-      'Reliable flow-control solutions for process, combustion, and auxiliary systems.',
+      'Valves, actuators, and engineered packages for oil and gas production, frac operations, process isolation, water handling, and utilities.',
     image: homepageIndustryImages['oil-and-gas'].src,
     imageAlt: homepageIndustryImages['oil-and-gas'].alt,
   },
@@ -172,24 +175,24 @@ export const capabilities: Capability[] = [
 
 export const differentiators: Differentiator[] = [
   {
-    title: 'Application Engineering',
+    title: 'Application Support',
     description:
-      'Our engineers work directly with your team to specify the right valve and actuator for your operating conditions.',
+      'Sales and Engineering work together to help evaluate product selection, operating conditions, actuation, and application requirements.',
   },
   {
     title: 'Product Customization',
     description:
-      'Custom configurations, materials, and actuator packages tailored to your specific application requirements.',
+      'Custom configurations, materials, brackets, couplings, linkages, actuator packages, and accessories can be tailored to specific application requirements.',
   },
   {
-    title: 'Fast Lead Times',
+    title: 'In-House Capability',
     description:
-      'In-house machining and inventory management deliver shorter lead times than typical industry standards.',
+      'Manual machining, valve assembly, actuator integration, painting, and inspection support both standard and custom configurations.',
   },
   {
-    title: 'Reliable Manufacturing',
+    title: 'Quality Assurance',
     description:
-      'ISO 9001:2015 certified processes and decades of manufacturing expertise ensure consistent, dependable products.',
+      'ISO 9001:2015 certified processes and documented inspection practices support consistent, dependable product execution.',
   },
 ];
 
@@ -206,7 +209,7 @@ export const megaMenuColumns: MegaMenuColumn[] = [
           { label: 'Econotrol', slug: 'econotrol' },
           { label: 'Medium Duty', slug: 'medium-duty' },
           { label: 'Excel', slug: 'excel' },
-          { label: 'Flanged End', slug: 'flanged-end' },
+          { label: 'Flanged Series 39', slug: 'flanged-end' },
           { label: 'Reduced Port', slug: 'reduced-port' },
           { label: 'Combustion Valve', slug: 'combustion-valve' },
           { label: 'Thread End', slug: 'thread-end' },

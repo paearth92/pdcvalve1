@@ -2,9 +2,9 @@ import { differentiators } from '@/data/site';
 import Reveal from '@/components/products/Reveal';
 
 const engineeringTags = [
-  'APPLICATION ENGINEERING',
-  'CUSTOM CONFIGURATION',
-  'RESPONSIVE DELIVERY',
+  'APPLICATION SUPPORT',
+  'PRODUCT CUSTOMIZATION',
+  'IN-HOUSE CAPABILITY',
   'QUALITY ASSURANCE',
 ];
 
@@ -46,8 +46,8 @@ export default function WhyEngineersChoosePDC() {
             </h2>
 
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-brand-graphite/60 sm:text-[15px]">
-              Engineering support, responsive manufacturing, and
-              application-focused solutions built around real operating
+              Application support, in-house capability, configurable products,
+              and quality-focused execution built around real operating
               requirements.
             </p>
           </div>

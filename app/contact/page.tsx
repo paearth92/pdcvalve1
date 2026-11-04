@@ -231,7 +231,7 @@ export default function ContactPage() {
                 Engineering Assistance
               </span>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green-dark sm:text-4xl">
-                Need Application Support?
+                Let&apos;s Find the Right Solution for Your Application
               </h2>
               <p className="mt-4 text-base leading-relaxed text-brand-graphite/70">
                 Our application engineers can help you select the right valve
@@ -246,7 +246,7 @@ export default function ContactPage() {
                   className="inline-flex items-center gap-2 rounded-md border border-brand-green-dark/15 bg-white px-5 py-3 text-sm font-semibold text-brand-steel transition-colors hover:border-brand-green/30 hover:text-brand-green-dark"
                 >
                   <Mail className="h-4 w-4 text-brand-green" />
-                  Email Engineering
+                  Contact PDC Sales
                 </a>
               </div>
             </div>

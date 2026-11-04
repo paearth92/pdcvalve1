@@ -48,7 +48,7 @@ export const flangedEndEngineering: ProductEngineeringData = {
         kind: 'materials',
         columns: ['Component', 'Available Options'],
         rows: [
-          ['Body', 'High Temperature Iron, Carbon Steel, 316 Stainless Steel, 304 Stainless Steel'],
+          ['Body', 'No standard option listed'],
           ['Disc', 'Carbon Steel, 316 Stainless Steel, 304 Stainless Steel'],
           ['Shaft', '316 Stainless Steel, 304 Stainless Steel, Incoloy, Monel'],
           ['Seat', 'Angle'],
@@ -78,7 +78,7 @@ export const flangedEndEngineering: ProductEngineeringData = {
       },
       {
         id: 'cv-values',
-        title: 'Cv Values for PDC Swing-Thru Butterfly Valves',
+        title: 'Cv Values for Flanged Series 39 Swing-Thru Butterfly Valves',
         tabLabel: 'Cv Values',
         kind: 'flow',
         description: 'Flow in GPM of 60°F water at 1 psi pressure drop, specific gravity = 1.',

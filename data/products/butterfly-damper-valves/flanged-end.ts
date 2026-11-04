@@ -1,7 +1,7 @@
 import type { ProductContent } from '@/types/content';
 
 /**
- * Flanged End Series 39 — verified product content.
+ * Flanged Series 39 — verified product content.
  */
 export const flangedEnd: ProductContent = {
   id: 'butterfly-damper-valves_flanged-end',
@@ -9,82 +9,86 @@ export const flangedEnd: ProductContent = {
   familySlug: 'butterfly-damper-valves',
   familyName: 'Butterfly Damper Valves',
   route: '/products/butterfly-damper-valves/flanged-end',
-  name: 'Flanged End',
+  name: 'Flanged Series 39',
   series: '39',
   shortDescription:
-    'A flanged-end butterfly damper valve for low-pressure industrial flow-control applications.',
+    'A full-flanged butterfly damper valve for low-pressure industrial applications requiring 125/150 lb. flanging and dead-end connection capability.',
   overview:
-    'The PDC Flanged Series 39 butterfly valve is available in sizes from 4 inches through 14 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Flanged Series 39 butterfly damper valve is available in sizes from 4 inches through 14 inches with 125/150 lb. flanging. Its full-face construction supports installation and dead-end connection service, with material, seat, packing, and shaft options for different service conditions.',
   overviewParagraphs: [
-    'The PDC Flanged Series 39 butterfly valve is available in sizes from 4 inches through 14 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Flanged Series 39 butterfly damper valve is available in sizes from 4 inches through 14 inches with 125/150 lb. flanging.',
+    'Its full-face construction supports installation and dead-end connection service. Material, seat, packing, and shaft options are available to suit different service conditions.',
   ],
   features: [
     {
       title: 'Inboard graphited-bronze bushings',
-      description: '',
+      description: 'Support long life, low operating torque, and non-freezing operation.',
     },
     {
       title: 'Close-tolerance machining',
-      description: '',
+      description: 'Supports minimal leakage and dependable flow characteristics.',
     },
     {
-      title: 'Adjustable graphited TEFLON braid packing',
-      description: '',
+      title: 'Adjustable graphited Teflon braid packing',
+      description: 'Packing can be adjusted to maintain sealing performance.',
     },
     {
       title: 'Repackable without line removal',
       description: 'Valve can be repacked without line removal.',
     },
     {
-      title: 'Rugged mounting pads for actuation equipment',
-      description: '',
+      title: 'Drilled and tapped mounting pads',
+      description: 'Provide a sturdy mounting interface for actuators and accessories.',
     },
     {
       title: 'Multiple shaft-end configurations',
-      description: '',
+      description: 'Support factory- or field-mounted actuation.',
+    },
+    {
+      title: 'Full-faced flange construction',
+      description: 'Supports flanged installation, including dead-end connection service.',
     },
     {
       title: 'Contoured bore',
-      description: '',
-    },
-    {
-      title: 'Horizontal shaft installation',
-      description:
-        'Recommended installation with the shaft horizontal to the ground.',
+      description: 'Supports the valve’s flow characteristics.',
     },
   ],
   benefits: [],
   applications: [
-    'Flow control in low-pressure systems with moderate cycling below 500,000 cycles',
+    'Low-pressure industrial flow control and isolation where 125/150 lb. flanging or dead-end connection capability is required',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
-    { label: 'Size Range', value: '4" through 14" for 125/150 lb. flanging' },
+    { label: 'Size Range', value: '4" through 14"' },
+    { label: 'Flanging', value: '125/150 lb.' },
     { label: 'Temperature', value: 'Up to 450°F with standard materials' },
-    { label: 'Pressure Rating', value: '25 PSI containment' },
-    { label: 'Body Style', value: 'Flanged end' },
-    { label: 'Shutoff Rating', value: 'ANSI Class II' },
-    { label: 'Seat Style', value: 'Swing-through and angle seat' },
+    { label: 'Pressure Rating', value: '25 PSI containment; maximum differential pressure varies by size and configuration' },
+    { label: 'Body Style', value: 'Full-flanged' },
+    { label: 'Seat Style', value: 'Swing-thru standard; Angle optional' },
   ],
   specGroups: [
     {
       heading: 'General',
       category: 'general',
       rows: [
-        { label: 'Size Range', value: '4" through 14" for 125/150 lb. flanging' },
-        { label: 'Body Style', value: 'Flanged end' },
-        { label: 'Shutoff Rating', value: 'ANSI Class II' },
-        { label: 'Seat Style', value: 'Swing-through and angle seat' },
+        { label: 'Size Range', value: '4" through 14"' },
+        { label: 'Flanging', value: '125/150 lb.' },
+        { label: 'Body Style', value: 'Full-flanged' },
+        { label: 'Seat Style', value: 'Swing-thru standard; Angle optional' },
+        { label: 'Shutoff', value: 'Depends on seat, size, and service conditions' },
       ],
     },
     {
       heading: 'Materials',
       category: 'materials',
       rows: [
-        { label: 'Body Material', value: 'Cast ductile iron standard' },
-        { label: 'Stem Material', value: '416 stainless steel standard, with options available' },
-        { label: 'Disc Material', value: 'Cast iron standard, with options available' },
+        { label: 'Body', value: 'Ductile iron standard' },
+        { label: 'Disc', value: 'Cast iron standard' },
+        { label: 'Shaft', value: '416 stainless steel' },
+        { label: 'Bushing', value: 'Graphited bronze' },
+        { label: 'Packing', value: 'Graphited Teflon braid' },
+        { label: 'Packing Nut', value: 'Brass' },
       ],
     },
     {
@@ -98,7 +102,8 @@ export const flangedEnd: ProductContent = {
       heading: 'Pressure',
       category: 'pressure',
       rows: [
-        { label: 'Pressure Rating', value: '25 PSI containment' },
+        { label: 'Containment Pressure', value: '25 PSI' },
+        { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to published engineering data' },
       ],
     },
     {
@@ -107,22 +112,16 @@ export const flangedEnd: ProductContent = {
       rows: [
         { label: 'Flange', value: 'ASME/ANSI B16.1 Class 125' },
         { label: 'Flange', value: 'ASME/ANSI B16.5 Class 150' },
-      ],
-    },
-    {
-      heading: 'Certifications',
-      category: 'certifications',
-      rows: [
-        { label: 'Design Standard', value: 'ASME/ANSI B16.34, with exceptions for shell and hydro testing and face-to-face or laying lengths' },
+        { label: 'Connection', value: 'Dead-end connection capability' },
       ],
     },
   ],
   downloads: [
     {
-      label: 'PDC Damper Valve Brochure',
+      label: 'PDC Flanged Series 39 Brochure',
       type: 'pdf',
-      filename: 'PDC-Damper-Valve-Brochure.pdf',
-      url: 'https://pdcvalve.com/wp-content/uploads/2021/10/PDC-Damper-Valve-Brochure.pdf',
+      filename: 'pdc-flanged-series-39-butterfly-valve.pdf',
+      url: '/documents/brochures/pdc-flanged-series-39-butterfly-valve.pdf',
     },
   ],
   relatedProducts: [],
@@ -154,15 +153,15 @@ export const flangedEnd: ProductContent = {
     thumbnail: undefined,
   },
   seo: {
-    title: 'Flanged End Series 39 Butterfly Damper Valve | PDC Valve',
+    title: 'Flanged Series 39 Butterfly Damper Valve | PDC Valve',
     description:
-      'Explore the PDC Flanged End Series 39 butterfly damper valve, including verified size, temperature, construction, and application information.',
+      'Explore the PDC Flanged Series 39 butterfly damper valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
     canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-damper-valves/flanged-end',
     noIndex: false,
     openGraph: {
-      title: 'Flanged End Series 39 Butterfly Damper Valve | PDC Valve',
+      title: 'Flanged Series 39 Butterfly Damper Valve | PDC Valve',
       description:
-        'Explore the PDC Flanged End Series 39 butterfly damper valve, including verified size, temperature, construction, and application information.',
+        'Explore the PDC Flanged Series 39 butterfly damper valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
     },
   },
 };

@@ -8,10 +8,35 @@ import { getProductHeroBasePath, getProductCardBasePath } from '@/data/assets/re
 import FlexibleImage from '@/components/shared/FlexibleImage';
 import AssetPlaceholder from '@/components/shared/AssetPlaceholder';
 import DesktopHeroFrame from '@/components/products/DesktopHeroFrame';
+import ShowcaseProductHero from '@/components/products/ShowcaseProductHero';
 
 export default function ProductHero({ product }: { product: ProductDetail }) {
   const heroBasePath = getProductHeroBasePath(product.familySlug, product.slug);
   const cardBasePath = getProductCardBasePath(product.familySlug, product.slug);
+
+  if (
+    product.familySlug === 'butterfly-damper-valves' ||
+    product.familySlug === 'butterfly-valves'
+  ) {
+    const cutoutPath =
+      product.familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol'
+        ? '/images/products/butterfly-damper-valves/econotrol-hero-cutout.png'
+        : undefined;
+    const backgroundPath =
+      product.familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol'
+        ? '/images/products/butterfly-damper-valves/econotrol-hero-background.png'
+        : undefined;
+
+    return (
+      <ShowcaseProductHero
+        product={product}
+        cardBasePath={cardBasePath}
+        heroBasePath={heroBasePath}
+        cutoutPath={cutoutPath}
+        backgroundPath={backgroundPath}
+      />
+    );
+  }
 
   return (
     <>

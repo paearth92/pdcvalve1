@@ -64,7 +64,9 @@ export default function ProductDetailTemplate({
   const hasDownloads = product.downloads && product.downloads.length > 0;
   const hasRelated = product.related && product.related.length > 0;
   const gallery = product.gallery ?? [];
-  const hasGallery = gallery.length > 0;
+  const hasGallery =
+    gallery.length > 0 &&
+    !(product.familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol');
 
   const navItems: SpecNavItem[] = [
     ...(hasGallery ? [{ id: 'gallery', label: 'Product Views' }] : []),
@@ -82,7 +84,7 @@ export default function ProductDetailTemplate({
     <>
       <Breadcrumbs items={breadcrumbs} />
 
-      {/* Product imagery / hero logic intentionally unchanged. */}
+      {/* Butterfly valve families use the showcase product hero. */}
       <ProductHero product={product} />
 
       {/* Persistent page navigation */}
@@ -145,21 +147,6 @@ export default function ProductDetailTemplate({
               )}
             </div>
 
-            {product.shortDescription && (
-              <div className="mt-8 overflow-hidden rounded-2xl border border-brand-green/15 bg-brand-light-bg/45">
-                <div className="grid grid-cols-[5px_1fr]">
-                  <span className="bg-brand-green" />
-                  <div className="px-5 py-5 sm:px-6">
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-brand-green">
-                      Engineering Summary
-                    </span>
-                    <p className="mt-2 text-sm font-medium leading-6 text-brand-green-dark/78">
-                      {product.shortDescription}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           <aside className="lg:self-start">
@@ -207,14 +194,12 @@ export default function ProductDetailTemplate({
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <Reveal>
               <SectionHeading
-                eyebrow="Engineering Data"
-                title="Detailed Selection Data"
+                eyebrow="Product Engineering"
+                title="Engineering Data"
               />
             </Reveal>
             <p className="max-w-xl text-sm leading-6 text-brand-graphite/55 lg:text-right">
-              Product-specific dimensions, materials, flow coefficients,
-              torque values, model data, and configuration information where
-              published by PDC.
+              {`Published dimensions, materials, flow coefficients, torque requirements, and configuration data for ${product.name.includes('Series') ? product.name : `${product.name}${product.series ? ` Series ${product.series}` : ''}`}.`}
             </p>
           </div>
           <div className="mt-6 lg:mt-8">

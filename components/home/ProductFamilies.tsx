@@ -23,8 +23,7 @@ export default function ProductFamilies() {
                 Industrial Flow Control Products
               </h2>
               <p className="mt-4 text-base leading-relaxed text-brand-graphite/65">
-                Explore PDC&apos;s complete family of engineered valves and
-                actuators.
+                Explore PDC&apos;s engineered valve and actuation solutions.
               </p>
               <div className="mt-6 h-px w-16 bg-brand-green/40" />
             </div>

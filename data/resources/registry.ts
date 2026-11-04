@@ -29,10 +29,10 @@ export const resourceCategories: ResourceCategoryDef[] = [
   },
   {
     slug: 'datasheets',
-    label: 'Datasheets',
-    shortLabel: 'Datasheets',
+    label: 'Technical Data',
+    shortLabel: 'Technical Data',
     description:
-      'Technical datasheets with dimensional data, pressure ratings, materials, and operating parameters.',
+      'Find product specifications, dimensions, materials, torque data, Cv information, and other engineering resources for product selection and application review.',
     icon: 'ClipboardList',
     href: '/resources/datasheets',
   },

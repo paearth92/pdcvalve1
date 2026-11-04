@@ -762,27 +762,60 @@ const oilAndGas: IndustryContent = {
   slug: 'oil-and-gas',
   route: '/industries/oil-and-gas',
   eyebrow: 'Industries',
-  heroTitle: 'Flow Control for Oil and Gas Production',
+  heroTitle: 'Flow Control for Oil and Gas Applications',
   heroDescription:
-    'PDC valves and actuators support upstream production, wellhead systems, produced-fluid control, pressure reduction, process support, and automated operation.',
+    'PDC provides valves, actuators, and engineered valve assemblies for oil and gas production, frac operations, water handling, process piping, emergency shutdown, utility, and equipment-support applications.',
   shortDescription:
-    'Flow-control solutions for oil and gas production and wellhead systems.',
+    'Valves, actuators, and engineered packages for oil and gas production, frac operations, process isolation, and equipment support.',
   overview:
-    'Oil and gas production facilities require dependable flow control for wellhead systems, produced-fluid regulation, pressure reduction, process piping, and utility systems. PDC valves and actuators are applied across these upstream production applications.',
+    'PDC supplies butterfly, ball, and gate valves with pneumatic, electric, and Scotch yoke actuation for oil and gas operations. Engineered packages can support emergency shutdown (ESD), process isolation, water handling, production equipment, and facility utilities.',
   overviewParagraphs: [
-    'Oil and gas production facilities require dependable flow control for wellhead systems, produced-fluid regulation, pressure reduction, process piping, and utility systems.',
-    'PDC valves and actuators are applied across these upstream production applications, supporting both manual and remote operation.',
+    'PDC provides valves, actuators, and engineered valve assemblies for production, frac operations, water handling, process piping, emergency shutdown, utility, and equipment-support applications.',
+    'Packages can be configured around the media, pressure, temperature, shutoff requirements, fail position, torque, controls, and installation. Mounting hardware, accessories, and controls can be selected for the application.',
   ],
   applications: [
-    'Wellhead production control',
-    'Produced-fluid regulation',
-    'Pressure reduction',
-    'Process piping',
-    'Utility systems',
-    'Remote operation',
+    'Frac water and water handling',
+    'Process isolation and flow control',
+    'Emergency shutdown systems',
+    'Production and process equipment',
+    'Utility and facility support',
+    'Automated valve packages with controls and feedback',
+  ],
+  productSolutions: [
+    {
+      title: 'Butterfly Valves',
+      description:
+        'Industrial butterfly valves support flow control and isolation in suitable process, water-handling, and utility applications.',
+    },
+    {
+      title: 'Ball Valves',
+      description:
+        'Ball valves can be configured for process isolation and emergency shutdown service where the application and operating requirements are suitable.',
+    },
+    {
+      title: 'Gate Valves',
+      description:
+        'Gate valves provide an isolation option for oil and gas process and utility systems, selected to match the media and service conditions.',
+    },
+    {
+      title: 'Pneumatic & Scotch Yoke Actuation',
+      description:
+        'Pneumatic and Scotch yoke actuators support automated quarter-turn valve operation, with selection based on torque and required fail position.',
+    },
+    {
+      title: 'ESD & Control Packages',
+      description:
+        'Emergency shutdown packages combine compatible valves, actuators, and controls for application-specific isolation requirements.',
+    },
+    {
+      title: 'Electric Actuation',
+      description:
+        'Electric actuator packages support remote operation where electric power, controls, and feedback fit the installation requirements.',
+    },
   ],
   productFamilies: [
     'butterfly-valves',
+    'butterfly-damper-valves',
     'pneumatic-actuators',
     'electric-actuators',
   ],
@@ -799,15 +832,15 @@ const oilAndGas: IndustryContent = {
     },
   },
   seo: {
-    title: 'Oil and Gas Production | PDC Valve & Actuators',
+    title: 'Oil and Gas Applications | PDC Valve & Actuators',
     description:
-      'Flow-control valves and actuators for oil and gas production — wellhead systems, produced-fluid control, pressure reduction, and remote operation.',
+      'Valves, actuators, and engineered packages for oil and gas production, frac operations, process isolation, emergency shutdown, water handling, and utilities.',
     canonicalUrl: 'https://www.pdcvalve.com/industries/oil-and-gas',
     noIndex: false,
     openGraph: {
-      title: 'Oil and Gas Production | PDC Valve & Actuators',
+      title: 'Oil and Gas Applications | PDC Valve & Actuators',
       description:
-        'Flow-control valves and actuators for oil and gas production and wellhead systems.',
+        'Flow-control valves, actuators, and engineered packages for oil and gas applications.',
     },
   },
 };

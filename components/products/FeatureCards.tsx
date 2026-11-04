@@ -100,7 +100,7 @@ export default function FeatureCards({
               className="group/details bg-white open:bg-[#f8fbf9]"
             >
               <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 [&::-webkit-details-marker]:hidden">
-                <span className="flex h-8 min-w-8 items-center justify-center rounded-lg border border-[#cfe0d4] bg-[#f1f7f3] font-mono text-[9px] font-black tracking-[0.08em] text-[#168447]">
+                <span className="w-5 shrink-0 font-mono text-[10px] font-bold tabular-nums tracking-[0.04em] text-[#168447]">
                   {String(index + 1).padStart(2, '0')}
                 </span>
 

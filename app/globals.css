@@ -55,9 +55,7 @@
     @apply border-border;
   }
   html {
-    /* Slightly smaller root so the whole site reads tighter, closer to the
-       80%-zoom feel the user preferred, without going as small as a true 80%. */
-    font-size: 14px;
+    font-size: 16px;
     overflow-x: hidden;
     scrollbar-width: none;
   }
@@ -66,17 +64,57 @@
     height: 0;
     display: none;
   }
-  @media (min-width: 1024px) {
-    html {
-      font-size: 15px;
-    }
-  }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 32;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
     overflow-x: hidden;
     scrollbar-width: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-montserrat), Arial, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  h1 {
+    font-size: 2.625rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  h5,
+  h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  @media (max-width: 639px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+    }
   }
   body::-webkit-scrollbar {
     width: 0;

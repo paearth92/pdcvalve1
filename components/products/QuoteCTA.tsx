@@ -1,14 +1,26 @@
-import { Phone, Mail, ArrowRight, SlidersHorizontal } from 'lucide-react';
+import { Phone, Mail, SlidersHorizontal } from 'lucide-react';
+import Image from 'next/image';
 import { siteConfig } from '@/data/site';
 import RFQButton from '@/components/rfq/RFQButton';
 
 export default function QuoteCTA() {
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#216848] via-[#1b5c40] to-[#12503a] py-16 text-white sm:py-20">
-      <div aria-hidden="true" className="blueprint-grid pointer-events-none absolute inset-0 opacity-40" />
+    <section className="relative isolate overflow-hidden bg-[#0b1812] py-14 text-white sm:py-16 lg:py-20">
+      <Image
+        src="/images/company/pdc-facility-exterior-no-cars.png"
+        alt=""
+        fill
+        sizes="100vw"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 scale-105 object-cover object-center blur-[2px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 bg-[#081711]/70 backdrop-blur-[2px] lg:bg-gradient-to-r lg:from-[#081711]/92 lg:via-[#081711]/80 lg:to-[#081711]/48"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/85">
             <SlidersHorizontal className="h-4 w-4" />
             Application Support
@@ -22,17 +34,13 @@ export default function QuoteCTA() {
             requirements, identify suitable options, and coordinate engineering
             review when needed.
           </p>
-          <div className="mx-auto mt-6 h-px w-16 bg-white/35" />
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-4xl flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
-          <RFQButton
-            variant="secondary"
-            size="md"
-          />
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
+          <RFQButton variant="primary" size="md" />
           <a
             href={`mailto:${siteConfig.email}`}
-            className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            className="inline-flex items-center gap-2 rounded-md border border-brand-green bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:border-brand-green-dark hover:bg-brand-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/50"
           >
             <Mail className="h-4 w-4 text-white/80" />
             Talk to PDC Sales
@@ -40,7 +48,7 @@ export default function QuoteCTA() {
         </div>
 
         {/* Contact info row */}
-        <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center justify-center gap-4 text-sm text-white/80 sm:flex-row sm:gap-8">
+        <div className="mt-7 flex flex-col items-center justify-center gap-4 text-sm text-white/80 sm:flex-row sm:gap-8">
           <a
             href={`tel:${siteConfig.phone}`}
             className="inline-flex items-center gap-2 transition-colors hover:text-white"

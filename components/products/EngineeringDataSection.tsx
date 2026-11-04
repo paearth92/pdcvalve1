@@ -1505,7 +1505,7 @@ export default function EngineeringDataSection({
               <div className="mb-3 flex items-center justify-between gap-6">
                 <div className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#168447]">
                   <Settings2 className="h-3.5 w-3.5" />
-                  Published engineering datasets
+                  Engineering Data
                 </div>
 
                 <span className="text-[10px] font-semibold text-[#6b8175]">

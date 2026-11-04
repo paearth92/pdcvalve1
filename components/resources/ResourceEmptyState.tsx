@@ -27,7 +27,7 @@ export default function ResourceEmptyState({
           className="inline-flex items-center gap-2 rounded-md border border-brand-green-dark/15 bg-white px-5 py-3 text-sm font-semibold text-brand-steel transition-colors hover:border-brand-green/30 hover:text-brand-green-dark"
         >
           <Mail className="h-4 w-4 text-brand-green" />
-          Email Engineering
+          Contact PDC Sales
         </a>
       </div>
       <a

@@ -12,11 +12,12 @@ export const econotrol: ProductContent = {
   name: 'Econotrol',
   series: '09',
   shortDescription:
-    'A wafer-style butterfly damper valve designed for mid-range differential pressures and service conditions.',
+    'A wafer-style butterfly damper valve for mid-range differential-pressure applications, with configurable materials, seating, and actuation options.',
   overview:
-    'The PDC Econotrol Series 09 butterfly valve is available in sizes from 2 inches through 14 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Econotrol Series 09 wafer-style butterfly damper valve is available in sizes from 2 inches through 14 inches. Configurable materials, seats, packing, and actuation options support suitable low-pressure air and gas flow-control applications.',
   overviewParagraphs: [
-    'The PDC Econotrol Series 09 butterfly valve is available in sizes from 2 inches through 14 inches in a combination of materials and optional features suitable for most mid-range differential pressures and service conditions.',
+    'The PDC Econotrol Series 09 is a wafer-style butterfly damper valve for mid-range differential-pressure applications.',
+    'Materials, seating, packing, and actuation can be configured to meet the operating conditions and requirements of the application.',
   ],
   features: [
     {
@@ -62,23 +63,27 @@ export const econotrol: ProductContent = {
     },
     {
       title: 'Horizontal shaft installation',
-      description:
-        'Recommended installation with the shaft horizontal to the ground.',
+      description: 'Horizontal shaft installation is recommended.',
     },
   ],
   benefits: [],
   applications: [
-    'Flow control in low-pressure systems with moderate cycling below 500,000 cycles',
+    'Industrial air handling',
+    'Low-pressure gas',
+    'Combustion air',
+    'Process air',
+    'Ventilation and exhaust',
+    'General industrial flow control',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
     { label: 'Size Range', value: '2" through 14" for 125/150 lb. flanging' },
     { label: 'Temperature', value: 'Up to 450°F (232°C) with standard materials' },
-    { label: 'Pressure Rating', value: 'Varies with size. Refer to the Econotrol Series 09 brochure.' },
+    { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to Series 09 engineering data' },
     { label: 'Body Style', value: 'Wafer' },
-    { label: 'Shutoff Rating', value: 'ANSI Class II' },
-    { label: 'Seat Style', value: 'Swing-through' },
+    { label: 'Shutoff Rating', value: 'Approaches ANSI Class II under appropriate service conditions' },
+    { label: 'Seat Style', value: 'Swing-thru' },
   ],
   specGroups: [
     {
@@ -87,17 +92,20 @@ export const econotrol: ProductContent = {
       rows: [
         { label: 'Size Range', value: '2" through 14" for 125/150 lb. flanging' },
         { label: 'Body Style', value: 'Wafer' },
-        { label: 'Shutoff Rating', value: 'ANSI Class II' },
-        { label: 'Seat Style', value: 'Swing-through' },
+        { label: 'Shutoff Rating', value: 'Approaches ANSI Class II under appropriate service conditions' },
+        { label: 'Seat Style', value: 'Swing-thru' },
       ],
     },
     {
       heading: 'Materials',
       category: 'materials',
       rows: [
-        { label: 'Body Material', value: 'Cast iron standard' },
-        { label: 'Stem Material', value: '416 stainless steel standard' },
-        { label: 'Disc Material', value: 'Cast iron standard' },
+        { label: 'Body', value: 'Cast iron standard' },
+        { label: 'Disc', value: 'Cast iron standard' },
+        { label: 'Shaft', value: '416 stainless steel standard' },
+        { label: 'Bushing', value: 'Graphited bronze standard' },
+        { label: 'Packing', value: 'Graphited Teflon braid standard' },
+        { label: 'Packing Nut', value: 'Brass standard' },
       ],
     },
     {
@@ -111,7 +119,7 @@ export const econotrol: ProductContent = {
       heading: 'Pressure',
       category: 'pressure',
       rows: [
-        { label: 'Pressure Rating', value: 'Varies with size. Refer to the Econotrol Series 09 brochure.' },
+        { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to the Series 09 engineering data' },
       ],
     },
     {
@@ -122,20 +130,13 @@ export const econotrol: ProductContent = {
         { label: 'Flange', value: 'ASME/ANSI B16.5 Class 150' },
       ],
     },
-    {
-      heading: 'Certifications',
-      category: 'certifications',
-      rows: [
-        { label: 'Design Standard', value: 'ASME/ANSI B16.34, with exceptions for shell and hydro testing and face-to-face or laying lengths' },
-      ],
-    },
   ],
   downloads: [
     {
-      label: 'PDC Damper Valve Brochure',
+      label: 'PDC Econotrol Series 09 Brochure',
       type: 'pdf',
-      filename: 'PDC-Damper-Valve-Brochure.pdf',
-      url: 'https://pdcvalve.com/wp-content/uploads/2021/10/PDC-Damper-Valve-Brochure.pdf',
+      filename: 'pdc-econotrol-series-09-butterfly-valve.pdf',
+      url: '/documents/brochures/pdc-econotrol-series-09-butterfly-valve.pdf',
     },
   ],
   relatedProducts: [],
@@ -145,6 +146,14 @@ export const econotrol: ProductContent = {
   images: {
     hero: undefined,
     gallery: [
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/econotrol/lever-valve-square.jpg',
+        alt: 'PDC Econotrol Series 09 butterfly damper valve with manual lever',
+        kind: 'gallery',
+        caption: 'Econotrol Series 09 with Manual Lever',
+        width: 1254,
+        height: 1254,
+      },
       {
         src: '/images/products/butterfly-damper-valves/gallery/econotrol/6-inch-front.webp',
         alt: 'PDC Econotrol 6-inch butterfly damper valve front view with tapered machined-steel seat',

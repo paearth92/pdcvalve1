@@ -22,6 +22,8 @@ export interface CoreFunction {
 
 export interface ProductFamily {
   name: string;
+  /** Optional public card heading when the canonical family label differs. */
+  displayName?: string;
   slug: string;
   description: string;
 }

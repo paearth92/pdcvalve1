@@ -12,89 +12,106 @@ export const excel: ProductContent = {
   name: 'Excel',
   series: '40',
   shortDescription:
-    'PDC\u2019s premium butterfly damper valve for high-temperature, dirty-service, and very-high-cycle applications.',
+    'A configurable butterfly damper valve for high-temperature, dirty-service, and demanding industrial applications, available across a broad size range.',
   overview:
-    'The PDC Excel Series 40 butterfly valve is available in sizes from 2 inches through 60 inches in a combination of materials and optional features suitable for mid-range differential pressures and a wide range of temperature conditions.',
+    'The PDC Excel Series 40 is a wafer-style butterfly damper valve available in sizes from 2 inches through 60 inches. Its configurable construction supports high-temperature, dirty-service, and demanding industrial applications.',
   overviewParagraphs: [
-    'The PDC Excel Series 40 butterfly valve is available in sizes from 2 inches through 60 inches in a combination of materials and optional features suitable for mid-range differential pressures and a wide range of temperature conditions.',
+    'The PDC Excel Series 40 is a configurable butterfly damper valve available in sizes from 2 inches through 60 inches.',
+    'Material and seat configurations support high-temperature, dirty-service, and demanding industrial applications. Confirm operating limits with PDC for the selected configuration.',
   ],
   features: [
     {
-      title: 'Premium butterfly damper construction',
-      description: '',
+      title: 'Inboard bushings at both shaft ends',
+      description: 'Support shaft alignment and dependable operation.',
     },
     {
-      title: 'Includes Medium Duty upgrades',
-      description: '',
+      title: 'Close-tolerance machining',
+      description: 'Supports minimal leakage and dependable flow characteristics.',
     },
     {
-      title: 'Supports larger sizes and elevated temperatures',
-      description: '',
+      title: 'Adjustable graphited Teflon braid packing',
+      description: 'Packing can be adjusted to maintain sealing performance.',
     },
     {
-      title: 'Multiple seat configurations',
-      description: '',
+      title: 'Repackable without line removal',
+      description: 'Both shaft ends can be repacked without removing the valve from the line.',
     },
     {
-      title: 'Material options for demanding service conditions',
-      description: '',
+      title: 'Drilled and tapped actuator mounting pads',
+      description: 'Provide a sturdy interface for actuation equipment.',
     },
     {
-      title: 'Suitable for dirty-service applications',
-      description: '',
+      title: 'Multiple shaft-end configurations',
+      description: 'Support factory- or field-mounted actuation.',
     },
     {
-      title: 'Designed for very-high-cycle applications',
-      description: '',
+      title: 'Lightweight wafer design',
+      description: 'Solid-ring wafer construction supports a compact installation.',
+    },
+    {
+      title: 'Alignment holes',
+      description: 'Help reduce transfer of pipe stress to the valve body.',
+    },
+    {
+      title: 'Sizes from 2 inches through 60 inches',
+      description: 'A broad size range supports varied industrial flow-control requirements.',
+    },
+    {
+      title: 'High-temperature and dirty-service options',
+      description: 'Select materials and seat construction to suit the application; confirm operating limits with PDC.',
     },
   ],
   benefits: [],
   applications: [
-    'Flow control in low-pressure systems with very high cycling above 1 million cycles',
+    'High-temperature and dirty-service flow control in demanding industrial applications',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
-    { label: 'Size Range', value: '2" through 60" for high-temperature and dirty service with 125/150 lb. flanging' },
-    { label: 'Temperature', value: 'Up to 450°F (232°C) with standard materials; Up to 1500°F (815°C) with optional materials' },
-    { label: 'Pressure Rating', value: 'Varies with size. Refer to the applicable Excel Series 40 literature.' },
+    { label: 'Size Range', value: '2" through 60"' },
+    { label: 'Flanging', value: '125/150 lb.; confirm size-specific drilling with PDC' },
+    { label: 'Temperature', value: 'Up to 450°F with standard materials; consult PDC for elevated-temperature limits by configuration' },
+    { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to Series 40 engineering data' },
     { label: 'Body Style', value: 'Wafer' },
-    { label: 'Shutoff Rating', value: 'ANSI Class II; ANSI Class III available with optional seats' },
-    { label: 'Seat Style', value: 'Swing-through, step, and tadpole seat options' },
+    { label: 'Seat Style', value: 'Swing-thru, step, and tadpole seat options' },
   ],
   specGroups: [
     {
       heading: 'General',
       category: 'general',
       rows: [
-        { label: 'Size Range', value: '2" through 60" for high-temperature and dirty service with 125/150 lb. flanging' },
+        { label: 'Size Range', value: '2" through 60"' },
+        { label: 'Flanging', value: '125/150 lb.; confirm size-specific drilling with PDC' },
         { label: 'Body Style', value: 'Wafer' },
-        { label: 'Shutoff Rating', value: 'ANSI Class II' },
-        { label: 'Shutoff Rating', value: 'ANSI Class III available with optional seats' },
-        { label: 'Seat Style', value: 'Swing-through, step, and tadpole seat options' },
+        { label: 'Seat Style', value: 'Swing-thru, step, and tadpole seat options' },
+        { label: 'Shutoff', value: 'Depends on seat, size, and service conditions' },
       ],
     },
     {
       heading: 'Materials',
       category: 'materials',
       rows: [
-        { label: 'Stem Material', value: '416 stainless steel standard, with options available' },
-        { label: 'Disc Material', value: 'Cast iron standard, with options available' },
+        { label: 'Body', value: 'Cast iron' },
+        { label: 'Disc', value: '2–14 in.: cast iron; 16–24 in.: ductile iron; 26–60 in.: cast iron' },
+        { label: 'Shaft', value: '416 stainless steel' },
+        { label: 'Bushings', value: '2–14 in.: graphited bronze; 16–60 in.: bronze' },
+        { label: 'Packing', value: 'Graphited Teflon braid' },
+        { label: 'Packing Nut', value: '2–24 in.: brass; 26–60 in.: ductile iron' },
       ],
     },
     {
       heading: 'Temperature',
       category: 'temperature',
       rows: [
-        { label: 'Temperature', value: 'Up to 450°F (232°C) with standard materials' },
-        { label: 'Temperature', value: 'Up to 1500°F (815°C) with optional materials' },
+        { label: 'Temperature', value: 'Up to 450°F with standard materials' },
+        { label: 'Temperature', value: 'Consult PDC for elevated-temperature limits by configuration' },
       ],
     },
     {
       heading: 'Pressure',
       category: 'pressure',
       rows: [
-        { label: 'Pressure Rating', value: 'Varies with size. Refer to the applicable Excel Series 40 literature.' },
+        { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to Series 40 engineering data' },
       ],
     },
     {
@@ -116,10 +133,10 @@ export const excel: ProductContent = {
   ],
   downloads: [
     {
-      label: 'PDC Damper Valve Brochure',
+      label: 'PDC Excel Series 40 Brochure',
       type: 'pdf',
-      filename: 'PDC-Damper-Valve-Brochure.pdf',
-      url: 'https://pdcvalve.com/wp-content/uploads/2021/10/PDC-Damper-Valve-Brochure.pdf',
+      filename: 'pdc-excel-series-40-butterfly-valve.pdf',
+      url: '/documents/brochures/pdc-excel-series-40-butterfly-valve.pdf',
     },
   ],
   relatedProducts: [],
@@ -136,13 +153,13 @@ export const excel: ProductContent = {
   seo: {
     title: 'Excel Series 40 Butterfly Damper Valve | PDC Valve',
     description:
-      'Explore the PDC Excel Series 40 butterfly damper valve, including verified size, temperature, construction, and application information.',
+      'Explore the PDC Excel Series 40 butterfly damper valve for high-temperature and dirty-service applications, with product-specific selection data.',
     canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-damper-valves/excel',
     noIndex: false,
     openGraph: {
       title: 'Excel Series 40 Butterfly Damper Valve | PDC Valve',
       description:
-        'Explore the PDC Excel Series 40 butterfly damper valve, including verified size, temperature, construction, and application information.',
+        'Explore the PDC Excel Series 40 butterfly damper valve for high-temperature and dirty-service applications, with product-specific selection data.',
     },
   },
 };

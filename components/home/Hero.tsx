@@ -12,7 +12,6 @@ import {
   Settings,
   ShieldCheck,
   SlidersHorizontal,
-  Sparkles,
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
@@ -23,54 +22,17 @@ type MarqueeItem = {
 };
 
 const marqueeItems: MarqueeItem[] = [
-  {
-    label: 'Since 1970',
-    icon: Award,
-  },
-  {
-    label: 'ISO 9001',
-    icon: BadgeCheck,
-  },
-  {
-    label: 'In-House Machining',
-    icon: Factory,
-  },
-  {
-    label: 'Custom Assemblies',
-    icon: Boxes,
-  },
-  {
-    label: 'Butterfly Valves',
-    icon: SlidersHorizontal,
-  },
-  {
-    label: 'Pneumatic Actuators',
-    icon: Gauge,
-  },
-  {
-    label: 'Electric Actuators',
-    icon: CircuitBoard,
-  },
-  {
-    label: 'Valve Automation',
-    icon: Settings,
-  },
-  {
-    label: 'Process Control',
-    icon: Workflow,
-  },
-  {
-    label: 'Industrial Applications',
-    icon: Cog,
-  },
-  {
-    label: 'Engineered Solutions',
-    icon: Sparkles,
-  },
-  {
-    label: 'Quality Manufacturing',
-    icon: ShieldCheck,
-  },
+  { label: 'Butterfly & Damper Valves', icon: SlidersHorizontal },
+  { label: 'Valve Automation', icon: Settings },
+  { label: 'Pneumatic Actuation', icon: Gauge },
+  { label: 'Electric Actuation', icon: CircuitBoard },
+  { label: 'Application Engineering', icon: Workflow },
+  { label: 'Custom Valve Assemblies', icon: Boxes },
+  { label: 'In-House Machining', icon: Factory },
+  { label: 'Engineered Flow Control', icon: Cog },
+  { label: 'ISO 9001 Certified', icon: BadgeCheck },
+  { label: 'Pittsburgh Built', icon: ShieldCheck },
+  { label: 'Established 1970', icon: Award },
 ];
 
 export default function Hero() {
@@ -154,9 +116,9 @@ export default function Hero() {
 
           {/* Description */}
           <p className="hero-reveal hero-reveal-4 mx-auto mt-4 max-w-[34rem] text-[13.5px] leading-6 text-white/75 sm:mt-5 sm:text-base sm:leading-8 lg:mx-0 lg:mt-5 lg:max-w-[37rem] lg:text-[15px]">
-            From precision-machined butterfly valves to high-torque actuators,
-            PDC designs and manufactures flow-control solutions engineered for
-            demanding operating environments.
+            PDC brings industrial flow control, engineered valve automation,
+            and dependable process isolation together in application-specific
+            valve solutions.
           </p>
 
           {/* Primary + quote CTA */}

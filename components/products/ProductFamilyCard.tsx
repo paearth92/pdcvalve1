@@ -40,7 +40,7 @@ export default function ProductFamilyCard({
       {/* Content */}
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold tracking-tight text-brand-green-dark">
-          {product.name}
+          {product.displayName ?? product.name}
         </h3>
 
         {/* Divider */}

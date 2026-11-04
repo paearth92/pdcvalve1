@@ -17,6 +17,7 @@ import DesktopHeroFrame from '@/components/products/DesktopHeroFrame';
 import type { ProductFamilyData } from '@/types/product';
 import type { Product } from '@/types/product';
 import RFQButton from '@/components/rfq/RFQButton';
+import ShowcaseFamilyHero from '@/components/products/ShowcaseFamilyHero';
 
 export default function ProductFamilyTemplate({
   family,
@@ -32,14 +33,28 @@ export default function ProductFamilyTemplate({
   ];
 
   const hasProducts = products.length > 0;
+  const useShowcaseLayout =
+    family.slug === 'butterfly-valves' ||
+    family.slug === 'butterfly-damper-valves';
   const hasAppCards = family.applications && family.applications.length > 0;
   const hasDownloads = family.downloads && family.downloads.length > 0;
-  const hasOverviewSections = !!family.overviewSections;
+  const overviewSections = family.overviewSections;
+  const hasOverviewSections = Boolean(
+    overviewSections &&
+      (overviewSections.introduction.trim() ||
+        overviewSections.advantages.length > 0 ||
+        overviewSections.applications.length > 0 ||
+        overviewSections.customization.trim()),
+  );
 
   return (
     <>
       <Breadcrumbs items={breadcrumbs} />
 
+      {useShowcaseLayout ? (
+        <ShowcaseFamilyHero family={family} />
+      ) : (
+        <>
       {/* ===== Mobile Hero — full-bleed image, then text/CTAs below ===== */}
       <section className="bg-brand-green-dark text-white sm:hidden">
         {/* Full-bleed image */}
@@ -245,6 +260,8 @@ export default function ProductFamilyTemplate({
           </div>
         )}
       </DesktopHeroFrame>
+        </>
+      )}
 
       {/* ===== Main Content ===== */}
       <div className="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -258,7 +275,7 @@ export default function ProductFamilyTemplate({
             {hasOverviewSections ? (
               <div className="mt-8 grid gap-8 lg:grid-cols-2">
                 {/* Introduction */}
-                <Reveal>
+                {family.overviewSections!.introduction.trim() && <Reveal>
                   <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
                     <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
                       Introduction
@@ -268,10 +285,10 @@ export default function ProductFamilyTemplate({
                       {family.overviewSections!.introduction}
                     </p>
                   </div>
-                </Reveal>
+                </Reveal>}
 
                 {/* Engineering Advantages */}
-                <Reveal delay={100}>
+                {family.overviewSections!.advantages.length > 0 && <Reveal delay={100}>
                   <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
                     <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
                       Engineering Advantages
@@ -289,10 +306,10 @@ export default function ProductFamilyTemplate({
                       ))}
                     </ul>
                   </div>
-                </Reveal>
+                </Reveal>}
 
                 {/* Typical Applications */}
-                <Reveal delay={150}>
+                {family.overviewSections!.applications.length > 0 && <Reveal delay={150}>
                   <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
                     <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
                       Typical Applications
@@ -310,10 +327,10 @@ export default function ProductFamilyTemplate({
                       ))}
                     </ul>
                   </div>
-                </Reveal>
+                </Reveal>}
 
                 {/* Customization */}
-                <Reveal delay={200}>
+                {family.overviewSections!.customization.trim() && <Reveal delay={200}>
                   <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
                     <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
                       Customization Capability
@@ -323,7 +340,7 @@ export default function ProductFamilyTemplate({
                       {family.overviewSections!.customization}
                     </p>
                   </div>
-                </Reveal>
+                </Reveal>}
               </div>
             ) : (
               <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-brand-graphite/75">
@@ -339,10 +356,20 @@ export default function ProductFamilyTemplate({
             </Reveal>
             <div className="mt-8">
               {hasProducts ? (
-                <div className="grid grid-cols-1 gap-0 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div
+                  className={
+                    useShowcaseLayout
+                      ? 'grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-16'
+                      : 'grid grid-cols-1 gap-0 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3'
+                  }
+                >
                   {products.map((p, i) => (
                     <Reveal key={p.id} delay={i * 60}>
-                      <ProductCard product={p} familyRoute={family.route} />
+                      <ProductCard
+                        product={p}
+                        familyRoute={family.route}
+                        appearance={useShowcaseLayout ? 'showcase' : 'standard'}
+                      />
                     </Reveal>
                   ))}
                 </div>

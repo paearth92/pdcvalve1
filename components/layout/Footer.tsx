@@ -63,6 +63,22 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
+              {col.title === 'Support' && (
+                <div className="mt-6">
+                  <p className="mb-2 text-xs font-semibold text-white/80">
+                    ISO 9001:2015 Certified
+                  </p>
+                  <div className="w-fit rounded-md bg-white p-2">
+                    <Image
+                      src="/images/company/iso-9001-2015-badge.png"
+                      alt="TCB Audit Services ISO 9001 badge"
+                      width={300}
+                      height={184}
+                      className="h-auto w-36 sm:w-40"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
