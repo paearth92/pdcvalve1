@@ -109,6 +109,8 @@ export interface ProductFamilyData {
   name: string;
   slug: string;
   shortDescription: string;
+  /** Optional display title override for the product-family hero. */
+  heroTitle?: string;
   route: string;
   imageRef: string;
   overview?: string;
