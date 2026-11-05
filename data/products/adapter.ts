@@ -81,6 +81,7 @@ export function productContentToDetail(
     engineering:
       content.engineering ??
       getProductEngineeringData(content.familySlug, content.slug),
+    engineeringIntro: content.engineeringIntro,
     features: (content.features ?? []).map((f) => ({
       iconSlug: f.iconSlug ?? 'default',
       title: f.title,

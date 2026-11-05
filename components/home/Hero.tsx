@@ -81,7 +81,7 @@ export default function Hero() {
           HERO CONTENT
       ====================================================== */}
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-84px)] w-full max-w-7xl items-center justify-center px-5 pb-24 pt-20 text-center sm:px-6 sm:pb-28 md:min-h-[calc(100svh-118px)] lg:items-end lg:justify-start lg:px-8 lg:pb-28 lg:pt-7 lg:text-left">
-        <div className="w-full max-w-[690px]">
+        <div className="w-full max-w-[850px]">
           {/* Eyebrow */}
           <div className="hero-reveal hero-reveal-1 flex justify-center lg:justify-start">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#55cf86]/40 bg-[#082319]/65 px-3.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.16em] text-[#70db99] shadow-[0_10px_30px_rgba(0,0,0,0.20)] backdrop-blur-md sm:text-[11px] lg:px-4 lg:py-2 lg:text-[11px]">
@@ -93,7 +93,7 @@ export default function Hero() {
 
           {/* Main heading */}
           <div className="mt-4 sm:mt-5">
-            <h1 className="pdc-hero-heading text-[2rem] font-extrabold leading-[1.1] tracking-[-0.045em] text-white sm:text-[2.6rem] lg:text-[3.45rem] xl:text-[3.75rem]">
+            <h1 className="pdc-hero-heading text-[2rem] font-extrabold leading-[1.1] tracking-[-0.045em] text-white sm:text-[2.6rem] lg:text-[3.45rem] xl:text-[5.25rem]">
               <span className="pdc-hero-line pdc-hero-line-1 block overflow-hidden pb-[0.08em]">
                 <span className="pdc-hero-line-inner block">Engineered Flow</span>
               </span>
@@ -104,7 +104,7 @@ export default function Hero() {
           </div>
 
           {/* Secondary heading */}
-          <h2 className="hero-reveal hero-reveal-3 mt-2 max-w-[650px] text-[1.35rem] font-bold leading-[1.16] tracking-[-0.03em] sm:mt-3 sm:text-[1.8rem] lg:text-[2.1rem] xl:text-[2.25rem]">
+          <h2 className="hero-reveal hero-reveal-3 mt-2 max-w-[700px] text-[1.35rem] font-bold leading-[1.16] tracking-[-0.03em] sm:mt-3 sm:text-[1.8rem] lg:text-[2.1rem] xl:text-[2.5rem]">
             <span className="block bg-gradient-to-r from-[#76df99] via-[#45c778] to-[#168447] bg-clip-text text-transparent">
               Built Around Your
             </span>
@@ -115,7 +115,7 @@ export default function Hero() {
           </h2>
 
           {/* Description */}
-          <p className="hero-reveal hero-reveal-4 mx-auto mt-4 max-w-[34rem] text-[13.5px] leading-6 text-white/75 sm:mt-5 sm:text-base sm:leading-8 lg:mx-0 lg:mt-5 lg:max-w-[37rem] lg:text-[15px]">
+          <p className="hero-reveal hero-reveal-4 mx-auto mt-4 max-w-[34rem] text-[13.5px] leading-6 text-white/75 sm:mt-5 sm:text-base sm:leading-8 lg:mx-0 lg:mt-5 lg:max-w-[43.75rem] lg:text-[15px] xl:text-xl">
             PDC brings industrial flow control, engineered valve automation,
             and dependable process isolation together in application-specific
             valve solutions.
@@ -209,7 +209,7 @@ function MarqueeGroup() {
               <Icon className="h-3.5 w-3.5" strokeWidth={1.8} />
             </span>
 
-            <span className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.09em] text-white/78 sm:text-xs">
+            <span className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.09em] text-white/78 sm:text-xs lg:text-[26px]">
               {label}
             </span>
           </div>

@@ -246,6 +246,8 @@ export interface ProductContent {
   overview?: string;
   /** Multi-paragraph overview for detail pages. */
   overviewParagraphs?: string[];
+  /** Product-specific introduction shown above its engineering datasets. */
+  engineeringIntro?: string;
   features?: FeatureEntry[];
   benefits?: BenefitEntry[];
   applications?: string[];

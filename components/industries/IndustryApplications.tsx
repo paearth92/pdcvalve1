@@ -36,15 +36,18 @@ export default function IndustryApplications({
         </Reveal>
         <Reveal delay={80}>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {industry.applications.map((app, i) => (
+            {(industry.applicationCards ?? industry.applications.map((app) => ({
+              title: app,
+              description: '',
+            }))).map((app, i) => (
               <div
-                key={i}
+                key={app.title}
                 className="rounded-lg border border-white/10 bg-white/5 p-5 text-sm leading-relaxed text-white/75 transition-colors hover:bg-white/10"
               >
-                <span className="font-mono text-xs font-bold text-brand-green/70">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <p className="mt-2">{app}</p>
+                <h3 className="font-bold text-white">{app.title}</h3>
+                {app.description ? (
+                  <p className="mt-2 text-white/70">{app.description}</p>
+                ) : null}
               </div>
             ))}
           </div>

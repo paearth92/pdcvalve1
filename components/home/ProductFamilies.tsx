@@ -4,7 +4,15 @@ import ProductFamilyCard from '@/components/products/ProductFamilyCard';
 import { productFamilies } from '@/data/site';
 import Reveal from '@/components/products/Reveal';
 
-export default function ProductFamilies() {
+export default function ProductFamilies({
+  headingLevel = 2,
+  showCatalogLink = true,
+}: {
+  headingLevel?: 1 | 2;
+  showCatalogLink?: boolean;
+}) {
+  const Heading = headingLevel === 1 ? 'h1' : 'h2';
+
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-28">
       {/* Subtle top divider line */}
@@ -19,22 +27,24 @@ export default function ProductFamilies() {
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
                 Product Catalog
               </span>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green-dark sm:text-4xl lg:text-[2.75rem]">
+              <Heading className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green-dark sm:text-4xl lg:text-[2.75rem]">
                 Industrial Flow Control Products
-              </h2>
+              </Heading>
               <p className="mt-4 text-base leading-relaxed text-brand-graphite/65">
                 Explore PDC&apos;s engineered valve and actuation solutions.
               </p>
               <div className="mt-6 h-px w-16 bg-brand-green/40" />
             </div>
 
-            <Link
-              href="/products"
-              className="group inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-green transition-colors hover:text-brand-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
-            >
-              View all products
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            {showCatalogLink && (
+              <Link
+                href="/products"
+                className="group inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-green transition-colors hover:text-brand-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
+              >
+                View all products
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            )}
           </div>
         </Reveal>
 

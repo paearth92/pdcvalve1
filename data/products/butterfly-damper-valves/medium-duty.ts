@@ -19,6 +19,8 @@ export const mediumDuty: ProductContent = {
     'The PDC Medium Duty Series 01 is a wafer-style butterfly damper valve available in sizes from 2 inches through 24 inches.',
     'Material, seating, and configuration options suit a broad range of mid-range differential-pressure applications.',
   ],
+  engineeringIntro:
+    'Published dimensions, materials, Cv values, torque requirements, and configuration data for Medium Duty Series 01.',
   features: [
     {
       title: 'Inboard graphited-bronze bushings',

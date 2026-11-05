@@ -16,9 +16,11 @@ export const excel: ProductContent = {
   overview:
     'The PDC Excel Series 40 is a wafer-style butterfly damper valve available in sizes from 2 inches through 60 inches. Its configurable construction supports high-temperature, dirty-service, and demanding industrial applications.',
   overviewParagraphs: [
-    'The PDC Excel Series 40 is a configurable butterfly damper valve available in sizes from 2 inches through 60 inches.',
-    'Material and seat configurations support high-temperature, dirty-service, and demanding industrial applications. Confirm operating limits with PDC for the selected configuration.',
+    'The PDC Excel Series 40 is a wafer-style butterfly damper valve available in sizes from 2 inches through 60 inches for high-temperature, dirty-service, and demanding industrial flow-control applications.',
+    'A broad range of materials and configuration options allows the Excel Series 40 to support mid-range differential pressures across a wide range of operating temperatures and service conditions.',
   ],
+  engineeringIntro:
+    'Published dimensions, materials, Cv values, torque requirements, and configuration data for Excel Series 40.',
   features: [
     {
       title: 'Inboard bushings at both shaft ends',

@@ -199,7 +199,8 @@ export default function ProductDetailTemplate({
               />
             </Reveal>
             <p className="max-w-xl text-sm leading-6 text-brand-graphite/55 lg:text-right">
-              {`Published dimensions, materials, flow coefficients, torque requirements, and configuration data for ${product.name.includes('Series') ? product.name : `${product.name}${product.series ? ` Series ${product.series}` : ''}`}.`}
+              {product.engineeringIntro ??
+                `Published dimensions, materials, flow coefficients, torque requirements, and configuration data for ${product.name.includes('Series') ? product.name : `${product.name}${product.series ? ` Series ${product.series}` : ''}`}.`}
             </p>
           </div>
           <div className="mt-6 lg:mt-8">

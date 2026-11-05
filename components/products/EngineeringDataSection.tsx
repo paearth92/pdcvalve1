@@ -319,7 +319,7 @@ function buildChartGroup(
       eyebrow: 'Interactive flow visualization',
       title: 'Cv vs. Disc Angle',
       description:
-        'Explore PDC’s published flow-coefficient data visually. Select a valve size to see how Cv changes as the disc opens, then use the exact table below for engineering selection.',
+        'Select a valve size to visualize published PDC Cv data across the available disc-angle range. Refer to the engineering tables below for exact published values.',
       selectorLabel: /model/i.test(labelHeader) ? 'Model' : 'Valve size',
       xAxisLabel: 'Disc angle (°)',
       yAxisLabel: 'Cv',
@@ -351,7 +351,7 @@ function buildChartGroup(
         : 'Required Torque vs. Pressure Drop',
     description: isActuator
       ? 'Select an actuator model to visualize PDC’s published output torque across the available supply-pressure range. Exact source values remain available in the engineering table below.'
-      : 'Select a valve size to visualize PDC’s published torque data across the available pressure range. Exact source values remain available in the engineering table below.',
+      : 'Select a valve size to visualize published PDC torque data across the applicable pressure-drop range. Refer to the engineering tables below for exact published values.',
     selectorLabel: /model/i.test(labelHeader) ? 'Actuator model' : 'Valve size',
     xAxisLabel: usesBar
       ? 'Differential pressure (bar)'

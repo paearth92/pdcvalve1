@@ -768,49 +768,89 @@ const oilAndGas: IndustryContent = {
   shortDescription:
     'Valves, actuators, and engineered packages for oil and gas production, frac operations, process isolation, and equipment support.',
   overview:
-    'PDC supplies butterfly, ball, and gate valves with pneumatic, electric, and Scotch yoke actuation for oil and gas operations. Engineered packages can support emergency shutdown (ESD), process isolation, water handling, production equipment, and facility utilities.',
+    'Oil and gas operations require dependable valve and actuation solutions across production, frac, water handling, process, isolation, and emergency shutdown systems. PDC supports these applications with configured valves, actuators, and assemblies.',
   overviewParagraphs: [
-    'PDC provides valves, actuators, and engineered valve assemblies for production, frac operations, water handling, process piping, emergency shutdown, utility, and equipment-support applications.',
-    'Packages can be configured around the media, pressure, temperature, shutoff requirements, fail position, torque, controls, and installation. Mounting hardware, accessories, and controls can be selected for the application.',
+    'Oil and gas operations require dependable valve and actuation solutions across production, frac, water handling, process, isolation, and emergency shutdown systems.',
+    'PDC supports a broad range of oilfield and process applications with butterfly valves, ball valves, gate valves, actuators, and complete automated valve assemblies.',
+    'Valve packages can be configured around the media, pressure, temperature, required shutoff, fail position, operating torque, control requirements, and installation conditions of the application.',
+    'PDC can also support custom mounting, accessories, controls, and engineered actuation packages for specialized field requirements.',
   ],
   applications: [
-    'Frac water and water handling',
-    'Process isolation and flow control',
-    'Emergency shutdown systems',
-    'Production and process equipment',
-    'Utility and facility support',
-    'Automated valve packages with controls and feedback',
+    'Frac and Water Handling',
+    'Process Isolation and Flow Control',
+    'Emergency Shutdown Systems',
+    'Production and Processing Equipment',
+    'Utility and Support Systems',
+    'Automated Valve Packages',
+  ],
+  applicationCards: [
+    {
+      iconSlug: 'water',
+      title: 'Frac and Water Handling',
+      description:
+        'Butterfly valves and automated assemblies for frac water, water transfer, storage, and related field-service applications.',
+    },
+    {
+      iconSlug: 'workflow',
+      title: 'Process Isolation and Flow Control',
+      description:
+        'Butterfly, ball, and gate valves for suitable process piping requiring isolation, shutoff, throttling, or automated operation.',
+    },
+    {
+      iconSlug: 'shield',
+      title: 'Emergency Shutdown Systems',
+      description:
+        'Ball-valve and actuator packages using Scotch yoke actuation and ESD controls for applications requiring rapid or defined fail-safe shutdown.',
+    },
+    {
+      iconSlug: 'factory',
+      title: 'Production and Processing Equipment',
+      description:
+        'Valve and actuator assemblies for production equipment, separators, packaged systems, and supporting process machinery.',
+    },
+    {
+      iconSlug: 'settings',
+      title: 'Utility and Support Systems',
+      description:
+        'Valve assemblies for water, air, gas, cooling, and other supporting oilfield or facility utilities.',
+    },
+    {
+      iconSlug: 'automation',
+      title: 'Automated Valve Packages',
+      description:
+        'Pneumatic, electric, or Scotch yoke actuator packages with appropriate controls, feedback, and accessories for remote or automated operation.',
+    },
   ],
   productSolutions: [
     {
       title: 'Butterfly Valves',
       description:
-        'Industrial butterfly valves support flow control and isolation in suitable process, water-handling, and utility applications.',
+        'Butterfly valves support flow control and isolation in process piping, water handling, utilities, and related oilfield applications.',
     },
     {
       title: 'Ball Valves',
       description:
-        'Ball valves can be configured for process isolation and emergency shutdown service where the application and operating requirements are suitable.',
+        'Ball valves can be configured for process isolation and emergency shutdown applications when the media, pressure, temperature, shutoff, and operating requirements are suitable.',
     },
     {
       title: 'Gate Valves',
       description:
-        'Gate valves provide an isolation option for oil and gas process and utility systems, selected to match the media and service conditions.',
+        'Gate valves provide an isolation option for suitable oilfield, process, and utility systems, selected to match the media and service conditions.',
     },
     {
       title: 'Pneumatic & Scotch Yoke Actuation',
       description:
-        'Pneumatic and Scotch yoke actuators support automated quarter-turn valve operation, with selection based on torque and required fail position.',
+        'Pneumatic and Scotch yoke actuation support automated valve operation, with selection based on required torque, controls, and fail position.',
     },
     {
       title: 'ESD & Control Packages',
       description:
-        'Emergency shutdown packages combine compatible valves, actuators, and controls for application-specific isolation requirements.',
+        'ESD packages combine compatible valves, actuators, and controls for application-specific isolation and fail-safe requirements.',
     },
     {
       title: 'Electric Actuation',
       description:
-        'Electric actuator packages support remote operation where electric power, controls, and feedback fit the installation requirements.',
+        'Electric actuator packages support remote operation when power, controls, feedback, and installation requirements are suitable.',
     },
   ],
   productFamilies: [

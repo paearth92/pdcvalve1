@@ -19,6 +19,8 @@ export const econotrol: ProductContent = {
     'The PDC Econotrol Series 09 is a wafer-style butterfly damper valve for mid-range differential-pressure applications.',
     'Materials, seating, packing, and actuation can be configured to meet the operating conditions and requirements of the application.',
   ],
+  engineeringIntro:
+    'Published dimensions, materials, Cv values, torque requirements, and configuration data for Econotrol Series 09.',
   features: [
     {
       title: 'Inboard graphited-bronze bushings',

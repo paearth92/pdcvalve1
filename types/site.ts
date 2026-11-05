@@ -141,5 +141,6 @@ export interface ProductDetail {
   downloads: ProductDownload[];
   gallery?: ProductGalleryImage[];
   engineering?: ProductEngineeringData;
+  engineeringIntro?: string;
   related: ProductFamily[];
 }

@@ -31,10 +31,10 @@ export default function DatasheetsPage() {
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white/75">
               <ClipboardList className="h-3.5 w-3.5" />
-              Technical Data
+              Product Resources
             </span>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.04] tracking-tight sm:text-5xl">
-              Product Engineering Data
+              Technical Data
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-white/75 sm:text-base">
               Access PDC product specifications, dimensions, materials, torque
@@ -78,10 +78,12 @@ export default function DatasheetsPage() {
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Ruler, label: 'Dimensions and weights' },
-              { icon: Settings2, label: 'Materials and configurations' },
+              { icon: Settings2, label: 'Materials of construction' },
               { icon: ClipboardList, label: 'Maximum differential pressure' },
-              { icon: Settings2, label: 'Torque requirements and Cv values' },
-              { icon: FileText, label: 'Seats, packing, and shaft configurations' },
+              { icon: Settings2, label: 'Required torque' },
+              { icon: FileText, label: 'Cv values' },
+              { icon: FileText, label: 'Seat and packing options' },
+              { icon: Settings2, label: 'Shaft configurations' },
               { icon: ClipboardList, label: 'Product-specific selection data' },
             ].map(({ icon: Icon, label }) => (
               <div
@@ -107,9 +109,10 @@ export default function DatasheetsPage() {
               Looking for Specific Technical Information?
             </h2>
             <p className="mt-3 text-sm leading-6 text-brand-graphite/70 sm:text-base">
-              If the information you need is not online, contact PDC Sales.
-              Additional drawings, technical data, product documents, and
-              application information may be available on request.
+              If the information you need is not published online, contact PDC
+              Sales. Additional drawings, technical data, product
+              documentation, and application-specific information may be
+              available upon request.
             </p>
           </div>
           <Link

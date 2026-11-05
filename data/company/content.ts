@@ -146,7 +146,7 @@ const aboutPage: CompanyPageContent = {
         'Published in-house machining capabilities support integrated valve assemblies and responsive production.',
     },
     {
-      iconSlug: 'inventory',
+      iconSlug: 'patterns',
       title: 'Inventory for Turnaround',
       description:
         'A large inventory of valves and actuators is maintained to support short lead times and fast turnaround.',
@@ -295,27 +295,29 @@ const manufacturingPage: CompanyPageContent = {
   overview:
     'PDC’s manufacturing capabilities bring manual machining, valve and actuator assembly, customization, and inspection together to support standard products and application-specific packages.',
   overviewParagraphs: [
-    'PDC combines in-house manual machining, valve assembly, actuator integration, painting, and inspection to support standard products and application-specific builds.',
-    'PDC does not cast in-house. A broad pattern inventory and stocked cast components support product variety and the assembly of configured valve packages.',
+    'PDC combines in-house manual machining, valve assembly, actuator integration, painting, inspection, and customization to support standard and application-specific valve packages.',
+    'PDC does not cast in-house, but maintains access to a broad range of casting patterns and stocked cast components.',
   ],
   sections: [
     {
       heading: 'In-House Machining',
       eyebrow: 'Machining',
       body:
-        'PDC performs manual machining to prepare and modify valve bodies and components for standard and application-specific assemblies. Work includes milling, drilling, lathe work, and boring.',
+        'PDC performs manual machining operations including milling, drilling, lathe work, and boring. Typical components machined or modified in-house include valve bodies, discs, brackets, couplings, and related assembly components.',
       items: [
-        'Machining for valve bodies, discs, brackets, and couplings',
-        'Broad casting-pattern access and stocked cast components',
-        'PDC does not perform casting in-house',
+        'Valve bodies, discs, brackets, couplings, and related assembly components',
+        'PDC does not cast in-house',
+        'Broad access to casting patterns and stocked cast components',
       ],
     },
     {
       heading: 'Valve & Actuator Assembly',
       eyebrow: 'Integration',
       body:
-        'PDC assembles valves with pneumatic and electric actuators, mounting hardware, controls, and accessories to create a complete package for the application.',
+        'PDC assembles valve and actuator packages in-house, including:',
       items: [
+        'Valve assembly',
+        'Pneumatic and electric actuator mounting',
         'Brackets, couplings, and linkages',
         'Solenoids, limit switches, positioners, and controls',
         'Manual operators and accessories',
@@ -327,7 +329,7 @@ const manufacturingPage: CompanyPageContent = {
       heading: 'Custom Configuration',
       eyebrow: 'Application Fit',
       body:
-        'PDC can configure application-specific packages with nonstandard mounting, brackets, couplings, linkages, shaft arrangements, multi-valve assemblies, and controls.',
+        'PDC supports non-standard and application-specific assemblies when a standard catalog configuration does not meet the requirement. Custom work may include special actuator mounting, brackets, couplings, linkage systems, shaft arrangements, multi-valve configurations, and application-specific controls.',
       items: [
         'Special mounting and shaft arrangements',
         'Custom brackets, couplings, and linkages',
@@ -338,19 +340,20 @@ const manufacturingPage: CompanyPageContent = {
       heading: 'Inspection & Production Support',
       eyebrow: 'Quality',
       body:
-        'PDC checks dimensions against drawings and specifications and verifies actuator and accessory functionality as part of assembly and inspection. ISO 9001:2015 certified processes support consistent production.',
+        'Dimensional inspections are performed against applicable drawings and specifications, and actuator operation and accessory functionality are checked as appropriate during assembly. Manufacturing and assembly activities operate within PDC’s ISO 9001:2015 quality management system.',
       items: [
         'Dimensional checks against drawings and specifications',
         'Actuator and accessory function checks',
-        'Inventory of castings, actuators, accessories, and components',
+        'Inventory of selected castings, actuators, accessories, valve components, and other commonly used production materials',
       ],
     },
     {
       heading: 'A Flexible Assembly Shop',
       eyebrow: 'How We Work',
       bodyParagraphs: [
-        'PDC’s shop supports a range of product configurations and application requirements rather than relying on high-volume automated machining.',
-        'Product knowledge, manual machining, assembly, actuator integration, customization, and inspection work together to prepare valve packages for customer applications.',
+        'PDC’s strength is not mass production or high-volume automated machining.',
+        'It is the ability to combine product knowledge, manual machining, valve assembly, actuator integration, customization, and inspection under one roof.',
+        'That flexibility allows PDC to support standard products as well as application-specific valve and actuator assemblies.',
       ],
       dark: true,
     },
@@ -360,25 +363,25 @@ const manufacturingPage: CompanyPageContent = {
       iconSlug: 'machining',
       title: 'In-House Machining',
       description:
-        'Manual milling, drilling, lathe work, and boring for valve components and assemblies.',
+        'Manual milling, drilling, lathe work, and boring support in-house component machining and modification.',
+    },
+    {
+      iconSlug: 'inventory',
+      title: 'Broad Casting Pattern Access',
+      description:
+        'PDC does not cast in-house, but maintains access to a broad range of casting patterns and stocked cast components.',
     },
     {
       iconSlug: 'assembly',
-      title: 'Valve & Actuator Assembly',
+      title: 'Custom Valve Assemblies',
       description:
-        'Pneumatic and electric actuator integration with brackets, couplings, controls, and accessories.',
+        'Application-specific valve packages can include custom actuator mounting, brackets, couplings, linkages, and controls.',
     },
     {
-      iconSlug: 'custom',
-      title: 'Custom Configurations',
+      iconSlug: 'inventory',
+      title: 'Valve & Actuator Inventory',
       description:
-        'Special mounting, shaft arrangements, linkages, and multi-valve packages tailored to application requirements.',
-    },
-    {
-      iconSlug: 'quality',
-      title: 'Inspection & Quality',
-      description:
-        'Dimensional and function checks support consistent assembly and documented quality processes.',
+        'Selected castings, actuators, accessories, valve components, and commonly used production materials support ongoing assembly needs.',
     },
   ],
   seo: {

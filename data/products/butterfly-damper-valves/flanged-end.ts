@@ -12,45 +12,45 @@ export const flangedEnd: ProductContent = {
   name: 'Flanged Series 39',
   series: '39',
   shortDescription:
-    'A full-flanged butterfly damper valve for low-pressure industrial applications requiring 125/150 lb. flanging and dead-end connection capability.',
+    'A full-flanged butterfly damper valve for industrial flow-control applications requiring 125/150 lb. flanging and dead-end connection capability.',
   overview:
-    'The PDC Flanged Series 39 butterfly damper valve is available in sizes from 4 inches through 14 inches with 125/150 lb. flanging. Its full-face construction supports installation and dead-end connection service, with material, seat, packing, and shaft options for different service conditions.',
+    'The PDC Flanged Series 39 is a full-flanged butterfly damper valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging. Its full-faced flange design supports straightforward installation and allows dead-end flange connection. Material, seat, packing, and shaft options are available for a range of mid-range differential-pressure applications and service conditions.',
   overviewParagraphs: [
-    'The PDC Flanged Series 39 butterfly damper valve is available in sizes from 4 inches through 14 inches with 125/150 lb. flanging.',
-    'Its full-face construction supports installation and dead-end connection service. Material, seat, packing, and shaft options are available to suit different service conditions.',
+    'The PDC Flanged Series 39 is a full-flanged butterfly damper valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging.',
+    'Its full-faced flange design supports straightforward installation and allows dead-end flange connection. Material, seat, packing, and shaft options are available for a range of mid-range differential-pressure applications and service conditions.',
   ],
   features: [
     {
       title: 'Inboard graphited-bronze bushings',
-      description: 'Support long life, low operating torque, and non-freezing operation.',
+      description: 'Support long life, low torque, and non-freezing operation.',
     },
     {
       title: 'Close-tolerance machining',
-      description: 'Supports minimal leakage and dependable flow characteristics.',
+      description: 'Helps minimize leakage and maintain dependable flow.',
     },
     {
       title: 'Adjustable graphited Teflon braid packing',
-      description: 'Packing can be adjusted to maintain sealing performance.',
+      description: 'Allows packing adjustment to support shaft-sealing performance.',
     },
     {
       title: 'Repackable without line removal',
-      description: 'Valve can be repacked without line removal.',
+      description: 'The valve can be repacked without removing it from the pipeline.',
     },
     {
       title: 'Drilled and tapped mounting pads',
-      description: 'Provide a sturdy mounting interface for actuators and accessories.',
+      description: 'Provide convenient mounting points for actuation equipment.',
     },
     {
       title: 'Multiple shaft-end configurations',
-      description: 'Support factory- or field-mounted actuation.',
+      description: 'Flatted, keywayed, and hexed ends support factory or field actuation.',
     },
     {
       title: 'Full-faced flange construction',
-      description: 'Supports flanged installation, including dead-end connection service.',
+      description: 'Supports straightforward installation and dead-end flange connection.',
     },
     {
       title: 'Contoured bore',
-      description: 'Supports the valve’s flow characteristics.',
+      description: 'Improves flow characteristics.',
     },
   ],
   benefits: [],
@@ -63,7 +63,7 @@ export const flangedEnd: ProductContent = {
     { label: 'Size Range', value: '4" through 14"' },
     { label: 'Flanging', value: '125/150 lb.' },
     { label: 'Temperature', value: 'Up to 450°F with standard materials' },
-    { label: 'Pressure Rating', value: '25 PSI containment; maximum differential pressure varies by size and configuration' },
+    { label: 'Maximum Containment', value: '25 PSI; maximum differential pressure varies by size and configuration' },
     { label: 'Body Style', value: 'Full-flanged' },
     { label: 'Seat Style', value: 'Swing-thru standard; Angle optional' },
   ],
@@ -102,7 +102,7 @@ export const flangedEnd: ProductContent = {
       heading: 'Pressure',
       category: 'pressure',
       rows: [
-        { label: 'Containment Pressure', value: '25 PSI' },
+        { label: 'Maximum Containment', value: '25 PSI' },
         { label: 'Maximum Differential Pressure', value: 'Varies by size and configuration; refer to published engineering data' },
       ],
     },
