@@ -8,9 +8,9 @@ import { combustionValve } from './combustion-valve';
 import { threadEnd } from './thread-end';
 
 /**
- * Butterfly Damper Valves — product content registry.
+ * Damper and Control Valves — product content registry.
  *
- * All seven product series for the Butterfly Damper Valves family.
+ * All seven product series for the Damper and Control Valves family.
  * Each entry follows the canonical ProductContent interface so the
  * existing templates can render them without layout changes.
  */

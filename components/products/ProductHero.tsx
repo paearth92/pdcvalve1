@@ -9,6 +9,7 @@ import FlexibleImage from '@/components/shared/FlexibleImage';
 import AssetPlaceholder from '@/components/shared/AssetPlaceholder';
 import DesktopHeroFrame from '@/components/products/DesktopHeroFrame';
 import ShowcaseProductHero from '@/components/products/ShowcaseProductHero';
+import { approvedProductBackground } from '@/data/assets/registry';
 
 export default function ProductHero({ product }: { product: ProductDetail }) {
   const heroBasePath = getProductHeroBasePath(product.familySlug, product.slug);
@@ -16,24 +17,18 @@ export default function ProductHero({ product }: { product: ProductDetail }) {
 
   if (
     product.familySlug === 'butterfly-damper-valves' ||
-    product.familySlug === 'butterfly-valves'
+    product.familySlug === 'butterfly-valves' ||
+    (product.gallery?.some((image) => Boolean(image.src)) ?? false) ||
+    Boolean(product.transparentImage?.src)
   ) {
-    const cutoutPath =
-      product.familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol'
-        ? '/images/products/butterfly-damper-valves/econotrol-hero-cutout.png'
-        : undefined;
-    const backgroundPath =
-      product.familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol'
-        ? '/images/products/butterfly-damper-valves/econotrol-hero-background.png'
-        : undefined;
+    const galleryImages = product.gallery ?? [];
 
     return (
       <ShowcaseProductHero
         product={product}
-        cardBasePath={cardBasePath}
-        heroBasePath={heroBasePath}
-        cutoutPath={cutoutPath}
-        backgroundPath={backgroundPath}
+        transparentImage={product.transparentImage}
+        galleryImages={galleryImages}
+        backgroundPath={approvedProductBackground}
       />
     );
   }
@@ -49,7 +44,7 @@ export default function ProductHero({ product }: { product: ProductDetail }) {
           {cardBasePath ? (
             <FlexibleImage
               basePath={cardBasePath}
-              alt={product.name}
+              alt=""
               className="h-full w-full object-cover object-center"
               width={1200}
               height={800}
@@ -148,7 +143,7 @@ export default function ProductHero({ product }: { product: ProductDetail }) {
         {heroBasePath ? (
           <FlexibleImage
             basePath={heroBasePath}
-            alt={product.name}
+            alt=""
             className="absolute inset-0 h-full w-full object-cover object-center"
             loading="eager"
           />
@@ -249,7 +244,7 @@ export default function ProductHero({ product }: { product: ProductDetail }) {
        * ========================================================== */}
       <DesktopHeroFrame
         basePath={heroBasePath}
-        alt={product.name}
+        alt=""
         contentSide="right"
         placeholderVariant="product"
         placeholderLabel="Product image coming soon"

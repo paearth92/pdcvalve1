@@ -15,11 +15,11 @@ export default function PopularDownloads({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-brand-green" />
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-graphite/70">
             Popular
           </span>
         </div>
-        <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+        <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
           Frequently Downloaded Literature
         </h2>
         <div className="mt-4 h-px w-16 bg-brand-green/40" />

@@ -7,16 +7,16 @@ export const flangedEnd: ProductContent = {
   id: 'butterfly-damper-valves_flanged-end',
   slug: 'flanged-end',
   familySlug: 'butterfly-damper-valves',
-  familyName: 'Butterfly Damper Valves',
+  familyName: 'Damper and Control Valves',
   route: '/products/butterfly-damper-valves/flanged-end',
   name: 'Flanged Series 39',
   series: '39',
   shortDescription:
-    'A full-flanged butterfly damper valve for industrial flow-control applications requiring 125/150 lb. flanging and dead-end connection capability.',
+    'A full-flanged Damper and Control Valve for industrial flow-control applications requiring 125/150 lb. flanging and dead-end connection capability.',
   overview:
-    'The PDC Flanged Series 39 is a full-flanged butterfly damper valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging. Its full-faced flange design supports straightforward installation and allows dead-end flange connection. Material, seat, packing, and shaft options are available for a range of mid-range differential-pressure applications and service conditions.',
+    'The PDC Flanged Series 39 is a full-flanged Damper and Control Valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging. Its full-faced flange design supports straightforward installation and allows dead-end flange connection. Material, seat, packing, and shaft options are available for a range of mid-range differential-pressure applications and service conditions.',
   overviewParagraphs: [
-    'The PDC Flanged Series 39 is a full-flanged butterfly damper valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging.',
+    'The PDC Flanged Series 39 is a full-flanged Damper and Control Valve available in sizes from 4 inches through 14 inches for 125/150 lb. flanging.',
     'Its full-faced flange design supports straightforward installation and allows dead-end flange connection. Material, seat, packing, and shaft options are available for a range of mid-range differential-pressure applications and service conditions.',
   ],
   features: [
@@ -133,7 +133,7 @@ export const flangedEnd: ProductContent = {
     gallery: [
       {
         src: '/images/products/butterfly-damper-valves/gallery/flanged-end/isometric-view.webp',
-        alt: 'PDC Flanged End butterfly damper valve isometric view with lock lever',
+        alt: 'PDC Flanged End Damper and Control Valve isometric view with lock lever',
         kind: 'gallery',
         caption: 'Lock-Lever Isometric View',
         width: 1536,
@@ -141,7 +141,7 @@ export const flangedEnd: ProductContent = {
       },
       {
         src: '/images/products/butterfly-damper-valves/gallery/flanged-end/alternate-isometric-view.webp',
-        alt: 'PDC Flanged End butterfly damper valve alternate isometric view',
+        alt: 'PDC Flanged End Damper and Control Valve alternate isometric view',
         kind: 'gallery',
         caption: 'Alternate Isometric View',
         width: 1536,
@@ -153,15 +153,15 @@ export const flangedEnd: ProductContent = {
     thumbnail: undefined,
   },
   seo: {
-    title: 'Flanged Series 39 Butterfly Damper Valve | PDC Valve',
+    title: 'Flanged Series 39 Damper and Control Valve | PDC Valve',
     description:
-      'Explore the PDC Flanged Series 39 butterfly damper valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
+      'Explore the PDC Flanged Series 39 Damper and Control Valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
     canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-damper-valves/flanged-end',
     noIndex: false,
     openGraph: {
-      title: 'Flanged Series 39 Butterfly Damper Valve | PDC Valve',
+      title: 'Flanged Series 39 Damper and Control Valve | PDC Valve',
       description:
-        'Explore the PDC Flanged Series 39 butterfly damper valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
+        'Explore the PDC Flanged Series 39 Damper and Control Valve, including size, 125/150 lb. flanging, dead-end connection capability, materials, and engineering data.',
     },
   },
 };

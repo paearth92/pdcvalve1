@@ -230,7 +230,7 @@ const engineeringPage: CompanyPageContent = {
       heading: 'Product Technologies Supported',
       eyebrow: 'Portfolio',
       body:
-        'Engineering support spans PDC’s published valve and actuation portfolio, including butterfly damper valves, butterfly valves, check valves, pneumatic actuators, electric actuators, and electro-hydraulic actuators.',
+        'Engineering support spans PDC’s published valve and actuation portfolio, including Damper and Control Valves, butterfly valves, check valves, pneumatic actuators, electric actuators, and electro-hydraulic actuators.',
     },
   ],
   featureCards: [

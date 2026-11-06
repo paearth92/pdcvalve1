@@ -33,7 +33,7 @@ export default function HomeCTA() {
           <div className="hidden lg:block" aria-hidden="true" />
 
           <Reveal className="lg:pl-8">
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
               Start a Project
             </span>

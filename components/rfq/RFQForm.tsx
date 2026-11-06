@@ -192,14 +192,14 @@ export default function RFQForm({
   return (
     <div className="flex h-full min-h-0 flex-col lg:flex-row">
       {/* ── Rail ─────────────────────────────────────────────── */}
-      <aside className="shrink-0 bg-[#08180f] text-white lg:flex lg:w-[310px] lg:flex-col lg:justify-between lg:p-8">
+      <aside className="shrink-0 border-b border-[#d7e4d8] bg-[linear-gradient(155deg,#f8faf8_0%,#eef4ee_56%,#e7f0e8_100%)] text-[#173323] lg:flex lg:w-[310px] lg:flex-col lg:justify-between lg:border-b-0 lg:border-r lg:p-8">
         {/* Mobile bar */}
         <div className="flex items-center justify-between gap-3 px-5 py-4 lg:hidden">
           <div className="min-w-0">
             <h2 id="rfq-title" className="truncate text-base font-extrabold tracking-tight">
               Request for Quote
             </h2>
-            <p className="mt-0.5 text-[11px] text-white/55">
+            <p className="mt-0.5 text-[11px] text-[#53685a]">
               Step {stepIndex + 1} of {steps.length} · {currentStep.label}
             </p>
           </div>
@@ -207,14 +207,14 @@ export default function RFQForm({
             type="button"
             onClick={onClose}
             aria-label="Close request for quote"
-            className="-mr-1 shrink-0 rounded-md p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+            className="-mr-1 shrink-0 rounded-md p-2 text-[#53685a] transition-colors hover:bg-white/75 hover:text-[#173323]"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Mobile progress bar */}
-        <div className="h-0.5 w-full bg-white/10 lg:hidden">
+        <div className="h-0.5 w-full bg-[#d6e2d8] lg:hidden">
           <div
             className="h-full bg-brand-green transition-[width] duration-500 ease-out"
             style={{ width: `${((stepIndex + 1) / steps.length) * 100}%` }}
@@ -226,7 +226,7 @@ export default function RFQForm({
           <h2 className="text-xl font-extrabold leading-tight tracking-tight">
             Request for Quote
           </h2>
-          <p className="mt-2 text-[13px] leading-relaxed text-white/55">
+          <p className="mt-2 text-[13px] leading-relaxed text-[#53685a]">
             Tell us your operating conditions and our application engineers will
             specify the right package.
           </p>
@@ -246,8 +246,8 @@ export default function RFQForm({
                     aria-current={active ? 'step' : undefined}
                     className={cn(
                       'group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors',
-                      active && 'bg-white/10',
-                      reachable && !active && 'hover:bg-white/5',
+                      active && 'border border-white/90 bg-white/85 shadow-sm shadow-[#173323]/5',
+                      reachable && !active && 'hover:bg-white/65',
                       !reachable && 'cursor-not-allowed opacity-40',
                     )}
                   >
@@ -255,8 +255,8 @@ export default function RFQForm({
                       className={cn(
                         'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold transition-colors',
                         active && 'border-brand-green bg-brand-green text-white',
-                        done && 'border-brand-green/50 bg-brand-green/15 text-brand-green',
-                        !active && !done && 'border-white/25 text-white/50',
+                        done && 'border-brand-green/45 bg-brand-green/10 text-brand-green-dark',
+                        !active && !done && 'border-[#173323]/20 text-[#53685a]',
                       )}
                     >
                       {done ? <Check className="h-3.5 w-3.5" /> : i + 1}
@@ -264,7 +264,7 @@ export default function RFQForm({
                     <span
                       className={cn(
                         'text-[13px] font-semibold',
-                        active ? 'text-white' : 'text-white/60',
+                        active ? 'text-[#173323]' : 'text-[#53685a]',
                       )}
                     >
                       {s.label}
@@ -279,17 +279,17 @@ export default function RFQForm({
         {/* Rail footer */}
         <div className="hidden lg:block">
           {contextLabel && (
-            <div className="mb-5 rounded-lg border border-brand-green/25 bg-brand-green/10 px-3.5 py-3">
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-green">
+            <div className="mb-5 rounded-lg border border-[#cbdccc] bg-white/75 px-3.5 py-3 shadow-sm shadow-[#173323]/[0.04]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-green-dark">
                 Quoting
               </p>
-              <p className="mt-1 text-[13px] font-semibold leading-snug text-white">
+              <p className="mt-1 text-[13px] font-semibold leading-snug text-[#173323]">
                 {contextLabel}
               </p>
             </div>
           )}
 
-          <div className="flex flex-col gap-2.5 border-t border-white/10 pt-5 text-[12px] text-white/55">
+          <div className="flex flex-col gap-2.5 border-t border-[#cfddd0] pt-5 text-[12px] text-[#53685a]">
             <span className="flex items-center gap-2">
               <Clock className="h-3.5 w-3.5 text-brand-green" />
               Response within 1–2 business days

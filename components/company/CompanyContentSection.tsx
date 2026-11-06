@@ -22,11 +22,11 @@ export default function CompanyContentSection({
 
             <div>
               {section.eyebrow && (
-                <span className="text-[9px] font-bold uppercase tracking-[0.19em] text-brand-green">
+                <span className="text-[9px] font-bold uppercase tracking-[0.19em] text-brand-graphite/70">
                   {section.eyebrow}
                 </span>
               )}
-              <h2 className="mt-2 max-w-sm text-2xl font-extrabold leading-[1.08] tracking-[-0.03em] text-brand-green-dark sm:text-[1.8rem]">
+              <h2 className="mt-2 max-w-sm text-2xl font-extrabold leading-[1.08] tracking-[-0.03em] text-brand-green sm:text-[1.8rem]">
                 {section.heading}
               </h2>
             </div>

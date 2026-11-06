@@ -32,7 +32,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
   {
     title: 'Products',
     links: [
-      { label: 'Butterfly Damper Valves', href: '/products/butterfly-damper-valves' },
+      { label: 'Damper and Control Valves', href: '/products/butterfly-damper-valves' },
       { label: 'Butterfly Valves', href: '/products/butterfly-valves' },
       { label: 'Pneumatic Actuators', href: '/products/pneumatic-actuators' },
       { label: 'Electric Actuators', href: '/products/electric-actuators' },
@@ -85,7 +85,7 @@ export const coreFunctions: CoreFunction[] = [
 
 export const productFamilies: ProductFamily[] = [
   {
-    name: 'Butterfly Damper Valves',
+    name: 'Damper and Control Valves',
     displayName: 'Damper & Control Valves',
     slug: 'butterfly-damper-valves',
     description:
@@ -203,7 +203,7 @@ export const megaMenuColumns: MegaMenuColumn[] = [
   {
     groups: [
       {
-        heading: 'Butterfly Damper Valves',
+        heading: 'Damper and Control Valves',
         headingSlug: 'butterfly-damper-valves',
         links: [
           { label: 'Econotrol', slug: 'econotrol' },

@@ -1,8 +1,6 @@
 import type { ProductContent } from '@/types/content';
 
-/**
- * Triple Offset Butterfly Valve — verified product content.
- */
+/** Series 68 Triple Offset Butterfly Valve — revised to Jon's November 6 review. */
 export const tripleOffset: ProductContent = {
   id: 'butterfly-valves_triple-offset',
   slug: 'triple-offset',
@@ -10,173 +8,157 @@ export const tripleOffset: ProductContent = {
   familyName: 'Butterfly Valves',
   route: '/products/butterfly-valves/triple-offset',
   name: 'Triple Offset Butterfly Valve',
-  series: '',
+  series: '68',
   shortDescription:
-    'A torque-seated triple-offset butterfly valve for throttling, positive isolation, bidirectional flow control, and high-temperature steam service.',
+    'A torque-seated triple-offset butterfly valve for tight shutoff, throttling, and severe-service applications requiring metal-to-metal sealing and elevated-temperature capability.',
   overview:
-    'PDC Triple Offset Butterfly Valves are available in a variety of ANSI and PN classes, sizes, and configurations.',
+    'PDC Series 68 Triple Offset Butterfly Valves are available in a variety of ANSI and PN pressure classes, sizes, body styles, and material configurations for demanding industrial service.',
   overviewParagraphs: [
-    'PDC Triple Offset Butterfly Valves are available in a variety of ANSI and PN classes, sizes, and configurations.',
-    'They are suitable for throttling and positive-isolation applications and support bidirectional flow control, zero-leakage service, low fugitive emissions, and steam applications up to 1022°F (550°C).',
-    'The triple-offset sealing system allows the disc to move along the body seat and disc seal without rubbing. When closed, the disc-mounted seal ring energizes the body seat to create a tight fit.',
-    'The laminated seal uses grafoil layers between metal laminations. Its resilient construction accommodates minor body deformation caused by temperature changes and helps prevent jamming while supporting bubble-tight shutoff.',
+    'PDC Series 68 Triple Offset Butterfly Valves are available in a variety of ANSI and PN pressure classes, sizes, body styles, and material configurations for demanding industrial service.',
+    'The triple-offset design supports throttling and tight-shutoff applications with bidirectional sealing and control capability across a range of process conditions. The product review describes zero leakage compared with API 598.',
+    'The three-offset geometry allows the disc to lift away from the seat during rotation, minimizing rubbing and interference between the disc and sealing surfaces. Final sealing is torque-seated as the valve reaches the closed position.',
+    'Series 68 valves serve process fluids, hydrocarbons, steam and geothermal steam, hot and sour gas, sulfur recovery, corrosive media, and abrasive service. Temperature capability extends from -40°F to 1435°F (-40°C to 815°C), depending on selected materials and configuration.',
   ],
   features: [
     {
       title: 'Metal-to-metal sealing',
-      description: '',
+      description:
+        'Metal-seated construction supports tight shutoff in demanding pressure and temperature service.',
     },
     {
       title: 'Triple-offset quarter-turn design',
-      description: '',
+      description:
+        'Three distinct offsets eliminate disc and seat interference through most of the operating cycle.',
     },
     {
       title: 'Torque-seated operation',
-      description: '',
-    },
-    {
-      title: 'Increased torque increases sealing tightness',
-      description: '',
+      description:
+        'Final sealing is achieved through applied closing torque, with increased torque increasing sealing tightness.',
     },
     {
       title: 'Bidirectional tight shutoff',
-      description: '',
+      description: 'Designed to provide tight shutoff in either flow direction.',
     },
     {
       title: 'Zero leakage compared with API 598',
-      description: '',
+      description:
+        'Series 68 is designed for zero-leakage shutoff performance compared with API 598 requirements.',
     },
     {
       title: 'Non-rubbing rotational seating',
-      description: '',
+      description:
+        'The disc lifts away from the seat during rotation, reducing rubbing and wear.',
     },
     {
-      title: 'No jamming',
-      description: '',
+      title: 'No jamming or body cavities',
+      description:
+        'Valve geometry minimizes interference and eliminates body cavities associated with other valve designs.',
     },
     {
-      title: 'No body cavities',
-      description: '',
+      title: 'Fire-safe and fire-tested construction',
+      description:
+        'Series 68 is inherently fire safe and is tested in accordance with applicable fire-test standards.',
     },
     {
-      title: 'Reduced space and weight compared with gate and ball valves',
-      description: '',
-    },
-    {
-      title: 'Inherently fire-safe design',
-      description: '',
-    },
-    {
-      title: 'Fire-tested construction',
-      description: '',
-    },
-    {
-      title: 'Reduced maintenance requirements',
-      description: '',
+      title: 'Reduced space and maintenance requirements',
+      description:
+        'Quarter-turn construction offers reduced space and weight compared with gate and ball valves while supporting lower maintenance requirements.',
     },
     {
       title: 'Flow-control capability',
-      description: '',
+      description:
+        'Suitable for throttling and control applications in addition to tight-shutoff service.',
     },
   ],
   benefits: [],
   applications: [
     'Process fluids',
     'Hydrocarbons',
-    'Steam',
-    'Geothermal steam',
-    'Hot gas',
-    'Sour gas',
-    'Blowdown service',
+    'Steam Service',
+    'Hot Gas Service',
+    'Blowdown',
     'Sulfur recovery',
-    'Acid service',
-    'Caustic service',
-    'Chloride service',
+    'Corrosive Service',
     'Abrasive service',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
-    { label: 'Size Range', value: '2" to 48"' },
-    { label: 'Valve Type', value: 'Triple Offset Butterfly Valve' },
-    { label: 'Maximum Operating Temperature', value: '550°C (1022°F)' },
-    { label: 'Pressure Rating', value: 'Class 150, ASME B16.34' },
-    { label: 'Leakage Class', value: 'ASME B16.104 Class VI' },
-    { label: 'Body Material', value: 'WCB, CF8, CF8M' },
-    { label: 'End Connections', value: 'Wafer, Lug, and Flanged (3" to 24")' },
-    { label: 'Operation', value: 'Hand Lever; Worm Gear Box' },
+    { label: 'Size Range', value: 'Class 150: 3"–112"; Class 300: 3"–60"; Class 600: 3"–48"; Class 900: 6"–32"' },
+    { label: 'Valve Type', value: 'Series 68 triple-offset butterfly valve' },
+    { label: 'Temperature Range', value: '-40°F to 1435°F (-40°C to 815°C), depending on materials and configuration' },
+    { label: 'Pressure Classes', value: 'ANSI Class 150, 300, 600, and 900; Class 1500 available with Class 900 trims' },
+    { label: 'Shutoff Performance', value: 'Bidirectional tight shutoff; zero leakage compared with API 598' },
+    { label: 'Body Styles', value: 'Double-flanged, wafer, lugged, and butt-welded' },
+    { label: 'Body Materials', value: 'WCB carbon steel, CF8/CF8M stainless steel, and additional alloys' },
   ],
   specGroups: [
     {
       heading: 'General',
       category: 'general',
       rows: [
-        { label: 'Size Range', value: '2" to 48"' },
-        { label: 'Larger Sizes', value: 'Available on request' },
-        { label: 'Valve Type', value: 'Triple Offset Butterfly Valve' },
-        { label: 'Service', value: 'Throttling and positive isolation' },
-        { label: 'Flow Direction', value: 'Bidirectional' },
+        { label: 'Size Range', value: 'Class 150: 3"–112"; Class 300: 3"–60"; Class 600: 3"–48"; Class 900: 6"–32"' },
+        { label: 'Valve Type', value: 'Series 68 triple-offset butterfly valve' },
+        { label: 'Body Styles', value: 'Double-flanged, wafer, lugged, and butt-welded' },
+        { label: 'Operating Service', value: 'Throttling and tight shutoff; bidirectional sealing' },
       ],
     },
     {
       heading: 'Temperature',
       category: 'temperature',
       rows: [
-        { label: 'Maximum Operating Temperature', value: '550°C' },
-        { label: 'Fahrenheit Equivalent', value: '1022°F' },
-        { label: 'Higher Temperatures', value: 'Available on request' },
+        { label: 'Operating Range', value: '-40°F to 1435°F (-40°C to 815°C)' },
+        { label: 'Capability', value: 'Depends on selected materials, pressure class, and configuration' },
       ],
     },
     {
-      heading: 'Pressure',
-      category: 'pressure',
+      heading: 'Pressure & Performance',
+      category: 'performance',
       rows: [
-        { label: 'Pressure Rating', value: 'As per Class 150, ASME B16.34' },
-        { label: 'Leakage Class', value: 'ASME B16.104 Class VI' },
+        { label: 'Pressure Range', value: 'Full vacuum to +250 bar, depending on class and configuration' },
+        { label: 'ANSI Classes', value: '150, 300, 600, and 900' },
+        { label: 'Class 1500', value: 'Available with Class 900 trims' },
+        { label: 'Shutoff', value: 'Bidirectional tight shutoff; zero leakage compared with API 598' },
       ],
     },
     {
       heading: 'Materials',
       category: 'materials',
       rows: [
-        { label: 'Body Material', value: 'WCB, CF8, CF8M' },
-        { label: 'Stem Material', value: '304, 316, 410, and 17-4PH stainless steel' },
-        { label: 'Disc Material', value: 'CF8, CF8M' },
-        { label: 'Seat Materials', value: 'Viton, PTFE, EPDM, and 304 stainless steel with grafoil' },
+        { label: 'Carbon Steel', value: 'WCB' },
+        { label: 'Stainless Steel', value: 'CF8 and CF8M' },
+        { label: 'Alloy Steel', value: 'WC6 and WC9' },
+        { label: 'Low-Temperature Materials', value: 'LCB and LC3' },
+        { label: 'Additional Materials', value: 'Duplex, super duplex, Monel, Hastelloy, Inconel, Alloy 20, aluminum bronze, and titanium' },
       ],
     },
     {
       heading: 'Connections',
       category: 'connections',
       rows: [
-        { label: 'Wafer', value: '3" to 24"' },
-        { label: 'Lug', value: '3" to 24"' },
-        { label: 'Flanged', value: '3" to 24"' },
-        { label: 'Flange Standards', value: 'ANSI B16.5 Class 150 and 300' },
-        { label: 'Additional Flange Standards', value: 'BS 4504 and AWWA C207' },
-        { label: 'Top Mounting Standard', value: 'ISO 5211' },
+        { label: 'Body Styles', value: 'Double-flanged, wafer, lugged, and butt-welded' },
+        { label: 'Face-to-Face Standards', value: 'API, ISO, ANSI, and ASME' },
+        { label: 'Flange Standards', value: 'ANSI, ISO, DIN, UNI, and JIS' },
       ],
     },
     {
-      heading: 'Standards',
+      heading: 'Design & Testing Standards',
       category: 'certifications',
       rows: [
-        { label: 'Face-to-Face', value: 'API 609 Category B' },
-        { label: 'Design and Manufacturing', value: 'API 609, BS EN 593, and AWWA C504' },
-        { label: 'Inspection and Testing', value: 'API 598, BS EN 12266, AWWA C504, and ISO 5208' },
-      ],
-    },
-    {
-      heading: 'Operation',
-      category: 'operation',
-      rows: [
-        { label: 'Operation', value: 'Hand Lever' },
-        { label: 'Operation', value: 'Worm Gear Box' },
-        { label: 'Operation', value: 'Variable closing speed as required' },
+        { label: 'Design', value: 'API 609, ANSI B16.34, and ASME Section VIII' },
+        { label: 'Inspection and Testing', value: 'API 598 and ISO 5208' },
+        { label: 'Fire Testing', value: 'BS 6755 and API 607' },
       ],
     },
   ],
-  downloads: [],
+  downloads: [
+    {
+      label: 'Series 68 Literature — Cv and Class 150, 300, and 600 Dimensions',
+      type: 'pdf',
+      filename: 'pdc-series-68-triple-offset-butterfly-valves.pdf',
+      url: '/documents/technical/pdc-series-68-triple-offset-butterfly-valves.pdf',
+    },
+  ],
   relatedProducts: [
     {
       familySlug: 'butterfly-valves',
@@ -195,16 +177,15 @@ export const tripleOffset: ProductContent = {
     thumbnail: undefined,
   },
   seo: {
-    title: 'Triple Offset Butterfly Valve | PDC Valve',
+    title: 'Series 68 Triple Offset Butterfly Valve | PDC Valve',
     description:
-      'Explore PDC Triple Offset Butterfly Valves for throttling, positive isolation, bidirectional flow control, and high-temperature steam applications.',
-    canonicalUrl:
-      'https://www.pdcvalve.com/products/butterfly-valves/triple-offset',
+      'Explore PDC Series 68 triple-offset butterfly valves for bidirectional tight shutoff, throttling, and severe-service applications.',
+    canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-valves/triple-offset',
     noIndex: false,
     openGraph: {
-      title: 'Triple Offset Butterfly Valve | PDC Valve',
+      title: 'Series 68 Triple Offset Butterfly Valve | PDC Valve',
       description:
-        'Explore PDC Triple Offset Butterfly Valves for throttling, positive isolation, bidirectional flow control, and high-temperature steam applications.',
+        'Explore PDC Series 68 triple-offset butterfly valves for bidirectional tight shutoff, throttling, and severe-service applications.',
     },
   },
 };

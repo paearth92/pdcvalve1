@@ -12,7 +12,7 @@ export default function IndustryApplications({
   if (!industry.applications || industry.applications.length === 0) return null;
 
   return (
-    <section className="relative isolate overflow-hidden bg-brand-green-dark py-16 text-white sm:py-20">
+    <section className="pdc-green-texture relative isolate overflow-hidden bg-brand-green-dark py-16 text-white sm:py-20">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(22,132,71,0.12),transparent_55%)]"
@@ -25,7 +25,7 @@ export default function IndustryApplications({
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               Applications
             </span>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">

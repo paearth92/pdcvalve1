@@ -7,16 +7,16 @@ export const excel: ProductContent = {
   id: 'butterfly-damper-valves_excel',
   slug: 'excel',
   familySlug: 'butterfly-damper-valves',
-  familyName: 'Butterfly Damper Valves',
+  familyName: 'Damper and Control Valves',
   route: '/products/butterfly-damper-valves/excel',
   name: 'Excel',
   series: '40',
   shortDescription:
-    'A configurable butterfly damper valve for high-temperature, dirty-service, and demanding industrial applications, available across a broad size range.',
+    'A configurable Damper and Control Valve for high-temperature, dirty-service, and demanding industrial applications, available across a broad size range.',
   overview:
-    'The PDC Excel Series 40 is a wafer-style butterfly damper valve available in sizes from 2 inches through 60 inches. Its configurable construction supports high-temperature, dirty-service, and demanding industrial applications.',
+    'The PDC Excel Series 40 is a wafer-style Damper and Control Valve available in sizes from 2 inches through 60 inches. Its configurable construction supports high-temperature, dirty-service, and demanding industrial applications.',
   overviewParagraphs: [
-    'The PDC Excel Series 40 is a wafer-style butterfly damper valve available in sizes from 2 inches through 60 inches for high-temperature, dirty-service, and demanding industrial flow-control applications.',
+    'The PDC Excel Series 40 is a wafer-style Damper and Control Valve available in sizes from 2 inches through 60 inches for high-temperature, dirty-service, and demanding industrial flow-control applications.',
     'A broad range of materials and configuration options allows the Excel Series 40 to support mid-range differential pressures across a wide range of operating temperatures and service conditions.',
   ],
   engineeringIntro:
@@ -147,21 +147,38 @@ export const excel: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/excel-series-40/excel-series-40-angle-view.webp',
+        alt: 'PDC Excel Series 40 butterfly damper valve hot assembly, alternate angled view',
+        kind: 'gallery',
+        caption: 'Excel Series 40 — Angled Assembly',
+        width: 1350,
+        height: 1800,
+      },
+      {
+        src: '/images/products/butterfly-damper-valves/gallery/excel-series-40/excel-series-40-full-assembly.webp',
+        alt: 'Complete PDC Excel Series 40 butterfly damper valve hot assembly',
+        kind: 'gallery',
+        caption: 'Excel Series 40 — Full Assembly',
+        width: 1350,
+        height: 1800,
+      },
+    ],
     transparentPng: undefined,
     technicalDrawings: undefined,
     thumbnail: undefined,
   },
   seo: {
-    title: 'Excel Series 40 Butterfly Damper Valve | PDC Valve',
+    title: 'Excel Series 40 Damper and Control Valve | PDC Valve',
     description:
-      'Explore the PDC Excel Series 40 butterfly damper valve for high-temperature and dirty-service applications, with product-specific selection data.',
+      'Explore the PDC Excel Series 40 Damper and Control Valve for high-temperature and dirty-service applications, with product-specific selection data.',
     canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-damper-valves/excel',
     noIndex: false,
     openGraph: {
-      title: 'Excel Series 40 Butterfly Damper Valve | PDC Valve',
+      title: 'Excel Series 40 Damper and Control Valve | PDC Valve',
       description:
-        'Explore the PDC Excel Series 40 butterfly damper valve for high-temperature and dirty-service applications, with product-specific selection data.',
+        'Explore the PDC Excel Series 40 Damper and Control Valve for high-temperature and dirty-service applications, with product-specific selection data.',
     },
   },
 };

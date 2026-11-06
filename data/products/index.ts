@@ -28,9 +28,20 @@ export function getProductBySlug(
   );
 }
 
-/** Get all products belonging to a family. */
+/**
+ * Get products in their curated family-page order when productRefs are
+ * provided; otherwise include every product assigned to the family.
+ */
 export function getProductsByFamily(familySlug: string): Product[] {
-  return products.filter((p) => p.familySlug === familySlug);
+  const familyProducts = products.filter((p) => p.familySlug === familySlug);
+  const productRefs = getProductFamilyContent(familySlug)?.productRefs;
+
+  if (!productRefs?.length) return familyProducts;
+
+  const bySlug = new Map(familyProducts.map((product) => [product.slug, product]));
+  return productRefs
+    .map((slug) => bySlug.get(slug))
+    .filter((product): product is Product => Boolean(product));
 }
 
 // Content migration framework re-exports

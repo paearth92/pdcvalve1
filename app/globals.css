@@ -415,20 +415,18 @@
    HERO VIDEO FADE-IN
    ========================================================= */
 
-@keyframes heroVideoFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 .pdc-hero-video {
   opacity: 0;
-  animation: heroVideoFadeIn 1.2s ease-out 0.4s forwards;
+  transition: opacity 800ms ease-out;
+}
+
+.pdc-hero-video[data-started='true'] {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .pdc-hero-video {
-    opacity: 1;
-    animation: none;
+    transition: none;
   }
 }
 
@@ -546,7 +544,7 @@
 }
 
 .pdc-trust-marquee-track {
-  animation: pdcTrustMarquee 38s linear infinite;
+  animation: pdcTrustMarquee 44s linear infinite;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   will-change: transform;
@@ -570,5 +568,123 @@
   }
   .pdc-trust-marquee::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* Quiet surface grain for solid green panels. Keep this off image-backed sections. */
+.pdc-green-texture {
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.055), transparent 44%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+  background-size: auto, 13px 13px;
+}
+
+/* Product-family items reveal their action panel on pointer hover or keyboard focus. */
+.family-product-card {
+  isolation: isolate;
+  perspective: 900px;
+  transition: z-index 0s linear 200ms;
+}
+
+.family-product-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: -12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(249, 252, 249, 0.9),
+    rgba(232, 243, 235, 0.8)
+  );
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  backdrop-filter: blur(12px) saturate(125%);
+  box-shadow: 0 10px 28px rgba(7, 30, 18, 0);
+  content: '';
+  opacity: 0;
+  transition:
+    opacity 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.family-product-card__actions {
+  justify-content: center;
+  position: static;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.family-product-card__product-image {
+  transform: translate3d(0, 0, 0) scale(1) rotateX(0deg) rotateY(0deg);
+  transform-origin: center 60%;
+  transition: transform 420ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .family-product-card::before {
+    inset: -12px -12px -56px;
+  }
+
+  .family-product-card__actions {
+    position: absolute;
+    bottom: -44px;
+    left: 50%;
+    width: min(100%, 19rem);
+    margin-top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 4px);
+  }
+
+  .family-product-card:hover,
+  .family-product-card:focus-within {
+    z-index: 20;
+    transition-delay: 0s;
+  }
+
+  .family-product-card:hover .family-product-card__product-image,
+  .family-product-card:focus-within .family-product-card__product-image {
+    transform: translate3d(0, -4px, 8px) scale(1.035) rotateX(-1deg) rotateY(1deg);
+  }
+
+  .family-product-card:hover::before,
+  .family-product-card:focus-within::before {
+    border-color: rgba(22, 132, 71, 0.26);
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.86),
+      0 12px 30px rgba(7, 58, 34, 0.14);
+    opacity: 1;
+  }
+
+  .family-product-card:hover .family-product-card__actions,
+  .family-product-card:focus-within .family-product-card__actions {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-product-card,
+  .family-product-card::before,
+  .family-product-card__actions,
+  .family-product-card__product-image {
+    transition-duration: 0.01ms;
+  }
+
+  .family-product-card:hover .family-product-card__product-image,
+  .family-product-card:focus-within .family-product-card__product-image {
+    transform: none;
   }
 }

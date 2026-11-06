@@ -19,7 +19,7 @@ import type { SpecRow } from '@/types/content';
 
 export type FilterGroupId =
   | 'family'
-  | 'valveType'
+  | 'productType'
   | 'industry'
   | 'application'
   | 'media'
@@ -52,6 +52,7 @@ export type FilterSelection = Record<string, string[]>;
 function getAttr(product: Product): ProductAttributes {
   return (
     product.attributes ?? {
+      productType: null,
       valveType: null,
       connection: null,
       actuation: null,
@@ -60,6 +61,7 @@ function getAttr(product: Product): ProductAttributes {
       media: [],
       tempMaxF: null,
       pressureMaxPsi: null,
+      pressureClasses: [],
       industries: [],
       applicationTags: [],
     }
@@ -93,8 +95,8 @@ function matchesGroup(
     case 'family':
       return selectedValues.includes(product.familySlug);
 
-    case 'valveType': {
-      const tags = splitTags(attr.valveType);
+    case 'productType': {
+      const tags = splitTags(attr.productType);
       return selectedValues.some((v) => tags.includes(v));
     }
 
@@ -117,8 +119,11 @@ function matchesGroup(
     }
 
     case 'pressure': {
-      if (attr.pressureMaxPsi === null) return false;
       return selectedValues.some((bucket) => {
+        if (bucket.startsWith('class-')) {
+          return attr.pressureClasses.includes(bucket);
+        }
+        if (attr.pressureMaxPsi === null) return false;
         const threshold = parseInt(bucket, 10);
         return attr.pressureMaxPsi! >= threshold;
       });
@@ -134,8 +139,10 @@ function matchesGroup(
       return selectedValues.some((v) => tags.includes(v));
     }
 
-    case 'bodyMaterial':
-      return attr.bodyMaterial !== null && selectedValues.includes(attr.bodyMaterial);
+    case 'bodyMaterial': {
+      const tags = splitTags(attr.bodyMaterial);
+      return selectedValues.some((value) => tags.includes(value));
+    }
 
     case 'seatMaterial': {
       const tags = splitTags(attr.seatMaterial);
@@ -216,7 +223,7 @@ export function computeFacetCounts(
 export function getAllFilterGroupIds(): FilterGroupId[] {
   return [
     'family',
-    'valveType',
+    'productType',
     'connection',
     'actuation',
     'bodyMaterial',
@@ -232,29 +239,32 @@ export function getAllFilterGroupIds(): FilterGroupId[] {
 /** Human-readable labels for each filter group. */
 export const FILTER_GROUP_LABELS: Record<FilterGroupId, string> = {
   family: 'Product Family',
-  valveType: 'Valve Type',
+  productType: 'Product Type',
   connection: 'Connection',
-  actuation: 'Actuation',
+  actuation: 'Actuation Method',
   bodyMaterial: 'Body Material',
   seatMaterial: 'Seat Material',
   media: 'Media',
-  temperature: 'Temperature (min °F)',
-  pressure: 'Pressure (min PSI)',
+  temperature: 'Temperature Capability (°F)',
+  pressure: 'Pressure Capability',
   industry: 'Industry',
   application: 'Application',
 };
 
 /** Human-readable labels for individual option values. */
 export const OPTION_LABELS: Record<string, string> = {
-  // valveType
+  // Product Type
+  'butterfly-damper-valve': 'Butterfly Damper Valve',
+  'high-performance-butterfly-valve': 'High Performance Butterfly Valve',
+  'triple-offset-butterfly-valve': 'Triple Offset Butterfly Valve',
+  'pneumatic-actuator': 'Pneumatic Actuator',
+  'electric-actuator': 'Electric Actuator',
+  // connection
   'wafer': 'Wafer',
   'lug': 'Lug',
   'flanged': 'Flanged',
   'threaded': 'Threaded',
-  'triple-offset': 'Triple Offset',
-  'double-eccentric': 'Double Eccentric',
-  'reduced-port': 'Reduced Port',
-  // connection
+  'butt-weld': 'Butt-Weld',
   // actuation
   'manual': 'Manual',
   'electric': 'Electric',
@@ -264,7 +274,9 @@ export const OPTION_LABELS: Record<string, string> = {
   'ductile-iron': 'Ductile Iron',
   'carbon-steel': 'Carbon Steel',
   'stainless-steel': 'Stainless Steel',
-  'aluminum': 'Aluminum',
+  'alloy-steel': 'Alloy Steel',
+  'duplex-super-duplex': 'Duplex / Super Duplex',
+  'special-alloys': 'Special Alloys',
   // seatMaterial
   'swing-through': 'Swing-Through',
   'angle-seat': 'Angle Seat',
@@ -274,9 +286,7 @@ export const OPTION_LABELS: Record<string, string> = {
   'epdm': 'EPDM',
   'viton': 'Viton',
   'metal': 'Metal-to-Metal',
-  'grafoil': 'Grafoil',
-  'nbr': 'NBR',
-  'silicone': 'Silicone',
+  'grafoil': 'Graphite / Grafoil',
   // media
   'air': 'Air',
   'gas': 'Gas',
@@ -284,18 +294,12 @@ export const OPTION_LABELS: Record<string, string> = {
   'water': 'Water',
   'oil': 'Oil',
   'hydrocarbons': 'Hydrocarbons',
-  'slurry': 'Slurry',
-  'powder': 'Powder',
-  'chemicals': 'Chemicals',
   'brine': 'Brine',
+  'chemicals-corrosive': 'Chemicals / Corrosive Media',
+  'abrasive-particulate': 'Abrasive / Particulate Service',
   'vacuum': 'Vacuum',
-  'flue-gas': 'Flue Gas',
-  'process-fluids': 'Process Fluids',
   'sour-gas': 'Sour Gas',
   'hot-gas': 'Hot Gas',
-  'dirty-air': 'Dirty Air',
-  'clean-air': 'Clean Air',
-  'liquid': 'Liquid',
 };
 
 /** Temperature buckets in °F. A product matches if tempMaxF >= bucket. */
@@ -303,15 +307,27 @@ const TEMP_BUCKETS: { value: string; label: string }[] = [
   { value: '200', label: '200°F+' },
   { value: '450', label: '450°F+' },
   { value: '900', label: '900°F+' },
-  { value: '1000', label: '1000°F+' },
+  { value: '1200', label: '1200°F+' },
+  { value: '1400', label: '1400°F+' },
 ];
 
 /** Pressure buckets in PSI. A product matches if pressureMaxPsi >= bucket. */
 const PRESSURE_BUCKETS: { value: string; label: string }[] = [
   { value: '5', label: '5 PSI+' },
   { value: '25', label: '25 PSI+' },
+  { value: '50', label: '50 PSI+' },
   { value: '100', label: '100 PSI+' },
+  { value: '150', label: '150 PSI+' },
+  { value: '300', label: '300 PSI+' },
 ];
+
+const PRESSURE_CLASS_LABELS: Record<string, string> = {
+  'class-150': 'ANSI Class 150',
+  'class-300': 'ANSI Class 300',
+  'class-600': 'ANSI Class 600',
+  'class-900': 'ANSI Class 900',
+  'class-1500': 'ANSI Class 1500 (900°F trim)',
+};
 
 /** Industry label overrides. */
 const INDUSTRY_LABELS: Record<string, string> = {
@@ -319,58 +335,39 @@ const INDUSTRY_LABELS: Record<string, string> = {
   'chemical': 'Chemical',
   'downstream-hydrocarbons': 'Downstream Hydrocarbons',
   'food-and-beverage': 'Food & Beverage',
-  'energy-and-onsite-utilities': 'Energy & Onsite Utilities',
-  'life-sciences-and-medical': 'Life Sciences & Medical',
-  'mining-minerals-and-metals': 'Mining, Minerals & Metals',
+  'energy-and-utilities': 'Energy & Utilities',
+  'life-sciences': 'Life Sciences',
+  'mining-metals': 'Mining, Minerals & Metals',
   'marine': 'Marine',
-  'oem-and-engineered-solution-providers': 'OEM & Engineered Solutions',
+  'oem': 'OEM & Engineered Systems',
   'oil-and-gas': 'Oil & Gas',
   'power-generation': 'Power Generation',
   'pulp-and-paper': 'Pulp & Paper',
   'water-and-wastewater': 'Water & Wastewater',
+  'air-management': 'Air Management',
+  'petrochemical': 'Petrochemical',
 };
 
 /** Application label overrides. */
 const APPLICATION_LABELS: Record<string, string> = {
-  'flow-control': 'Flow Control',
-  'combustion-air': 'Combustion Air',
-  'combustion-gas': 'Combustion Gas',
-  'hot-air': 'Hot Air',
-  'cold-air': 'Cold Air',
-  'combustible-gas': 'Combustible Gas',
-  'blower-equipment': 'Blower Equipment',
-  'compressor-equipment': 'Compressor Equipment',
-  'boiler-equipment': 'Boiler Equipment',
-  'environmental-systems': 'Environmental Systems',
-  'hvac': 'HVAC',
-  'industrial-furnaces': 'Industrial Furnaces',
-  'oil-and-gas-refining': 'Oil & Gas Refining',
-  'power-generation': 'Power Generation',
-  'water-and-sewage': 'Water & Sewage',
-  'water-and-wastewater': 'Water & Wastewater',
-  'stationary-engines': 'Stationary Engines',
-  'chemical-equipment': 'Chemical Equipment',
-  'mining-equipment': 'Mining Equipment',
-  'gas-recovery': 'Gas Recovery',
-  'hygienic-powders': 'Hygienic Powders',
-  'pharmaceutical': 'Pharmaceutical',
-  'textile': 'Textile',
-  'brine-water': 'Brine Water',
-  'steam': 'Steam',
-  'air-lines': 'Air Lines',
-  'gas-lines': 'Gas Lines',
-  'vacuum-service': 'Vacuum Service',
-  'process-fluids': 'Process Fluids',
-  'hydrocarbons': 'Hydrocarbons',
-  'geothermal-steam': 'Geothermal Steam',
-  'hot-gas': 'Hot Gas',
-  'sour-gas': 'Sour Gas',
-  'blowdown-service': 'Blowdown Service',
-  'sulfur-recovery': 'Sulfur Recovery',
-  'acid-service': 'Acid Service',
-  'caustic-service': 'Caustic Service',
-  'chloride-service': 'Chloride Service',
   'abrasive-service': 'Abrasive Service',
+  'air-handling-ventilation': 'Air Handling / Ventilation',
+  'blowdown-service': 'Blowdown Service',
+  'burner-boiler-service': 'Burner / Boiler Service',
+  'combustion-air': 'Combustion Air',
+  'flow-control': 'Flow Control',
+  'geothermal-steam': 'Geothermal Steam',
+  'hot-gas-service': 'Hot Gas Service',
+  'industrial-furnaces': 'Industrial Furnaces',
+  'oem-packaged-equipment': 'OEM / Packaged Equipment',
+  'process-isolation': 'Process Isolation',
+  'process-water': 'Process Water',
+  'sour-gas-service': 'Sour Gas Service',
+  'steam-service': 'Steam Service',
+  'sulfur-recovery': 'Sulfur Recovery',
+  'throttling-modulating-service': 'Throttling / Modulating Service',
+  'utility-water': 'Utility Water',
+  'vacuum-service': 'Vacuum Service',
 };
 
 function optionLabel(value: string): string {
@@ -390,22 +387,23 @@ export function getOptionsForGroup(
       const seen = new Map<string, string>();
       for (const p of allProducts) {
         if (!seen.has(p.familySlug)) {
-          seen.set(p.familySlug, p.familySlug);
+          const familyLabel =
+            p.familySlug === 'butterfly-damper-valves'
+              ? 'Damper and Control Valves'
+              : p.familySlug
+                  .split('-')
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ');
+          seen.set(p.familySlug, familyLabel);
         }
       }
-      return Array.from(seen.entries()).map(([value, label]) => ({
-        value,
-        label: label
-          .split('-')
-          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-          .join(' '),
-      }));
+      return Array.from(seen.entries()).map(([value, label]) => ({ value, label }));
     }
 
-    case 'valveType': {
+    case 'productType': {
       const seen = new Set<string>();
       for (const p of allProducts) {
-        for (const tag of splitTags(getAttr(p).valveType)) {
+        for (const tag of splitTags(getAttr(p).productType)) {
           seen.add(tag);
         }
       }
@@ -444,8 +442,8 @@ export function getOptionsForGroup(
     case 'bodyMaterial': {
       const seen = new Set<string>();
       for (const p of allProducts) {
-        if (getAttr(p).bodyMaterial) {
-          seen.add(getAttr(p).bodyMaterial!);
+        for (const tag of splitTags(getAttr(p).bodyMaterial)) {
+          seen.add(tag);
         }
       }
       return Array.from(seen).sort().map((value) => ({
@@ -483,8 +481,20 @@ export function getOptionsForGroup(
     case 'temperature':
       return TEMP_BUCKETS.map((b) => ({ value: b.value, label: b.label }));
 
-    case 'pressure':
-      return PRESSURE_BUCKETS.map((b) => ({ value: b.value, label: b.label }));
+    case 'pressure': {
+      const classTags = new Set<string>();
+      for (const product of allProducts) {
+        for (const tag of getAttr(product).pressureClasses) {
+          classTags.add(tag);
+        }
+      }
+      return [
+        ...PRESSURE_BUCKETS,
+        ...Array.from(classTags)
+          .sort((a, b) => parseInt(a.slice(6), 10) - parseInt(b.slice(6), 10))
+          .map((value) => ({ value, label: PRESSURE_CLASS_LABELS[value] ?? value })),
+      ];
+    }
 
     case 'industry': {
       const seen = new Set<string>();

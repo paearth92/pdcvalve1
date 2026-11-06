@@ -17,12 +17,12 @@ const placeUrl = 'https://www.google.com/maps/search/?api=1&query=1075+Montour+W
 export default function LocationPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-green-dark pb-16 pt-14 text-white sm:pb-20 sm:pt-16">
+      <section className="pdc-green-texture relative overflow-hidden bg-brand-green-dark pb-16 pt-14 text-white sm:pb-20 sm:pt-16">
         <div className="blueprint-grid absolute inset-0 opacity-[0.15]" />
         <div className="absolute right-[-120px] top-[-120px] h-[420px] w-[420px] rounded-full border border-white/[0.055]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3"><span className="h-px w-8 bg-brand-green" /><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-green">Find PDC</span></div>
+            <div className="flex items-center gap-3"><span className="h-px w-8 bg-white/50" /><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">Find PDC</span></div>
             <h1 className="mt-5 text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl lg:text-[3.65rem]">Location & Directions</h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/[0.62]">PDC’s published U.S. location is in Montour West Industrial Park in Coraopolis, Pennsylvania, serving the greater Pittsburgh area.</p>
           </div>
@@ -35,13 +35,13 @@ export default function LocationPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
             <Reveal className="h-full">
-              <aside className="flex h-full min-h-[500px] flex-col rounded-[26px] bg-brand-green-dark p-7 text-white sm:p-8">
+              <aside className="pdc-green-texture flex h-full min-h-[500px] flex-col rounded-[26px] bg-brand-green-dark p-7 text-white sm:p-8">
                 <div className="inline-flex w-fit rounded-xl bg-white p-3 shadow-lg">
                   <Image src="/images/pdc-logo.png" alt="PDC Valve & Actuators" width={138} height={54} className="h-auto w-[126px] object-contain" />
                 </div>
 
                 <div className="mt-auto pt-14">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-green">Process Development & Control LLC</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/75">Process Development & Control LLC</span>
                   <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.035em]">PDC Headquarters</h2>
 
                   <div className="mt-7 space-y-5 border-t border-white/10 pt-6">
@@ -79,7 +79,7 @@ export default function LocationPage() {
                 </div>
 
                 <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/[0.85] bg-white/[0.94] p-5 shadow-[0_14px_36px_rgba(7,61,43,0.10)] backdrop-blur-md sm:left-auto sm:w-[390px]">
-                  <div className="flex items-start gap-3.5"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green-dark text-white"><Building2 className="h-4 w-4" /></div><div><span className="text-[9px] font-bold uppercase tracking-[0.17em] text-brand-green">PDC Valve & Actuators</span><p className="mt-1 text-sm font-bold leading-5 text-brand-green-dark">1075 Montour West Industrial Park</p><p className="text-xs text-brand-graphite/50">Coraopolis, PA 15108</p></div></div>
+                  <div className="flex items-start gap-3.5"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green-dark text-white"><Building2 className="h-4 w-4" /></div><div><span className="text-[9px] font-bold uppercase tracking-[0.17em] text-brand-graphite/70">PDC Valve & Actuators</span><p className="mt-1 text-sm font-bold leading-5 text-brand-green-dark">1075 Montour West Industrial Park</p><p className="text-xs text-brand-graphite/50">Coraopolis, PA 15108</p></div></div>
                   <a href={placeUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-brand-green hover:text-brand-green-dark">Open location in Google Maps <ArrowUpRight className="h-3.5 w-3.5" /></a>
                 </div>
               </div>

@@ -70,7 +70,7 @@ export default function ResourcesPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-brand-green-dark text-white">
+      <section className="pdc-green-texture relative overflow-hidden bg-brand-green-dark text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(22,132,71,0.18),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(57,117,138,0.12),transparent_50%)]" />
         <div className="blueprint-grid absolute inset-0 opacity-50" />
@@ -78,7 +78,7 @@ export default function ResourcesPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/40 bg-brand-green/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-brand-green">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white/80">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
               Resource Center
             </span>
@@ -111,10 +111,10 @@ export default function ResourcesPage() {
       {/* Category Cards */}
       <section className="bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-graphite/70">
             Browse by Category
           </span>
-          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
             Document Categories
           </h2>
           <div className="mt-4 h-px w-16 bg-brand-green/40" />

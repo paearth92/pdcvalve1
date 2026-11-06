@@ -20,10 +20,10 @@ export default function IndustryOverview({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-graphite/70">
               Overview
             </span>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
               {industry.overviewTitle ?? industry.name}
             </h2>
             <div className="mt-3 h-px w-12 bg-brand-green/40" />

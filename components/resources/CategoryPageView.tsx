@@ -89,7 +89,7 @@ export function renderCategoryPage({ category }: CategoryPageProps) {
         <section className="border-t border-brand-green-dark/10 bg-white py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <h2 className="text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+              <h2 className="text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
                 Can&apos;t Find What You Need?
               </h2>
               <p className="mt-4 text-sm leading-6 text-brand-graphite/70 sm:text-base">

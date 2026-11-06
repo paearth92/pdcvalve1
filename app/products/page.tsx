@@ -6,7 +6,7 @@ export function generateMetadata() {
   return {
     title: 'Products | PDC Valve & Actuators',
     description:
-      'Explore PDC valve and actuator product families including butterfly damper valves, butterfly valves, pneumatic actuators, and electric actuators.',
+      'Explore PDC valve and actuator product families including Damper and Control Valves, butterfly valves, pneumatic actuators, and electric actuators.',
   };
 }
 

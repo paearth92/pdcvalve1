@@ -6,17 +6,17 @@ import type { ProductFamilyData } from '@/types/product';
  */
 export const productFamiliesData: ProductFamilyData[] = [
   {
-    name: 'Butterfly Damper Valves',
+    name: 'Damper and Control Valves',
     slug: 'butterfly-damper-valves',
     shortDescription:
       'Heavy-duty dampers engineered for high-temperature gas and air flow control.',
     route: '/products/butterfly-damper-valves',
     imageRef: '/images/products/families/Butterfly-damper-valves-family.png',
     overview:
-      'Butterfly damper valves provide reliable flow control for high-temperature gas and air handling systems across power generation, steel, cement, and industrial process applications.',
+      'Damper and Control Valves provide reliable flow control for high-temperature gas and air handling systems across power generation, steel, cement, and industrial process applications.',
     overviewSections: {
       introduction:
-        'PDC butterfly damper valves are engineered for demanding industrial gas and air flow control applications. With decades of manufacturing expertise, our dampers deliver reliable shutoff and modulation in high-temperature environments where performance and durability are critical.',
+        'PDC Damper and Control Valves are engineered for demanding industrial gas and air flow control applications. With decades of manufacturing expertise, our dampers deliver reliable shutoff and modulation in high-temperature environments where performance and durability are critical.',
       advantages: [
         'Robust construction for high-temperature service',
         'Precision-machined components for tight shutoff',

@@ -7,9 +7,10 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Pause } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { industries } from '@/data/site';
 import Reveal from '@/components/products/Reveal';
+import HomeSectionHeading from '@/components/home/HomeSectionHeading';
 
 const DESKTOP_AUTO_SPEED = 34;
 
@@ -17,12 +18,10 @@ type Industry = (typeof industries)[number];
 
 function IndustryCard({
   industry,
-  number,
   compact = false,
   dataAttribute = true,
 }: {
   industry: Industry;
-  number: string;
   compact?: boolean;
   dataAttribute?: boolean;
 }) {
@@ -65,48 +64,12 @@ function IndustryCard({
         <div className="absolute inset-0 bg-[linear-gradient(96deg,rgba(3,10,6,0.94)_0%,rgba(3,10,6,0.76)_32%,rgba(3,10,6,0.32)_60%,rgba(3,10,6,0.06)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020805]/72 via-transparent to-black/12" />
 
-        <span
-          className={[
-            'pointer-events-none absolute -right-1 select-none font-mono font-black leading-none tracking-[-0.09em]',
-            'text-white/[0.055] transition-colors duration-500 group-hover/card:text-brand-green/[0.12]',
-            compact
-              ? '-top-3 text-[4.2rem] sm:text-[5rem]'
-              : '-top-6 text-[7.2rem] xl:text-[8rem]',
-          ].join(' ')}
-        >
-          {number}
-        </span>
-
         <div
           className={[
-            'absolute inset-x-0 top-0 flex items-center justify-between',
+            'absolute inset-x-0 top-0 flex justify-end',
             compact ? 'p-3.5 sm:p-4' : 'p-5 xl:p-6',
           ].join(' ')}
         >
-          <div className="flex items-center gap-2">
-            <span
-              className={[
-                'font-mono font-black tracking-[0.16em] text-brand-green',
-                compact ? 'text-[9px]' : 'text-[10px]',
-              ].join(' ')}
-            >
-              {number}
-            </span>
-
-            <span
-              className={[
-                'h-px bg-brand-green/65',
-                compact ? 'w-5' : 'w-8',
-              ].join(' ')}
-            />
-
-            {!compact && (
-              <span className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-white/45">
-                Industrial market
-              </span>
-            )}
-          </div>
-
           <span
             className={[
               'flex items-center justify-center rounded-full border border-white/15 bg-black/20',
@@ -147,24 +110,7 @@ function IndustryCard({
             </p>
           )}
 
-          <div
-            className={[
-              'flex items-center gap-2 font-extrabold uppercase tracking-[0.15em] text-brand-green',
-              compact ? 'mt-2 text-[7.5px] sm:text-[8px]' : 'mt-4 text-[9px]',
-            ].join(' ')}
-          >
-            Explore
-            <span
-              className={[
-                'h-px bg-brand-green transition-all duration-500 group-hover/card:w-12',
-                compact ? 'w-6' : 'w-8',
-              ].join(' ')}
-            />
-          </div>
         </div>
-
-        <span className="absolute left-0 top-0 h-[3px] w-14 bg-brand-green transition-all duration-700 group-hover/card:w-full" />
-        <span className="absolute bottom-3 right-3 h-2.5 w-2.5 border-b border-r border-white/20 sm:bottom-4 sm:right-4 sm:h-3 sm:w-3" />
       </Link>
     </article>
   );
@@ -340,52 +286,38 @@ export default function IndustriesWeServe() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-[#07110b] text-white"
+      className="relative isolate overflow-hidden bg-[#f4f7f2] text-brand-green-dark"
       style={{
         overflowAnchor: 'none',
         touchAction: 'pan-y',
       }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,rgba(22,132,71,0.16),transparent_30%),radial-gradient(circle_at_92%_100%,rgba(22,132,71,0.08),transparent_34%)]" />
-      <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-[0.09]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,rgba(22,132,71,0.055),transparent_30%),radial-gradient(circle_at_92%_100%,rgba(22,132,71,0.035),transparent_34%)]" />
 
-      <div className="relative py-9 sm:py-11 lg:flex lg:min-h-[620px] lg:flex-col lg:justify-center lg:py-10 xl:min-h-[650px] xl:py-12">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-10">
+      <div className="relative py-9 sm:py-11 lg:flex lg:min-h-[520px] lg:flex-col lg:justify-center lg:py-8 xl:min-h-[540px] xl:py-9">
+        <div className="mx-auto w-full max-w-[1160px] px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="grid items-end gap-5 lg:grid-cols-[1fr_auto] lg:gap-10">
-              <div className="max-w-[780px]">
-                <div className="flex items-end gap-7">
-                  <h2 className="shrink-0 text-[1.85rem] font-extrabold leading-none tracking-[-0.045em] sm:text-[2.35rem] lg:text-[2.7rem] xl:text-[3.15rem]">
-                    Industries We Serve
-                  </h2>
+            <HomeSectionHeading
+              eyebrow="Industries"
+              title="Industries We Serve"
+              description="Engineered flow-control solutions for demanding industrial applications across a wide range of process industries."
+            />
+          </Reveal>
 
-                  <p className="hidden max-w-[380px] pb-0.5 text-[13px] leading-5 text-white/52 xl:block">
-                    Engineered flow-control solutions for demanding industrial
-                    applications across a wide range of process industries.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="hidden items-center gap-2 lg:flex"
-                onMouseEnter={() => {
-                  pausedRef.current = true;
-                }}
-                onMouseLeave={() => {
-                  pausedRef.current = false;
-                }}
-              >
-                <span className="mr-2 hidden items-center gap-2 text-[9px] font-extrabold uppercase tracking-[0.17em] text-white/35 xl:flex">
-                  <Pause className="h-3 w-3 text-brand-green" />
-                  Hover to pause · drag to explore
-                </span>
-
+          <div
+            className="mt-5 hidden items-center justify-end gap-2 lg:flex"
+            onMouseEnter={() => {
+              pausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              pausedRef.current = false;
+            }}
+          >
                 <button
                   type="button"
                   aria-label="Scroll industries left"
                   onClick={() => scrollDesktopRail(-1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.035] text-white/65 transition-all duration-300 hover:border-brand-green/45 hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#cddbcf] bg-white/75 text-[#365a43] transition-all duration-300 hover:border-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </button>
@@ -394,20 +326,15 @@ export default function IndustriesWeServe() {
                   type="button"
                   aria-label="Scroll industries right"
                   onClick={() => scrollDesktopRail(1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.035] text-white/65 transition-all duration-300 hover:border-brand-green/45 hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#cddbcf] bg-white/75 text-[#365a43] transition-all duration-300 hover:border-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </button>
-              </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         {/* MOBILE / TABLET: two TRUE marquee tracks moving in opposite directions */}
         <div className="relative mt-6 overflow-hidden lg:hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 bg-gradient-to-r from-[#07110b] via-[#07110b]/85 to-transparent sm:w-12" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 bg-gradient-to-l from-[#07110b] via-[#07110b]/85 to-transparent sm:w-12" />
-
           {/* Row 1: moves LEFT */}
           <div
             className="touch-pan-y overflow-hidden"
@@ -428,16 +355,10 @@ export default function IndustriesWeServe() {
                   aria-hidden={copy === 1 ? true : undefined}
                 >
                   {mobileTopBase.map((industry) => {
-                    const originalIndex = industries.findIndex(
-                      (item) => item.slug === industry.slug,
-                    );
-                    const number = String(originalIndex + 1).padStart(2, '0');
-
                     return (
                       <IndustryCard
                         key={`mobile-top-${copy}-${industry.slug}`}
                         industry={industry}
-                        number={number}
                         compact
                         dataAttribute={false}
                       />
@@ -468,16 +389,10 @@ export default function IndustriesWeServe() {
                   aria-hidden={copy === 1 ? true : undefined}
                 >
                   {mobileBottomBase.map((industry) => {
-                    const originalIndex = industries.findIndex(
-                      (item) => item.slug === industry.slug,
-                    );
-                    const number = String(originalIndex + 1).padStart(2, '0');
-
                     return (
                       <IndustryCard
                         key={`mobile-bottom-${copy}-${industry.slug}`}
                         industry={industry}
-                        number={number}
                         compact
                         dataAttribute={false}
                       />
@@ -488,11 +403,6 @@ export default function IndustriesWeServe() {
             </div>
           </div>
 
-          <div className="mt-3 flex items-center justify-center gap-2 text-[8px] font-extrabold uppercase tracking-[0.18em] text-white/30 sm:mt-4">
-            <span className="h-px w-8 bg-brand-green/30" />
-            Continuous markets
-            <span className="h-px w-8 bg-brand-green/30" />
-          </div>
         </div>
 
         <style>{`
@@ -542,9 +452,6 @@ export default function IndustriesWeServe() {
 
         {/* DESKTOP: original single marquee */}
         <div className="relative mt-8 hidden lg:block">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-[6vw] bg-gradient-to-r from-[#07110b] via-[#07110b]/70 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-[6vw] bg-gradient-to-l from-[#07110b] via-[#07110b]/70 to-transparent" />
-
           <div
             ref={desktopRailRef}
             className="group/rail flex cursor-grab select-none gap-5 overflow-x-auto px-[6vw] pb-3 active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -566,14 +473,10 @@ export default function IndustriesWeServe() {
             {...railInteractionProps}
           >
             {desktopIndustries.map((industry, index) => {
-              const originalIndex = index % industries.length;
-              const number = String(originalIndex + 1).padStart(2, '0');
-
               return (
                 <IndustryCard
                   key={`desktop-${industry.slug}-${index}`}
                   industry={industry}
-                  number={number}
                 />
               );
             })}

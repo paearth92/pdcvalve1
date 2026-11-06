@@ -6,7 +6,7 @@
  * should contain placeholder or invented values.
  */
 
-import type { DownloadFileType } from '@/types/content';
+import type { DownloadFileType, IndustryRef } from '@/types/content';
 
 export interface ProductDownload {
   label: string;
@@ -44,15 +44,17 @@ export interface ProductImage {
  * (or `[]` for array fields) — never invented.
  */
 export interface ProductAttributes {
-  /** Body / disc style, e.g. "wafer", "lug", "flanged", "threaded". */
+  /** Product category used by the Product Finder. */
+  productType: string | null;
+  /** @deprecated Kept for legacy metadata readers; not used by Product Finder. */
   valveType: string | null;
   /** End connection type, e.g. "wafer", "lug", "flanged", "threaded". */
   connection: string | null;
   /** Actuation method, e.g. "manual", "electric", "pneumatic". */
   actuation: string | null;
-  /** Primary body material, e.g. "cast iron", "stainless steel". */
+  /** Pipe-delimited body-material tags where a product has multiple options. */
   bodyMaterial: string | null;
-  /** Seat / seal material, e.g. "swing-through", "ptfe", "metal". */
+  /** Confirmed seat / seal material tags, pipe-delimited when multiple. */
   seatMaterial: string | null;
   /** Compatible media types as enumerable tags. */
   media: string[];
@@ -60,6 +62,8 @@ export interface ProductAttributes {
   tempMaxF: number | null;
   /** Maximum operating pressure in PSI, derived from spec text. */
   pressureMaxPsi: number | null;
+  /** Published ANSI pressure classes, when PSI thresholds are not applicable. */
+  pressureClasses: string[];
   /** Industry slugs this product serves. */
   industries: string[];
   /** Enumerable application tags derived from free-text applications. */
@@ -80,6 +84,9 @@ export interface Product {
   specifications?: ProductSpecRow[];
   /** Structured attributes derived from `specifications`. */
   attributes?: ProductAttributes;
+  /** Product Finder specific approved display copy. */
+  productFinderName?: string;
+  productFinderDescription?: string;
   downloads?: ProductDownload[];
   image?: ProductImage;
   /** Canonical asset registry ID for the hero image. */
@@ -116,7 +123,8 @@ export interface ProductFamilyData {
   overview?: string;
   overviewSections?: OverviewSection;
   applications?: ApplicationCardData[];
-  industries?: string[];
+  /** Structured references retain family-specific industry descriptions; strings remain supported for legacy entries. */
+  industries?: Array<IndustryRef | string>;
   downloads?: ProductDownload[];
   trustBadges?: string[];
   /** Canonical asset registry ID for the family hero image. */

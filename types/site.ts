@@ -140,6 +140,8 @@ export interface ProductDetail {
   industries?: ProductApplicationIndustry[];
   downloads: ProductDownload[];
   gallery?: ProductGalleryImage[];
+  /** Optional transparent product cutout used as a foreground gallery view. */
+  transparentImage?: ProductGalleryImage;
   engineering?: ProductEngineeringData;
   engineeringIntro?: string;
   related: ProductFamily[];

@@ -59,6 +59,8 @@ function ProductFinderInner() {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (p) =>
+          (p.productFinderName ?? p.name).toLowerCase().includes(q) ||
+          (p.productFinderDescription ?? '').toLowerCase().includes(q) ||
           p.name.toLowerCase().includes(q) ||
           (p.shortDescription ?? '').toLowerCase().includes(q) ||
           (p.series ?? '').toLowerCase().includes(q),
@@ -127,14 +129,14 @@ function ProductFinderInner() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-graphite/70">
                 Product Finder
               </span>
-              <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl lg:text-4xl">
-                Find the Right Valve for Your Application
+              <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl lg:text-4xl">
+                Find the Right Product for Your Application
               </h1>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-brand-graphite/60">
-                Narrow down by family, type, connection, actuation, materials, media, temperature, pressure, and more.
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-brand-graphite/70">
+                Filter by product type, connection, actuation method, materials, media, temperature capability, pressure capability, industry, and application. Final selection depends on service conditions and engineering review.
               </p>
             </div>
             <div className="hidden sm:block">
@@ -219,15 +221,15 @@ function ProductFinderInner() {
             </div>
 
             {/* CTA */}
-            <div className="mt-4 hidden rounded-xl border border-brand-green-dark/10 bg-brand-green-dark p-4 text-white lg:block">
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-green">
-                Need Help?
+            <div className="pdc-green-texture mt-4 hidden rounded-xl border border-brand-green-dark/10 bg-brand-green-dark p-4 text-white lg:block">
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
+                PDC Sales
               </span>
               <h3 className="mt-1.5 text-sm font-bold leading-tight">
-                Request Engineering Assistance
+                Let&apos;s Find the Right Solution for Your Application
               </h3>
               <p className="mt-1.5 text-xs leading-relaxed text-white/55">
-                Our engineers can help you specify the right valve or actuator.
+                Our sales team can help identify suitable options and coordinate with Engineering when needed.
               </p>
               <div className="mt-3">
                 <RFQButton size="sm" className="w-full" />
@@ -462,7 +464,7 @@ function FinderProductCard({ product, index }: { product: Product; index: number
         {cardBasePath ? (
           <FlexibleImage
             basePath={cardBasePath}
-            alt={product.name}
+            alt={product.productFinderName ?? product.name}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             width={800}
             height={800}
@@ -485,11 +487,11 @@ function FinderProductCard({ product, index }: { product: Product; index: number
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-base font-bold tracking-tight text-brand-green-dark">
-          {product.name}
+          {product.productFinderName ?? product.name}
         </h3>
         <div className="mt-2 h-px w-6 bg-brand-green/40" />
         <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-graphite/70">
-          {product.shortDescription ?? 'Product information is being prepared.'}
+          {product.productFinderDescription ?? product.shortDescription ?? 'Product information is being prepared.'}
         </p>
         {product.applications && product.applications.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
@@ -540,10 +542,10 @@ function NoResultsState({
         <PackageSearch className="h-7 w-7" />
       </span>
       <h3 className="mt-5 text-lg font-bold tracking-tight text-brand-green-dark">
-        No Products Match Your Filters
+        No Matching Products
       </h3>
       <p className="mt-2 max-w-md text-sm leading-relaxed text-brand-graphite/60">
-        We couldn&apos;t find a product matching your selected criteria.
+        We couldn&apos;t find a product matching those criteria.
         {activeChips.length > 0 && (
           <>
             {' '}
@@ -553,6 +555,8 @@ function NoResultsState({
             </span>
           </>
         )}
+        {' '}
+        Contact our engineering team for help with your application.
       </p>
       <div className="mt-6 flex flex-col items-center gap-3">
         <button
@@ -560,10 +564,14 @@ function NoResultsState({
           onClick={onClearAll}
           className="rounded-md border border-brand-green-dark/15 bg-white px-4 py-2 text-sm font-semibold text-brand-green-dark transition-colors hover:border-brand-green/30"
         >
-          Clear All Filters
+          Clear Filters
         </button>
-        <span className="text-xs text-brand-steel/60">or</span>
-        <RFQButton size="md" />
+        <a
+          href={`mailto:${siteConfig.email}?subject=Request%20Engineering%20Assistance`}
+          className="inline-flex items-center justify-center rounded-md bg-brand-green px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/50 focus-visible:ring-offset-2"
+        >
+          Request Engineering Assistance
+        </a>
       </div>
     </div>
   );

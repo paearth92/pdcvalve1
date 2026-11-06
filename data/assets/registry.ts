@@ -194,7 +194,7 @@ const familySlugs = [
 ];
 
 const familyNames: Record<string, string> = {
-  'butterfly-damper-valves': 'Butterfly Damper Valves',
+  'butterfly-damper-valves': 'Damper and Control Valves',
   'butterfly-valves': 'Butterfly Valves',
   'pneumatic-actuators': 'Pneumatic Actuators',
   'electric-actuators': 'Electric Actuators',
@@ -264,7 +264,7 @@ interface ProductRef {
 }
 
 const productRefs: ProductRef[] = [
-  // Butterfly Damper Valves
+  // Damper and Control Valves
   { familySlug: 'butterfly-damper-valves', productSlug: 'econotrol', productName: 'Econotrol' },
   { familySlug: 'butterfly-damper-valves', productSlug: 'medium-duty', productName: 'Medium Duty' },
   { familySlug: 'butterfly-damper-valves', productSlug: 'excel', productName: 'Excel' },
@@ -363,16 +363,16 @@ interface GalleryAssetRef {
 }
 
 const galleryAssetRefs: GalleryAssetRef[] = [
-  { id: 'econotrol-6-inch-front', name: 'Econotrol 6-Inch Front View', productSlug: 'econotrol', fileName: '6-inch-front.webp', alt: 'PDC Econotrol 6-inch butterfly damper valve front view with tapered machined-steel seat', fileSizeBytes: 121742 },
+  { id: 'econotrol-6-inch-front', name: 'Econotrol 6-Inch Front View', productSlug: 'econotrol', fileName: '6-inch-front.webp', alt: 'PDC Econotrol 6-inch Damper and Control Valve front view with tapered machined-steel seat', fileSizeBytes: 121742 },
   { id: 'combustion-standard', name: 'Combustion Valve Standard Configuration', productSlug: 'combustion-valve', fileName: 'standard-configuration.webp', alt: 'PDC Combustion Valve standard manual configuration', fileSizeBytes: 69678 },
   { id: 'combustion-lock-lever', name: 'Combustion Valve Lock-Lever Configuration', productSlug: 'combustion-valve', fileName: 'lock-lever-configuration.webp', alt: 'PDC Combustion Valve with lock-lever configuration', fileSizeBytes: 57884 },
-  { id: 'flanged-end-isometric', name: 'Flanged End Isometric View', productSlug: 'flanged-end', fileName: 'isometric-view.webp', alt: 'PDC Flanged End butterfly damper valve isometric view with lock lever', fileSizeBytes: 109940 },
-  { id: 'flanged-end-alternate', name: 'Flanged End Alternate Isometric View', productSlug: 'flanged-end', fileName: 'alternate-isometric-view.webp', alt: 'PDC Flanged End butterfly damper valve alternate isometric view', fileSizeBytes: 86920 },
-  { id: 'medium-duty-step-seat', name: 'Medium Duty 8-Inch Step-Seat Configuration', productSlug: 'medium-duty', fileName: '8-inch-step-seat.webp', alt: 'PDC Medium Duty 8-inch butterfly damper valves with step-seat configuration', fileSizeBytes: 101906 },
-  { id: 'medium-duty-step-seat-open', name: 'Medium Duty 8-Inch Step Seat Partially Open', productSlug: 'medium-duty', fileName: '8-inch-step-seat-partially-open.webp', alt: 'PDC Medium Duty 8-inch step-seat butterfly damper valves partially open', fileSizeBytes: 58456 },
-  { id: 'medium-duty-tadpole-open', name: 'Medium Duty 10-Inch Tadpole Seat Open', productSlug: 'medium-duty', fileName: '10-inch-tadpole-open.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat butterfly damper valve open', fileSizeBytes: 78968 },
-  { id: 'medium-duty-tadpole-closed', name: 'Medium Duty 10-Inch Tadpole Seat Closed', productSlug: 'medium-duty', fileName: '10-inch-tadpole-closed.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat butterfly damper valve closed', fileSizeBytes: 78154 },
-  { id: 'medium-duty-heat-gasket', name: 'Medium Duty Heat-Gasket and Lock-Lever Assembly', productSlug: 'medium-duty', fileName: 'heat-gasket-c-bracket-lock-lever.webp', alt: 'PDC Medium Duty butterfly damper valve with heat gasket C-bracket and lock lever assembly', fileSizeBytes: 89734 },
+  { id: 'flanged-end-isometric', name: 'Flanged End Isometric View', productSlug: 'flanged-end', fileName: 'isometric-view.webp', alt: 'PDC Flanged End Damper and Control Valve isometric view with lock lever', fileSizeBytes: 109940 },
+  { id: 'flanged-end-alternate', name: 'Flanged End Alternate Isometric View', productSlug: 'flanged-end', fileName: 'alternate-isometric-view.webp', alt: 'PDC Flanged End Damper and Control Valve alternate isometric view', fileSizeBytes: 86920 },
+  { id: 'medium-duty-step-seat', name: 'Medium Duty 8-Inch Step-Seat Configuration', productSlug: 'medium-duty', fileName: '8-inch-step-seat.webp', alt: 'PDC Medium Duty 8-inch Damper and Control Valves with step-seat configuration', fileSizeBytes: 101906 },
+  { id: 'medium-duty-step-seat-open', name: 'Medium Duty 8-Inch Step Seat Partially Open', productSlug: 'medium-duty', fileName: '8-inch-step-seat-partially-open.webp', alt: 'PDC Medium Duty 8-inch step-seat Damper and Control Valves partially open', fileSizeBytes: 58456 },
+  { id: 'medium-duty-tadpole-open', name: 'Medium Duty 10-Inch Tadpole Seat Open', productSlug: 'medium-duty', fileName: '10-inch-tadpole-open.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat Damper and Control Valve open', fileSizeBytes: 78968 },
+  { id: 'medium-duty-tadpole-closed', name: 'Medium Duty 10-Inch Tadpole Seat Closed', productSlug: 'medium-duty', fileName: '10-inch-tadpole-closed.webp', alt: 'PDC Medium Duty 10-inch tadpole-seat Damper and Control Valve closed', fileSizeBytes: 78154 },
+  { id: 'medium-duty-heat-gasket', name: 'Medium Duty Heat-Gasket and Lock-Lever Assembly', productSlug: 'medium-duty', fileName: 'heat-gasket-c-bracket-lock-lever.webp', alt: 'PDC Medium Duty Damper and Control Valve with heat gasket C-bracket and lock lever assembly', fileSizeBytes: 89734 },
 ];
 
 const galleryAssets: AssetEntry[] = galleryAssetRefs.map((ref) => {
@@ -551,13 +551,16 @@ function stripExtension(filePath: string): string {
   return filePath.replace(/\.(webp|png|jpg|jpeg)$/i, '');
 }
 
+// Shared neutral wave backdrop used behind product-hero imagery.
+export const approvedProductBackground =
+  '/images/products/butterfly-damper-valves/econotrol-hero-background.png';
+
 /** Get the base path (no extension) for a product hero image, or null if missing. */
 export function getProductHeroBasePath(
   familySlug: string,
   productSlug: string,
 ): string | null {
-  const asset = getProductHeroAsset(familySlug, productSlug);
-  return asset?.processedFilePath ? stripExtension(asset.processedFilePath) : null;
+  return stripExtension(approvedProductBackground);
 }
 
 /** Get the base path (no extension) for a product card image, or null if missing. */
@@ -565,20 +568,23 @@ export function getProductCardBasePath(
   familySlug: string,
   productSlug: string,
 ): string | null {
-  const asset = getProductCardAsset(familySlug, productSlug);
-  return asset?.processedFilePath ? stripExtension(asset.processedFilePath) : null;
+  return stripExtension(approvedProductBackground);
 }
 
 /** Get the base path (no extension) for a family hero image, or null if missing. */
 export function getFamilyHeroBasePath(familySlug: string): string | null {
-  const asset = getFamilyHeroAsset(familySlug);
-  return asset?.processedFilePath ? stripExtension(asset.processedFilePath) : null;
+  return stripExtension(approvedProductBackground);
 }
 
 /** Get the base path (no extension) for a family card image, or null if missing. */
 export function getFamilyCardBasePath(familySlug: string): string | null {
   const asset = getFamilyCardAsset(familySlug);
-  return asset?.processedFilePath ? stripExtension(asset.processedFilePath) : null;
+  if (!asset || !['official-original', 'official-processed'].includes(asset.status)) {
+    return null;
+  }
+
+  const filePath = asset.processedFilePath ?? asset.originalFilePath;
+  return filePath ? stripExtension(filePath) : null;
 }
 
 /** Summary counts by status. */

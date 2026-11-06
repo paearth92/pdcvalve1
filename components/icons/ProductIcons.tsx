@@ -135,7 +135,7 @@ export function IsolationIcon({ className }: IconProps) {
   );
 }
 
-/** Butterfly damper valve silhouette */
+/** Damper and Control Valve silhouette */
 export function ButterflyDamperIcon({ className }: IconProps) {
   return (
     <svg

@@ -50,7 +50,7 @@ export const econotrolEngineering: ProductEngineeringData = {
         rows: [
           ['2', '2', '2-3/4', '5-3/8', '1-1/2', '3-7/8', '4-1/4', '1/2', '150', '9'],
           ['2.5', '2-1/2', '3', '5-5/8', '1-1/2', '4-5/8', '4-1/4', '1/2', '150', '10'],
-          ['3', '3', '3-1/8', '5-7/8', '1-1/2', '—', '4-1/4', '1/2', '150', '11'],
+          ['3', '3', '3-1/8', '5-7/8', '1-1/2', '5-1/4', '4-1/4', '1/2', '150', '11'],
           ['4', '4', '4-1/4', '6-3/8', '1-1/2', '6-3/8', '4-1/4', '1/2', '125', '12'],
           ['5', '5', '4-7/8', '6-7/8', '1-1/2', '7-1/2', '4-1/4', '1/2', '100', '15'],
           ['6', '6', '5-3/8', '7-3/8', '1-1/2', '8-1/2', '4-1/4', '1/2', '80', '17'],
@@ -63,7 +63,6 @@ export const econotrolEngineering: ProductEngineeringData = {
         notes: [
           '“G” shaft-end length and configuration varies to accommodate specific actuators.',
           'MAX ΔP is based on the 0° disc position using standard materials of construction at a maximum temperature of 450°F. Consult PDC for elevated-temperature limits.',
-          'The 3-inch Dimension E value is pending confirmation from PDC; contact PDC before fabrication or actuator selection.',
         ],
       },
       {

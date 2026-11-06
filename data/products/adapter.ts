@@ -2,7 +2,10 @@ import type { ProductContent, ProductFamilyContent } from '@/types/content';
 import type { ProductDetail, ProductFamily } from '@/types/site';
 import type { Product, ProductFamilyData } from '@/types/product';
 import { productFamiliesData, getProductFamilyBySlug } from '@/data/product-families';
-import { deriveProductAttributes } from '@/lib/product-attributes';
+import {
+  EMPTY_PRODUCT_FINDER_ATTRIBUTES,
+  getProductFinderMetadata,
+} from './product-finder-metadata';
 import { getProductEngineeringData } from '@/data/products/engineering';
 import { getProductContentByFamily, getProductContent } from '@/data/products/content';
 
@@ -110,6 +113,15 @@ export function productContentToDetail(
       width: img.width,
       height: img.height,
     })),
+    transparentImage: content.images?.transparentPng
+      ? {
+          src: content.images.transparentPng.src,
+          alt: content.images.transparentPng.alt,
+          caption: content.images.transparentPng.caption,
+          width: content.images.transparentPng.width,
+          height: content.images.transparentPng.height,
+        }
+      : undefined,
     related: getRelatedProductsForDetail(content),
   };
 }
@@ -121,6 +133,11 @@ export function productContentToDetail(
 export function productContentToProduct(
   content: ProductContent,
 ): Product {
+  const finderMetadata = getProductFinderMetadata(
+    content.familySlug,
+    content.slug,
+  );
+
   return {
     id: content.id,
     name: content.name,
@@ -132,7 +149,9 @@ export function productContentToProduct(
     applications: content.applications,
     industries: (content.industries ?? []).map((ind) => ind.slug),
     specifications: content.specifications,
-    attributes: deriveProductAttributes(content),
+    attributes: finderMetadata?.attributes ?? EMPTY_PRODUCT_FINDER_ATTRIBUTES,
+    productFinderName: finderMetadata?.name,
+    productFinderDescription: finderMetadata?.description,
     imageAssetId: `product-${content.slug}-hero`,
     cardImageAssetId: `product-${content.slug}-card`,
     galleryAssetIds: [],
@@ -156,7 +175,7 @@ export function familyContentToFamilyData(
     overview: content.overview,
     overviewSections: content.overviewSections,
     applications: content.applications,
-    industries: content.industries?.map((ind) => ind.title),
+    industries: content.industries,
     downloads: content.downloads?.map((d) => ({
       label: d.label,
       type: d.type,

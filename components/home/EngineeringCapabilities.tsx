@@ -75,10 +75,10 @@ export default function EngineeringCapabilities() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div ref={headingRef} className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.22em] text-brand-green">
+          <span className="text-xs font-bold uppercase tracking-[0.22em] text-brand-graphite/70">
             Capabilities
           </span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green-dark sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green sm:text-4xl lg:text-[2.75rem]">
             Engineering Beyond Manufacturing
           </h2>
           <p className="mt-4 text-base leading-relaxed text-brand-graphite/75">

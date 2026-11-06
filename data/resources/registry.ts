@@ -23,7 +23,7 @@ export const resourceCategories: ResourceCategoryDef[] = [
     label: 'Brochures',
     shortLabel: 'Brochures',
     description:
-      'Access PDC product literature for butterfly valves, butterfly damper valves, pneumatic actuators, electric actuators, accessories, and related flow-control products. Brochures include product descriptions, available configurations, materials, dimensions, performance data, and application information to support product selection and engineering review.',
+      'Access PDC product literature for butterfly valves, Damper and Control Valves, pneumatic actuators, electric actuators, accessories, and related flow-control products. Brochures include product descriptions, available configurations, materials, dimensions, performance data, and application information to support product selection and engineering review.',
     icon: 'FileText',
     href: '/resources/brochures',
   },
@@ -96,7 +96,7 @@ export const fileTypeFilters: { value: ResourceFileType; label: string }[] = [
  * ---------------------------------------------------------------- */
 
 export const resourceFamilyFilters: { value: string; label: string }[] = [
-  { value: 'butterfly-damper-valves', label: 'Butterfly Damper Valves' },
+  { value: 'butterfly-damper-valves', label: 'Damper and Control Valves' },
   { value: 'butterfly-valves', label: 'Butterfly Valves' },
   { value: 'pneumatic-actuators', label: 'Pneumatic Actuators' },
   { value: 'electric-actuators', label: 'Electric Actuators' },

@@ -25,6 +25,57 @@ export default function ProductCard({
   const familyName = family?.name ?? '';
   const cardBasePath = getProductCardBasePath(familySlug, product.slug);
   const isShowcase = appearance === 'showcase';
+  const isEconotrolCutout =
+    familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol';
+
+  if (isShowcase) {
+    return (
+      <article className="family-product-card relative flex h-full flex-col items-center text-center">
+        <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden">
+          {isEconotrolCutout && (
+            <FlexibleImage
+              basePath="/images/products/butterfly-damper-valves/econotrol-hero-cutout"
+              alt={`${product.name} Damper and Control Valve with manual Locklever`}
+              className="family-product-card__product-image h-full w-full object-contain p-4"
+              width={900}
+              height={675}
+              loading="eager"
+            />
+          )}
+        </div>
+
+        <div className="flex w-full flex-1 flex-col items-center pt-4">
+          <h3 className="text-base font-medium leading-snug text-brand-green-dark sm:text-lg">
+            {product.name}
+          </h3>
+          {product.series && (
+            <p className="mt-1 text-sm font-semibold text-brand-green">
+              Series {product.series}
+            </p>
+          )}
+
+          <div className="family-product-card__actions mx-auto mt-5 flex w-full justify-center gap-3 sm:max-w-[19rem]">
+            <RFQButton
+              productFamily={familyName}
+              product={product.name}
+              series={product.series}
+              size="sm"
+              className="min-h-11 flex-1 rounded-lg text-sm"
+              icon="none"
+            >
+              Inquire
+            </RFQButton>
+            <Link
+              href={href}
+              className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg border border-brand-green-dark/40 bg-white px-4 py-2 text-sm font-semibold text-brand-green-dark transition-colors hover:border-brand-green-dark hover:bg-brand-light-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
+            >
+              Details
+            </Link>
+          </div>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <Link
@@ -46,7 +97,7 @@ export default function ProductCard({
         {cardBasePath ? (
           <FlexibleImage
             basePath={cardBasePath}
-            alt={product.name}
+            alt=""
             className={`h-full w-full ${isShowcase ? 'object-contain' : 'object-cover'}`}
             width={isShowcase ? 1200 : 800}
             height={isShowcase ? 800 : 800}

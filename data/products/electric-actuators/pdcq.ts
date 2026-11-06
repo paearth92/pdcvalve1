@@ -184,7 +184,24 @@ export const pdcq: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/electric-actuators/gallery/pdcq/pdcq-front-view.webp',
+        alt: 'PDCQ electric actuator front view with nameplate and manual handwheel',
+        kind: 'gallery',
+        caption: 'PDCQ Front View',
+        width: 1350,
+        height: 1800,
+      },
+      {
+        src: '/images/products/electric-actuators/gallery/pdcq/pdcq-handwheel-three-quarter.webp',
+        alt: 'PDCQ electric actuator three-quarter view showing the manual handwheel',
+        kind: 'gallery',
+        caption: 'PDCQ Handwheel View',
+        width: 1350,
+        height: 1800,
+      },
+    ],
     transparentPng: undefined,
     technicalDrawings: undefined,
     thumbnail: undefined,

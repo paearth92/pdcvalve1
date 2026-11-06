@@ -538,6 +538,7 @@ export function deriveProductAttributes(
   }
 
   return {
+    productType: null,
     valveType,
     connection,
     actuation,
@@ -546,6 +547,7 @@ export function deriveProductAttributes(
     media: Array.from(mediaSet),
     tempMaxF,
     pressureMaxPsi,
+    pressureClasses: [],
     industries,
     applicationTags: Array.from(appTagSet),
   };

@@ -68,7 +68,7 @@ export const documentTypeFilters: { value: DownloadFileType; label: string }[] =
 
 /** Filterable product families for the Resources Center. */
 export const productFamilyFilters: { value: string; label: string }[] = [
-  { value: 'butterfly-damper-valves', label: 'Butterfly Damper Valves' },
+  { value: 'butterfly-damper-valves', label: 'Damper and Control Valves' },
   { value: 'butterfly-valves', label: 'Butterfly Valves' },
   { value: 'pneumatic-actuators', label: 'Pneumatic Actuators' },
   { value: 'electric-actuators', label: 'Electric Actuators' },
@@ -122,7 +122,7 @@ export const categoryFilters: { value: ResourceCategory; label: string }[] = [
 export const resourcePlaceholders: ResourcePlaceholder[] = [
   {
     id: 'ph-001',
-    title: 'Butterfly Damper Valve Product Brochure',
+    title: 'Damper and Control Valve Product Brochure',
     category: 'documentation',
     documentType: 'pdf',
     productFamily: 'butterfly-damper-valves',
@@ -148,7 +148,7 @@ export const resourcePlaceholders: ResourcePlaceholder[] = [
   },
   {
     id: 'ph-003',
-    title: 'Butterfly Damper Valve Installation Manual',
+    title: 'Damper and Control Valve Installation Manual',
     category: 'documentation',
     documentType: 'installation-manual',
     productFamily: 'butterfly-damper-valves',

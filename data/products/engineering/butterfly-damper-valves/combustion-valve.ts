@@ -11,7 +11,7 @@ export const combustionValveEngineering: ProductEngineeringData = {
         columns: ['Component', 'Cold Service (450°F)', 'Hot Service (900°F)'],
         rows: [
           ['Body', 'Cast Iron', 'Cast Iron'],
-          ['Disc', 'Carbon Iron', 'Carbon Iron'],
+          ['Disc', 'Carbon Steel', 'Carbon Steel'],
           ['Shaft', '416 Stainless Steel', '316 Stainless Steel'],
           ['Seat', 'Swing-thru, Paddle Disc', 'Swing-thru, Paddle Disc'],
           ['Bushing', 'Graphited Bronze', 'Metallized Carbon'],

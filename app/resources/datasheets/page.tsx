@@ -63,10 +63,10 @@ export default function DatasheetsPage() {
       <section className="bg-[#f5f8f6] py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-graphite/70">
               Product Information
             </span>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
               Product Engineering Data
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-brand-graphite/70">
@@ -105,7 +105,7 @@ export default function DatasheetsPage() {
       <section className="border-t border-brand-green-dark/10 bg-white py-12 sm:py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-extrabold tracking-tight text-brand-green-dark sm:text-3xl">
+            <h2 className="text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">
               Looking for Specific Technical Information?
             </h2>
             <p className="mt-3 text-sm leading-6 text-brand-graphite/70 sm:text-base">

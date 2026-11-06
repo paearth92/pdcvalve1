@@ -22,7 +22,7 @@ export default function CompanyHero({
   const code = variantCode[variant] ?? 'PDC / COMPANY';
 
   return (
-    <section className="relative overflow-hidden bg-brand-green-dark text-white">
+    <section className="pdc-green-texture relative overflow-hidden bg-brand-green-dark text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,rgba(22,132,71,0.18),transparent_24%),linear-gradient(120deg,rgba(255,255,255,0.025),transparent_35%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:44px_44px]" />
 
@@ -30,7 +30,7 @@ export default function CompanyHero({
         <div className="max-w-3xl">
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-brand-green" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-green">
+            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">
               {eyebrow}
             </span>
           </div>

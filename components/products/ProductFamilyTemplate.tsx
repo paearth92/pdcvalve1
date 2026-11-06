@@ -39,6 +39,18 @@ export default function ProductFamilyTemplate({
   const hasAppCards = family.applications && family.applications.length > 0;
   const hasDownloads = family.downloads && family.downloads.length > 0;
   const overviewSections = family.overviewSections;
+  const overviewCardCount = overviewSections
+    ? [
+        overviewSections.introduction.trim().length > 0,
+        overviewSections.advantages.length > 0,
+        overviewSections.applications.length > 0,
+        overviewSections.customization.trim().length > 0,
+      ].filter(Boolean).length
+    : 0;
+  const overviewGridColumns =
+    overviewCardCount === 2 || overviewCardCount === 4
+      ? 'lg:grid-cols-2'
+      : 'lg:grid-cols-3';
   const hasOverviewSections = Boolean(
     overviewSections &&
       (overviewSections.introduction.trim() ||
@@ -67,7 +79,7 @@ export default function ProductFamilyTemplate({
               return (
                 <FlexibleImage
                   basePath={basePath}
-                  alt={family.name}
+                  alt=""
                   className="h-full w-full object-cover object-center"
                   width={1200}
                   height={800}
@@ -86,7 +98,7 @@ export default function ProductFamilyTemplate({
 
         {/* Text + CTAs */}
         <div className="px-4 py-8">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
             Product Family
           </span>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white">
@@ -139,7 +151,7 @@ export default function ProductFamilyTemplate({
             return (
               <FlexibleImage
                 basePath={heroBasePath}
-                alt={family.name}
+                alt=""
                 className="absolute inset-0 h-full w-full object-cover object-center"
                 width={1920}
                 height={1080}
@@ -160,7 +172,7 @@ export default function ProductFamilyTemplate({
 
         <div className="relative z-10 mx-auto flex min-h-[68vh] max-w-7xl items-center px-6 py-16 lg:min-h-[78vh] lg:px-8 lg:py-24">
           <div className="w-full max-w-xl lg:max-w-[46%]">
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
               Product Family
             </span>
 
@@ -210,12 +222,12 @@ export default function ProductFamilyTemplate({
       {/* ===== XL Desktop Hero — framed natural-ratio artwork ===== */}
       <DesktopHeroFrame
         basePath={getFamilyHeroBasePath(family.slug)}
-        alt={family.name}
+        alt=""
         contentSide="left"
         placeholderVariant="product-family"
         placeholderLabel="Family image coming soon"
       >
-        <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-green">
+        <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
           Product Family
         </span>
 
@@ -273,11 +285,11 @@ export default function ProductFamilyTemplate({
             </Reveal>
 
             {hasOverviewSections ? (
-              <div className="mt-8 grid gap-8 lg:grid-cols-2">
+              <div className={`mt-8 grid grid-cols-1 items-stretch gap-5 ${overviewGridColumns}`}>
                 {/* Introduction */}
                 {family.overviewSections!.introduction.trim() && <Reveal>
-                  <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
-                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
+                  <div className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-graphite/75">
                       Introduction
                     </h3>
                     <div className="mt-3 h-px w-8 bg-brand-green/30" />
@@ -289,8 +301,8 @@ export default function ProductFamilyTemplate({
 
                 {/* Engineering Advantages */}
                 {family.overviewSections!.advantages.length > 0 && <Reveal delay={100}>
-                  <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
-                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
+                  <div className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-graphite/75">
                       Engineering Advantages
                     </h3>
                     <div className="mt-3 h-px w-8 bg-brand-green/30" />
@@ -310,8 +322,8 @@ export default function ProductFamilyTemplate({
 
                 {/* Typical Applications */}
                 {family.overviewSections!.applications.length > 0 && <Reveal delay={150}>
-                  <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
-                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
+                  <div className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-graphite/75">
                       Typical Applications
                     </h3>
                     <div className="mt-3 h-px w-8 bg-brand-green/30" />
@@ -331,8 +343,8 @@ export default function ProductFamilyTemplate({
 
                 {/* Customization */}
                 {family.overviewSections!.customization.trim() && <Reveal delay={200}>
-                  <div className="rounded-xl border border-brand-green-dark/10 bg-white p-6">
-                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-green">
+                  <div className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wide text-brand-graphite/75">
                       Customization Capability
                     </h3>
                     <div className="mt-3 h-px w-8 bg-brand-green/30" />
@@ -363,15 +375,25 @@ export default function ProductFamilyTemplate({
                       : 'grid grid-cols-1 gap-0 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3'
                   }
                 >
-                  {products.map((p, i) => (
-                    <Reveal key={p.id} delay={i * 60}>
+                  {products.map((p, i) => {
+                    const card = (
                       <ProductCard
                         product={p}
                         familyRoute={family.route}
                         appearance={useShowcaseLayout ? 'showcase' : 'standard'}
                       />
-                    </Reveal>
-                  ))}
+                    );
+
+                    return useShowcaseLayout ? (
+                      <div key={p.id} className="h-full">
+                        {card}
+                      </div>
+                    ) : (
+                      <Reveal key={p.id} delay={i * 60}>
+                        {card}
+                      </Reveal>
+                    );
+                  })}
                 </div>
               ) : (
                 <EmptyProductGrid />
@@ -406,15 +428,31 @@ export default function ProductFamilyTemplate({
             </Reveal>
             <div className="mt-8">
               {family.industries && family.industries.length > 0 ? (
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {family.industries.map((ind) => (
-                    <div
-                      key={ind}
-                      className="rounded-lg border border-brand-green-dark/10 bg-white px-5 py-4 text-sm font-medium text-brand-graphite/75"
-                    >
-                      {ind}
-                    </div>
-                  ))}
+                <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {family.industries.map((industry) => {
+                    const title =
+                      typeof industry === 'string' ? industry : industry.title;
+                    const description =
+                      typeof industry === 'string'
+                        ? undefined
+                        : industry.description;
+
+                    return (
+                      <article
+                        key={typeof industry === 'string' ? industry : industry.slug}
+                        className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-5 shadow-sm shadow-brand-green-dark/[0.03]"
+                      >
+                        <h3 className="text-base font-bold tracking-tight text-brand-green">
+                          {title}
+                        </h3>
+                        {description && (
+                          <p className="mt-2 text-sm leading-relaxed text-brand-graphite/70">
+                            {description}
+                          </p>
+                        )}
+                      </article>
+                    );
+                  })}
                 </div>
               ) : (
                 <ContentPlaceholder

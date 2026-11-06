@@ -7,16 +7,16 @@ export const econotrol: ProductContent = {
   id: 'butterfly-damper-valves_econotrol',
   slug: 'econotrol',
   familySlug: 'butterfly-damper-valves',
-  familyName: 'Butterfly Damper Valves',
+  familyName: 'Damper and Control Valves',
   route: '/products/butterfly-damper-valves/econotrol',
   name: 'Econotrol',
   series: '09',
   shortDescription:
-    'A wafer-style butterfly damper valve for mid-range differential-pressure applications, with configurable materials, seating, and actuation options.',
+    'A wafer-style Damper and Control Valve for mid-range differential-pressure applications, with configurable materials, seating, and actuation options.',
   overview:
-    'The PDC Econotrol Series 09 wafer-style butterfly damper valve is available in sizes from 2 inches through 14 inches. Configurable materials, seats, packing, and actuation options support suitable low-pressure air and gas flow-control applications.',
+    'The PDC Econotrol Series 09 wafer-style Damper and Control Valve is available in sizes from 2 inches through 14 inches. Configurable materials, seats, packing, and actuation options support suitable low-pressure air and gas flow-control applications.',
   overviewParagraphs: [
-    'The PDC Econotrol Series 09 is a wafer-style butterfly damper valve for mid-range differential-pressure applications.',
+    'The PDC Econotrol Series 09 is a wafer-style Damper and Control Valve for mid-range differential-pressure applications.',
     'Materials, seating, packing, and actuation can be configured to meet the operating conditions and requirements of the application.',
   ],
   engineeringIntro:
@@ -147,38 +147,28 @@ export const econotrol: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [
-      {
-        src: '/images/products/butterfly-damper-valves/gallery/econotrol/lever-valve-square.jpg',
-        alt: 'PDC Econotrol Series 09 butterfly damper valve with manual lever',
-        kind: 'gallery',
-        caption: 'Econotrol Series 09 with Manual Lever',
-        width: 1254,
-        height: 1254,
-      },
-      {
-        src: '/images/products/butterfly-damper-valves/gallery/econotrol/6-inch-front.webp',
-        alt: 'PDC Econotrol 6-inch butterfly damper valve front view with tapered machined-steel seat',
-        kind: 'gallery',
-        caption: '6-Inch Econotrol — Front View',
-        width: 1536,
-        height: 1024,
-      },
-    ],
-    transparentPng: undefined,
+    gallery: [],
+    transparentPng: {
+      src: '/images/products/butterfly-damper-valves/econotrol-hero-cutout.png',
+      alt: 'Approved transparent product cutout of the PDC Econotrol Series 09 Damper and Control Valve',
+      kind: 'transparent-png',
+      caption: 'Econotrol Series 09',
+      width: 1254,
+      height: 1254,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },
   seo: {
-    title: 'Econotrol Series 09 Butterfly Damper Valve | PDC Valve',
+    title: 'Econotrol Series 09 Damper and Control Valve | PDC Valve',
     description:
-      'Explore the PDC Econotrol Series 09 butterfly damper valve, including verified size, temperature, construction, and application information.',
+      'Explore the PDC Econotrol Series 09 Damper and Control Valve, including verified size, temperature, construction, and application information.',
     canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-damper-valves/econotrol',
     noIndex: false,
     openGraph: {
-      title: 'Econotrol Series 09 Butterfly Damper Valve | PDC Valve',
+      title: 'Econotrol Series 09 Damper and Control Valve | PDC Valve',
       description:
-        'Explore the PDC Econotrol Series 09 butterfly damper valve, including verified size, temperature, construction, and application information.',
+        'Explore the PDC Econotrol Series 09 Damper and Control Valve, including verified size, temperature, construction, and application information.',
     },
   },
 };

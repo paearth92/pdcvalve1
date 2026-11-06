@@ -32,7 +32,7 @@ export default function Error({
           <AlertCircle className="h-10 w-10" />
         </span>
 
-        <h1 className="mt-8 text-3xl font-extrabold tracking-tight text-brand-green-dark sm:text-4xl">
+        <h1 className="mt-8 text-3xl font-extrabold tracking-tight text-brand-green sm:text-4xl">
           Something Went Wrong
         </h1>
         <div className="mx-auto mt-4 h-px w-16 bg-brand-green/40" />

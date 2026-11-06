@@ -39,8 +39,8 @@ export default function CompanyLandingPage() {
           <Reveal>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-green">Company</span>
-                <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-green-dark sm:text-[1.9rem]">Explore PDC</h2>
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-graphite/70">Company</span>
+                <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-green sm:text-[1.9rem]">Explore PDC</h2>
               </div>
               <p className="max-w-xl text-[13px] leading-6 text-brand-graphite/50">A focused company section with the information customers actually need.</p>
             </div>

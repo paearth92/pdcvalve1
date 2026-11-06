@@ -1,8 +1,6 @@
 import type { ProductContent } from '@/types/content';
 
-/**
- * High Performance Butterfly Valve — verified product content.
- */
+/** High Performance Butterfly Valve — revised to Jon's November 6 review. */
 export const highPerformance: ProductContent = {
   id: 'butterfly-valves_high-performance',
   slug: 'high-performance',
@@ -12,149 +10,146 @@ export const highPerformance: ProductContent = {
   name: 'High Performance Butterfly Valve',
   series: '',
   shortDescription:
-    'A double-eccentric industrial butterfly valve for bidirectional shutoff and modulating service in standard process lines.',
+    'A double-offset industrial butterfly valve for shutoff and modulating service across a wide range of pressure, temperature, and process applications.',
   overview:
-    'PDC High Performance Butterfly Valves are designed for bidirectional shutoff and modulating service in standard industrial process lines.',
+    'PDC High Performance Butterfly Valves use a double-offset disc design for industrial shutoff and modulating service across a wide range of process conditions.',
   overviewParagraphs: [
-    'PDC High Performance Butterfly Valves are designed for bidirectional shutoff and modulating service in standard industrial process lines.',
-    'Construction material options include carbon steel, stainless steel, duplex-grade steel, and custom materials selected for specific applications.',
-    'The valve uses a double-eccentric disc design and is available in wafer and lug configurations.',
+    'PDC High Performance Butterfly Valves use a double-offset disc design for industrial shutoff and modulating service across a wide range of process conditions.',
+    'Available configurations include wafer and lug body styles with soft, fire-safe, and metal seat options selected according to the required pressure, temperature, and shutoff performance.',
+    'Standard construction materials include carbon steel and stainless steel, with duplex and other alloy materials available for applicable service requirements.',
   ],
+  engineeringIntro:
+    'Published Cv data is shown by pressure class. Dimensional tables vary by size, pressure class, and configuration; contact PDC for the applicable dimensional literature.',
   features: [
     {
-      title: 'Compact, full-port design',
-      description: '',
+      title: 'Double-offset disc design',
+      description:
+        'Double-offset geometry allows the disc to release quickly from the seat, helping reduce operating torque and seat wear.',
     },
     {
-      title: 'Lightweight construction',
-      description: '',
+      title: 'Pressure-assisted seat design',
+      description:
+        'Free-floating seat construction provides interference and pressure-assisted sealing across low- and high-pressure service conditions.',
     },
     {
-      title: 'Fast opening and closing',
-      description: '',
+      title: 'Direct-mount actuation',
+      description:
+        'The mounting flange allows manual or automated actuation to be installed directly on applicable valve sizes.',
     },
     {
-      title: 'Low operating torque',
-      description: '',
+      title: 'Blowout-proof stem retention',
+      description:
+        'Stem retention sits above the packing area and is designed in accordance with API 609 requirements.',
     },
     {
-      title: 'Replaceable seal design for easier maintenance',
-      description: '',
+      title: 'Adjustable gland packing',
+      description:
+        'Rocker-style gland construction provides 360-degree packing adjustment and supports direct servicing of the packing system.',
     },
     {
-      title: 'Self-sealing and self-cleaning disc-seal interaction',
-      description: '',
+      title: 'Extended neck construction',
+      description:
+        'The extended neck provides clearance for up to 2 inches of pipe insulation.',
     },
     {
-      title: 'Gland pressing plate supports full utilization of gland seals',
-      description: '',
+      title: 'Robust seat retainer',
+      description:
+        'A multi-bolted seat retainer supports the seat in applicable bidirectional and double dead-end service configurations.',
     },
     {
-      title: 'Wafer and lug configurations available',
-      description: '',
+      title: 'Multiple body configurations',
+      description:
+        'Available body styles include wafer, lug, double-flanged, and butt-welded.',
     },
     {
-      title: 'ANSI Class 300 and Class 600 configurations available',
-      description: '',
+      title: 'Soft, fire-safe, and metal seat options',
+      description:
+        'Seat configurations support different shutoff, pressure, temperature, and fire-safe service requirements.',
     },
     {
-      title: 'ISO 5211-compatible top mounting flange',
-      description: '',
+      title: 'Multiple material options',
+      description:
+        'Body, disc, stem, and trim materials include carbon steel, stainless steel, duplex, Monel, SMO alloys, and other options for applicable service requirements.',
     },
   ],
   benefits: [],
   applications: [
-    'Hygienic powders and slurries, particularly in pharmaceutical processing',
-    'Chemical and dyeing fluids in textile processing',
-    'Brine water and oil service',
-    'Steam lines',
-    'Air lines',
-    'Gas lines',
-    'Vacuum service',
+    'Industrial process lines requiring shutoff or modulating service',
+    'Liquid service requiring high-performance butterfly valve construction',
+    'Air and gas service using quarter-turn isolation or control',
+    'Steam and elevated-temperature service with appropriate body, seat, and materials',
+    'Full-vacuum service with soft-seat or fire-safe configurations installed in the recommended flow direction',
+    'Higher-pressure service using ANSI Class 150, 300, or 600 configurations',
+    'Fire-safe service requiring an applicable API 607-tested seat configuration',
   ],
   applicationGroups: [],
   industries: [],
   specifications: [
-    { label: 'Size Range', value: '1-1/2" to 36"' },
-    { label: 'Construction Type', value: 'Double Eccentric Disc Design' },
-    { label: 'Disc Style', value: 'Spherical Disc Valve' },
-    { label: 'Temperature', value: 'Soft Seating: -25°C to 180°C; Metal-to-Metal Seating: -25°C to 600°C' },
-    { label: 'Pressure Rating', value: 'ANSI Class 150 (optional Class 300 and Class 600)' },
-    { label: 'Body Material', value: 'WCB, CF8, CF8M' },
-    { label: 'End Connections', value: 'Wafer and Lug' },
-    { label: 'Operation', value: 'Hand Lever; Worm Gear Box' },
+    { label: 'Size Range', value: '2" through 36", depending on pressure class and body configuration' },
+    { label: 'Design Type', value: 'Double-offset high performance butterfly valve' },
+    { label: 'Body Configurations', value: 'Wafer, lug, double-flanged, and butt-welded' },
+    { label: 'Pressure Classes', value: 'ANSI Class 150, 300, and 600' },
+    { label: 'Seat Options', value: 'Soft seat, fire-safe seat, and metal seat' },
+    { label: 'Shutoff Performance', value: 'Soft seat: Class VI, bidirectional; fire-safe seat: Class VI before fire and Class V after fire; metal seat: Class V, unidirectional' },
+    { label: 'Temperature / Pressure Capability', value: 'Depends on pressure class, body material, and seat selection. Refer to published pressure-temperature data.' },
+    { label: 'Standard Body Materials', value: 'WCB carbon steel or CF8M 316 stainless steel' },
+    { label: 'Additional Materials', value: 'Duplex 2205, Monel, SMO alloys, and other materials for applicable service requirements' },
   ],
   specGroups: [
     {
       heading: 'General',
       category: 'general',
       rows: [
-        { label: 'Size Range', value: '1-1/2" to 36"' },
-        { label: 'Larger Sizes', value: 'Available on request' },
-        { label: 'Construction Type', value: 'Double Eccentric Disc Design' },
-        { label: 'Disc Style', value: 'Spherical Disc Valve' },
+        { label: 'Size Range', value: '2" through 36", depending on pressure class and body configuration' },
+        { label: 'Design Type', value: 'Double-offset high performance butterfly valve' },
+        { label: 'Body Configurations', value: 'Wafer, lug, double-flanged, and butt-welded' },
+        { label: 'Seat Configurations', value: 'Soft seat, fire-safe seat, and metal seat' },
       ],
     },
     {
-      heading: 'Temperature',
-      category: 'temperature',
+      heading: 'Pressure & Performance',
+      category: 'performance',
       rows: [
-        { label: 'Soft Seating', value: '-25°C to 180°C' },
-        { label: 'Metal-to-Metal Seating', value: '-25°C to 600°C' },
-      ],
-    },
-    {
-      heading: 'Pressure',
-      category: 'pressure',
-      rows: [
-        { label: 'Pressure Rating', value: 'ANSI Class 150' },
-        { label: 'Optional Pressure Classes', value: 'ANSI Class 300 and ANSI Class 600' },
-        { label: 'Pressure-Temperature Rating', value: 'ASME/ANSI B16.34' },
+        { label: 'Pressure Classes', value: 'ANSI Class 150, 300, and 600' },
+        { label: 'Soft Seat Shutoff', value: 'Class VI, bidirectional' },
+        { label: 'Fire-Safe Seat Shutoff', value: 'Class VI before fire; Class V after fire' },
+        { label: 'Metal Seat Shutoff', value: 'Class V, unidirectional' },
+        { label: 'Pressure / Temperature Capability', value: 'Depends on pressure class, body material, and seat selection; refer to published pressure-temperature data.' },
       ],
     },
     {
       heading: 'Materials',
       category: 'materials',
       rows: [
-        { label: 'Body Material', value: 'WCB, CF8, CF8M' },
-        { label: 'Stem Material', value: 'AISI 410, 304, 316' },
-        { label: 'Shaft Material', value: 'AISI 410, 304, 316' },
-        { label: 'Disc Material', value: 'CF8, CF8M' },
-        { label: 'Seat', value: 'PTFE' },
-        { label: 'Optional Seat Materials', value: 'EPDM and metal-to-metal' },
+        { label: 'Standard Body Material', value: 'WCB carbon steel or CF8M 316 stainless steel' },
+        { label: 'Additional Materials', value: 'Duplex 2205, Monel, SMO alloys, and other materials for applicable service requirements' },
       ],
     },
     {
       heading: 'Connections',
       category: 'connections',
       rows: [
-        { label: 'End Connections', value: 'Wafer and Lug' },
-        { label: 'Flange Standard', value: 'ANSI B16.5 Class 150' },
-        { label: 'Large-Flange Standard', value: 'ASME/ANSI B16.47 Series A' },
-        { label: 'Top Mounting Flange', value: 'ISO 5211' },
-        { label: 'Plate Mounting', value: 'NAMUR Standard' },
+        { label: 'Body Configurations', value: 'Wafer, lug, double-flanged, and butt-welded; availability varies by pressure class and size' },
+        { label: 'Wafer and Lug Flanges', value: 'ANSI/ASME B16.5, Class 150 / 300 / 600' },
+        { label: 'Large-Diameter Flanges', value: 'ANSI/ASME B16.47 Series A, where applicable' },
+        { label: 'Butt-Welded Connections', value: 'ANSI/ASME B16.25' },
       ],
     },
     {
-      heading: 'Standards',
+      heading: 'Design & Testing Standards',
       category: 'certifications',
       rows: [
-        { label: 'Face-to-Face, 40 to 600 NB', value: 'API 609 Category B and ANSI B16.10' },
-        { label: 'Face-to-Face Alternative', value: 'ISO 5752 Series 20' },
-        { label: 'Face-to-Face, 650 to 1200 NB', value: 'MSS SP-68' },
-        { label: 'Design and Manufacturing, 40 to 600 NB', value: 'API 609 Category B' },
-        { label: 'Design and Manufacturing, 650 to 1200 NB', value: 'MSS SP-68' },
-        { label: 'Inspection and Testing, 40 to 600 NB', value: 'API 598 and ANSI FCI 70-2' },
-        { label: 'Inspection and Testing, 650 to 1200 NB', value: 'API 598 and BS 6755' },
-        { label: 'Fire Safe Testing', value: 'API 607' },
+        { label: 'Design', value: 'API 609 and ANSI/ASME B16.34' },
+        { label: 'Testing', value: 'API 598 and ANSI/ASME B16.34' },
+        { label: 'Fire-Safe Testing', value: 'API 607 for applicable fire-safe configurations' },
       ],
     },
     {
       heading: 'Operation',
       category: 'operation',
       rows: [
-        { label: 'Operation', value: 'Hand Lever' },
-        { label: 'Operation', value: 'Worm Gear Box' },
+        { label: 'Actuation', value: 'Manual or automated quarter-turn operation' },
+        { label: 'Mounting', value: 'Direct-mount actuation is available on applicable valve sizes' },
       ],
     },
   ],
@@ -164,6 +159,8 @@ export const highPerformance: ProductContent = {
       familySlug: 'butterfly-valves',
       productSlug: 'triple-offset',
       name: 'Triple Offset Butterfly Valve',
+      description:
+        'A torque-seated triple-offset butterfly valve for demanding shutoff and control applications requiring metal-seated construction and elevated-temperature capability.',
     },
   ],
   badges: [],
@@ -171,7 +168,32 @@ export const highPerformance: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/butterfly-valves/gallery/high-performance/high-performance-bare-stem-front.webp',
+        alt: 'PDC High Performance butterfly valve bare-stem front view',
+        kind: 'gallery',
+        caption: 'Bare-Stem Valve — Front View',
+        width: 1350,
+        height: 1800,
+      },
+      {
+        src: '/images/products/butterfly-valves/gallery/high-performance/high-performance-lug-heat-shield-actuator-angle.webp',
+        alt: 'PDC High Performance lug butterfly valve with heat shield and actuator, angled view',
+        kind: 'gallery',
+        caption: 'Actuated Lug Valve — Angled View',
+        width: 1350,
+        height: 1800,
+      },
+      {
+        src: '/images/products/butterfly-valves/gallery/high-performance/high-performance-lug-heat-shield-actuator-wide.webp',
+        alt: 'PDC High Performance lug valve assemblies with heat shields and pneumatic actuators',
+        kind: 'gallery',
+        caption: 'Actuated Lug Valve Assemblies',
+        width: 1800,
+        height: 1350,
+      },
+    ],
     transparentPng: undefined,
     technicalDrawings: undefined,
     thumbnail: undefined,
@@ -179,14 +201,13 @@ export const highPerformance: ProductContent = {
   seo: {
     title: 'High Performance Butterfly Valve | PDC Valve',
     description:
-      'Explore PDC High Performance Butterfly Valves for bidirectional shutoff and modulating service, including verified size, temperature, material, pressure-class, and construction information.',
-    canonicalUrl:
-      'https://www.pdcvalve.com/products/butterfly-valves/high-performance',
+      'Explore the PDC High Performance Butterfly Valve, including double-offset design, pressure classes, seat options, published Cv data, and service information.',
+    canonicalUrl: 'https://www.pdcvalve.com/products/butterfly-valves/high-performance',
     noIndex: false,
     openGraph: {
       title: 'High Performance Butterfly Valve | PDC Valve',
       description:
-        'Explore PDC High Performance Butterfly Valves for bidirectional shutoff and modulating service, including verified size, temperature, material, pressure-class, and construction information.',
+        'Explore the PDC High Performance Butterfly Valve, including double-offset design, pressure classes, seat options, published Cv data, and service information.',
     },
   },
 };

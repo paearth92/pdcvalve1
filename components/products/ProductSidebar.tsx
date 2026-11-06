@@ -25,10 +25,10 @@ export default function ProductSidebar({
             This card is intentionally only the fast selection snapshot. */}
         <div className="flex items-start justify-between gap-4">
           <div>
-            <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-brand-green">
+            <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-brand-graphite/70">
               At a glance
             </span>
-            <h3 className="mt-1.5 text-base font-bold leading-tight tracking-tight text-brand-green-dark">
+            <h3 className="mt-1.5 text-base font-bold leading-tight tracking-tight text-brand-green">
               Key Specifications
             </h3>
           </div>

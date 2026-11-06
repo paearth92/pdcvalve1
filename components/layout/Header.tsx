@@ -8,6 +8,7 @@ import { Menu, X, Phone, Mail, ChevronDown, ArrowRight } from 'lucide-react';
 import { mainNav, siteConfig, megaMenuColumns, megaMenuFeature, companyMenuLinks, industries } from '@/data/site';
 import { productFamilyContent } from '@/data/products/families';
 import { products, getProductsByFamily } from '@/data/products';
+import { approvedProductBackground } from '@/data/assets/registry';
 import { cn } from '@/lib/utils';
 import RFQButton from '@/components/rfq/RFQButton';
 
@@ -37,7 +38,7 @@ const familyPreviewMap = new Map<string, FeaturePreview>(
         {
           title: featured.name,
           description: featured.shortDescription ?? f.shortDescription,
-          image: `/images/products/${featured.familySlug}/cards/${featured.slug}-card.png`,
+          image: approvedProductBackground,
           imageAlt: `PDC ${featured.name}`,
           href: `/products/${featured.familySlug}/${featured.slug}`,
           ctaLabel: 'Explore Product',
@@ -49,7 +50,7 @@ const familyPreviewMap = new Map<string, FeaturePreview>(
       {
         title: f.name,
         description: f.shortDescription,
-        image: `/images/products/families/${f.slug}.png`,
+        image: approvedProductBackground,
         imageAlt: `PDC ${f.name}`,
         href: f.route,
         ctaLabel: 'Explore Family',
@@ -64,7 +65,7 @@ const productPreviewMap = new Map<string, FeaturePreview>(
     {
       title: p.name,
       description: p.shortDescription ?? '',
-      image: `/images/products/${p.familySlug}/cards/${p.slug}-card.png`,
+      image: approvedProductBackground,
       imageAlt: `PDC ${p.name}`,
       href: `/products/${p.familySlug}/${p.slug}`,
       ctaLabel: 'Explore Product',
@@ -96,7 +97,7 @@ const defaultIndustryPreview: IndustryPreview = {
 const defaultPreview: FeaturePreview = {
   title: megaMenuFeature.title,
   description: megaMenuFeature.description,
-  image: `/images/products/butterfly-valves/cards/high-performance-card.png`,
+  image: approvedProductBackground,
   imageAlt: 'PDC High Performance Butterfly Valve',
   href: `/products/${megaMenuFeature.ctaSlug}`,
   ctaLabel: megaMenuFeature.ctaLabel,
@@ -105,6 +106,7 @@ const defaultPreview: FeaturePreview = {
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
@@ -120,9 +122,18 @@ export default function Header() {
 
   useEffect(() => {
     let frameId: number | null = null;
+    let previousScrollY = window.scrollY;
 
     const updateHeaderState = () => {
       const scrollY = window.scrollY;
+      const scrollDelta = scrollY - previousScrollY;
+
+      if (mobileOpen || megaOpen || companyOpen || industriesOpen || scrollY < 32) {
+        setHeaderHidden(false);
+      } else if (scrollDelta !== 0) {
+        setHeaderHidden(scrollDelta > 0);
+      }
+      previousScrollY = scrollY;
 
       setScrolled((current) => {
         // Separate enter/exit thresholds prevent the header from rapidly
@@ -147,7 +158,7 @@ export default function Header() {
       window.removeEventListener('scroll', onScroll);
       if (frameId !== null) window.cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [mobileOpen, megaOpen, companyOpen, industriesOpen]);
 
   const openMega = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -250,7 +261,12 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <div className="sticky top-0 z-50 w-full">
+    <div
+      className={cn(
+        'sticky top-0 z-50 w-full transition-transform duration-300 ease-out',
+        headerHidden ? 'pointer-events-none -translate-y-full' : 'translate-y-0',
+      )}
+    >
       {/* Utility bar */}
       <div className="hidden bg-brand-green-dark text-white md:block">
         <div className="mx-auto flex h-[34px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -289,7 +305,7 @@ export default function Header() {
         <div
           className={cn(
             'mx-auto flex max-w-7xl items-center justify-between px-4 transition-[height] duration-300 ease-out sm:px-6 lg:px-8',
-            scrolled ? 'h-[64px]' : 'h-[84px]',
+            scrolled ? 'h-[64px]' : 'h-[76px] lg:h-[72px]',
           )}
         >
           {/* Logo */}
@@ -306,7 +322,7 @@ export default function Header() {
               priority
               className={cn(
                 'w-auto object-contain transition-[height] duration-300 ease-out',
-                scrolled ? 'h-9' : 'h-12',
+                scrolled ? 'h-9' : 'h-10',
               )}
             />
           </Link>
@@ -560,7 +576,7 @@ export default function Header() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={preview.image}
-                  alt={preview.imageAlt}
+                  alt=""
                   loading="eager"
                   className="relative h-full w-full object-contain p-3 transition-opacity duration-300"
                 />

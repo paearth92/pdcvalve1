@@ -20,10 +20,10 @@ export default function NotFound() {
           <PackageSearch className="h-10 w-10" />
         </span>
 
-        <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+        <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-brand-graphite/70">
           Error 404
         </p>
-        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-brand-green-dark sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-brand-green sm:text-5xl">
           Page Not Found
         </h1>
         <div className="mx-auto mt-4 h-px w-16 bg-brand-green/40" />
