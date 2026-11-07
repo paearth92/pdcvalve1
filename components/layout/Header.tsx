@@ -29,17 +29,74 @@ type IndustryPreview = {
   href: string;
 };
 
+const transparentProductPreviewImages: Record<
+  string,
+  Pick<FeaturePreview, 'image' | 'imageAlt'>
+> = {
+  'butterfly-damper-valves/econotrol': {
+    image: '/images/products/butterfly-damper-valves/econotrol-hero-cutout.png',
+    imageAlt: 'PDC Econotrol Series 09 Damper and Control Valve',
+  },
+  'butterfly-damper-valves/excel': {
+    image: '/images/products/butterfly-damper-valves/excel-series-40-xlnf-cutout.png',
+    imageAlt: 'PDC Excel Series 40 butterfly damper valve with Bettis actuator and heat shield',
+  },
+  'electric-actuators/pdcq': {
+    image: '/images/home/core-capabilities/pdcq-actuator-cutout.png',
+    imageAlt: 'PDCQ electric quarter-turn actuator with manual handwheel',
+  },
+  'butterfly-valves/high-performance': {
+    image: '/images/home/core-capabilities/high-performance-isolation-cutout.png',
+    imageAlt: 'PDC High Performance Butterfly Valve for process isolation',
+  },
+};
+
+const productMainPreviewImages = new Map(
+  products.flatMap((product) =>
+    product.image?.src
+      ? [[
+          `${product.familySlug}/${product.slug}`,
+          { image: product.image.src, imageAlt: product.image.alt },
+        ] as const]
+      : [],
+  ),
+);
+
+function getProductPreviewImage(
+  familySlug: string,
+  productSlug: string,
+  productName: string,
+): Pick<FeaturePreview, 'image' | 'imageAlt'> {
+  const productKey: `${string}/${string}` = `${familySlug}/${productSlug}`;
+  return (
+    transparentProductPreviewImages[productKey] ??
+    productMainPreviewImages.get(productKey) ?? {
+      image: approvedProductBackground,
+      imageAlt: `PDC ${productName} product family background`,
+    }
+  );
+}
+
 const familyPreviewMap = new Map<string, FeaturePreview>(
   productFamilyContent.map((f) => {
-    const featured = getProductsByFamily(f.slug)[0];
+    const familyProducts = getProductsByFamily(f.slug);
+    const featured =
+      familyProducts.find(
+        (product) =>
+          transparentProductPreviewImages[`${product.familySlug}/${product.slug}`] ||
+          productMainPreviewImages.has(`${product.familySlug}/${product.slug}`),
+      ) ?? familyProducts[0];
     if (featured) {
       return [
         f.slug,
         {
           title: featured.name,
           description: featured.shortDescription ?? f.shortDescription,
-          image: approvedProductBackground,
-          imageAlt: `PDC ${featured.name}`,
+          ...getProductPreviewImage(
+            featured.familySlug,
+            featured.slug,
+            featured.name,
+          ),
           href: `/products/${featured.familySlug}/${featured.slug}`,
           ctaLabel: 'Explore Product',
         },
@@ -50,8 +107,7 @@ const familyPreviewMap = new Map<string, FeaturePreview>(
       {
         title: f.name,
         description: f.shortDescription,
-        image: approvedProductBackground,
-        imageAlt: `PDC ${f.name}`,
+        ...getProductPreviewImage(f.slug, '', f.name),
         href: f.route,
         ctaLabel: 'Explore Family',
       },
@@ -65,8 +121,7 @@ const productPreviewMap = new Map<string, FeaturePreview>(
     {
       title: p.name,
       description: p.shortDescription ?? '',
-      image: approvedProductBackground,
-      imageAlt: `PDC ${p.name}`,
+      ...getProductPreviewImage(p.familySlug, p.slug, p.name),
       href: `/products/${p.familySlug}/${p.slug}`,
       ctaLabel: 'Explore Product',
     },
@@ -97,8 +152,11 @@ const defaultIndustryPreview: IndustryPreview = {
 const defaultPreview: FeaturePreview = {
   title: megaMenuFeature.title,
   description: megaMenuFeature.description,
-  image: approvedProductBackground,
-  imageAlt: 'PDC High Performance Butterfly Valve',
+  ...getProductPreviewImage(
+    'butterfly-valves',
+    'high-performance',
+    megaMenuFeature.title,
+  ),
   href: `/products/${megaMenuFeature.ctaSlug}`,
   ctaLabel: megaMenuFeature.ctaLabel,
 };
@@ -569,28 +627,29 @@ export default function Header() {
             ))}
 
             {/* Feature panel — updates on hover over family/product links */}
-            <div className="flex flex-col overflow-hidden rounded-xl border border-brand-green-dark/10 bg-brand-green-dark">
-              <div className="relative flex h-40 items-center justify-center overflow-hidden bg-brand-green-dark/40">
-                <div className="blueprint-grid absolute inset-0 opacity-30" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(22,132,71,0.15),transparent_70%)]" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+            <div className="group/preview relative flex flex-col overflow-hidden rounded-2xl border border-brand-green-dark/10 bg-white shadow-[0_16px_40px_rgba(19,57,37,0.12)]">
+              <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#eef4ef]">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_48%,rgba(71,139,83,0.16),transparent_66%),linear-gradient(145deg,#f7faf7_0%,#e9f1eb_100%)]" />
+                <div className="absolute inset-x-12 bottom-5 h-5 rounded-full bg-brand-green-dark/10 blur-xl" />
+                <Image
                   src={preview.image}
-                  alt=""
+                  alt={preview.imageAlt}
+                  fill
+                  sizes="(min-width: 1280px) 300px, 25vw"
                   loading="eager"
-                  className="relative h-full w-full object-contain p-3 transition-opacity duration-300"
+                  className="relative z-10 object-contain px-6 py-4 drop-shadow-[0_12px_12px_rgba(20,50,32,0.16)] transition-transform duration-300 group-hover/preview:scale-[1.035]"
                 />
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-green-dark">
                   {preview.title}
                 </span>
-                <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-white/60">
+                <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-brand-graphite/70">
                   {preview.description}
                 </p>
                 <Link
                   href={preview.href}
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors hover:text-white"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
                   onClick={() => setMegaOpen(false)}
                 >
                   {preview.ctaLabel}

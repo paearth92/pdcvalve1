@@ -152,6 +152,14 @@ export function productContentToProduct(
     attributes: finderMetadata?.attributes ?? EMPTY_PRODUCT_FINDER_ATTRIBUTES,
     productFinderName: finderMetadata?.name,
     productFinderDescription: finderMetadata?.description,
+    image: content.images?.transparentPng
+      ? {
+          src: content.images.transparentPng.src,
+          alt: content.images.transparentPng.alt,
+          width: content.images.transparentPng.width,
+          height: content.images.transparentPng.height,
+        }
+      : undefined,
     imageAssetId: `product-${content.slug}-hero`,
     cardImageAssetId: `product-${content.slug}-card`,
     galleryAssetIds: [],

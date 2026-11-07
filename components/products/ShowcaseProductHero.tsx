@@ -26,6 +26,9 @@ export default function ShowcaseProductHero({
       : product.familySlug === 'butterfly-valves'
         ? 'Butterfly Valve'
         : product.familyName;
+  const showCategoryTitle = !product.name
+    .toLocaleLowerCase()
+    .includes(categoryTitle.toLocaleLowerCase());
   const highlights = product.features.slice(0, 3);
   const highlightIcons = [Waves, ShieldCheck, Settings2];
   const heroImages: ProductHeroGalleryImage[] = [
@@ -93,9 +96,11 @@ export default function ShowcaseProductHero({
           <h1 className="mt-4 text-[2.35rem] font-bold leading-[1.06] tracking-[-0.025em] text-brand-green sm:text-[2.8rem] lg:text-[3.25rem]">
             {product.name}
           </h1>
-          <h2 className="mt-1 text-[1.65rem] font-semibold leading-tight tracking-[-0.02em] text-brand-green sm:text-[1.85rem]">
-            {categoryTitle}
-          </h2>
+          {showCategoryTitle && (
+            <h2 className="mt-1 text-[1.65rem] font-semibold leading-tight tracking-[-0.02em] text-brand-green sm:text-[1.85rem]">
+              {categoryTitle}
+            </h2>
+          )}
           <p className="mt-4 max-w-xl text-base leading-[1.65] text-brand-graphite/75 sm:text-[1.05rem]">
             {product.shortDescription}
           </p>

@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { FileText, Check } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { productFamiliesData } from '@/data/product-families';
-import { getProductCardBasePath } from '@/data/assets/registry';
+import { approvedProductBackground, getProductCardBasePath } from '@/data/assets/registry';
 import RFQButton from '@/components/rfq/RFQButton';
 import AssetPlaceholder from '@/components/shared/AssetPlaceholder';
 import FlexibleImage from '@/components/shared/FlexibleImage';
@@ -25,26 +26,30 @@ export default function ProductCard({
   const familyName = family?.name ?? '';
   const cardBasePath = getProductCardBasePath(familySlug, product.slug);
   const isShowcase = appearance === 'showcase';
-  const isEconotrolCutout =
-    familySlug === 'butterfly-damper-valves' && product.slug === 'econotrol';
-
   if (isShowcase) {
     return (
       <article className="family-product-card relative flex h-full flex-col items-center text-center">
-        <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden">
-          {isEconotrolCutout && (
-            <FlexibleImage
-              basePath="/images/products/butterfly-damper-valves/econotrol-hero-cutout"
-              alt={`${product.name} Damper and Control Valve with manual Locklever`}
-              className="family-product-card__product-image h-full w-full object-contain p-4"
-              width={900}
-              height={675}
+        <Link
+          href={href}
+          aria-label={`View ${product.name} details`}
+          className="absolute inset-0 z-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-4"
+        />
+
+        <div className="pointer-events-none relative z-10 flex aspect-[4/3] w-full items-center justify-center overflow-hidden">
+          {product.image && (
+            <Image
+              src={product.image.src}
+              alt={product.image.alt}
+              width={product.image.width ?? 900}
+              height={product.image.height ?? 675}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="family-product-card__product-image relative z-10 h-full w-full object-contain p-4"
               loading="eager"
             />
           )}
         </div>
 
-        <div className="flex w-full flex-1 flex-col items-center pt-4">
+        <div className="pointer-events-none relative z-10 flex w-full flex-1 flex-col items-center pt-4">
           <h3 className="text-base font-medium leading-snug text-brand-green-dark sm:text-lg">
             {product.name}
           </h3>
@@ -54,7 +59,7 @@ export default function ProductCard({
             </p>
           )}
 
-          <div className="family-product-card__actions mx-auto mt-5 flex w-full justify-center gap-3 sm:max-w-[19rem]">
+          <div className="family-product-card__actions pointer-events-auto z-20 mx-auto mt-5 flex w-full justify-center gap-3 sm:max-w-[19rem]">
             <RFQButton
               productFamily={familyName}
               product={product.name}
@@ -94,7 +99,16 @@ export default function ProductCard({
             : 'relative h-48 overflow-hidden border-b border-brand-green-dark/8'
         }
       >
-        {cardBasePath ? (
+        {product.image ? (
+          <Image
+            src={product.image.src}
+            alt={product.image.alt}
+            width={product.image.width ?? 800}
+            height={product.image.height ?? 800}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="relative z-10 h-full w-full object-contain p-4"
+          />
+        ) : cardBasePath ? (
           <FlexibleImage
             basePath={cardBasePath}
             alt=""

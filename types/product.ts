@@ -34,6 +34,8 @@ export interface ProductSEO {
 export interface ProductImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 /**

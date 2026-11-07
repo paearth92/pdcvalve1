@@ -33,9 +33,10 @@ export default function ProductFamilyTemplate({
   ];
 
   const hasProducts = products.length > 0;
-  const useShowcaseLayout =
+  const useShowcaseHero =
     family.slug === 'butterfly-valves' ||
     family.slug === 'butterfly-damper-valves';
+  const useShowcaseLayout = true;
   const hasAppCards = family.applications && family.applications.length > 0;
   const hasDownloads = family.downloads && family.downloads.length > 0;
   const overviewSections = family.overviewSections;
@@ -63,7 +64,7 @@ export default function ProductFamilyTemplate({
     <>
       <Breadcrumbs items={breadcrumbs} />
 
-      {useShowcaseLayout ? (
+      {useShowcaseHero ? (
         <ShowcaseFamilyHero family={family} />
       ) : (
         <>
