@@ -1,4 +1,5 @@
 import type { ProductContent } from '@/types/content';
+import { actuatorIndustryCoverage } from '@/data/products/actuator-industry-coverage';
 
 /**
  * PDCQ Magnus Force Quarter-Turn Electric Actuator — verified against the
@@ -12,7 +13,7 @@ export const pdcq: ProductContent = {
   route: '/products/electric-actuators/pdcq',
   name: 'PDCQ',
   shortDescription:
-    'A quarter-turn electric actuator for valves and dampers with output torque from 6 N·m (53 in·lbs) to 3,500 N·m (31,000 in·lbs).',
+    'A quarter-turn electric actuator for valve and damper automation with output torque from 6 to 3,500 N·m (53 to 31,000 in·lbs). Available for on-off, inching, and optional modulating-control applications across a broad range of industrial automation requirements.',
   overview:
     'PDCQ electric actuators are designed for quarter-turn operating applications on valves and dampers. The range combines weather-resistant aluminum construction, manual override, ISO 5211 mounting, standard ON/OFF control, and a broad selection of optional control and hazardous-area configurations.',
   overviewParagraphs: [
@@ -86,23 +87,9 @@ export const pdcq: ProductContent = {
     },
   ],
   benefits: [],
-  applications: [
-    'Automotive',
-    'Chemical',
-    'Downstream Hydrocarbons',
-    'Food & Beverage',
-    'Energy & Onsite Utilities',
-    'Life Sciences & Medical',
-    'Mining, Minerals & Metals',
-    'Water & Wastewater',
-    'OEM / Engineered Solutions Providers',
-    'Marine',
-    'Oil & Gas',
-    'Power Generation',
-    'Pulp & Paper',
-  ],
+  applications: [],
   applicationGroups: [],
-  industries: [],
+  industries: actuatorIndustryCoverage.map((industry) => ({ ...industry })),
   specifications: [
     { label: 'Output Torque', value: '6 N·m (53 in·lbs) to 3,500 N·m (31,000 in·lbs)' },
     { label: 'Operation', value: 'Quarter-turn electric actuation for valves and dampers' },
@@ -184,7 +171,16 @@ export const pdcq: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
+    gallery: [
+      {
+        src: '/images/products/electric-actuators/gallery/pdcq/pdcq-side-angle.webp',
+        alt: 'PDCQ electric actuator showing the PDC identification plate and manual handwheel from the side',
+        kind: 'gallery',
+        caption: 'PDCQ Electric Actuator — Nameplate Side View',
+        width: 1412,
+        height: 1114,
+      },
+    ],
     transparentPng: {
       src: '/images/home/core-capabilities/pdcq-actuator-cutout.png',
       alt: 'PDCQ electric quarter-turn actuator with manual handwheel',

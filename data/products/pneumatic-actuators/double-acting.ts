@@ -1,4 +1,5 @@
 import type { ProductContent } from '@/types/content';
+import { actuatorIndustryCoverage } from '@/data/products/actuator-industry-coverage';
 
 /**
  * Magnus Force Double Acting — verified product content.
@@ -12,13 +13,13 @@ export const doubleActing: ProductContent = {
   name: 'Magnus Force Double Acting',
   series: '',
   shortDescription:
-    'A compact double-acting pneumatic rack-and-pinion actuator for reversible quarter-turn valve automation.',
+    'A compact double-acting pneumatic rack-and-pinion actuator for reversible quarter-turn valve and damper automation.',
   overview:
-    'The PDC Magnus Force Double Acting actuator uses opposing pneumatic pressure to move twin pistons through the actuator body and rotate the pinion. Air supplied through Port A moves the pistons outward, rotating the pinion counterclockwise while air exits through Port B. Air supplied through Port B moves the pistons inward, rotating the pinion clockwise while air exits through Port A.',
+    'The PDC Magnus Force Double Acting actuator uses pneumatic pressure to drive twin pistons through a rack-and-pinion mechanism, producing reversible 90° quarter-turn rotation. Air supplied through Port A drives the pistons outward and rotates the pinion counter-clockwise while air exhausts through Port B. Air supplied through Port B drives the pistons inward and rotates the pinion clockwise while air exhausts through Port A. The double-acting design provides powered operation in both directions for quarter-turn valve and damper automation.',
   overviewParagraphs: [
-    'The PDC Magnus Force Double Acting actuator uses opposing pneumatic pressure to move twin pistons through the actuator body and rotate the pinion.',
-    'Air supplied through Port A moves the pistons outward, rotating the pinion counterclockwise while air exits through Port B.',
-    'Air supplied through Port B moves the pistons inward, rotating the pinion clockwise while air exits through Port A.',
+    'The PDC Magnus Force Double Acting actuator uses pneumatic pressure to drive twin pistons through a rack-and-pinion mechanism, producing reversible 90° quarter-turn rotation.',
+    'Air supplied through Port A drives the pistons outward and rotates the pinion counter-clockwise while air exhausts through Port B.',
+    'Air supplied through Port B drives the pistons inward and rotates the pinion clockwise while air exhausts through Port A. The double-acting design provides powered operation in both directions for quarter-turn valve and damper automation.',
   ],
   features: [
     {
@@ -62,48 +63,20 @@ export const doubleActing: ProductContent = {
         'Standard NBR O-rings. Optional Viton or Silicone O-rings support high- and low-temperature applications.',
     },
     {
-      title: 'Reversible pneumatic operation',
-      description: '',
+      title: 'Reversible Double-Acting Operation',
+      description:
+        'Air pressure drives the actuator in both directions for powered opening and closing.',
     },
     {
-      title: 'Twin-piston rack-and-pinion mechanism',
-      description: '',
-    },
-    {
-      title: 'Counterclockwise rotation from Port A pressure',
-      description: '',
-    },
-    {
-      title: 'Clockwise rotation from Port B pressure',
-      description: '',
-    },
-    {
-      title: 'Air-powered travel in both directions',
-      description: '',
-    },
-    {
-      title: 'Compact quarter-turn design',
-      description: '',
+      title: 'Compact Quarter-Turn Design',
+      description:
+        'Rack-and-pinion construction provides compact 90° actuation for valve and damper automation.',
     },
   ],
   benefits: [],
   applications: [],
   applicationGroups: [],
-  industries: [
-    { slug: 'automotive', title: 'Automotive' },
-    { slug: 'chemical', title: 'Chemical' },
-    { slug: 'downstream-hydrocarbons', title: 'Downstream hydrocarbons' },
-    { slug: 'food-and-beverage', title: 'Food and beverage' },
-    { slug: 'energy-and-onsite-utilities', title: 'Energy and onsite utilities' },
-    { slug: 'life-sciences-and-medical', title: 'Life sciences and medical' },
-    { slug: 'mining-minerals-and-metals', title: 'Mining, minerals, and metals' },
-    { slug: 'marine', title: 'Marine' },
-    { slug: 'oem-and-engineered-solution-providers', title: 'OEM and engineered solution providers' },
-    { slug: 'oil-and-gas', title: 'Oil and gas' },
-    { slug: 'power-generation', title: 'Power generation' },
-    { slug: 'pulp-and-paper', title: 'Pulp and paper' },
-    { slug: 'water-and-wastewater', title: 'Water and wastewater' },
-  ],
+  industries: actuatorIndustryCoverage.map((industry) => ({ ...industry })),
   specifications: [
     { label: 'Actuator Type', value: 'Double Acting' },
     { label: 'Actuator Design', value: 'Pneumatic Rack and Pinion' },
@@ -112,7 +85,7 @@ export const doubleActing: ProductContent = {
     { label: 'Torque Output Range', value: '27 to 115,272 in-lbs' },
     { label: 'Minimum Air Pressure', value: '30 PSI' },
     { label: 'Maximum Air Pressure', value: '115 PSI' },
-    { label: 'Supply Air', value: 'Dry, lubricated, or non-corrosive' },
+    { label: 'Supply Air', value: 'Dry, lubricated or non-corrosive air' },
     { label: 'Maximum Dust Particle Size', value: 'Below 30 microns' },
     { label: 'Standard NBR Seals', value: '-4°F to 176°F' },
     { label: 'Viton Seals', value: '5°F to 248°F' },
@@ -120,7 +93,7 @@ export const doubleActing: ProductContent = {
     { label: 'Valve Mounting', value: 'ISO 5211' },
     { label: 'Pinion Standards', value: 'ISO 5211, DIN 3337, and NAMUR' },
     { label: 'Accessory Mounting', value: 'NAMUR' },
-    { label: 'Air Connections', value: 'NAMUR-pattern connections' },
+    { label: 'Air Connections', value: 'NPT supply ports' },
     { label: 'Body Material', value: 'Extruded ASTM 6005 Aluminum Alloy' },
     { label: 'End Cap Material', value: 'Die-Cast Aluminum' },
     { label: 'Standard Pinion Material', value: 'Nickel-Plated Steel' },
@@ -147,7 +120,7 @@ export const doubleActing: ProductContent = {
       rows: [
         { label: 'Minimum Air Pressure', value: '30 PSI' },
         { label: 'Maximum Air Pressure', value: '115 PSI' },
-        { label: 'Supply Air', value: 'Dry, lubricated, or non-corrosive' },
+        { label: 'Supply Air', value: 'Dry, lubricated or non-corrosive air' },
         { label: 'Maximum Dust Particle Size', value: 'Below 30 microns' },
       ],
     },
@@ -167,7 +140,7 @@ export const doubleActing: ProductContent = {
         { label: 'Valve Mounting', value: 'ISO 5211' },
         { label: 'Pinion Standards', value: 'ISO 5211, DIN 3337, and NAMUR' },
         { label: 'Accessory Mounting', value: 'NAMUR' },
-        { label: 'Air Connections', value: 'NAMUR-pattern connections' },
+        { label: 'Air Connections', value: 'NPT supply ports' },
       ],
     },
     {

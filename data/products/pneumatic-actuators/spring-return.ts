@@ -1,4 +1,5 @@
 import type { ProductContent } from '@/types/content';
+import { actuatorIndustryCoverage } from '@/data/products/actuator-industry-coverage';
 
 /**
  * Magnus Force Spring Return — verified against the current PDC product page
@@ -13,7 +14,7 @@ export const springReturn: ProductContent = {
   name: 'Magnus Force Spring Return',
   series: '',
   shortDescription:
-    'A spring-return pneumatic rack-and-pinion actuator providing a mechanical return position when pneumatic pressure is lost.',
+    'A spring-return pneumatic rack-and-pinion actuator providing a predetermined fail position upon loss of air pressure.',
   overview:
     'The PDC Magnus Force Spring Return actuator combines pneumatic piston movement with preloaded springs to provide quarter-turn valve operation and a mechanical return action. Air supplied through Port A forces the pistons outward, compresses the springs, and turns the pinion counterclockwise while spring-chamber air exits through Port B. When air pressure is lost, the springs decompress and force the pistons inward. This turns the pinion clockwise while air exits through Port A.',
   overviewParagraphs: [
@@ -68,70 +69,25 @@ export const springReturn: ProductContent = {
         'Standard NBR O-rings. Optional Viton or Silicone O-rings support high- and low-temperature applications.',
     },
     {
-      title: 'Pneumatic power stroke',
-      description: '',
+      title: 'Pneumatic Power Stroke',
+      description:
+        'Air pressure drives the actuator through the powered stroke while compressing the spring set.',
     },
     {
-      title: 'Mechanical spring-return stroke',
-      description: '',
+      title: 'Mechanical Spring-Return Stroke',
+      description:
+        'Upon loss of air pressure, the spring set drives the actuator to its predetermined return position.',
     },
     {
-      title: 'Configurable spring quantities',
-      description: '',
-    },
-    {
-      title: 'Return action upon loss of pneumatic pressure',
-      description: '',
-    },
-    {
-      title: 'Twin-piston rack-and-pinion mechanism',
-      description: '',
-    },
-    {
-      title: 'Compact quarter-turn design',
-      description: '',
-    },
-    {
-      title: 'Spring chamber vents through Port B during pneumatic travel',
-      description: '',
-    },
-    {
-      title: 'Actuator exhausts through Port A during spring return',
-      description: '',
+      title: 'Configurable Spring Quantities',
+      description:
+        'Spring quantity can be adjusted to match application torque requirements.',
     },
   ],
   benefits: [],
-  applications: [
-    'Automotive',
-    'Chemical',
-    'Downstream Hydrocarbons',
-    'Food & Beverage',
-    'Energy & Onsite Utilities',
-    'Life Sciences & Medical',
-    'Mining, Minerals & Metals',
-    'Water & Wastewater',
-    'OEM / Engineered Solutions Providers',
-    'Marine',
-    'Oil & Gas',
-    'Power Generation',
-    'Pulp & Paper',
-  ],
+  applications: [],
   applicationGroups: [],
-  industries: [
-    { slug: 'automotive', title: 'Automotive' },
-    { slug: 'chemical', title: 'Chemical' },
-    { slug: 'downstream-hydrocarbons', title: 'Downstream hydrocarbons' },
-    { slug: 'food-and-beverage', title: 'Food and beverage' },
-    { slug: 'energy-and-onsite-utilities', title: 'Energy and onsite utilities' },
-    { slug: 'life-sciences-and-medical', title: 'Life sciences and medical' },
-    { slug: 'mining-minerals-and-metals', title: 'Mining, minerals, and metals' },
-    { slug: 'marine', title: 'Marine' },
-    { slug: 'oem-and-engineered-solution-providers', title: 'OEM and engineered solution providers' },
-    { slug: 'oil-and-gas', title: 'Oil and gas' },
-    { slug: 'power-generation', title: 'Power generation' },
-    { slug: 'pulp-and-paper', title: 'Pulp and paper' },
-    { slug: 'water-and-wastewater', title: 'Water and wastewater' },
-  ],
+  industries: actuatorIndustryCoverage.map((industry) => ({ ...industry })),
   specifications: [
     { label: 'Actuator Type', value: 'Spring Return' },
     { label: 'Actuator Design', value: 'Pneumatic Rack and Pinion' },
@@ -140,7 +96,7 @@ export const springReturn: ProductContent = {
     { label: 'Rotation', value: '90°' },
     { label: 'Minimum Air Pressure', value: '30 PSI' },
     { label: 'Maximum Air Pressure', value: '115 PSI' },
-    { label: 'Supply Air', value: 'Dry, lubricated, or non-corrosive' },
+    { label: 'Supply Air', value: 'Dry, lubricated or non-corrosive air' },
     { label: 'Maximum Dust Particle Size', value: 'Below 30 microns' },
     { label: 'Return Method', value: 'Preloaded mechanical springs' },
     { label: 'Spring Quantity', value: 'Configurable according to torque requirements' },
@@ -150,7 +106,7 @@ export const springReturn: ProductContent = {
     { label: 'Valve Mounting', value: 'ISO 5211' },
     { label: 'Pinion Standards', value: 'ISO 5211, DIN 3337, and NAMUR' },
     { label: 'Accessory Mounting', value: 'NAMUR' },
-    { label: 'Air Connections', value: 'NAMUR-pattern connections' },
+    { label: 'Air Connections', value: 'NPT supply ports' },
     { label: 'Body Material', value: 'Extruded ASTM 6005 Aluminum Alloy' },
     { label: 'End Cap Material', value: 'Die-Cast Aluminum' },
     { label: 'Standard Pinion Material', value: 'Nickel-Plated Steel' },
@@ -180,7 +136,7 @@ export const springReturn: ProductContent = {
       rows: [
         { label: 'Minimum Air Pressure', value: '30 PSI' },
         { label: 'Maximum Air Pressure', value: '115 PSI' },
-        { label: 'Supply Air', value: 'Dry, lubricated, or non-corrosive' },
+        { label: 'Supply Air', value: 'Dry, lubricated or non-corrosive air' },
         { label: 'Maximum Dust Particle Size', value: 'Below 30 microns' },
         { label: 'Pneumatic Stroke', value: 'Air pressure supplied through Port A' },
         { label: 'Spring-Chamber Exhaust', value: 'Port B' },
@@ -204,7 +160,7 @@ export const springReturn: ProductContent = {
         { label: 'Valve Mounting', value: 'ISO 5211' },
         { label: 'Pinion Standards', value: 'ISO 5211, DIN 3337, and NAMUR' },
         { label: 'Accessory Mounting', value: 'NAMUR' },
-        { label: 'Air Connections', value: 'NAMUR-pattern connections' },
+        { label: 'Air Connections', value: 'NPT supply ports' },
       ],
     },
     {

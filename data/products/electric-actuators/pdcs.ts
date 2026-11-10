@@ -1,4 +1,5 @@
 import type { ProductContent } from '@/types/content';
+import { actuatorIndustryCoverage } from '@/data/products/actuator-industry-coverage';
 
 /**
  * PDCS Magnus Force Quarter-Turn Spring-Pack Electric Actuator — verified
@@ -12,7 +13,7 @@ export const pdcs: ProductContent = {
   route: '/products/electric-actuators/pdcs',
   name: 'PDCS',
   shortDescription:
-    'A quarter-turn spring-pack electric actuator providing a defined fail position on loss of power, with output torque from 50 N·m (445 in·lbs) to 260 N·m (2,300 in·lbs).',
+    'A quarter-turn spring-return electric actuator for valve and damper automation requiring a predetermined fail position upon loss of power. Available with output torque from 50 to 260 N·m (445 to 2,300 in·lbs).',
   overview:
     'PDCS electric actuators are designed for quarter-turn operating applications requiring a fail position upon loss of power supply. A compact mechanical spring set can fail the connected valve or damper clockwise (close) or counter-clockwise (open).',
   overviewParagraphs: [
@@ -58,23 +59,9 @@ export const pdcs: ProductContent = {
     },
   ],
   benefits: [],
-  applications: [
-    'Automotive',
-    'Chemical',
-    'Downstream Hydrocarbons',
-    'Food & Beverage',
-    'Energy & Onsite Utilities',
-    'Life Sciences & Medical',
-    'Mining, Minerals & Metals',
-    'Water & Wastewater',
-    'OEM / Engineered Solutions Providers',
-    'Marine',
-    'Oil & Gas',
-    'Power Generation',
-    'Pulp & Paper',
-  ],
+  applications: [],
   applicationGroups: [],
-  industries: [],
+  industries: actuatorIndustryCoverage.map((industry) => ({ ...industry })),
   specifications: [
     { label: 'Output Torque', value: '50 N·m (445 in·lbs) to 260 N·m (2,300 in·lbs)' },
     { label: 'Operation', value: 'Quarter-turn electric actuator with mechanical spring pack' },

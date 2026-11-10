@@ -82,7 +82,7 @@ export default function ShowcaseProductHero({
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href={`/products/${product.familySlug}`}
-              className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-brand-graphite/75 hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green"
+              className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-brand-green-dark/90 hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green"
             >
               Product Family
             </Link>
@@ -101,7 +101,7 @@ export default function ShowcaseProductHero({
               {categoryTitle}
             </h2>
           )}
-          <p className="mt-4 max-w-xl text-base leading-[1.65] text-brand-graphite/75 sm:text-[1.05rem]">
+          <p className="mt-4 max-w-xl text-base leading-[1.65] text-brand-graphite sm:text-[1.05rem]">
             {product.shortDescription}
           </p>
 
@@ -120,7 +120,7 @@ export default function ShowcaseProductHero({
                         {feature.title}
                       </p>
                       {feature.description && (
-                        <p className="mt-1 text-xs leading-relaxed text-brand-graphite/65">
+                    <p className="mt-1 text-xs leading-relaxed text-brand-graphite/90">
                           {feature.description}
                         </p>
                       )}

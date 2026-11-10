@@ -53,6 +53,9 @@ export default function ProductDetailTemplate({
   const hasApplications =
     (product.applications && product.applications.length > 0) ||
     (product.industries && product.industries.length > 0);
+  const industriesOnly = Boolean(
+    product.industries?.length && !product.applications?.length,
+  );
   const hasSpecs =
     (product.specs && product.specs.length > 0) ||
     (product.specGroups && product.specGroups.length > 0);
@@ -67,7 +70,9 @@ export default function ProductDetailTemplate({
     ...(hasFeatures ? [{ id: 'features', label: 'Design Features' }] : []),
     ...(hasSpecs ? [{ id: 'specifications', label: 'Specifications' }] : []),
     ...(hasEngineering ? [{ id: 'engineering-data', label: 'Engineering Data' }] : []),
-    ...(hasApplications ? [{ id: 'applications', label: 'Applications' }] : []),
+    ...(hasApplications
+      ? [{ id: 'applications', label: industriesOnly ? 'Industries' : 'Applications' }]
+      : []),
     ...(hasDownloads ? [{ id: 'downloads', label: 'Downloads' }] : []),
     ...(hasRelated ? [{ id: 'related', label: 'Related Products' }] : []),
     { id: 'support', label: 'Engineering Support' },
@@ -187,8 +192,8 @@ export default function ProductDetailTemplate({
         <SectionShell id="applications">
           <Reveal>
             <SectionHeading
-              eyebrow="Applications"
-              title="Where This Product Fits"
+              eyebrow={industriesOnly ? 'Industries' : 'Applications'}
+              title={industriesOnly ? 'Industries Served' : 'Where This Product Fits'}
             />
           </Reveal>
           <div className="mt-6 lg:mt-8">

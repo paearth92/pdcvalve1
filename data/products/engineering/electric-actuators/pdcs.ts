@@ -27,7 +27,7 @@ export const pdcsEngineering: ProductEngineeringData = {
         ['PDCS-D', '260', '2,300', '95', '209', 'F12', 'Optional Handwheel', '14', '12'],
       ],
       notes: [
-        'Running time is based on the published 110V AC / 60Hz configuration at 30% duty.',
+        'Standard PDCS running time is based on the published 110V AC / 60Hz configuration at 50% duty.',
       ],
     },
   ],

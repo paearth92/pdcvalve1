@@ -37,7 +37,12 @@ export default function ProductFamilyTemplate({
     family.slug === 'butterfly-valves' ||
     family.slug === 'butterfly-damper-valves';
   const useShowcaseLayout = true;
-  const hasAppCards = family.applications && family.applications.length > 0;
+  const hasAppCards = Boolean(family.applications?.length);
+  const isActuatorFamily =
+    family.slug === 'pneumatic-actuators' || family.slug === 'electric-actuators';
+  const showIndustrySection = Boolean(
+    family.industries?.length && !isActuatorFamily,
+  );
   const hasDownloads = family.downloads && family.downloads.length > 0;
   const overviewSections = family.overviewSections;
   const overviewCardCount = overviewSections
@@ -321,11 +326,11 @@ export default function ProductFamilyTemplate({
                   </div>
                 </Reveal>}
 
-                {/* Typical Applications */}
+                {/* Industries Served / Typical Applications */}
                 {family.overviewSections!.applications.length > 0 && <Reveal delay={150}>
                   <div className="flex h-full flex-col rounded-xl border border-brand-green-dark/10 bg-white p-6">
                     <h3 className="text-sm font-bold uppercase tracking-wide text-brand-graphite/75">
-                      Typical Applications
+                      {isActuatorFamily ? 'Industries Served' : 'Typical Applications'}
                     </h3>
                     <div className="mt-3 h-px w-8 bg-brand-green/30" />
                     <ul className="mt-4 space-y-2.5">
@@ -335,7 +340,21 @@ export default function ProductFamilyTemplate({
                           className="flex items-start gap-2 text-sm leading-relaxed text-brand-graphite/75"
                         >
                           <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-green" />
-                          {app}
+                          {isActuatorFamily ? (() => {
+                            const industry = family.industries?.find((item) =>
+                              typeof item === 'string'
+                                ? item.toLocaleLowerCase() === app.toLocaleLowerCase()
+                                : item.title.toLocaleLowerCase() === app.toLocaleLowerCase(),
+                            );
+                            return industry && typeof industry !== 'string' ? (
+                              <Link
+                                href={`/industries/${industry.slug}`}
+                                className="rounded-sm transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green"
+                              >
+                                {app}
+                              </Link>
+                            ) : app;
+                          })() : app}
                         </li>
                       ))}
                     </ul>
@@ -403,7 +422,7 @@ export default function ProductFamilyTemplate({
           </section>
 
           {/* Applications */}
-          <section id="applications" className="scroll-mt-32">
+          {hasAppCards && <section id="applications" className="scroll-mt-32">
             <Reveal>
               <SectionHeading
                 eyebrow="Applications"
@@ -411,19 +430,12 @@ export default function ProductFamilyTemplate({
               />
             </Reveal>
             <div className="mt-8">
-              {hasAppCards ? (
-                <ApplicationCards applications={family.applications!} />
-              ) : (
-                <ContentPlaceholder
-                  title="Applications Information Coming Soon"
-                  description="Detailed application data for this product family is being prepared."
-                />
-              )}
+              <ApplicationCards applications={family.applications!} />
             </div>
-          </section>
+          </section>}
 
           {/* Industries */}
-          <section id="industries" className="scroll-mt-32">
+          {showIndustrySection && <section id="industries" className="scroll-mt-32">
             <Reveal>
               <SectionHeading eyebrow="Industries" title="Industries Served" />
             </Reveal>
@@ -462,7 +474,7 @@ export default function ProductFamilyTemplate({
                 />
               )}
             </div>
-          </section>
+          </section>}
 
           {/* Downloads */}
           <section id="downloads" className="scroll-mt-32">

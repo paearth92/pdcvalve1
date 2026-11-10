@@ -1,4 +1,14 @@
 import { IndustryIcon } from '@/components/icons/IndustryIcons';
+import {
+  Cog,
+  Factory,
+  Gauge,
+  Settings,
+  ShieldCheck,
+  SlidersHorizontal,
+  Wind,
+  Workflow,
+} from 'lucide-react';
 import type { ApplicationCardData } from '@/types/product';
 
 /**
@@ -27,6 +37,17 @@ function ApplicationIcon({
 
   // Custom application icons
   const icons: Record<string, React.ReactElement> = {
+    'butterfly-valves': <Cog className={className} />,
+    'ball-valves': <Cog className={className} />,
+    'damper-valves': <Wind className={className} />,
+    'process-isolation': <ShieldCheck className={className} />,
+    'flow-control': <Gauge className={className} />,
+    combustion: <Factory className={className} />,
+    utilities: <Workflow className={className} />,
+    oem: <Settings className={className} />,
+    'on-off-control': <Settings className={className} />,
+    'modulating-control': <SlidersHorizontal className={className} />,
+    'fail-position': <ShieldCheck className={className} />,
     steel: (
       <svg viewBox="0 0 48 48" className={className} fill="none" aria-hidden="true">
         <path d="M10 40 L10 20 L24 10 L38 20 L38 40" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" opacity="0.6" />

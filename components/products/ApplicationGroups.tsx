@@ -92,10 +92,10 @@ export default function ApplicationGroups({
           <div className="relative mb-4 flex flex-col gap-3 rounded-2xl border border-[#d8e4db] bg-white/85 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
             <div>
               <span className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#168447]">
-                Industries served
+                Industry Coverage
               </span>
               <h4 className="mt-1 text-lg font-extrabold tracking-[-0.02em] text-[#123823]">
-                Proven across demanding industrial markets
+                Key Industries
               </h4>
             </div>
             <span className="w-fit rounded-full border border-[#cbd9ce] bg-[#f6f9f6] px-3 py-1.5 font-mono text-[10px] font-black tracking-[0.12em] text-[#4a6255]">
@@ -131,7 +131,7 @@ export default function ApplicationGroups({
           <div className="flex flex-col gap-3 border-b border-[#dce6de] bg-[#f5f8f5] px-5 py-5 sm:flex-row sm:items-end sm:justify-between sm:px-6">
             <div>
               <span className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#168447]">
-                Application range
+                Industry Coverage
               </span>
               <h4 className="mt-1 text-lg font-extrabold tracking-[-0.02em] text-[#123823]">
                 {singleGroup.heading}

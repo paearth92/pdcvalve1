@@ -755,6 +755,10 @@ function ElectricActuatorModelExplorer({
   };
 
   const isSpringPack = springIndex >= 0;
+  const explorerNote = [
+    ...(table.notes ?? []),
+    'The chart compares published model torque values. It is not a continuous operating curve. Use the exact PDC model table below for final selection and verification.',
+  ].join(' ');
   const runningTime = isSpringPack
     ? `${valueAt(motorIndex, ' s')} motor / ${valueAt(
         springIndex,
@@ -788,9 +792,9 @@ function ElectricActuatorModelExplorer({
           </h3>
 
           <p className="mt-2 max-w-3xl text-[12.5px] leading-5 text-white/70 sm:text-[13.5px] sm:leading-6">
-            Compare the published electric-actuator model range, then
-            select a model to inspect exact torque, weight, ISO mounting,
-            manual override and operating-time data.
+            {isSpringPack
+              ? 'Compare published PDCS model output torque, then select a model to review its torque, weight, ISO 5211 mounting base, manual override, motor running time, and spring return time.'
+              : 'Compare published PDCQ model output torque, then select a model to review its torque, weight, ISO 5211 mounting base, manual override, and 90° running time.'}
           </p>
         </div>
       </div>
@@ -953,11 +957,7 @@ function ElectricActuatorModelExplorer({
 
         <div className="mt-4 flex items-start gap-3 rounded-xl border border-[#dce6de] bg-[#f4f8f4] px-4 py-3">
           <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#168447]" />
-          <p className="text-[11.5px] leading-5 text-[#60756a]">
-            The chart compares published model torque values. It is not a
-            continuous operating curve. Use the exact PDC model table below
-            for final selection and verification.
-          </p>
+          <p className="text-[11.5px] leading-5 text-[#60756a]">{explorerNote}</p>
         </div>
       </div>
     </section>
@@ -1367,7 +1367,13 @@ function SpringReturnExplorer({
   );
 }
 
-function DataTable({ table }: { table: EngineeringDataTable }) {
+function DataTable({
+  table,
+  hideNotes = false,
+}: {
+  table: EngineeringDataTable;
+  hideNotes?: boolean;
+}) {
   return (
     <div>
       {table.description && (
@@ -1423,7 +1429,7 @@ function DataTable({ table }: { table: EngineeringDataTable }) {
         </div>
       </div>
 
-      {table.notes && table.notes.length > 0 && (
+      {!hideNotes && table.notes && table.notes.length > 0 && (
         <div className="mt-4 space-y-2 border-l-2 border-[#7cb08c] pl-4">
           {table.notes.map((note) => (
             <p key={note} className="text-xs leading-5 text-[#64776c]">
@@ -1577,7 +1583,10 @@ export default function EngineeringDataSection({
                     </span>
                   </div>
 
-                  <DataTable table={activeTable} />
+                  <DataTable
+                    table={activeTable}
+                    hideNotes={activeTable.id === 'model-performance'}
+                  />
                 </>
               )}
             </div>
@@ -1616,7 +1625,10 @@ export default function EngineeringDataSection({
                   <h3 className="mb-3 text-base font-extrabold tracking-tight text-[#123823]">
                     {table.title}
                   </h3>
-                  <DataTable table={table} />
+                  <DataTable
+                    table={table}
+                    hideNotes={table.id === 'model-performance'}
+                  />
                 </div>
               </details>
             ))}
