@@ -31,8 +31,7 @@ const marqueeItems: MarqueeItem[] = [
   { label: 'Custom Valve Assemblies', icon: Boxes },
   { label: 'In-House Machining', icon: Factory },
   { label: 'Engineered Flow Control', icon: Cog },
-  { label: 'ISO 9001 Certified', icon: BadgeCheck },
-  { label: 'Pittsburgh Built', icon: ShieldCheck },
+    { label: 'Application Support', icon: ShieldCheck },
   { label: 'Established 1970', icon: Award },
 ];
 

@@ -75,7 +75,36 @@ export function renderCategoryPage({ category }: CategoryPageProps) {
 
       <ResourceCategoryHero category={def} resourceCount={resources.length} />
 
-      {resources.length > 0 ? (
+      {category === 'manuals' ? (
+        <section className="bg-brand-light-bg py-12 sm:py-16">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
+            <div className="rounded-2xl border border-brand-green-dark/10 bg-white p-6 sm:p-8">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-graphite/60">Product documentation</span>
+              <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">Butterfly Damper Valve Manuals</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-brand-graphite/70 sm:text-base">
+                Installation, operation, maintenance, storage, handling, and repacking guidance varies by series and configuration. Contact PDC Sales with the valve series or application to request the applicable manual.
+              </p>
+              {resources.length > 0 ? (
+                <div className="mt-6"><ResourceLibrary resources={resources} /></div>
+              ) : (
+                <Link href="/contact" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-green-dark">
+                  Request a Manual <span aria-hidden="true">→</span>
+                </Link>
+              )}
+            </div>
+            <div className="rounded-2xl border border-brand-green-dark/10 bg-white p-6 sm:p-8">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-graphite/60">Accessories & literature</span>
+              <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-brand-green sm:text-3xl">Additional Documentation</h2>
+              <p className="mt-4 text-sm leading-6 text-brand-graphite/70 sm:text-base">
+                PDC offers a range of valve, actuator, mounting, and control accessories to support application-specific configurations. Additional accessory information is available through PDC Sales.
+              </p>
+              <Link href="/contact" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-green-dark underline decoration-brand-green/40 underline-offset-4 hover:text-brand-green">
+                Contact PDC Sales <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : resources.length > 0 ? (
         <ResourceLibrary resources={resources} />
       ) : (
         <section className="bg-brand-light-bg py-12 sm:py-16">

@@ -33,8 +33,8 @@ export const econotrol: ProductContent = {
         'For minimal leakage and dependable flow characteristics.',
     },
     {
-      title: 'Adjustable graphited TEFLON braid packing',
-      description: '',
+      title: 'Adjustable shaft packing',
+      description: 'Allows packing adjustment to help maintain shaft sealing performance.',
     },
     {
       title: 'Repackable without line removal',
@@ -51,13 +51,12 @@ export const econotrol: ProductContent = {
         'Available for factory or field-mounted actuation.',
     },
     {
-      title: 'Lightweight solid-ring wafer design',
-      description: '',
+      title: 'Compact wafer-style mounting',
+      description: 'Designed for ease of installation with compact wafer-style mounting between pipe flanges.',
     },
     {
-      title: 'Four alignment holes',
-      description:
-        'Help prevent transfer of pipe stresses to the valve body.',
+      title: 'Alignment and pipe-stress support',
+      description: 'Alignment features help support proper installation while reducing transfer of pipe stresses to the valve body.',
     },
     {
       title: 'Contoured bore',
@@ -68,7 +67,20 @@ export const econotrol: ProductContent = {
       description: 'Horizontal shaft installation is recommended.',
     },
   ],
-  benefits: [],
+  benefits: [
+    {
+      title: 'Adjustable shaft packing',
+      description: 'Allows packing adjustment to help maintain shaft sealing performance.',
+    },
+    {
+      title: 'Compact wafer-style mounting',
+      description: 'Designed for ease of installation with compact wafer-style mounting between pipe flanges.',
+    },
+    {
+      title: 'Alignment and pipe-stress support',
+      description: 'Alignment features help support proper installation while reducing transfer of pipe stresses to the valve body.',
+    },
+  ],
   applications: [
     'Industrial air handling',
     'Low-pressure gas',

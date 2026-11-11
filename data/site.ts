@@ -134,7 +134,7 @@ export const industries: Industry[] = [
     name: 'Oil & Gas',
     slug: 'oil-and-gas',
     description:
-      'Valves, actuators, and engineered packages for oil and gas production, frac operations, process isolation, water handling, and utilities.',
+      'Reliable flow-control solutions for process, combustion, and auxiliary systems.',
     image: homepageIndustryImages['oil-and-gas'].src,
     imageAlt: homepageIndustryImages['oil-and-gas'].alt,
   },
@@ -165,7 +165,7 @@ export const industries: Industry[] = [
 ];
 
 export const capabilities: Capability[] = [
-  { value: '300', label: 'Casting Patterns', numeric: true },
+  { value: '1970', label: 'Established', numeric: true },
   { value: '10', label: 'Core Product Lines', numeric: true },
   { value: 'ISO', label: '9001:2015' },
   { value: 'In-House', label: 'Machining' },

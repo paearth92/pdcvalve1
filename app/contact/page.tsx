@@ -2,7 +2,6 @@ import { Mail, Phone, MapPin, ArrowRight, Wrench } from 'lucide-react';
 import Breadcrumbs from '@/components/products/ProductBreadcrumbs';
 import Reveal from '@/components/products/Reveal';
 import ContactForm from '@/components/contact/ContactForm';
-import EngineeringSupportCTA from '@/components/resources/EngineeringSupportCTA';
 import RFQButton from '@/components/rfq/RFQButton';
 import { contactData } from '@/data/contact';
 
@@ -70,10 +69,10 @@ export default function ContactPage() {
               Contact PDC Valve
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/65">
-              Connect with PDC for product information, engineering
-              assistance, application support, documentation, or quotation
-              requests. Our team is ready to help you find the right flow
-              control solution.
+              Connect with PDC for product information, application support,
+              technical documentation, or quotation requests. Most inquiries
+              begin with PDC Sales, with Engineering joining when additional
+              technical review is needed.
             </p>
           </div>
         </div>
@@ -163,9 +162,9 @@ export default function ContactPage() {
               </h2>
               <div className="mt-4 h-px w-16 bg-brand-green/40" />
               <p className="mt-4 text-[15px] leading-relaxed text-brand-graphite/70">
-                Use the form to organize your inquiry before sending. After
-                completing the fields, email your message to our team using
-                the contact details provided.
+                Most product, availability, quotation, and general application
+                questions can be handled by PDC Sales. Engineering supports
+                the review when an inquiry needs additional technical detail.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -228,15 +227,16 @@ export default function ContactPage() {
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-graphite/70">
                 <Wrench className="h-4 w-4" />
-                Engineering Assistance
+                Application Assistance
               </span>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-brand-green sm:text-4xl">
-                Let&apos;s Find the Right Solution for Your Application
+                Need Application Support?
               </h2>
               <p className="mt-4 text-base leading-relaxed text-brand-graphite/70">
-                Our application engineers can help you select the right valve
-                and actuator for your operating conditions. Submit a request
-                for quote with your project details, or reach out directly.
+                PDC Sales can help with product selection, valve and actuator
+                sizing, materials and seats, custom configurations, drawings,
+                technical documentation, and actuation accessories. Engineering
+                can provide additional application review when needed.
               </p>
               <div className="mx-auto mt-6 h-px w-16 bg-brand-green/40" />
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
@@ -254,8 +254,6 @@ export default function ContactPage() {
         </section>
       </Reveal>
 
-      {/* Shared CTA */}
-      <EngineeringSupportCTA />
     </>
   );
 }

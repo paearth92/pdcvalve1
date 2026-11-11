@@ -65,7 +65,12 @@ export const mediumDuty: ProductContent = {
   ],
   benefits: [],
   applications: [
-    'Flow control and isolation in mid-range differential-pressure applications',
+    'Industrial air handling',
+    'Process air',
+    'Combustion air',
+    'Low-pressure gas',
+    'Ventilation and exhaust',
+    'General industrial flow control requiring mid-range differential pressure',
   ],
   applicationGroups: [],
   industries: [],

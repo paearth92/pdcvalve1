@@ -65,7 +65,12 @@ export const excel: ProductContent = {
   ],
   benefits: [],
   applications: [
-    'High-temperature and dirty-service flow control in demanding industrial applications',
+    'High-temperature air and gas service',
+    'Dirty-service flow control',
+    'Combustion air',
+    'Process air',
+    'Ventilation and exhaust',
+    'General flow control requiring broad size and material configuration options',
   ],
   applicationGroups: [],
   industries: [],

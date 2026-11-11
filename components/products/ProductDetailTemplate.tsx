@@ -219,6 +219,14 @@ export default function ProductDetailTemplate({
               </p>
             </div>
             <DownloadsSection downloads={product.downloads} />
+            {['medium-duty', 'excel'].includes(product.slug) && (
+              <p className="lg:col-start-2 -mt-3 text-sm leading-6 text-brand-graphite/65">
+                Installation, operation, and maintenance documentation is available for applicable configurations.{' '}
+                <a href="/contact" className="font-semibold text-brand-green-dark underline decoration-brand-green/40 underline-offset-4 hover:text-brand-green">
+                  Contact PDC Sales to request the applicable IOM manual.
+                </a>
+              </p>
+            )}
           </div>
         </SectionShell>
       )}

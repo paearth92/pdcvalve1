@@ -113,7 +113,6 @@ function CapabilityCard({ cap }: { cap: Capability }) {
         className="text-3xl font-extrabold tracking-tight text-brand-green transition-transform duration-300 group-hover:scale-110 sm:text-4xl"
       >
         {display}
-        {cap.numeric && cap.value === '300' && '+'}
       </span>
       <div className="mx-auto mt-3 h-px w-8 bg-brand-green/30 transition-all duration-300 group-hover:w-12 group-hover:bg-brand-green/60" />
       <span className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-graphite/65 transition-colors duration-300 group-hover:text-brand-green-dark">

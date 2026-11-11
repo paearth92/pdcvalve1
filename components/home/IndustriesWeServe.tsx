@@ -205,7 +205,6 @@ export default function IndustriesWeServe() {
     dragStartXRef.current = event.clientX;
     dragStartScrollRef.current = rail.scrollLeft;
 
-    rail.setPointerCapture?.(event.pointerId);
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -225,11 +224,7 @@ export default function IndustriesWeServe() {
     const rail = activeRailRef.current;
 
     if (rail && event) {
-      try {
-        rail.releasePointerCapture?.(event.pointerId);
-      } catch {
-        // Pointer capture may already have been released.
-      }
+      // Keep pointer-up on the clicked card so its full-card link remains usable.
     }
 
     draggingRef.current = false;

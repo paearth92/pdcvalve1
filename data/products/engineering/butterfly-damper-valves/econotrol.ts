@@ -3,6 +3,32 @@ import type { ProductEngineeringData } from '@/types/content';
 export const econotrolEngineering: ProductEngineeringData = {
     tables: [
       {
+        id: 'cv-values',
+        title: 'Cv Values for Econotrol Series 09 Swing-Thru Butterfly Valves',
+        tabLabel: 'Cv Values',
+        kind: 'flow',
+        description:
+          'Water flow in US gallons per minute at 60°F with a 1 psi pressure drop (specific gravity 1).',
+        columns: ['Valve Size', '10°', '20°', '30°', '40°', '50°', '60°', '70°', '80°', '90°'],
+        rows: [
+          ['2"', '2', '5', '11', '20', '34', '49', '64', '83', '90'],
+          ['2.5"', '4', '8', '20', '34', '56', '84', '126', '178', '194'],
+          ['3"', '6', '14', '30', '51', '85', '132', '202', '279', '370'],
+          ['4"', '13', '28', '54', '98', '159', '257', '391', '550', '747'],
+          ['5"', '21', '43', '88', '158', '265', '429', '636', '913', '1272'],
+          ['6"', '30', '63', '126', '228', '382', '632', '955', '1370', '1999'],
+          ['8"L', '53', '111', '225', '406', '680', '1125', '1698', '2591', '3853'],
+          ['8"H', '53', '111', '225', '406', '680', '1125', '1698', '2591', '3853'],
+          ['10"', '83', '174', '351', '635', '1063', '1758', '2655', '4051', '6362'],
+          ['12"', '120', '251', '506', '915', '1531', '2533', '3825', '5835', '9165'],
+          ['14"', '143', '301', '606', '1096', '1835', '3035', '4583', '6992', '10982'],
+        ],
+        notes: [
+          'Values are Cv at the listed disc opening angle.',
+          'Source: PDC Econotrol Series 09 published brochure.',
+        ],
+      },
+      {
         id: 'torque-2-8',
         title: 'Required Torque: 2” Through 8”',
         tabLabel: 'Torque 2–8',

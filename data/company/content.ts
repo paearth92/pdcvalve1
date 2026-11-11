@@ -31,10 +31,10 @@ export type CompanyFact = {
 
 export const companyFacts: Record<string, CompanyFact[]> = {
   about: [
-    { value: '1970', label: 'Founded' },
-    { value: '300+', label: 'Casting patterns' },
-    { value: '10', label: 'Core product lines' },
-    { value: '2', label: 'Published facility locations' },
+    { value: '1970', label: 'Established', detail: 'More than five decades supporting industrial flow-control applications.' },
+    { value: 'Manual', label: 'In-house machining', detail: 'Milling, drilling, turning, and boring.' },
+    { value: 'ISO', label: '9001:2015 certified', detail: 'A certified quality management system.' },
+    { value: 'Custom', label: 'Assemblies', detail: 'Valves, actuators, brackets, couplings, linkages, controls, and accessories.' },
   ],
   engineering: [
     { value: 'Sales + Engineering', label: 'Application support' },
@@ -44,9 +44,9 @@ export const companyFacts: Record<string, CompanyFact[]> = {
   ],
   manufacturing: [
     { value: 'In-house', label: 'Machining' },
-    { value: '300+', label: 'Casting patterns' },
     { value: '10', label: 'Core product lines' },
-    { value: 'Large', label: 'Valve & actuator inventory' },
+    { value: 'Custom', label: 'Valve assemblies' },
+    { value: 'Integrated', label: 'Actuation packages' },
   ],
   quality: [
     { value: 'ISO', label: '9001:2015 certified' },
@@ -60,72 +60,78 @@ const aboutPage: CompanyPageContent = {
   slug: 'about',
   title: 'About PDC',
   eyebrow: 'Process Development & Control LLC',
-  heroTitle: 'Customized Flow Control Solutions Since 1970',
+  heroTitle: 'Customized Flow Control Since 1970',
   heroDescription:
-    'PDC is a privately held manufacturer of high-quality flow control components, serving a global customer base from facilities in Pittsburgh, USA, and Beijing, China.',
+    'Established in 1970, Process Development & Control, LLC provides valves, actuators, custom configurations, and application support for industrial flow-control systems. From standard products to application-specific valve and actuator assemblies, PDC combines product knowledge, in-house capability, and technical support to help customers solve demanding flow-control requirements.',
   overview:
     'Founded in 1970, Process Development & Control LLC (PDC) manufactures valves, actuators, and custom flow control components for industrial applications. PDC combines a broad product portfolio with customization, engineering support, inventory, and in-house machining.',
   overviewParagraphs: [
-    'Founded in 1970, Process Development & Control LLC (PDC) is a privately held company specializing in the manufacture of high-quality flow control components.',
-    'PDC serves a global customer base from facilities in Pittsburgh, USA, and Beijing, China, with a portfolio spanning butterfly valves, check valves, pneumatic, electric, and electro-hydraulic actuators, plus custom flow control components.',
+    'Process Development & Control, LLC is an industrial valve and actuation company headquartered in Coraopolis, Pennsylvania, just outside Pittsburgh.',
+    'PDC supports customers with industrial valves, actuators, valve automation, and custom flow-control assemblies across a wide range of applications. Its offerings include butterfly damper valves, butterfly valves, ball valves, gate valves, and other application-specific valve solutions that can be paired with pneumatic, electric, and other actuation packages.',
+    'Standard products can be configured with different materials, seating options, shaft arrangements, actuators, brackets, couplings, linkages, controls, and accessories to suit application requirements.',
   ],
   sections: [
     {
-      heading: 'A Broad Flow Control Portfolio',
+      heading: 'Products',
       eyebrow: 'Products',
       body:
-        'PDC supports a wide range of valve and actuation requirements with standard products and configurable options designed around application needs.',
+        'PDC supports a broad range of industrial flow-control applications through configurable valve and actuator products.',
       items: [
+        'Butterfly damper valves',
         'Butterfly valves',
-        'Check valves',
+        'Ball valves and gate valves',
         'Pneumatic actuators',
         'Electric actuators',
-        'Electro-hydraulic actuators',
-        'Custom flow control components',
+        'Valve automation packages and custom assemblies',
       ],
     },
     {
-      heading: 'Built for Configuration',
+      heading: 'More Than an Off-the-Shelf Product',
       eyebrow: 'Product Range',
       body:
-        'PDC publishes an inventory of more than 300 casting patterns, along with flame-cut body variations, supporting ten core product lines. A wide range of seating options, bracket configurations, and actuator styles helps match products to specific applications.',
+        'Many applications require more than selecting a valve from a catalog. PDC supports application-specific configurations to match operating and installation requirements.',
       items: [
-        '300+ casting patterns',
-        'Flame-cut body variations',
-        'Ten core product lines',
-        'Multiple seating options',
-        'Bracket configuration choices',
-        'Multiple actuator styles',
+        'Material and seat options',
+        'Multiple shaft configurations',
+        'Manual, pneumatic, and electric actuation',
+        'Custom brackets, couplings, and linkage systems',
+        'Solenoids, limit switches, positioners, and controls',
+        'Engineered modifications when required',
       ],
       dark: true,
     },
     {
-      heading: 'Customization & Customer Support',
+      heading: 'Sales, Engineering & Application Support',
       eyebrow: 'Working With PDC',
       body:
-        'PDC supports customer-specific requirements through engineered valve modifications and customized actuation packages. Sales and Engineering teams assist with technical inquiries, application evaluation, and product selection.',
+        'Most customer inquiries begin with PDC Sales, which assists with product selection, quotations, availability, and general application requirements. Engineering supports additional technical review of operating conditions, materials, actuation, drawings, customization, and non-standard requirements when needed.',
       items: [
-        'Engineered valve modifications',
-        'Customized actuation packages',
-        'Technical inquiry support',
-        'Application evaluation',
-        'Product selection assistance',
-        'Fully integrated valve assemblies',
+        'Product selection and availability',
+        'Operating-condition review',
+        'Materials and actuation',
+        'Drawings and technical documentation',
+        'Customization and non-standard requirements',
       ],
     },
     {
-      heading: 'Inventory, Machining & Turnaround',
-      eyebrow: 'Supply Support',
+      heading: 'Machining, Assembly & Customization',
+      eyebrow: 'In-House Capability',
       body:
-        'PDC states that it maintains a large inventory of valves and actuators to support short lead times and fast turnaround. In-house machining capabilities also allow PDC to supply fully integrated valve assemblies from a single source.',
+        'PDC performs manual machining, valve assembly, actuator mounting, accessory integration, painting, dimensional inspection, and selected testing in-house to support standard and application-specific packages.',
+      items: [
+        'Milling, drilling, lathe work, and boring',
+        'Valve bodies, discs, brackets, couplings, and assembly components',
+        'Actuator mounting and accessory integration',
+        'Painting, inspection, and selected testing',
+      ],
     },
   ],
   featureCards: [
     {
       iconSlug: 'portfolio',
-      title: 'Valves & Actuators',
+      title: 'Product Knowledge',
       description:
-        'Butterfly valves, check valves, pneumatic, electric, and electro-hydraulic actuators are part of PDC’s published portfolio.',
+        'Butterfly and damper valves, ball and gate valves, pneumatic and electric actuators, and flow-control assemblies support industrial applications.',
     },
     {
       iconSlug: 'custom',
@@ -135,9 +141,9 @@ const aboutPage: CompanyPageContent = {
     },
     {
       iconSlug: 'support',
-      title: 'Sales & Engineering Support',
+      title: 'Application Support',
       description:
-        'PDC teams assist with technical inquiries, application evaluation, and product selection.',
+        'Sales and Engineering work together to evaluate operating conditions, product selection, materials, actuation, accessories, drawings, and custom requirements.',
     },
     {
       iconSlug: 'machining',
@@ -147,21 +153,21 @@ const aboutPage: CompanyPageContent = {
     },
     {
       iconSlug: 'patterns',
-      title: 'Inventory for Turnaround',
+      title: 'Assembly & Integration',
       description:
-        'A large inventory of valves and actuators is maintained to support short lead times and fast turnaround.',
+        'PDC assembles valves, actuators, accessories, and controls into configurations for customer applications.',
     },
     {
       iconSlug: 'quality',
-      title: 'Certified & Compliant',
+      title: 'Quality',
       description:
-        'PDC publishes ISO 9001:2015 certification and AIS (American Iron and Steel) compliance.',
+        'PDC operates under an ISO 9001:2015 certified quality management system supporting documented processes, inspection, and consistent product execution.',
     },
   ],
   seo: {
     title: 'About PDC | Process Development & Control LLC',
     description:
-      'Founded in 1970, PDC manufactures valves, actuators, and custom flow control components with engineering support, in-house machining, and global reach.',
+    'Founded in 1970, PDC supports industrial flow-control applications with valves, actuators, custom configurations, technical support, and in-house capability.',
     canonicalUrl: 'https://pdcvalve.com/company/about',
     noIndex: false,
     openGraph: {
@@ -296,7 +302,7 @@ const manufacturingPage: CompanyPageContent = {
     'PDC’s manufacturing capabilities bring manual machining, valve and actuator assembly, customization, and inspection together to support standard products and application-specific packages.',
   overviewParagraphs: [
     'PDC combines in-house manual machining, valve assembly, actuator integration, painting, inspection, and customization to support standard and application-specific valve packages.',
-    'PDC does not cast in-house, but maintains access to a broad range of casting patterns and stocked cast components.',
+    'PDC does not cast valve bodies in-house.',
   ],
   sections: [
     {
@@ -366,16 +372,10 @@ const manufacturingPage: CompanyPageContent = {
         'Manual milling, drilling, lathe work, and boring support in-house component machining and modification.',
     },
     {
-      iconSlug: 'inventory',
-      title: 'Broad Casting Pattern Access',
-      description:
-        'PDC does not cast in-house, but maintains access to a broad range of casting patterns and stocked cast components.',
-    },
-    {
       iconSlug: 'assembly',
-      title: 'Custom Valve Assemblies',
+      title: 'Assembly & Integration',
       description:
-        'Application-specific valve packages can include custom actuator mounting, brackets, couplings, linkages, and controls.',
+        'PDC assembles valves, actuators, brackets, couplings, linkages, controls, and accessories into application-specific configurations.',
     },
     {
       iconSlug: 'inventory',
