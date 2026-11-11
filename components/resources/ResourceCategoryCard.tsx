@@ -15,12 +15,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 interface ResourceCategoryCardProps {
   category: ResourceCategoryDef;
-  count: number;
 }
 
 export default function ResourceCategoryCard({
   category,
-  count,
 }: ResourceCategoryCardProps) {
   const Icon = iconMap[category.icon] ?? FileText;
 
@@ -45,10 +43,7 @@ export default function ResourceCategoryCard({
       </p>
 
       {/* Footer */}
-      <div className="mt-5 flex items-center justify-between border-t border-brand-green-dark/8 pt-4">
-        <span className="text-xs font-semibold text-brand-steel/70">
-          {count} {count === 1 ? 'document' : 'documents'}
-        </span>
+      <div className="mt-5 flex items-center justify-end border-t border-brand-green-dark/8 pt-4">
         <span className="inline-flex items-center gap-1 text-xs font-bold text-brand-green transition-all group-hover:gap-2">
           Browse
           <ArrowRight className="h-3.5 w-3.5" />

@@ -105,6 +105,7 @@ export function productContentToDetail(
       type: d.type,
       filename: d.filename,
       url: d.url,
+      description: d.description,
     })),
     gallery: content.images?.gallery?.map((img) => ({
       src: img.src,
@@ -189,6 +190,7 @@ export function familyContentToFamilyData(
       type: d.type,
       filename: d.filename,
       url: d.url,
+      description: d.description,
     })),
     trustBadges: content.trustBadges,
     heroImageAssetId: `family-${content.slug}-hero`,

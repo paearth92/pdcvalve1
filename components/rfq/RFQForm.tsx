@@ -21,7 +21,6 @@ import FileUpload from '@/components/rfq/FileUpload';
 import { siteConfig } from '@/data/site';
 import { productFamilies } from '@/data/site';
 import { industries } from '@/data/site';
-import { productContent } from '@/data/products/content';
 import type {
   RFQProjectInfo,
   RFQProjectRequirements,
@@ -46,24 +45,11 @@ const initialProjectInfo: RFQProjectInfo = {
 };
 
 const initialRequirements: RFQProjectRequirements = {
-  applicationType: '',
-  existingProductIdentification: '',
   productFamily: '',
   product: '',
-  manufacturerModel: '',
   quantity: '',
   application: '',
   operatingMedia: '',
-  valveActuationRequirement: '',
-  shaftConfiguration: '',
-  shaftConfigurationNotes: '',
-  existingActuatorDetails: '',
-  maxOperatingTemperature: '',
-  maxLinePressure: '',
-  maxDifferentialPressure: '',
-  connectionBodyStyle: '',
-  seatPreference: '',
-  shaftRequirement: '',
   projectNotes: '',
 };
 
@@ -93,33 +79,8 @@ const industryOptions = industries.map((ind) => ({
 
 const familyOptions = productFamilies.map((fam) => ({
   value: fam.name,
-  label: fam.slug === 'butterfly-damper-valves' ? 'Damper & Control Valves' : fam.name,
-})).concat([{ value: 'Not Sure / Need Assistance', label: 'Not Sure / Need Assistance' }]);
-
-const applicationTypeOptions = [
-  { value: 'New Application', label: 'New Application' },
-  { value: 'Replacement — Existing PDC Product', label: 'Replacement — Existing PDC Product' },
-  { value: 'Replacement — Existing Non-PDC Product', label: 'Replacement — Existing Non-PDC Product' },
-  { value: 'Not Sure', label: 'Not Sure' },
-];
-
-const actuationOptions = [
-  { value: 'Bare Stem', label: 'Bare Stem' },
-  { value: 'Manual Operator', label: 'Manual Operator' },
-  { value: 'Pneumatic Actuation', label: 'Pneumatic Actuation' },
-  { value: 'Electric Actuation', label: 'Electric Actuation' },
-  { value: 'Existing Actuator/Operator Will Be Reused', label: 'Existing Actuator / Operator Will Be Reused' },
-  { value: 'Not Sure', label: 'Not Sure' },
-];
-
-const shaftOptions = [
-  { value: 'Standard / No Preference', label: 'Standard / No Preference' },
-  { value: 'Keyed', label: 'Keyed' },
-  { value: 'Flatted', label: 'Flatted' },
-  { value: 'Square / Hex', label: 'Square / Hex' },
-  { value: 'Other', label: 'Other' },
-  { value: 'Not Sure', label: 'Not Sure' },
-];
+  label: fam.name,
+}));
 
 export interface RFQFormProps {
   productFamily?: string;
@@ -514,7 +475,7 @@ function ProjectInfoStep({
       <FormSelect
         name="country"
         label="Country"
-        optionalNote
+        required
         autoComplete="country-name"
         error={errors.country}
         value={data.country}
@@ -525,7 +486,7 @@ function ProjectInfoStep({
       <FormSelect
         name="industry"
         label="Industry"
-        optionalNote
+        required
         error={errors.industry}
         value={data.industry}
         onChange={(e) => update('industry', e.target.value)}
@@ -552,26 +513,6 @@ function RequirementsStep({
 }) {
   const update = (field: keyof RFQProjectRequirements, value: string) =>
     onChange({ ...data, [field]: value });
-  const familySlug = productFamilies.find((family) => family.name === data.productFamily)?.slug;
-  const productOptions = [
-    ...productContent
-      .filter((item) => item.familySlug === familySlug)
-      .map((item) => ({
-        value: item.name,
-        label: item.series ? `${item.name} Series ${item.series}` : item.name,
-      })),
-    { value: 'Other / Third-Party Product', label: 'Other / Third-Party Product' },
-    { value: 'Not Sure', label: 'Not Sure' },
-  ];
-  const showThirdPartyDetails =
-    data.product === 'Other / Third-Party Product' ||
-    data.applicationType === 'Replacement — Existing Non-PDC Product';
-  const showShaftConfiguration =
-    data.valveActuationRequirement === 'Bare Stem' ||
-    data.shaftRequirement === 'Bare Stem Required';
-  const showExistingActuatorDetails =
-    data.valveActuationRequirement === 'Existing Actuator/Operator Will Be Reused' ||
-    data.shaftRequirement === 'Existing Actuator/Operator Will Be Reused';
 
   return (
     <div className="flex flex-col gap-5">
@@ -584,55 +525,24 @@ function RequirementsStep({
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormSelect
-          name="applicationType"
-          label="Application Type"
-          required
-          error={errors.applicationType}
-          value={data.applicationType}
-          onChange={(e) => update('applicationType', e.target.value)}
-          options={applicationTypeOptions}
-          placeholder="Select application type"
-        />
-        <FormField
-          name="existingProductIdentification"
-          label="Existing Product Identification"
-          optionalNote
-          hint="Enter the PDC part number, valve tag, serial number, or other identifying information if available."
-          value={data.existingProductIdentification}
-          onChange={(e) => update('existingProductIdentification', e.target.value)}
-          placeholder="Part number, tag, or serial number"
-        />
-        <FormSelect
           name="productFamily"
           label="Product Family"
           required
           error={errors.productFamily}
           value={data.productFamily}
-          onChange={(e) => onChange({ ...data, productFamily: e.target.value, product: '' })}
+          onChange={(e) => update('productFamily', e.target.value)}
           options={familyOptions}
           placeholder="Select product family"
         />
-        <FormSelect
+        <FormField
           name="product"
-          label="Product / Series"
+          label="Product"
           optionalNote
-          hint="Select a catalog product if known."
+          hint="Specific model or series if known"
           value={data.product}
           onChange={(e) => update('product', e.target.value)}
-          options={productOptions}
-          placeholder={prefilledProduct ?? 'Select product or series'}
-          disabled={!data.productFamily}
+          placeholder={prefilledProduct ?? 'e.g. High Performance Butterfly Valve'}
         />
-        {showThirdPartyDetails && (
-          <FormField
-            name="manufacturerModel"
-            label="Manufacturer and Model / Series"
-            optionalNote
-            value={data.manufacturerModel}
-            onChange={(e) => update('manufacturerModel', e.target.value)}
-            placeholder="Manufacturer and model, if known"
-          />
-        )}
         <FormField
           name="quantity"
           type="number"
@@ -649,112 +559,11 @@ function RequirementsStep({
           name="operatingMedia"
           label="Operating Media"
           optionalNote
-          hint="For example: air, natural gas, water, steam, hydrocarbons, or process gas."
+          hint="What flows through the valve"
           value={data.operatingMedia}
           onChange={(e) => update('operatingMedia', e.target.value)}
-          placeholder="Air, natural gas, water, steam, hydrocarbons, process gas"
+          placeholder="e.g. Natural gas, water, steam"
         />
-        <FormSelect
-          name="valveActuationRequirement"
-          label="Valve Actuation Requirement"
-          optionalNote
-          value={data.valveActuationRequirement}
-          onChange={(e) => update('valveActuationRequirement', e.target.value)}
-          options={actuationOptions}
-          placeholder="Select actuation requirement"
-        />
-        <FormSelect
-          name="shaftRequirement"
-          label="Bare Stem / Shaft Requirement"
-          optionalNote
-          value={data.shaftRequirement}
-          onChange={(e) => update('shaftRequirement', e.target.value)}
-          options={[
-            { value: 'Standard / No Preference', label: 'Standard / No Preference' },
-            { value: 'Bare Stem Required', label: 'Bare Stem Required' },
-            { value: 'Existing Actuator/Operator Will Be Reused', label: 'Existing Actuator / Operator Will Be Reused' },
-            { value: 'Need PDC to Supply Actuation', label: 'Need PDC to Supply Actuation' },
-            { value: 'Not Sure', label: 'Not Sure' },
-          ]}
-          placeholder="Select shaft requirement"
-        />
-        <FormSelect
-          name="connectionBodyStyle"
-          label="Connection / Body Style"
-          optionalNote
-          value={data.connectionBodyStyle}
-          onChange={(e) => update('connectionBodyStyle', e.target.value)}
-          options={['Wafer', 'Lug', 'Flanged', 'Threaded', 'Butt-Weld', 'Other', 'Not Sure'].map((value) => ({ value, label: value }))}
-          placeholder="Select connection style"
-        />
-        <FormSelect
-          name="seatPreference"
-          label="Seat Preference"
-          optionalNote
-          value={data.seatPreference}
-          onChange={(e) => update('seatPreference', e.target.value)}
-          options={['Standard / No Preference', 'EPDM', 'PTFE', 'Viton', 'Graphite / Grafoil', 'Metal-to-Metal', 'Other', 'Not Sure'].map((value) => ({ value, label: value }))}
-          placeholder="Select seat preference"
-        />
-        <FormField
-          name="maxOperatingTemperature"
-          type="number"
-          label="Maximum Operating Temperature (°F)"
-          optionalNote
-          value={data.maxOperatingTemperature}
-          onChange={(e) => update('maxOperatingTemperature', e.target.value)}
-          placeholder="e.g. 450"
-        />
-        <FormField
-          name="maxLinePressure"
-          type="number"
-          label="Maximum Line / Containment Pressure (PSI)"
-          optionalNote
-          value={data.maxLinePressure}
-          onChange={(e) => update('maxLinePressure', e.target.value)}
-          placeholder="e.g. 25"
-        />
-        <FormField
-          name="maxDifferentialPressure"
-          type="number"
-          label="Maximum Differential Pressure (PSI)"
-          optionalNote
-          value={data.maxDifferentialPressure}
-          onChange={(e) => update('maxDifferentialPressure', e.target.value)}
-          placeholder="e.g. 15"
-        />
-        {showShaftConfiguration && (
-          <>
-            <FormSelect
-              name="shaftConfiguration"
-              label="Required Shaft Configuration"
-              optionalNote
-              value={data.shaftConfiguration}
-              onChange={(e) => update('shaftConfiguration', e.target.value)}
-              options={shaftOptions}
-              placeholder="Select shaft configuration"
-            />
-            <FormField
-              name="shaftConfigurationNotes"
-              label="Shaft Configuration Notes"
-              optionalNote
-              value={data.shaftConfigurationNotes}
-              onChange={(e) => update('shaftConfigurationNotes', e.target.value)}
-              placeholder="Additional shaft details, if needed"
-            />
-          </>
-        )}
-        {showExistingActuatorDetails && (
-          <FormTextArea
-            name="existingActuatorDetails"
-            label="Existing Actuator / Operator Details"
-            optionalNote
-            hint="Manufacturer, model, mounting, and shaft information, if available."
-            value={data.existingActuatorDetails}
-            onChange={(e) => update('existingActuatorDetails', e.target.value)}
-            placeholder="Describe the equipment to be reused"
-          />
-        )}
       </div>
 
       <FormTextArea
@@ -762,16 +571,15 @@ function RequirementsStep({
         label="Application"
         required
         error={errors.application}
-        hint="Describe where and how the valve or actuator will be used."
         value={data.application}
         onChange={(e) => update('application', e.target.value)}
-        placeholder="Describe the application and operating conditions."
+        placeholder="Describe the application — where and how the valve will be used."
       />
       <FormTextArea
         name="projectNotes"
         label="Project Notes"
         optionalNote
-        hint="Include cycle frequency, special materials, shutoff requirements, controls or accessories, environmental conditions, delivery needs, or other details that may affect selection."
+        hint="Pressure, temperature, special materials, timeline, and anything else that affects specification."
         value={data.projectNotes}
         onChange={(e) => update('projectNotes', e.target.value)}
         placeholder="Provide any additional engineering or project details that will help our team prepare an accurate quote."
@@ -833,27 +641,14 @@ function ReviewStep({
         title="Project Requirements"
         onEdit={() => onEdit(1)}
         rows={[
-          { label: 'Application Type', value: requirements.applicationType },
           { label: 'Product Family', value: requirements.productFamily },
-          { label: 'Existing Product ID', value: requirements.existingProductIdentification || 'Not specified' },
           { label: 'Product', value: requirements.product || 'Not specified' },
-          { label: 'Manufacturer / Model', value: requirements.manufacturerModel || 'Not specified' },
           { label: 'Quantity', value: requirements.quantity || 'Not specified' },
           { label: 'Application', value: requirements.application },
           {
             label: 'Operating Media',
             value: requirements.operatingMedia || 'Not specified',
           },
-          { label: 'Actuation', value: requirements.valveActuationRequirement || 'Not specified' },
-          { label: 'Shaft Requirement', value: requirements.shaftRequirement || 'Not specified' },
-          { label: 'Shaft Configuration', value: requirements.shaftConfiguration || 'Not specified' },
-          { label: 'Shaft Configuration Notes', value: requirements.shaftConfigurationNotes || 'Not specified' },
-          { label: 'Existing Actuator / Operator', value: requirements.existingActuatorDetails || 'Not specified' },
-          { label: 'Max. Operating Temperature', value: requirements.maxOperatingTemperature ? `${requirements.maxOperatingTemperature} °F` : 'Not specified' },
-          { label: 'Max. Line / Containment Pressure', value: requirements.maxLinePressure ? `${requirements.maxLinePressure} PSI` : 'Not specified' },
-          { label: 'Max. Differential Pressure', value: requirements.maxDifferentialPressure ? `${requirements.maxDifferentialPressure} PSI` : 'Not specified' },
-          { label: 'Connection / Body Style', value: requirements.connectionBodyStyle || 'Not specified' },
-          { label: 'Seat Preference', value: requirements.seatPreference || 'Not specified' },
           { label: 'Project Notes', value: requirements.projectNotes || 'None' },
         ]}
       />
@@ -918,7 +713,11 @@ function ReviewSection({
   );
 }
 
-// ─── Completion ────────────────────────────────────────────────────
+// ─── Confirmation ──────────────────────────────────────────────────
+//
+// Online submission is not wired to a backend endpoint. Rather than
+// claiming the request was transmitted, we say so plainly and give direct
+// contact routes so the enquiry still reaches engineering.
 function ConfirmationStep({ onClose }: { onClose: () => void }) {
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 py-14 text-center">
@@ -926,10 +725,12 @@ function ConfirmationStep({ onClose }: { onClose: () => void }) {
         <FileText className="h-8 w-8 text-brand-green" />
       </span>
       <h2 id="rfq-title" className="mt-6 text-2xl font-extrabold tracking-tight text-brand-green-dark">
-        Request Details Ready
+        Request Prepared
       </h2>
       <p className="mt-3 max-w-md text-[13.5px] leading-relaxed text-brand-graphite/70">
-        Thank you for preparing your request. Use either contact option below to continue with PDC Sales.
+        Your details have been assembled on screen. Online submission is not yet
+        available — please use one of the routes below to send your requirements
+        to our engineering team.
       </p>
 
       <div className="mt-8 grid w-full max-w-md grid-cols-1 gap-3 sm:grid-cols-2">

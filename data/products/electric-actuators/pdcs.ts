@@ -22,40 +22,40 @@ export const pdcs: ProductContent = {
   ],
   features: [
     {
-      title: '50 to 260 N·m output torque range',
+      title: '50 to 260 N·m Output Torque Range',
       description: 'Published output torque spans 445 to 2,300 in·lbs across PDCS-A through PDCS-D.',
     },
     {
-      title: 'Mechanical spring-pack fail positioning',
+      title: 'Mechanical Spring-Return Fail Positioning',
       description: 'Configurable to fail clockwise (close) or counter-clockwise (open) upon loss of power.',
     },
     {
-      title: 'High-grade aluminum alloy enclosure',
-      description: '',
+      title: 'High-Grade Aluminum-Alloy Enclosure',
+      description: 'Durable aluminum-alloy construction for industrial quarter-turn automation.',
     },
     {
-      title: 'Durable polyester powder-coated exterior',
-      description: '',
+      title: 'Durable Polyester Powder-Coated Exterior',
+      description: 'Protective exterior coating for industrial service.',
     },
     {
-      title: 'O-ring sealed covers with captured stainless-steel fasteners',
-      description: '',
+      title: 'O-Ring-Sealed Covers with Captured Stainless-Steel Fasteners',
+      description: 'Helps maintain enclosure sealing while supporting convenient service access.',
     },
     {
-      title: 'CSA / NEMA Type 4X and IP67 sealing',
+      title: 'CSA / NEMA Type 4X and IP67 Sealing',
       description: 'Standard enclosure sealing is designed to meet CSA and NEMA Type 4X with IP67 ingress protection.',
     },
     {
-      title: 'Visual position indicator',
+      title: 'Visual Position Indicator',
       description: 'Standard.',
     },
     {
-      title: 'Adjustable mechanical fail-position buffer',
+      title: 'Adjustable Mechanical Fail-End Buffer',
       description: 'Adjustable mechanical buffer for the fail end position is standard.',
     },
     {
-      title: 'ISO 5211 mounting base',
-      description: '',
+      title: 'ISO 5211 Mounting Base',
+      description: 'Provides standardized mounting for quarter-turn valve and damper automation.',
     },
   ],
   benefits: [],

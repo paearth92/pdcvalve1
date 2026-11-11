@@ -21,27 +21,19 @@ export const threadEnd: ProductContent = {
   features: [
     {
       title: 'Simple construction',
-      description: '',
+      description: 'Compact threaded-end construction supports straightforward installation and economical service.',
     },
     {
       title: 'Close-tolerance angle-seated disc machining',
-      description: '',
+      description: 'Precision machining helps minimize leakage in the standard angle-seat configuration.',
     },
     {
-      title: 'Threaded-end construction eliminates mating flanges',
-      description: '',
+      title: 'Female-threaded end connections',
+      description: 'Female-threaded connections eliminate the need for mating flanges.',
     },
     {
-      title: 'Manual actuation options',
-      description: '',
-    },
-    {
-      title: 'Electric actuation compatibility',
-      description: '',
-    },
-    {
-      title: 'Pneumatic actuation compatibility',
-      description: '',
+      title: 'Manual or automated actuation',
+      description: 'Series 07 valves support manual operation and can be configured for electric or pneumatic actuation where applicable.',
     },
   ],
   benefits: [],

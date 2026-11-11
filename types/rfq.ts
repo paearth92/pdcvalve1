@@ -21,24 +21,11 @@ export interface RFQProjectInfo {
 }
 
 export interface RFQProjectRequirements {
-  applicationType: string;
-  existingProductIdentification: string;
   productFamily: string;
   product: string;
-  manufacturerModel: string;
   quantity: string;
   application: string;
   operatingMedia: string;
-  valveActuationRequirement: string;
-  shaftConfiguration: string;
-  shaftConfigurationNotes: string;
-  existingActuatorDetails: string;
-  maxOperatingTemperature: string;
-  maxLinePressure: string;
-  maxDifferentialPressure: string;
-  connectionBodyStyle: string;
-  seatPreference: string;
-  shaftRequirement: string;
   projectNotes: string;
 }
 

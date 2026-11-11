@@ -89,22 +89,14 @@ export default function ApplicationGroups({
             }}
           />
 
-          <div className="relative mb-4 flex flex-col gap-3 rounded-2xl border border-[#d8e4db] bg-white/85 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-            <div>
-              <span className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#168447]">
-                Industry Coverage
-              </span>
-              <h4 className="mt-1 text-lg font-extrabold tracking-[-0.02em] text-[#123823]">
-                Key Industries
-              </h4>
-            </div>
-            <span className="w-fit rounded-full border border-[#cbd9ce] bg-[#f6f9f6] px-3 py-1.5 font-mono text-[10px] font-black tracking-[0.12em] text-[#4a6255]">
-              {String(industries.length).padStart(2, '0')} INDUSTRIES
+          <div className="relative mb-4 flex justify-end">
+            <span className="rounded-full border border-[#cbd9ce] bg-white/85 px-3 py-1.5 font-mono text-[10px] font-black tracking-[0.12em] text-[#4a6255]">
+              {industries.length} SECTORS
             </span>
           </div>
 
           <div className="relative grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {industries.map((ind, index) => (
+            {industries.map((ind) => (
               <div
                 key={ind.title}
                 className="group flex min-h-[92px] items-center gap-3 rounded-2xl border border-[#d8e3da] bg-white px-3.5 py-3.5 shadow-[0_5px_16px_rgba(18,55,34,0.045)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9fc2aa] hover:shadow-[0_10px_24px_rgba(18,55,34,0.085)] sm:px-4"
@@ -113,10 +105,7 @@ export default function ApplicationGroups({
                   <ApplicationIcon slug={ind.iconSlug} className="h-5 w-5" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block font-mono text-[8px] font-black tracking-[0.10em] text-[#89a095]">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="mt-0.5 block text-[11px] font-bold leading-4 text-[#274537] sm:text-xs">
+                  <span className="block text-[11px] font-bold leading-4 text-[#274537] sm:text-xs">
                     {ind.title}
                   </span>
                 </span>
@@ -130,10 +119,7 @@ export default function ApplicationGroups({
         <div className="overflow-hidden rounded-[26px] border border-[#d6e1d8] bg-white shadow-[0_16px_42px_rgba(18,55,34,0.07)]">
           <div className="flex flex-col gap-3 border-b border-[#dce6de] bg-[#f5f8f5] px-5 py-5 sm:flex-row sm:items-end sm:justify-between sm:px-6">
             <div>
-              <span className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#168447]">
-                Industry Coverage
-              </span>
-              <h4 className="mt-1 text-lg font-extrabold tracking-[-0.02em] text-[#123823]">
+              <h4 className="text-lg font-extrabold tracking-[-0.02em] text-[#123823]">
                 {singleGroup.heading}
               </h4>
             </div>
@@ -143,14 +129,11 @@ export default function ApplicationGroups({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {singleGroup.items.map((item, index) => (
+            {singleGroup.items.map((item) => (
               <div
                 key={item}
-                className="group/item relative flex min-h-[68px] items-center gap-3 border-b border-[#e0e8e2] px-5 py-4 transition-colors hover:bg-[#f5faf6] sm:border-r lg:[&:nth-child(3n)]:border-r-0"
+                className="group/item relative flex min-h-[68px] items-center border-b border-[#e0e8e2] px-5 py-4 transition-colors hover:bg-[#f5faf6] sm:border-r lg:[&:nth-child(3n)]:border-r-0"
               >
-                <span className="flex h-7 min-w-7 items-center justify-center rounded-lg bg-[#eaf4ec] px-1.5 font-mono text-[9px] font-black text-[#168447]">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 <span className="text-[13px] font-semibold leading-5 text-[#40584c]">
                   {item}
                 </span>
@@ -160,16 +143,13 @@ export default function ApplicationGroups({
         </div>
       ) : groups.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {groups.map((group, groupIndex) => (
+          {groups.map((group) => (
             <div
               key={group.heading}
               className="overflow-hidden rounded-[22px] border border-[#d7e2d9] bg-white shadow-[0_10px_28px_rgba(18,55,34,0.06)]"
             >
               <div className="border-b border-[#e0e8e2] bg-[#f4f8f4] px-5 py-4">
-                <span className="font-mono text-[9px] font-black tracking-[0.1em] text-[#168447]">
-                  {String(groupIndex + 1).padStart(2, '0')}
-                </span>
-                <h4 className="mt-1 text-sm font-extrabold text-[#123823]">
+                <h4 className="text-sm font-extrabold text-[#123823]">
                   {group.heading}
                 </h4>
               </div>

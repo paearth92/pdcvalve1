@@ -437,7 +437,7 @@ export default function ProductFamilyTemplate({
           {/* Industries */}
           {showIndustrySection && <section id="industries" className="scroll-mt-32">
             <Reveal>
-              <SectionHeading eyebrow="Industries" title="Industries Served" />
+              <SectionHeading eyebrow="Where It Fits" title="Industries Served" />
             </Reveal>
             <div className="mt-8">
               {family.industries && family.industries.length > 0 ? (

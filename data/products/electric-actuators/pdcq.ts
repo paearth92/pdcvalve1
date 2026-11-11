@@ -22,68 +22,68 @@ export const pdcq: ProductContent = {
   ],
   features: [
     {
-      title: '6 to 3,500 N·m output torque range',
+      title: '6 to 3,500 N·m Output Torque Range',
       description: 'Published output torque spans 53 to 31,000 in·lbs across PDCQ-A through PDCQ-R.',
     },
     {
-      title: 'High-grade aluminum alloy enclosure',
-      description: '',
+      title: 'High-Grade Aluminum-Alloy Enclosure',
+      description: 'Lightweight industrial enclosure construction with protective exterior coating.',
     },
     {
-      title: 'Durable polyester powder-coated exterior',
-      description: '',
+      title: 'Durable Polyester Powder-Coated Exterior',
+      description: 'Provides added exterior protection for industrial service.',
     },
     {
-      title: 'O-ring sealed covers with captured stainless-steel fasteners',
-      description: '',
+      title: 'O-Ring-Sealed Covers with Captured Stainless-Steel Fasteners',
+      description: 'Helps maintain enclosure sealing while simplifying service access.',
     },
     {
-      title: 'CSA / NEMA Type 4X and IP67 sealing',
+      title: 'CSA / NEMA Type 4X and IP67 Sealing',
       description: 'Standard enclosure sealing is designed to meet CSA and NEMA Type 4X with IP67 ingress protection.',
     },
     {
-      title: 'Manual override as standard',
+      title: 'Manual Override as Standard',
       description: 'PDCQ-A through D use a lever; larger models use a non-clutch handwheel requiring no manual/auto lever.',
     },
     {
-      title: 'Visual position indicator',
+      title: 'Visual Position Indicator',
       description: 'Standard except on PDCQ-A and PDCQ-B.',
     },
     {
-      title: 'ISO 5211 mounting base',
-      description: '',
+      title: 'ISO 5211 Mounting Base',
+      description: 'Supports standardized quarter-turn valve and damper mounting.',
     },
     {
-      title: 'Space heater and thermostat',
+      title: 'Space Heater and Thermostat',
       description: 'Standard except on PDCQ-A and PDCQ-B.',
     },
     {
-      title: 'Wide standard operating temperature',
+      title: 'Standard Operating Temperature Range',
       description: '-30°C to +65°C (-22°F to +149°F).',
     },
     {
-      title: 'Multiple standard voltages',
+      title: 'Multiple Standard Voltages',
       description: '24V DC, 24V AC, and 110V/220V AC, single phase, 60Hz ±10%.',
     },
     {
-      title: 'ON/OFF control as standard',
-      description: '',
+      title: 'ON/OFF Control as Standard',
+      description: 'Standard control configuration for quarter-turn automation.',
     },
     {
-      title: '30% standard duty cycle',
+      title: 'Standard Duty Cycle',
       description: 'Standard 30% duty cycle at 30% rated torque.',
     },
     {
-      title: 'Inching-control capability',
-      description: 'Rated for 30 to 120 starts or movements per hour with a cyclic duration factor of at least 25%.',
+      title: 'Inching-Control Capability',
+      description: 'Rated for 30 to 120 movements per hour with a cyclic duration factor of at least 25%.',
     },
     {
-      title: 'Resettable motor thermal protection',
-      description: 'Built-in motor thermal protection.',
+      title: 'Resettable Motor Thermal Protection',
+      description: 'Built-in resettable protection helps protect the actuator motor.',
     },
     {
-      title: 'Four standard limit switches',
-      description: 'Two for operation and two SPDT extra dry contacts, except on PDCQ-A and PDCQ-B.',
+      title: 'Four Standard Limit Switches',
+      description: 'Two for operation and two SPDT auxiliary dry contacts, except on PDCQ-A and PDCQ-B.',
     },
   ],
   benefits: [],

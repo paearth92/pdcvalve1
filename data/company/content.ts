@@ -44,9 +44,9 @@ export const companyFacts: Record<string, CompanyFact[]> = {
   ],
   manufacturing: [
     { value: 'In-house', label: 'Machining' },
-    { value: '10', label: 'Core product lines' },
-    { value: 'Custom', label: 'Valve assemblies' },
     { value: 'Integrated', label: 'Actuation packages' },
+    { value: 'Custom', label: 'Valve assemblies' },
+    { value: 'Application-specific', label: 'Configurations' },
   ],
   quality: [
     { value: 'ISO', label: '9001:2015 certified' },

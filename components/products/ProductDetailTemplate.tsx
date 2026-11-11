@@ -10,7 +10,6 @@ import EngineeringDataSection from '@/components/products/EngineeringDataSection
 import DownloadsSection from '@/components/products/DownloadsSection';
 import RelatedProducts from '@/components/products/RelatedProducts';
 import QuoteCTA from '@/components/products/QuoteCTA';
-import MobileQuoteBar from '@/components/products/MobileQuoteBar';
 import Reveal from '@/components/products/Reveal';
 import SectionHeading from '@/components/shared/SectionHeading';
 import type { ProductDetail } from '@/types/site';
@@ -192,7 +191,7 @@ export default function ProductDetailTemplate({
         <SectionShell id="applications">
           <Reveal>
             <SectionHeading
-              eyebrow={industriesOnly ? 'Industries' : 'Applications'}
+              eyebrow={industriesOnly ? 'Where It Fits' : 'Applications'}
               title={industriesOnly ? 'Industries Served' : 'Where This Product Fits'}
             />
           </Reveal>
@@ -214,8 +213,9 @@ export default function ProductDetailTemplate({
                 <SectionHeading eyebrow="Resources" title="Technical Downloads" />
               </Reveal>
               <p className="mt-4 max-w-lg text-sm leading-6 text-brand-graphite/58">
-                Brochures, technical literature, CAD resources, manuals, and
-                other product documents when available.
+                Brochures, technical literature, installation and maintenance
+                resources, engineering data, and other product documents when
+                available.
               </p>
             </div>
             <DownloadsSection downloads={product.downloads} />
@@ -248,7 +248,6 @@ export default function ProductDetailTemplate({
         <QuoteCTA />
       </div>
 
-      <MobileQuoteBar />
     </>
   );
 }

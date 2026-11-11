@@ -13,6 +13,7 @@ export interface ProductDownload {
   type: DownloadFileType;
   filename: string;
   url?: string;
+  description?: string;
 }
 
 export interface ProductSpecRow {

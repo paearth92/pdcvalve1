@@ -12,7 +12,6 @@ import {
   resourceRegistry,
   getFeaturedResources,
   getRecentlyAddedResources,
-  getResourceCountByCategory,
 } from '@/data/resources/registry';
 
 export function generateMetadata() {
@@ -123,12 +122,11 @@ export default function ResourcesPage() {
             category contains verified technical literature for PDC products.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {resourceCategories.map((category) => (
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+            {resourceCategories.filter((category) => category.slug !== 'certifications').map((category) => (
               <ResourceCategoryCard
                 key={category.slug}
                 category={category}
-                count={getResourceCountByCategory(category.slug)}
               />
             ))}
           </div>

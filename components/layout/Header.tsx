@@ -505,8 +505,8 @@ export default function Header() {
                             </p>
                             <div className="mt-5 grid grid-cols-2 gap-2 border-t border-white/10 pt-4">
                               <div>
-                                <div className="text-base font-extrabold text-white">10</div>
-                                <div className="text-[9px] uppercase tracking-[0.13em] text-white/35">Product lines</div>
+                                <div className="text-base font-extrabold text-white">300+</div>
+                                <div className="text-[9px] uppercase tracking-[0.13em] text-white/35">Casting patterns</div>
                               </div>
                               <div>
                                 <div className="text-base font-extrabold text-white">ISO</div>

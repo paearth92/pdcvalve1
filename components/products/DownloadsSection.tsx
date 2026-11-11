@@ -81,6 +81,11 @@ export default function DownloadsSection({
               <span className="mt-1 block text-sm font-bold leading-5 text-brand-green-dark sm:text-[15px]">
                 {dl.label}
               </span>
+              {dl.description && (
+                <span className="mt-1 block text-xs leading-5 text-brand-graphite/60">
+                  {dl.description}
+                </span>
+              )}
             </span>
 
             <span

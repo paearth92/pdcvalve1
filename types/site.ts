@@ -26,6 +26,9 @@ export interface ProductFamily {
   displayName?: string;
   slug: string;
   description: string;
+  /** Optional homepage product-family illustration and accessible description. */
+  cardImage?: string;
+  cardImageAlt?: string;
 }
 
 export interface Industry {
@@ -112,6 +115,7 @@ export interface ProductDownload {
   type: DownloadFileType;
   filename: string;
   url?: string;
+  description?: string;
 }
 
 export interface ProductGalleryImage {

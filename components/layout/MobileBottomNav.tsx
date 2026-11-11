@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Home, Phone, FileText, MoreHorizontal, X, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Home, Phone, Plus, MoreHorizontal, X, ChevronRight } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { useRFQ } from '@/components/rfq/RFQProvider';
 import { productFamilyContent } from '@/data/products/families';
@@ -56,9 +55,15 @@ const MORE_LINKS = [
   { label: 'Contact', href: '/contact' },
 ];
 
+// The SVG is one bar wide. Its center peak starts at x=0 so shifting the
+// whole path to a tab's center carries the glow along the bottom edge.
+const ACTIVE_CONTOUR =
+  'M -500 62 H -64 C -52 62 -42 47 -30 27 C -25 13 -16 7 0 7 C 16 7 25 13 30 27 C 42 47 52 62 64 62 H 500';
+const FLAT_CONTOUR = 'M -500 62 H 500';
+
 export default function MobileBottomNav() {
   const pathname = usePathname();
-  const { openRFQ } = useRFQ();
+  const { isOpen, openRFQ } = useRFQ();
   const [moreOpen, setMoreOpen] = useState(false);
 
   // Close "More" tray on route change
@@ -74,8 +79,24 @@ export default function MobileBottomNav() {
     }
   }, [moreOpen]);
 
-  const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const isHomeActive = pathname === '/';
+  const isProductsActive =
+    pathname === '/product-finder' ||
+    pathname === '/products' ||
+    pathname.startsWith('/products/');
+  const isMoreActive = MORE_LINKS.some(
+    ({ href }) => pathname === href || pathname.startsWith(`${href}/`),
+  );
+  const activeTabIndex = isOpen
+    ? 2
+    : moreOpen || isMoreActive
+      ? 4
+      : isHomeActive
+        ? 0
+        : isProductsActive
+          ? 1
+          : -1;
+  const activeTabCenter = activeTabIndex >= 0 ? `${(activeTabIndex + 0.5) * 20}%` : '50%';
 
   return (
     <>
@@ -87,15 +108,10 @@ export default function MobileBottomNav() {
         />
       )}
 
-      {/* More tray — slides up from bottom */}
-      <div
-        className={cn(
-          'fixed inset-x-0 bottom-[64px] z-50 sm:hidden',
-          'transition-transform duration-300 ease-out',
-          moreOpen ? 'translate-y-0' : 'translate-y-full pointer-events-none',
-        )}
-      >
-        <div className="mx-3 mb-2 overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
+      {/* Keep the tray out of the page entirely until More is tapped. */}
+      {moreOpen && (
+        <div className="pdc-more-tray-enter fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+96px)] z-50 sm:hidden">
+          <div className="mx-3 mb-2 overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-1">
             <div className="h-1 w-10 rounded-full bg-gray-300" />
@@ -150,80 +166,98 @@ export default function MobileBottomNav() {
               Close
             </button>
           </div>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Bottom tab bar */}
       <nav
-        className="fixed inset-x-0 bottom-0 z-50 sm:hidden"
+        className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+12px)] z-50 sm:hidden"
         aria-label="Mobile navigation"
       >
-        {/* Safe-area background extends below the bar on notched devices */}
-        <div className="absolute inset-x-0 bottom-0 top-0 bg-white/95 backdrop-blur-md shadow-[0_-1px_0_rgba(0,0,0,0.08),0_-4px_20px_rgba(0,0,0,0.06)]" />
-
-        <div className="relative grid h-16 grid-cols-5" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
-          {/* Home */}
-          <Link
-            href="/"
-            className={cn(
-              'flex flex-col items-center justify-center gap-1 transition-colors',
-              isActive('/') ? 'text-brand-green' : 'text-gray-500',
-            )}
-          >
-            <Home className="h-5 w-5" />
-            <span className="text-[10px] font-semibold tracking-wide">Home</span>
-          </Link>
-
-          {/* Products */}
-          <Link
-            href="/products"
-            className={cn(
-              'flex flex-col items-center justify-center gap-1 transition-colors',
-              isActive('/products') ? 'text-brand-green' : 'text-gray-500',
-            )}
-          >
-            <ValveIcon className="h-5 w-5" />
-            <span className="text-[10px] font-semibold tracking-wide">Products</span>
-          </Link>
-
-          {/* Quote — centre pill CTA */}
-          <div className="flex items-center justify-center">
-            <button
-              onClick={() => openRFQ()}
-              className="flex h-12 w-12 flex-col items-center justify-center rounded-full bg-brand-green shadow-lg shadow-brand-green/30 transition-transform active:scale-95"
-              aria-label="Request a Quote"
+        <div
+          className="pdc-liquid-nav"
+          data-menu-open={moreOpen}
+        >
+          <div className="pdc-liquid-nav__glow" aria-hidden="true">
+            <svg
+              className="pdc-liquid-nav__contour"
+              viewBox="0 0 500 64"
+              preserveAspectRatio="none"
+              style={{ transform: `translateX(${activeTabCenter})` }}
             >
-              <FileText className="h-5 w-5 text-white" />
-              <span className="text-[9px] font-bold uppercase tracking-wide text-white/90 leading-none mt-0.5">Quote</span>
+              <path
+                d={activeTabIndex >= 0 ? ACTIVE_CONTOUR : FLAT_CONTOUR}
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+          </div>
+          <div className="pdc-liquid-nav__track">
+            {/* Home */}
+            <Link
+              href="/"
+              aria-label="Home"
+              aria-current={isHomeActive ? 'page' : undefined}
+              data-highlighted={activeTabIndex === 0}
+              className="pdc-liquid-nav__tab"
+            >
+              <Home className="pdc-liquid-nav__icon h-5 w-5" />
+              <span className="pdc-liquid-nav__label">Home</span>
+            </Link>
+
+            {/* Products */}
+            <Link
+              href="/products"
+              aria-label="Products"
+              aria-current={isProductsActive ? 'page' : undefined}
+              data-highlighted={activeTabIndex === 1}
+              className="pdc-liquid-nav__tab"
+            >
+              <ValveIcon className="pdc-liquid-nav__icon h-5 w-5" />
+              <span className="pdc-liquid-nav__label">Products</span>
+            </Link>
+
+            {/* Quote action */}
+            <button
+              type="button"
+              onClick={() => openRFQ()}
+              aria-label="Request a Quote"
+              aria-expanded={isOpen}
+              data-highlighted={activeTabIndex === 2}
+              className="pdc-liquid-nav__tab"
+            >
+              <Plus className="pdc-liquid-nav__icon h-5 w-5" />
+              <span className="pdc-liquid-nav__label">Quote</span>
+            </button>
+
+            {/* Call */}
+            <a
+              href={`tel:${siteConfig.phone}`}
+              aria-label="Call PDC Sales"
+              className="pdc-liquid-nav__tab"
+            >
+              <Phone className="pdc-liquid-nav__icon h-5 w-5" />
+              <span className="pdc-liquid-nav__label">Call</span>
+            </a>
+
+            {/* More */}
+            <button
+              type="button"
+              onClick={() => setMoreOpen((v) => !v)}
+              aria-label="More navigation"
+              aria-current={isMoreActive ? 'page' : undefined}
+              data-highlighted={activeTabIndex === 4}
+              className="pdc-liquid-nav__tab"
+              aria-expanded={moreOpen}
+            >
+              {moreOpen ? (
+                <X className="pdc-liquid-nav__icon h-5 w-5" />
+              ) : (
+                <MoreHorizontal className="pdc-liquid-nav__icon h-5 w-5" />
+              )}
+              <span className="pdc-liquid-nav__label">More</span>
             </button>
           </div>
-
-          {/* Call */}
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className="flex flex-col items-center justify-center gap-1 text-gray-500 transition-colors active:text-brand-green"
-          >
-            <Phone className="h-5 w-5" />
-            <span className="text-[10px] font-semibold tracking-wide">Call</span>
-          </a>
-
-          {/* More */}
-          <button
-            onClick={() => setMoreOpen((v) => !v)}
-            className={cn(
-              'flex flex-col items-center justify-center gap-1 transition-colors',
-              moreOpen ? 'text-brand-green' : 'text-gray-500',
-            )}
-            aria-expanded={moreOpen}
-            aria-label="More navigation"
-          >
-            {moreOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <MoreHorizontal className="h-5 w-5" />
-            )}
-            <span className="text-[10px] font-semibold tracking-wide">More</span>
-          </button>
         </div>
       </nav>
     </>

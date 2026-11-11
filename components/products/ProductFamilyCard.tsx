@@ -16,14 +16,28 @@ export default function ProductFamilyCard({
     >
       {/* Illustration area */}
       <div className="relative h-48 overflow-hidden border-b border-brand-green-dark/8 bg-[#edf2ee]">
-        <Image
-          src={approvedProductBackground}
-          alt=""
-          fill
-          sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-          className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#dfe9e2]/20" />
+        {product.cardImage ? (
+          <>
+            <Image
+              src={product.cardImage}
+              alt={product.cardImageAlt ?? `${product.displayName ?? product.name} product family`}
+              fill
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              className="scale-[1.1] object-cover object-center transition-transform duration-500 group-hover:scale-[1.13]"
+            />
+          </>
+        ) : (
+          <>
+            <Image
+              src={approvedProductBackground}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#dfe9e2]/20" />
+          </>
+        )}
       </div>
 
       {/* Content */}

@@ -7,7 +7,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { industries } from '@/data/site';
 import Reveal from '@/components/products/Reveal';
 import HomeSectionHeading from '@/components/home/HomeSectionHeading';
@@ -63,29 +63,6 @@ function IndustryCard({
 
         <div className="absolute inset-0 bg-[linear-gradient(96deg,rgba(3,10,6,0.94)_0%,rgba(3,10,6,0.76)_32%,rgba(3,10,6,0.32)_60%,rgba(3,10,6,0.06)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020805]/72 via-transparent to-black/12" />
-
-        <div
-          className={[
-            'absolute inset-x-0 top-0 flex justify-end',
-            compact ? 'p-3.5 sm:p-4' : 'p-5 xl:p-6',
-          ].join(' ')}
-        >
-          <span
-            className={[
-              'flex items-center justify-center rounded-full border border-white/15 bg-black/20',
-              'text-white/65 backdrop-blur-md transition-all duration-300',
-              'group-hover/card:border-brand-green/55 group-hover/card:bg-brand-green group-hover/card:text-white',
-              compact ? 'h-7 w-7 sm:h-8 sm:w-8' : 'h-9 w-9',
-            ].join(' ')}
-          >
-            <ArrowUpRight
-              className={[
-                'transition-transform duration-300 group-hover/card:-translate-y-0.5 group-hover/card:translate-x-0.5',
-                compact ? 'h-3.5 w-3.5' : 'h-4 w-4',
-              ].join(' ')}
-            />
-          </span>
-        </div>
 
         <div
           className={[

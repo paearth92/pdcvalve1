@@ -88,12 +88,16 @@ export const productFamilies: ProductFamily[] = [
     name: 'Damper and Control Valves',
     displayName: 'Damper & Control Valves',
     slug: 'butterfly-damper-valves',
+    cardImage: '/images/products/family-catalog/damper-control-valves.png',
+    cardImageAlt: 'PDC damper and control valves in several body configurations',
     description:
       'Heavy-duty butterfly and damper valves engineered for modulating flow, high-temperature service, and demanding industrial applications.',
   },
   {
     name: 'Butterfly Valves',
     slug: 'butterfly-valves',
+    cardImage: '/images/products/family-catalog/butterfly-valves.png',
+    cardImageAlt: 'PDC butterfly valves in several body configurations',
     description:
       'Industrial butterfly valves for reliable shutoff, isolation, and general process service.',
   },
@@ -101,6 +105,8 @@ export const productFamilies: ProductFamily[] = [
     name: 'Pneumatic Actuators',
     displayName: 'Pneumatic Actuation',
     slug: 'pneumatic-actuators',
+    cardImage: '/images/products/family-catalog/pneumatic-actuators.png',
+    cardImageAlt: 'PDC pneumatic quarter-turn actuators in multiple sizes',
     description:
       'Pneumatic actuator packages sized, mounted, and configured for reliable valve operation.',
   },
@@ -108,6 +114,8 @@ export const productFamilies: ProductFamily[] = [
     name: 'Electric Actuators',
     displayName: 'Electric Actuation',
     slug: 'electric-actuators',
+    cardImage: '/images/products/family-catalog/electric-actuators.png',
+    cardImageAlt: 'PDC electric quarter-turn actuators with handwheel options',
     description:
       'Electric actuator packages engineered for accurate positioning, dependable operation, and application-specific control.',
   },
@@ -166,7 +174,7 @@ export const industries: Industry[] = [
 
 export const capabilities: Capability[] = [
   { value: '1970', label: 'Established', numeric: true },
-  { value: '10', label: 'Core Product Lines', numeric: true },
+  { value: 'Integrated', label: 'Actuation Packages' },
   { value: 'ISO', label: '9001:2015' },
   { value: 'In-House', label: 'Machining' },
   { value: 'Custom', label: 'Valve Assemblies' },

@@ -51,7 +51,7 @@ export const springReturn: ProductContent = {
     {
       title: 'Adjustable Travel Stops',
       description:
-        'Two independent external travel bolts provide adjustment of up to -5° at both the open and closed positions.',
+        'Two independent external travel bolts provide adjustment of up to ±5° at both the open and closed positions.',
     },
     {
       title: 'Preloaded Corrosion-Resistant Springs',

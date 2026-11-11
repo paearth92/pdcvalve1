@@ -125,16 +125,7 @@ export const mediumDuty: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [
-      {
-        src: '/images/products/butterfly-damper-valves/gallery/medium-duty/medium-duty-16-inch-blue-actuated-metal.png',
-        alt: 'PDC Medium Duty 16-inch blue butterfly valve with side-mounted actuator, shown with the shaft horizontal',
-        kind: 'gallery',
-        caption: '16-Inch Blue Medium Duty Valve — Side-Mounted Actuator',
-        width: 1536,
-        height: 1024,
-      },
-    ],
+    gallery: [],
     transparentPng: {
       src: '/images/products/butterfly-damper-valves/medium-duty-4-inch-black-cutout-v2.png',
       alt: 'PDC Medium Duty 4-inch black wafer butterfly valve with actuator',

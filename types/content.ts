@@ -35,6 +35,7 @@ export interface DownloadEntry {
   type: DownloadFileType;
   filename: string;
   url?: string;
+  description?: string;
   /** File size in bytes, when known. */
   sizeBytes?: number;
   /** ISO date string of last revision. */

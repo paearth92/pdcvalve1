@@ -103,15 +103,7 @@ export const butterflyDamperValvesFamily: ProductFamilyContent = {
         'Damper and control valves integrated into custom machinery, packaged equipment, and engineered systems.',
     },
   ],
-  productRefs: [
-    'econotrol',
-    'medium-duty',
-    'excel',
-    'flanged-end',
-    'reduced-port',
-    'combustion-valve',
-    'thread-end',
-  ],
+  productRefs: ['excel', 'econotrol', 'medium-duty'],
   downloads: [
     {
       label: 'Excel Series 40 Brochure',
