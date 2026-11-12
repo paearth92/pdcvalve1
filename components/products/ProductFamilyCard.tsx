@@ -50,7 +50,7 @@ export default function ProductFamilyCard({
         </p>
 
         {/* Link */}
-        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-green-dark">
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-green-dark">
           View Product Family
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
