@@ -125,7 +125,14 @@ export const threadEnd: ProductContent = {
   images: {
     hero: undefined,
     gallery: [],
-    transparentPng: undefined,
+    transparentPng: {
+      src: '/images/products/butterfly-damper-valves/thread-end-series-07-manual-lever-cutout.png',
+      alt: 'PDC Thread End Series 07 blue female-threaded butterfly valve with manual lever and partially open disc, three-quarter view',
+      kind: 'transparent-png',
+      caption: 'Thread End Series 07 — Manual Lever',
+      width: 1199,
+      height: 1312,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },

@@ -59,7 +59,7 @@ export default function CoreFunctions({ items }: { items: CoreFunction[] }) {
           }
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-x-5 gap-y-20 lg:mt-12 lg:grid-cols-3 lg:gap-y-5">
+        <div className="mt-20 grid grid-cols-1 gap-x-5 gap-y-20 lg:mt-16 lg:grid-cols-3 lg:gap-y-5">
           {cards.map((item, index) => {
             const visual = visuals[index] ?? visuals[0];
 

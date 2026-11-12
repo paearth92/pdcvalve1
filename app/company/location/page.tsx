@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowUpRight, Building2, Mail, MapPin, Navigation, Phone } from 'lucide-react';
 import CompanyNav from '@/components/company/CompanyNav';
+import CompanyHero from '@/components/company/CompanyHero';
 import Reveal from '@/components/products/Reveal';
 import { siteConfig } from '@/data/site';
 
@@ -17,17 +18,12 @@ const placeUrl = 'https://www.google.com/maps/search/?api=1&query=1075+Montour+W
 export default function LocationPage() {
   return (
     <>
-      <section className="pdc-green-texture relative overflow-hidden bg-brand-green-dark pb-16 pt-14 text-white sm:pb-20 sm:pt-16">
-        <div className="blueprint-grid absolute inset-0 opacity-[0.15]" />
-        <div className="absolute right-[-120px] top-[-120px] h-[420px] w-[420px] rounded-full border border-white/[0.055]" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3"><span className="h-px w-8 bg-white/50" /><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">Find PDC</span></div>
-            <h1 className="mt-5 text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl lg:text-[3.65rem]">Location & Directions</h1>
-            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/[0.62]">PDC’s published U.S. location is in Montour West Industrial Park in Coraopolis, Pennsylvania, serving the greater Pittsburgh area.</p>
-          </div>
-        </div>
-      </section>
+      <CompanyHero
+        eyebrow="Find PDC"
+        title="Location & Directions"
+        description="PDC’s published U.S. location is in Montour West Industrial Park in Coraopolis, Pennsylvania, serving the greater Pittsburgh area."
+        variant="location"
+      />
 
       <CompanyNav />
 

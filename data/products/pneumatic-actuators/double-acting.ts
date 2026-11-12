@@ -173,8 +173,24 @@ export const doubleActing: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
-    transparentPng: undefined,
+    gallery: [
+      {
+        src: '/images/products/pneumatic-actuators/magnus-force-valve-assembly-catalog-cutout.png',
+        alt: 'PDC Magnus Force pneumatic actuator mounted to a stainless butterfly valve, with the metal disc partially open',
+        kind: 'gallery',
+        caption: 'Magnus Force Pneumatic Actuator on a Butterfly Valve',
+        width: 1024,
+        height: 1536,
+      },
+    ],
+    transparentPng: {
+      src: '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png',
+      alt: 'Three PDC Magnus Force pneumatic actuators with silver housings, red end caps, and PDC nameplates',
+      kind: 'transparent-png',
+      caption: 'Magnus Force Pneumatic Actuators',
+      width: 1790,
+      height: 879,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },

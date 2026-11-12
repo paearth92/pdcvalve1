@@ -21,6 +21,7 @@ export const companyNav: NavLink[] = [
   { label: 'Manufacturing', href: '/company/manufacturing' },
   { label: 'Quality & Compliance', href: '/company/quality' },
   { label: 'Find PDC', href: '/company/location' },
+  { label: 'Find a Distributor', href: '/company/find-a-distributor' },
 ];
 
 export type CompanyFact = {

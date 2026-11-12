@@ -200,7 +200,25 @@ const familyNames: Record<string, string> = {
   'electric-actuators': 'Electric Actuators',
 };
 
-const familyImageOverrides: Record<string, { hero?: Partial<AssetEntry>; card?: Partial<AssetEntry> }> = {};
+const pneumaticFamilyImage =
+  '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png';
+
+const familyImageOverrides: Record<string, { hero?: Partial<AssetEntry>; card?: Partial<AssetEntry> }> = {
+  'pneumatic-actuators': {
+    card: {
+      sourceType: 'derived-from-official',
+      originalFilePath: pneumaticFamilyImage,
+      processedFilePath: pneumaticFamilyImage,
+      format: 'png',
+      width: 1790,
+      height: 879,
+      transparentBackground: true,
+      alt: 'Three PDC Magnus Force pneumatic actuators with silver housings, red end caps, and PDC nameplates',
+      status: 'official-processed',
+      notes: 'Transparent catalog rendering used for the Pneumatic Actuators mobile family hero and card.',
+    },
+  },
+};
 
 const familyAssets: AssetEntry[] = familySlugs.flatMap((slug) => {
   const heroPath = `/images/products/families/${slug}.png`;

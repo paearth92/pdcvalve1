@@ -98,7 +98,7 @@ export const productFamiliesData: ProductFamilyData[] = [
     shortDescription:
       'High-torque pneumatic actuators built for fast, dependable valve operation.',
     route: '/products/pneumatic-actuators',
-    imageRef: '/images/products/pneumatic-actuators.svg',
+    imageRef: '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png',
   },
   {
     name: 'Electric Actuators',

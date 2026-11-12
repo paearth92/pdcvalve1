@@ -28,6 +28,9 @@ export default function ProductHeroGallery({
 
   const activeImage = images[activeIndex] ?? images[0];
   const imageLabel = activeImage.caption ?? activeImage.alt;
+  const isFlangedSeries39Render = activeImage.src.endsWith(
+    '/flanged-end-10-inch-blue-with-lever.png',
+  );
 
   return (
     <div className={`flex min-w-0 flex-col items-center ${className}`}>
@@ -59,7 +62,7 @@ export default function ProductHeroGallery({
           alt={activeImage.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 55vw"
-          className={`relative z-10 object-contain ${activeImage.transparent ? 'p-1 sm:p-3' : 'p-2 sm:p-4'}`}
+          className={`relative z-10 object-contain ${activeImage.transparent ? 'p-1 sm:p-3' : 'p-2 sm:p-4'} ${isFlangedSeries39Render ? 'scale-[0.86]' : ''}`}
           priority={activeIndex === 0}
         />
       </div>

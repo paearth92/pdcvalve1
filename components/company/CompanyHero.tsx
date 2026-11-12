@@ -1,11 +1,39 @@
-import { ArrowDownRight } from 'lucide-react';
-
-const variantCode: Record<string, string> = {
-  about: 'COMPANY / 01',
-  engineering: 'ENGINEERING / 02',
-  manufacturing: 'MANUFACTURING / 03',
-  quality: 'QUALITY / 04',
-  location: 'LOCATION / 05',
+const heroSurfaces: Record<string, { background: string; fold: string }> = {
+  about: {
+    background:
+      'radial-gradient(ellipse at 84% 34%, rgba(107, 163, 114, 0.2), transparent 42%), repeating-linear-gradient(128deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(38deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #123a28, #194831 58%, #102f22)',
+    fold: 'rotate-[21deg]',
+  },
+  engineering: {
+    background:
+      'radial-gradient(ellipse at 82% 30%, rgba(91, 159, 144, 0.2), transparent 42%), repeating-linear-gradient(116deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(26deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #12372c, #17483a 58%, #102e27)',
+    fold: 'rotate-[-17deg]',
+  },
+  manufacturing: {
+    background:
+      'radial-gradient(ellipse at 82% 33%, rgba(177, 154, 101, 0.16), transparent 42%), repeating-linear-gradient(139deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(49deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #173b2a, #214b35 58%, #102e22)',
+    fold: 'rotate-[13deg]',
+  },
+  quality: {
+    background:
+      'radial-gradient(ellipse at 84% 32%, rgba(150, 174, 143, 0.2), transparent 42%), repeating-linear-gradient(121deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 7px), repeating-linear-gradient(31deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #153a2b, #1d4933 58%, #102f22)',
+    fold: 'rotate-[-24deg]',
+  },
+  location: {
+    background:
+      'radial-gradient(ellipse at 83% 33%, rgba(87, 159, 155, 0.19), transparent 42%), repeating-linear-gradient(146deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(56deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #12382c, #17463e 58%, #102e28)',
+    fold: 'rotate-[28deg]',
+  },
+  distributors: {
+    background:
+      'radial-gradient(ellipse at 84% 32%, rgba(120, 168, 111, 0.2), transparent 42%), repeating-linear-gradient(133deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(43deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #123a28, #1c4931 58%, #102e22)',
+    fold: 'rotate-[17deg]',
+  },
+  legal: {
+    background:
+      'radial-gradient(ellipse at 84% 32%, rgba(141, 165, 132, 0.18), transparent 42%), repeating-linear-gradient(126deg, rgba(255,255,255,0.019) 0 1px, transparent 1px 7px), repeating-linear-gradient(36deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 8px), linear-gradient(122deg, #14392a, #1a4732 58%, #102f23)',
+    fold: 'rotate-[-20deg]',
+  },
 };
 
 export default function CompanyHero({
@@ -19,21 +47,27 @@ export default function CompanyHero({
   description: string;
   variant?: string;
 }) {
-  const code = variantCode[variant] ?? 'PDC / COMPANY';
+  const surface = heroSurfaces[variant] ?? heroSurfaces.about;
 
   return (
-    <section className="pdc-green-texture relative overflow-hidden bg-brand-green-dark text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,rgba(22,132,71,0.18),transparent_24%),linear-gradient(120deg,rgba(255,255,255,0.025),transparent_35%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:44px_44px]" />
+    <section
+      className="relative isolate overflow-hidden bg-brand-green-dark text-white"
+      style={{ backgroundImage: surface.background }}
+    >
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute -right-[12%] -top-[45%] hidden h-[190%] w-[59%] lg:block ${surface.fold}`}
+      >
+        <div className="absolute inset-0 skew-x-[-11deg] bg-gradient-to-r from-transparent via-white/[0.045] to-black/[0.045]" />
+        <div className="absolute inset-y-[-12%] left-[38%] w-[29%] skew-x-[-11deg] border-l border-white/[0.07] bg-gradient-to-r from-transparent via-white/[0.035] to-transparent" />
+        <div className="absolute inset-y-[-12%] left-[68%] w-[15%] skew-x-[-11deg] border-l border-black/[0.08] bg-gradient-to-r from-transparent via-black/[0.035] to-transparent" />
+      </div>
 
       <div className="relative mx-auto grid min-h-[300px] max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[1fr_0.7fr] lg:px-8 lg:py-14">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-brand-green" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">
-              {eyebrow}
-            </span>
-          </div>
+          <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">
+            {eyebrow}
+          </span>
 
           <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-[2.8rem] lg:text-[3.25rem]">
             {title}
@@ -44,18 +78,7 @@ export default function CompanyHero({
           </p>
         </div>
 
-        <div className="relative hidden h-[178px] lg:block">
-          <div className="absolute right-0 top-1/2 h-[150px] w-[150px] -translate-y-1/2 rounded-full border border-white/10" />
-          <div className="absolute right-[38px] top-1/2 h-[76px] w-[76px] -translate-y-1/2 rounded-full border border-brand-green/45" />
-          <div className="absolute right-[73px] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-brand-green shadow-[0_0_16px_rgba(22,132,71,0.75)]" />
-          <div className="absolute right-[149px] top-1/2 h-px w-[160px] -translate-y-1/2 bg-gradient-to-l from-white/22 to-transparent" />
-          <div className="absolute right-[238px] top-[46px] h-[88px] w-px bg-white/8" />
-          <div className="absolute bottom-0 right-0 flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.18em] text-white/28">
-            <span>{code}</span>
-            <span className="h-px w-12 bg-white/12" />
-            <ArrowDownRight className="h-3.5 w-3.5 text-brand-green" />
-          </div>
-        </div>
+        <div aria-hidden="true" className="hidden h-[178px] lg:block" />
       </div>
     </section>
   );

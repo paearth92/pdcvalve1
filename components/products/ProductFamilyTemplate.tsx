@@ -81,12 +81,16 @@ export default function ProductFamilyTemplate({
             const cardBasePath = getFamilyCardBasePath(family.slug);
             const heroBasePath = getFamilyHeroBasePath(family.slug);
             const basePath = cardBasePath ?? heroBasePath;
+            const imageClassName =
+              family.slug === 'pneumatic-actuators'
+                ? 'h-full w-full object-contain px-3 py-2'
+                : 'h-full w-full object-cover object-center';
             if (basePath) {
               return (
                 <FlexibleImage
                   basePath={basePath}
                   alt=""
-                  className="h-full w-full object-cover object-center"
+                  className={imageClassName}
                   width={1200}
                   height={800}
                 />

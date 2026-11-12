@@ -34,7 +34,7 @@ export default function ProductFamilies({
         )}
 
         {/* Product grid */}
-        <div className="mt-8 grid auto-rows-fr grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <div className="mt-8 grid auto-rows-fr grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           {productFamilies.map((product) => (
             <div key={product.slug} className="h-full">
               <ProductFamilyCard product={product} />

@@ -8,7 +8,11 @@ import CompanyFeatureCardGrid from '@/components/company/CompanyFeatureCardGrid'
 import CompanyCTA from '@/components/company/CompanyCTA';
 import Reveal from '@/components/products/Reveal';
 
-export default function CompanyPageLayout({ page }: { page: CompanyPageContent }) {
+export default function CompanyPageLayout({
+  page,
+}: {
+  page: CompanyPageContent;
+}) {
   const heroTitle = page.heroTitle ?? page.title;
   const heroDescription = page.heroDescription ?? page.subtitle ?? page.overview ?? '';
   const facts = companyFacts[page.slug] ?? [];

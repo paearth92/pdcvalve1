@@ -10,7 +10,7 @@ export const pneumaticActuatorsFamily: ProductFamilyContent = {
   name: 'Pneumatic Actuators',
   slug: 'pneumatic-actuators',
   route: '/products/pneumatic-actuators',
-  imageRef: '/images/products/pneumatic-actuators.svg',
+  imageRef: '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png',
   shortDescription:
     'Compact rack-and-pinion pneumatic actuators available in double-acting and spring-return configurations for quarter-turn valve and damper automation. Designed for dependable industrial operation across a range of valve sizes, torque requirements, and automation applications.',
   eyebrow: 'Product Family',
@@ -58,8 +58,24 @@ export const pneumaticActuatorsFamily: ProductFamilyContent = {
   trustBadges: [],
   images: {
     hero: undefined,
-    gallery: [],
-    transparentPng: undefined,
+    gallery: [
+      {
+        src: '/images/products/pneumatic-actuators/magnus-force-valve-assembly-catalog-cutout.png',
+        alt: 'PDC Magnus Force pneumatic actuator mounted to a stainless butterfly valve, with the metal disc partially open',
+        kind: 'gallery',
+        caption: 'Magnus Force Pneumatic Actuator on a Butterfly Valve',
+        width: 1024,
+        height: 1536,
+      },
+    ],
+    transparentPng: {
+      src: '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png',
+      alt: 'Three PDC Magnus Force pneumatic actuators with silver housings, red end caps, and PDC nameplates',
+      kind: 'transparent-png',
+      caption: 'Magnus Force Pneumatic Actuators',
+      width: 1790,
+      height: 879,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },

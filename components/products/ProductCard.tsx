@@ -26,6 +26,7 @@ export default function ProductCard({
   const familyName = family?.name ?? '';
   const cardBasePath = getProductCardBasePath(familySlug, product.slug);
   const isShowcase = appearance === 'showcase';
+  const isFlangedSeries39 = product.slug === 'flanged-end';
   if (isShowcase) {
     return (
       <article className="family-product-card relative flex h-full flex-col items-center text-center">
@@ -43,7 +44,7 @@ export default function ProductCard({
               width={product.image.width ?? 900}
               height={product.image.height ?? 675}
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="family-product-card__product-image relative z-10 h-full w-full object-contain p-4"
+              className={`family-product-card__product-image relative z-10 h-full w-full object-contain p-4 ${isFlangedSeries39 ? 'family-product-card__product-image--flanged' : ''}`}
               loading="eager"
             />
           )}
@@ -58,8 +59,13 @@ export default function ProductCard({
               Series {product.series}
             </p>
           )}
+          {product.shortDescription && (
+            <p className="mt-3 line-clamp-3 min-h-[4.5rem] max-w-sm px-6 text-sm leading-relaxed text-brand-graphite/70">
+              {product.shortDescription}
+            </p>
+          )}
 
-          <div className="family-product-card__actions pointer-events-auto z-20 mx-auto mt-5 flex w-full justify-center gap-3 sm:max-w-[19rem]">
+          <div className="family-product-card__actions pointer-events-auto z-20 mx-auto mt-6 flex w-full justify-center gap-3 sm:max-w-[19rem]">
             <RFQButton
               productFamily={familyName}
               product={product.name}
@@ -106,7 +112,7 @@ export default function ProductCard({
             width={product.image.width ?? 800}
             height={product.image.height ?? 800}
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="relative z-10 h-full w-full object-contain p-4"
+            className={`relative z-10 h-full w-full object-contain p-4 ${isFlangedSeries39 ? 'family-product-card__product-image--flanged' : ''}`}
           />
         ) : cardBasePath ? (
           <FlexibleImage

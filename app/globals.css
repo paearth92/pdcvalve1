@@ -748,6 +748,10 @@
   will-change: transform;
 }
 
+.family-product-card__product-image--flanged {
+  scale: 0.6;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .family-product-card::before {
     inset: -12px -12px -56px;

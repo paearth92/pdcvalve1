@@ -163,7 +163,13 @@ export const reducedPort: ProductContent = {
   images: {
     hero: undefined,
     gallery: [],
-    transparentPng: undefined,
+    transparentPng: {
+      src: '/images/products/butterfly-damper-valves/reduced-port-catalog-cutout.png',
+      alt: 'PDC Reduced Port Series 15 wafer butterfly valve with vertical blue disc and gray actuator assembly',
+      caption: 'Reduced Port Series 15 valve with actuator assembly',
+      width: 1024,
+      height: 1536,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },

@@ -139,10 +139,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6">
-          <p className="text-center text-xs text-white/60">
+          <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+          <p className="text-xs text-white/60">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
+          <Link
+            href="/terms-and-conditions"
+            className="text-xs font-semibold text-white/70 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
+          >
+            Terms &amp; Conditions
+          </Link>
+          </div>
         </div>
       </div>
     </footer>

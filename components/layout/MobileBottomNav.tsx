@@ -110,62 +110,72 @@ export default function MobileBottomNav() {
 
       {/* Keep the tray out of the page entirely until More is tapped. */}
       {moreOpen && (
-        <div className="pdc-more-tray-enter fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+96px)] z-50 sm:hidden">
-          <div className="mx-3 mb-2 overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
-          {/* Handle */}
-          <div className="flex justify-center pt-3 pb-1">
-            <div className="h-1 w-10 rounded-full bg-gray-300" />
-          </div>
+        <div
+          className="pdc-more-tray-enter fixed inset-x-0 z-50 flex flex-col justify-end sm:hidden"
+          style={{
+            top: 'calc(env(safe-area-inset-top, 0px) + 12px)',
+            bottom: 'calc(env(safe-area-inset-bottom, 0px) + 96px)',
+            maxHeight:
+              'calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 108px)',
+          }}
+        >
+          <div className="mx-3 mb-2 flex max-h-full flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
+            {/* Handle */}
+            <div className="flex shrink-0 justify-center pt-3 pb-1">
+              <div className="h-1 w-10 rounded-full bg-gray-300" />
+            </div>
 
-          {/* Product families */}
-          <div className="px-4 pt-2 pb-1">
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400">
-              Product Families
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-px bg-gray-100 border-t border-gray-100">
-            {productFamilyContent.map((f) => (
-              <Link
-                key={f.slug}
-                href={f.route}
-                className="flex items-center gap-2.5 bg-white px-4 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors active:bg-gray-50"
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]">
+              {/* Product families */}
+              <div className="px-4 pt-2 pb-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400">
+                  Product Families
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-px border-t border-gray-100 bg-gray-100">
+                {productFamilyContent.map((f) => (
+                  <Link
+                    key={f.slug}
+                    href={f.route}
+                    className="flex items-center gap-2.5 bg-white px-4 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors active:bg-gray-50"
+                  >
+                    <ValveIcon className="h-5 w-5 shrink-0 text-brand-green" />
+                    <span className="leading-tight">{f.name}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Other links */}
+              <div className="px-4 pt-4 pb-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400">
+                  Explore
+                </p>
+              </div>
+              <ul className="divide-y divide-gray-100 border-t border-gray-100">
+                {MORE_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center justify-between px-4 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors active:bg-gray-50"
+                    >
+                      {link.label}
+                      <ChevronRight className="h-4 w-4 text-gray-400" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Close button stays visible while the links scroll. */}
+            <div className="shrink-0 p-3">
+              <button
+                onClick={() => setMoreOpen(false)}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-100 py-3 text-sm font-semibold text-gray-600 transition-colors active:bg-gray-200"
               >
-                <ValveIcon className="h-5 w-5 shrink-0 text-brand-green" />
-                <span className="leading-tight">{f.name}</span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Other links */}
-          <div className="px-4 pt-4 pb-1">
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400">
-              Explore
-            </p>
-          </div>
-          <ul className="divide-y divide-gray-100 border-t border-gray-100">
-            {MORE_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="flex items-center justify-between px-4 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors active:bg-gray-50"
-                >
-                  {link.label}
-                  <ChevronRight className="h-4 w-4 text-gray-400" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Close button */}
-          <div className="p-3">
-            <button
-              onClick={() => setMoreOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-100 py-3 text-sm font-semibold text-gray-600 transition-colors active:bg-gray-200"
-            >
-              <X className="h-4 w-4" />
-              Close
-            </button>
-          </div>
+                <X className="h-4 w-4" />
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

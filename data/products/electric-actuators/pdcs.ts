@@ -125,8 +125,24 @@ export const pdcs: ProductContent = {
   lifecycleStatus: 'active',
   images: {
     hero: undefined,
-    gallery: [],
-    transparentPng: undefined,
+    gallery: [
+      {
+        src: '/images/products/electric-actuators/gallery/pdcs/pdcs-spring-pack-side-angle.png',
+        alt: 'PDCS spring-pack electric actuator from the side, showing its green housing, PDC identification plate, warning label, and manual handwheel',
+        kind: 'gallery',
+        caption: 'PDCS Electric Actuator — Side Angle',
+        width: 1337,
+        height: 1176,
+      },
+    ],
+    transparentPng: {
+      src: '/images/products/electric-actuators/pdcs-series-spring-pack-catalog-cutout.png',
+      alt: 'Green PDC PDCS spring-pack electric actuator with PDC nameplate, electrical warning plate, red position indicator, and black manual handwheel',
+      kind: 'transparent-png',
+      caption: 'PDCS Spring-Pack Electric Actuator',
+      width: 1089,
+      height: 1444,
+    },
     technicalDrawings: undefined,
     thumbnail: undefined,
   },

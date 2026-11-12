@@ -26,6 +26,7 @@ export const companyMenuLinks: NavLink[] = [
   { label: 'Manufacturing', href: '/company/manufacturing' },
   { label: 'Quality & Compliance', href: '/company/quality' },
   { label: 'Find PDC', href: '/company/location' },
+  { label: 'Find a Distributor', href: '/company/find-a-distributor' },
 ];
 
 export const footerNav: { title: string; links: NavLink[] }[] = [
@@ -105,7 +106,7 @@ export const productFamilies: ProductFamily[] = [
     name: 'Pneumatic Actuators',
     displayName: 'Pneumatic Actuation',
     slug: 'pneumatic-actuators',
-    cardImage: '/images/products/family-catalog/pneumatic-actuators.png',
+    cardImage: '/images/products/pneumatic-actuators/magnus-force-actuator-trio-catalog-cutout.png',
     cardImageAlt: 'PDC pneumatic quarter-turn actuators in multiple sizes',
     description:
       'Pneumatic actuator packages sized, mounted, and configured for reliable valve operation.',
@@ -114,8 +115,8 @@ export const productFamilies: ProductFamily[] = [
     name: 'Electric Actuators',
     displayName: 'Electric Actuation',
     slug: 'electric-actuators',
-    cardImage: '/images/products/family-catalog/electric-actuators.png',
-    cardImageAlt: 'PDC electric quarter-turn actuators with handwheel options',
+    cardImage: '/images/products/family-catalog/electric-actuation-pdcq-pdcs-cutout.png',
+    cardImageAlt: 'PDCQ red and PDCS green electric actuators with manual handwheels',
     description:
       'Electric actuator packages engineered for accurate positioning, dependable operation, and application-specific control.',
   },
