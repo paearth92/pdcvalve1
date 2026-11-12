@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowRight, MapPin } from 'lucide-react';
-import { companyFacts, companyNav } from '@/data/company/content';
+import { companyFacts } from '@/data/company/content';
 import CompanyHero from '@/components/company/CompanyHero';
 import CompanyNav from '@/components/company/CompanyNav';
 import CompanyFactStrip from '@/components/company/CompanyFactStrip';
@@ -14,13 +12,28 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://pdcvalve.com/company' },
 };
 
-const pageDescriptions: Record<string, { kicker: string; title: string; description: string }> = {
-  about: { kicker: 'Company profile', title: 'About PDC', description: 'History, portfolio, reach, customization, inventory, and support.' },
-  engineering: { kicker: 'Application support', title: 'Engineering Support', description: 'Application evaluation, selection, configuration, drawings, and technical support.' },
-  manufacturing: { kicker: 'Supply capability', title: 'Manufacturing', description: 'In-house machining, product variation, inventory, and integrated assemblies.' },
-  quality: { kicker: 'Credentials', title: 'Quality & Compliance', description: 'PDC’s published ISO 9001:2015 certification and AIS compliance.' },
-  location: { kicker: 'Coraopolis, Pennsylvania', title: 'Find PDC', description: 'Address, contact information, and directions to PDC.' },
-};
+const supportCards = [
+  {
+    title: 'Product Knowledge',
+    description: 'Butterfly damper valves, butterfly valves, ball and gate valves, pneumatic and electric actuation, and related automation products.',
+  },
+  {
+    title: 'Application Support',
+    description: 'PDC Sales handles most product and application inquiries, with Engineering brought in when additional technical review is needed.',
+  },
+  {
+    title: 'In-House Capability',
+    description: 'Manual machining, valve assembly, actuator integration, painting, inspection, and selected testing support application-specific work.',
+  },
+  {
+    title: 'Custom Configurations',
+    description: 'Brackets, couplings, linkages, shafts, actuators, controls, and accessories can be configured around the application.',
+  },
+  {
+    title: 'Inventory & Assembly',
+    description: 'Selected valves, castings, actuators, accessories, and components support assembly and customer requirements.',
+  },
+];
 
 export default function CompanyLandingPage() {
   return (
@@ -28,46 +41,32 @@ export default function CompanyLandingPage() {
       <CompanyHero
         eyebrow="Process Development & Control LLC"
         title="Built Around Flow Control Applications"
-        description="Founded in 1970, PDC combines valves, actuators, custom flow control components, engineering support, inventory, and in-house machining."
+        description="Since 1970, Process Development & Control has supplied valves, actuators, custom configurations, and application support for industrial flow-control systems. PDC combines product knowledge, in-house machining, valve and actuator assembly, technical support, and configurable products to help customers solve standard and non-standard applications."
         variant="about"
       />
       <CompanyNav />
-      <CompanyFactStrip facts={companyFacts.about} />
+      <CompanyFactStrip facts={companyFacts.about} title="PDC at a Glance" />
 
       <section className="bg-white py-11 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-graphite/70">Company</span>
-                <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-green sm:text-[1.9rem]">Explore PDC</h2>
-              </div>
-              <p className="max-w-xl text-[13px] leading-6 text-brand-graphite/50">A focused company section with the information customers actually need.</p>
+            <div className="max-w-2xl">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-graphite/70">Company</span>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-green sm:text-[1.9rem]">What PDC Brings to the Application</h2>
+              <p className="mt-3 text-[13px] leading-6 text-brand-graphite/60">A focused combination of product knowledge, practical engineering support, and in-house capability.</p>
             </div>
           </Reveal>
 
-          <div className="mt-6 overflow-hidden rounded-xl border border-brand-green-dark/8">
-            {companyNav.map((item, i) => {
-              const slug = item.href.split('/').pop() ?? '';
-              const page = pageDescriptions[slug];
-              if (!page) return null;
-
-              return (
-                <Reveal key={item.href} delay={i * 45}>
-                  <Link href={item.href} className="group grid gap-3 border-b border-brand-green-dark/8 bg-white px-5 py-5 transition-colors last:border-b-0 hover:bg-[#f7faf8] sm:grid-cols-[48px_0.62fr_1fr_34px] sm:items-center sm:px-6">
-                    <span className="font-mono text-[10px] font-bold text-brand-green/50">{String(i + 1).padStart(2, '0')}</span>
-                    <div>
-                      <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-brand-graphite/32">{page.kicker}</span>
-                      <h3 className="mt-1 text-[16px] font-extrabold tracking-tight text-brand-green-dark">{page.title}</h3>
-                    </div>
-                    <p className="text-[12px] leading-5 text-brand-graphite/52">{page.description}</p>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-brand-green-dark/10 text-brand-green transition-all group-hover:border-brand-green/30 group-hover:bg-brand-green group-hover:text-white">
-                      {slug === 'location' ? <MapPin className="h-3.5 w-3.5" /> : <ArrowRight className="h-3.5 w-3.5" />}
-                    </span>
-                  </Link>
-                </Reveal>
-              );
-            })}
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {supportCards.map((card, index) => (
+              <Reveal key={card.title} delay={index * 45}>
+                <article className="h-full rounded-xl border border-brand-green-dark/10 bg-[#f8faf8] p-5 sm:p-6">
+                  <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-brand-green/55">0{index + 1}</span>
+                  <h3 className="mt-3 text-base font-extrabold tracking-tight text-brand-green-dark">{card.title}</h3>
+                  <p className="mt-2 text-[13px] leading-6 text-brand-graphite/65">{card.description}</p>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
