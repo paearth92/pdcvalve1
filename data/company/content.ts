@@ -39,7 +39,7 @@ export const companyFacts: Record<string, CompanyFact[]> = {
   engineering: [
     { value: 'Sales + Engineering', label: 'Application support' },
     { value: 'Custom', label: 'Valve modifications' },
-    { value: 'Custom', label: 'Actuation packages' },
+    { value: 'Integrated', label: 'Actuation packages' },
     { value: 'Application-specific', label: 'Material recommendations' },
   ],
   manufacturing: [
@@ -209,34 +209,46 @@ const engineeringPage: CompanyPageContent = {
       heading: 'Configuration & Customization',
       eyebrow: 'Configure',
       body:
-        'PDC’s product offering includes multiple seating options, bracket configurations, actuator styles, and engineered modifications. Customized actuation packages can be developed around customer-specific requirements.',
+        'When a standard product configuration does not meet the application requirements, PDC can evaluate custom valve and actuation arrangements.',
       items: [
         'Engineered valve modifications',
-        'Customized actuation packages',
-        'Seating option selection',
-        'Bracket and mounting configurations',
-        'Actuator style selection',
-        'Custom linkage systems where applicable',
+        'Custom actuator mounting',
+        'Brackets, couplings, and linkage systems',
+        'Pneumatic and electric actuator configurations',
+        'Seat and material options',
+        'Solenoids, limit switches, positioners, and other accessories',
+        'Application-specific valve and actuator assemblies',
       ],
       dark: true,
     },
     {
-      heading: 'Technical Documentation & Recommendations',
+      heading: 'Drawings & Technical Support',
       eyebrow: 'Support',
       body:
-        'PDC’s current market content describes engineering support that can include dimensional drawings, installation and maintenance manuals, custom linkage systems, and application-specific material recommendations.',
+        'PDC can provide technical information and documentation to support product selection, approval, installation, and integration.',
       items: [
-        'Dimensional drawings',
+        'Dimensional and certified drawings',
+        'Product data and engineering information',
         'Installation and maintenance manuals',
-        'Application-specific material recommendations',
-        'Custom linkage systems',
+        'Actuator sizing and mounting information',
+        'Material and configuration recommendations',
+        'Review of customer drawings and application requirements',
       ],
     },
     {
       heading: 'Product Technologies Supported',
       eyebrow: 'Portfolio',
       body:
-        'Engineering support spans PDC’s published valve and actuation portfolio, including Damper and Control Valves, butterfly valves, check valves, pneumatic actuators, electric actuators, and electro-hydraulic actuators.',
+        'Technical support is available across PDC’s valve and actuation offerings, including:',
+      items: [
+        'Butterfly damper valves',
+        'Butterfly valves',
+        'Ball and gate valve packages where applicable',
+        'Pneumatic actuators',
+        'Electric actuators',
+        'Scotch yoke actuation',
+        'Custom valve and actuator assemblies',
+      ],
     },
   ],
   featureCards: [

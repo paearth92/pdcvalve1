@@ -51,9 +51,18 @@ The reviewed `main` branch still contained the approved EconoTrol image and exis
 - Changed the Resources category cards to a 2×2 grid, removed the Certifications card, and removed document counts from all cards.
 - Included the completed mobile bottom-navigation layout from the companion chat, including its refreshed glass treatment and active-tab state.
 
+## Jon's follow-up edits (November 12, 2026)
+
+- Replaced the Pneumatic Actuators family-card render with Jon's supplied PNG, which keeps all three actuator models inside the frame.
+- Changed the Engineering Support fact strip to “Integrated Actuation Packages” and replaced the configuration, technical-support, and supported-technologies sections with Jon's supplied copy and lists.
+- Updated the PDCS Visual Position Indicator description to “Standard visual indication of actuator position.”
+- Confirmed the “10 product lines” wording had already been replaced with “Integrated Actuation Packages” in the previous pass.
+- Created a separate photorealistic Damper & Control Valves lineup concept for review. It is not part of the website or deployment until approved.
+
 ## Verification and deployment
 
 - `npm run build` passed after combining the review revisions, bottom-navigation work, and image-frame adjustment: TypeScript validation completed and all 52 static pages were generated.
+- November 12 follow-up: `npm run build` passed after the content and actuator-family image updates; all 52 static pages were generated.
 - The build reports existing Browserslist data and Tailwind arbitrary-class ambiguity warnings; neither prevented compilation.
 - No separate test suite was run.
 - Live verification of the November 11 production build found that only three Damper and Control Valve series were listed. This corrective merge preserves the November 11 main-branch updates and restores the curated seven-series family list.

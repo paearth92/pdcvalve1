@@ -47,7 +47,7 @@ export const pdcs: ProductContent = {
     },
     {
       title: 'Visual Position Indicator',
-      description: 'Standard.',
+      description: 'Standard visual indication of actuator position.',
     },
     {
       title: 'Adjustable Mechanical Fail-End Buffer',
