@@ -14,7 +14,7 @@ export default function WhyEngineersChoosePDC() {
         <Reveal>
           <HomeSectionHeading
             eyebrow="Why PDC"
-            title="Why Engineers Choose PDC"
+            title="Why Customers Choose PDC"
             description="Application support, in-house capability, configurable products, and quality-focused execution built around real operating requirements."
           />
         </Reveal>
