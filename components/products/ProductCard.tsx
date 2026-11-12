@@ -26,6 +26,7 @@ export default function ProductCard({
   const familyName = family?.name ?? '';
   const cardBasePath = getProductCardBasePath(familySlug, product.slug);
   const isShowcase = appearance === 'showcase';
+  const isFlangedSeries39 = product.slug === 'flanged-end';
   if (isShowcase) {
     return (
       <article className="family-product-card relative flex h-full flex-col items-center text-center">
@@ -43,7 +44,7 @@ export default function ProductCard({
               width={product.image.width ?? 900}
               height={product.image.height ?? 675}
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="family-product-card__product-image relative z-10 h-full w-full object-contain p-4"
+              className={`family-product-card__product-image relative z-10 h-full w-full object-contain p-4 ${isFlangedSeries39 ? 'scale-[0.82]' : ''}`}
               loading="eager"
             />
           )}
@@ -106,7 +107,7 @@ export default function ProductCard({
             width={product.image.width ?? 800}
             height={product.image.height ?? 800}
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="relative z-10 h-full w-full object-contain p-4"
+            className={`relative z-10 h-full w-full object-contain p-4 ${isFlangedSeries39 ? 'scale-[0.82]' : ''}`}
           />
         ) : cardBasePath ? (
           <FlexibleImage
@@ -199,3 +200,4 @@ export default function ProductCard({
     </Link>
   );
 }
+
