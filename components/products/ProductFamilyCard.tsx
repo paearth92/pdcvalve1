@@ -45,12 +45,12 @@ export default function ProductFamilyCard({
           {product.displayName ?? product.name}
         </h3>
 
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-graphite/70">
+        <p className="mt-3 text-sm leading-relaxed text-brand-graphite/70">
           {product.description}
         </p>
 
         {/* Link */}
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-green-dark">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-7 text-sm font-semibold text-brand-green transition-colors group-hover:text-brand-green-dark">
           View Product Family
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
