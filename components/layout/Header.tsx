@@ -347,6 +347,10 @@ export default function Header() {
               <Mail className="h-3 w-3" />
               {siteConfig.email}
             </a>
+            <span className="h-3 w-px bg-white/20" />
+            <Link href="/portal" className="text-[11px] font-semibold text-white/85 hover:text-white">
+              Customer Portal
+            </Link>
           </div>
         </div>
       </div>
@@ -808,6 +812,13 @@ export default function Header() {
                 </Link>
               );
             })}
+            <Link
+              href="/portal"
+              onClick={closeMobile}
+              className="rounded-md px-3 py-2.5 text-sm font-semibold text-brand-green-dark transition-colors hover:bg-brand-light-bg"
+            >
+              Customer Portal
+            </Link>
             <div className="mt-3">
               <RFQButton
                 size="md"

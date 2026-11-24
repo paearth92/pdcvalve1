@@ -144,12 +144,20 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
-          <Link
-            href="/terms-and-conditions"
-            className="text-xs font-semibold text-white/70 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
-          >
-            Terms &amp; Conditions
-          </Link>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            <Link
+              href="/portal"
+              className="text-xs font-semibold text-white/70 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
+            >
+              Customer Portal
+            </Link>
+            <Link
+              href="/terms-and-conditions"
+              className="text-xs font-semibold text-white/70 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
           </div>
         </div>
       </div>
