@@ -40,7 +40,25 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - name: Start disposable local Supabase
-        run: npx --yes supabase@3.3.0 start
+        id: local-supabase
+        continue-on-error: true
+        run: |
+          set +e
+          npx --yes supabase@3.3.0 start 2>&1 | tee "$RUNNER_TEMP/pdc-supabase-start.log"
+          start_status=${PIPESTATUS[0]}
+          exit "$start_status"
+      - name: Report local Supabase startup failure
+        if: always() && steps.local-supabase.outcome == 'failure'
+        run: |
+          failure_message="$(grep -Ei 'error|failed|fatal|unable|could not|invalid' "$RUNNER_TEMP/pdc-supabase-start.log" 2>/dev/null | tail -n 1 | tr '\r\n' ' ' | sed -E 's/eyJ[A-Za-z0-9._-]+/[redacted JWT]/g; s/sb_(secret|publishable)_[A-Za-z0-9_-]+/[redacted key]/g' | cut -c1-500)"
+          if [ -z "$failure_message" ]; then failure_message="Supabase start failed; see the preceding startup output."; fi
+          echo "::error title=Supabase local startup::Startup failed; see the sanitized job summary."
+          {
+            echo "### Supabase local startup failed"
+            echo
+            printf '%s\n' "$failure_message"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
       - name: Export local Supabase test credentials
         run: |
           npx --yes supabase@3.3.0 status -o env > "$RUNNER_TEMP/pdc-supabase.env"
