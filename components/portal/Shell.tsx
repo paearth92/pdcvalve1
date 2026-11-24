@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, LogOut, ShieldCheck } from 'lucide-react';
 import { logoutAction } from '@/lib/portal/actions';
@@ -27,8 +28,8 @@ export function PortalShell({ mode, items, companies, staff, children }: {
           </form>
         </div>
       </header>
-      <div className="mx-auto grid max-w-[1500px] lg:grid-cols-[230px_minmax(0,1fr)]">
-        <aside className="border-b border-[#d6e1da] bg-white px-4 pt-3 lg:min-h-[calc(100vh-65px)] lg:border-b-0 lg:border-r lg:px-5 lg:py-7">
+      <div className="mx-auto grid w-full max-w-[1500px] grid-cols-[minmax(0,1fr)] lg:grid-cols-[230px_minmax(0,1fr)]">
+        <aside className="min-w-0 border-b border-[#d6e1da] bg-white px-4 pt-3 lg:min-h-[calc(100vh-65px)] lg:border-b-0 lg:border-r lg:px-5 lg:py-7">
           <div className="lg:sticky lg:top-6">
             <PortalNavigation items={items} companies={companies}>
               <div className="hidden gap-4 border-t border-[#e2ebe5] px-2 pt-5 lg:mt-3 lg:grid">
@@ -50,13 +51,26 @@ export function PortalShell({ mode, items, companies, staff, children }: {
   );
 }
 
-export function AuthShell({ children }: { children: ReactNode }) {
+export function AuthShell({ children, branded = false }: { children: ReactNode; branded?: boolean }) {
   return (
-    <main className="grid min-h-screen place-items-center bg-[#ecf3ee] p-4 sm:p-8">
-      <section className="grid w-full max-w-md gap-5 rounded-2xl border border-[#d5e3da] bg-white p-5 shadow-xl shadow-[#18382a]/5 sm:p-8">
-        <Link href="/" className="w-fit"><PdcLogo /></Link>
-        {children}
-      </section>
+    <main className="grid min-h-dvh place-items-center bg-[#eef4ef] p-4 sm:p-8">
+      <div className={branded
+        ? 'grid w-full max-w-[960px] overflow-hidden rounded-2xl border border-[#d5e3da] bg-white shadow-xl shadow-[#18382a]/5 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]'
+        : 'w-full max-w-md rounded-2xl border border-[#d5e3da] bg-white shadow-xl shadow-[#18382a]/5'}>
+        {branded && <div aria-hidden="true" className="relative hidden min-h-[440px] flex-col justify-end overflow-hidden bg-[#0b2018] bg-[url('/images/home/hero-flow-desktop.webp')] bg-cover bg-right px-8 py-9 text-white md:flex lg:px-10">
+          <Image alt="" src="/images/portal/isolation-valve.webp" width={394} height={530}
+            className="absolute right-[10%] top-[7%] h-[64%] w-auto rotate-[-17deg] object-contain opacity-95 drop-shadow-[0_20px_32px_rgba(0,0,0,0.55)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#071a11] via-[#0b2018]/90 to-transparent" />
+          <div className="relative">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#b0dfbf]">PDC Customer Portal</p>
+            <p className="mt-2 max-w-xs text-3xl font-extrabold leading-[1.12] tracking-tight">Orders, shipments and invoices.</p>
+          </div>
+        </div>}
+        <section className="grid min-w-0 content-center gap-5 p-5 sm:p-8 lg:p-10">
+          <Link href="/" className="w-fit" aria-label="PDC website"><PdcLogo /></Link>
+          {children}
+        </section>
+      </div>
     </main>
   );
 }

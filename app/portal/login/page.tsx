@@ -10,7 +10,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const next = param(search, 'next') ?? '/portal';
   const admin = /^\/admin(?:[/?]|$)/.test(next);
   return (
-    <AuthShell>
+    <AuthShell branded={!admin}>
       <PageHeading title={admin ? "PDC admin sign in" : "Sign in to PDC"} description={admin ? "Manage customer accounts, orders and shipments." : "Access your company’s orders, shipments and account records."} />
       <Feedback searchParams={search} />
       {portalConfigured() ? (

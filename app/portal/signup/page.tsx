@@ -10,7 +10,7 @@ export default async function SignUpPage({ searchParams }: { searchParams: Promi
   const configured = portalConfigured() && Boolean(portalSiteOrigin());
 
   return (
-    <AuthShell>
+    <AuthShell branded>
       <PageHeading title="Create your PDC account" description="Verify your work email after signing up. PDC will then review your access to company records." />
       <Feedback searchParams={await searchParams} />
       {configured ? <form action={signUpAction} className="grid gap-4">
