@@ -40,8 +40,9 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - name: Start disposable local Supabase
+        run: npx --yes supabase@3.3.0 start
+      - name: Export local Supabase test credentials
         run: |
-          npx --yes supabase@3.3.0 start
           npx --yes supabase@3.3.0 status -o env > "$RUNNER_TEMP/pdc-supabase.env"
           source "$RUNNER_TEMP/pdc-supabase.env"
           public_key="${PUBLISHABLE_KEY:-$ANON_KEY}"
