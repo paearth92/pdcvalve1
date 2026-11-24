@@ -6,5 +6,5 @@ export default async function PortalEntry() {
   if (!access) redirect('/portal/login');
   if (access.memberships.length) redirect('/portal/dashboard');
   if (access.staffRole) redirect('/admin');
-  redirect('/portal/access');
+  redirect('/portal/access?approval=1');
 }

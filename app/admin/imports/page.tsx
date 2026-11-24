@@ -106,7 +106,7 @@ export default async function ImportsPage({ searchParams }: {
           label="Import sources"
           columns={['Source', 'Worksheet', 'Status', 'Schedule']}
           rows={sources.map((source) => [
-            <Link href={'/admin/imports?source=' + source.id} className={linkClass}>{source.name}</Link>,
+            <Link key="source" href={'/admin/imports?source=' + source.id} className={linkClass}>{source.name}</Link>,
             source.sheet_name ?? 'First sheet',
             source.active ? 'Active' : 'Inactive',
             source.allow_scheduled ? 'Approved' : 'Manual review',
@@ -152,11 +152,11 @@ export default async function ImportsPage({ searchParams }: {
           label="Open import conflicts"
           columns={canManage ? ['Import', 'Source row', 'Issue', 'Resolution'] : ['Import', 'Source row', 'Issue']}
           rows={reviews.map((review) => [
-            <Link href={'/admin/imports?job=' + review.job_id} className={linkClass}>View batch</Link>,
+            <Link key="batch" href={'/admin/imports?job=' + review.job_id} className={linkClass}>View batch</Link>,
             review.row_number,
             review.message,
             ...(canManage ? [(
-              <form action={resolveImportReview} className="grid min-w-48 gap-2">
+              <form key="resolution" action={resolveImportReview} className="grid min-w-48 gap-2">
                 <input name="review_id" value={review.id} type="hidden" />
                 <input name="resolution" aria-label={'Resolution for row ' + review.row_number} className={fieldClass} minLength={3} maxLength={240} required />
                 <button type="submit" className={buttonClass}>Record resolution</button>
@@ -172,9 +172,9 @@ export default async function ImportsPage({ searchParams }: {
           label="Recent imports"
           columns={['File', 'Source', 'Status', 'Rows', 'Changed', 'Issues', 'Created']}
           rows={history.map((entry) => [
-            <Link href={'/admin/imports?job=' + entry.id} className={linkClass}>{entry.filename}</Link>,
+            <Link key="file" href={'/admin/imports?job=' + entry.id} className={linkClass}>{entry.filename}</Link>,
             sources.find((source) => source.id === entry.source_id)?.name ?? '—',
-            <Status value={entry.state} />, entry.row_count, entry.changed_count, entry.error_count, formatDate(entry.created_at),
+            <Status key="status" value={entry.state} />, entry.row_count, entry.changed_count, entry.error_count, formatDate(entry.created_at),
           ])}
           empty="No files have been imported."
         />

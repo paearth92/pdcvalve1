@@ -355,8 +355,8 @@ language sql stable security definer set search_path = '' as $$
     select 1 from public.portal_staff as s
     join auth.users u on u.id = s.user_id and u.email_confirmed_at is not null
     where s.user_id = (select auth.uid()) and s.active
-      and (role = 'super_admin' or permission_name = any(
-        case role
+      and (s.role = 'super_admin' or permission_name = any(
+        case s.role
           when 'operations' then array['customers.read','orders.read','orders.write','shipping.read','shipping.write','documents.manage','notes.write','integrations.read','integrations.manage','integrations.schedule','audit.read']
           when 'sales' then array['customers.read','customers.manage','orders.read','orders.write','shipping.read','documents.manage','notes.write']
           when 'shipping' then array['orders.read','shipping.read','shipping.write','documents.manage','notes.write']

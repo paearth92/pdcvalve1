@@ -8,7 +8,7 @@ The portals live in `paearth92/pdcvalve1`. The `pdc/customer-admin-portal` branc
 | --- | --- |
 | Customer | `/portal`, with sign-in, account dashboard, orders, estimates, shipments, invoices, notifications, and profile |
 | Staff | `/admin`, with role-based access to customers, orders, shipments, finance, imports, and audits |
-| Auth | Supabase email/password Auth, secure session cookies, controlled access, password recovery, and one-time invitations |
+| Auth | Supabase email/password Auth, secure session cookies, password recovery, email-verified customer signup, staff approval, and separately issued one-time invitations |
 | Authorization | Server-side route and action checks plus PostgreSQL RLS. Company memberships control customer access and financial visibility. Staff permissions are assigned separately by role. |
 | Records | Supabase migrations under `supabase/migrations/`. Quotes, sales orders, invoices, shipments, and events are distinct records. Composite foreign keys prevent cross-company associations. |
 | Fulfillment | Shipment lines reconcile with order lines within a transaction. Pending and cancelled shipments are excluded from dispatched quantities. Order status and shipment reconciliation are separate. |
@@ -29,7 +29,7 @@ For the authenticated browser suite, run the Supabase CLI’s local stack with D
 1. Push the feature branch to GitHub. The linked `pdcvalve1` Vercel project builds the branch as a Preview.
 2. Provision an isolated Supabase project in the authorized PDC account. Apply the tracked migrations to that project, and verify the schema and RLS with synthetic users before configuring Vercel.
 3. Set the environment below on Vercel under **Preview** only. Keep the preview and its Supabase project separate from production. Use Vercel deployment protection or staff-only synthetic fixtures for previews.
-4. Disable Supabase self-sign-up and anonymous authentication. Require email verification, set a minimum password length of 12, and restrict Auth redirect URLs to the exact PDC origins. Configure the recovery template from `supabase/templates/recovery.html`. Keep delivery disabled until PDC approves the sender and verifies SMTP.
+4. Enable email/password signup and require email confirmation. Disable anonymous sign-in. Set a minimum password length of 12, allowlist each exact portal callback URL, and configure approved SMTP before onboarding external customers. Configure the recovery template from `supabase/templates/recovery.html`.
 5. Create the first verified staff Auth user through the chosen Supabase project’s administrator. The account owner can assign it the `super_admin` role in the portal staff table using the verified Auth user UUID. Limit this role to application owners.
 6. Verify customer and staff access, order and shipment reconciliation, document isolation, Audit History, and disabled outbound email. Review failures in the Imports screen and the hosting logs.
 7. Obtain PDC approval before releasing to the production URL, changing DNS, setting up paid services, importing sensitive records, or enabling customer email.
@@ -48,6 +48,7 @@ Keep keys in the host’s environment settings. Never commit deployment credenti
 ## Operating the admin portal
 
 - **Customers**. Find or create a company, inspect its customer access, and only grant finance visibility to contacts approved to see balances and documents. Use the invitation screen to issue or revoke access. Share the one-time activation link through PDC’s approved channel. Deactivating a membership immediately blocks company data access through RLS.
+- **Customer signups**. Match the verified email to an authorized company contact. Approval attaches their existing login to the company with financial access off by default. The access page and signed-in customer pages refresh while open. Declining records the staff member, time and reason.
 - **Orders**. Review source records, add internal or customer-visible notes, and supply a reason for operational corrections. Protect an authorized override when it should take priority over automatic imports.
 - **Shipments**. Add or correct a shipment and its quantities by order line. Record actual carrier information and dates. Cancel invalid shipments to retain their history and remove their quantities from dispatched totals.
 - **Finance**. Compare invoice state and balances to the authoritative source. The portal does not accept payments.

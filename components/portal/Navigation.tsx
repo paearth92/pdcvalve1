@@ -3,13 +3,13 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { ArrowRightLeft, Bell, ClipboardList, FileText, LayoutDashboard, PackageCheck, Receipt, Settings2, ShieldCheck, Users, Workflow } from 'lucide-react';
+import { ArrowRightLeft, Bell, ClipboardList, FileText, LayoutDashboard, PackageCheck, Receipt, Settings2, ShieldCheck, UserPlus, Users, Workflow } from 'lucide-react';
 import { accountHref } from './format';
 
 const navIcons = {
   dashboard: LayoutDashboard, orders: ClipboardList, shipments: PackageCheck,
   quotes: FileText, invoices: Receipt, profile: Settings2, notifications: Bell,
-  customers: Users, imports: Workflow, audit: ShieldCheck,
+  customers: Users, accessRequests: UserPlus, imports: Workflow, audit: ShieldCheck,
 };
 
 export type PortalNavItem = { key: keyof typeof navIcons; href: string; label: string };

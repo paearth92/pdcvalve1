@@ -90,6 +90,72 @@ export async function loginAction(form: FormData) {
   redirect(next);
 }
 
+export async function signUpAction(form: FormData) {
+  const path = '/portal/signup';
+  const origin = portalSiteOrigin();
+  if (!portalConfigured() || !origin) feedback(path, 'error', 'portal_unavailable');
+  if (field(form, 'website').trim()) feedback('/portal/login', 'notice', 'verify_signup');
+  const input = z.object({
+    contact_name: z.string().trim().min(2).max(160),
+    company_name: z.string().trim().min(2).max(200),
+    email,
+    phone: z.string().trim().max(60),
+    account_number: z.string().trim().max(100),
+  }).safeParse({
+    contact_name: field(form, 'contact_name'),
+    company_name: field(form, 'company_name'),
+    email: field(form, 'email'),
+    phone: field(form, 'phone'),
+    account_number: field(form, 'account_number'),
+  });
+  if (!input.success) feedback(path, 'error', 'invalid_input');
+  const proposed = passwordValue(form, path);
+  const { email: signupEmail, ...registration } = input.data;
+  const client = await portalClient();
+  const { data, error } = await client.auth.signUp({
+    email: signupEmail,
+    password: proposed,
+    options: {
+      emailRedirectTo: new URL('/portal/auth/callback', origin).href,
+      data: { pdc_registration: registration },
+    },
+  });
+  if (error && error.code !== 'user_already_exists' && error.code !== 'email_exists') {
+    feedback(path, 'error', error.code === 'over_email_send_rate_limit' ? 'signup_rate_limit' : 'signup_failed');
+  }
+  if (data.session) redirect('/portal');
+  feedback('/portal/login', 'notice', 'verify_signup');
+}
+
+export async function reviewPortalAccessRequestAction(form: FormData) {
+  const path = '/admin/access-requests';
+  await requirePortalStaff('customers.manage');
+  const input = z.object({
+    request_id: uuid,
+    decision: z.enum(['approved', 'declined']),
+    organization_id: uuid.nullable(),
+    reason: z.string().trim().min(5).max(1000),
+  }).safeParse({
+    request_id: field(form, 'request_id'),
+    decision: field(form, 'decision'),
+    organization_id: valueOrNull(form, 'organization_id'),
+    reason: field(form, 'reason'),
+  });
+  if (!input.success) feedback(path, 'error', 'invalid_input');
+  const client = await portalClient();
+  const args = { target_id: input.data.request_id, change_reason: input.data.reason };
+  if (input.data.decision === 'declined') {
+    const { error } = await client.rpc('portal_decline_access_request', args);
+    if (error) feedback(path, 'error', adminError(error));
+  } else {
+    const { error } = await client.rpc('portal_approve_signup', {
+      ...args, existing_organization_id: input.data.organization_id,
+    });
+    if (error) feedback(path, 'error', adminError(error));
+  }
+  refreshed(path, input.data.decision === 'approved' ? 'signup_approved' : 'signup_declined');
+}
+
 export async function forgotPasswordAction(form: FormData) {
   const path = '/portal/forgot-password';
   const origin = portalSiteOrigin();

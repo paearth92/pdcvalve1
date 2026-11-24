@@ -22,6 +22,15 @@ test('public login is branded and protected routes deny anonymous access', async
   await expect(page.getByRole('img', { name: /pdc/i }).first()).toBeVisible();
   expect(await page.getByRole('navigation', { name: 'Mobile navigation' }).count()).toBe(0);
 
+  await page.getByRole('link', { name: 'Sign up' }).click();
+  await expect(page).toHaveURL(/\/portal\/signup$/);
+  await expect(page.getByRole('heading', { name: 'Create your PDC account' })).toBeVisible();
+  await page.goto('/portal/request-access');
+  await expect(page).toHaveURL(/\/portal\/signup$/);
+  await page.goto('/admin');
+  await expect(page.getByRole('heading', { name: 'PDC admin sign in' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Sign up' })).toHaveCount(0);
+
   for (const route of ['/portal/dashboard', '/portal/orders', '/admin', '/admin/imports']) {
     const response = await request.get(route, { maxRedirects: 0 });
     const location = response.headers().location ?? '';

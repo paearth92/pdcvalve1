@@ -1,6 +1,9 @@
 import { Notice } from './ui';
 
 const notices: Record<string, string> = {
+  verify_signup: 'Check your work email and open the confirmation link in this browser. Once your email is verified, PDC can approve access to your company account.',
+  signup_approved: 'The customer can now access their company account.',
+  signup_declined: 'The signup was declined.',
   recovery_sent: 'If an eligible account exists for that email address, a password reset link will arrive shortly.',
   reset_sent: 'If an eligible account exists for that email address, a password reset link will arrive shortly.',
   password_reset_requested: 'If an eligible account exists for that email address, a password reset link will arrive shortly.',
@@ -21,6 +24,8 @@ const notices: Record<string, string> = {
 };
 
 const errors: Record<string, string> = {
+  signup_failed: 'We could not create your account. Check your work email or contact PDC for help.',
+  signup_rate_limit: 'Too many confirmation emails were requested. Wait and try again.',
   invalid_credentials: 'Sign-in failed. Check your email and password.',
   invalid_link: 'This link is invalid or has expired. Request a new link.',
   expired_link: 'This link has expired. Request a new link.',
@@ -34,6 +39,7 @@ const errors: Record<string, string> = {
   file_type: 'Choose an accepted file type.',
   file_size: 'The document exceeds the allowed size.',
   portal_unavailable: 'The portal is temporarily unavailable.',
+  portal_setup_required: 'Customer access setup is still being connected. Contact PDC and ask for customer portal access.',
   access_denied: 'You do not have permission to make this change.',
   forbidden: 'You do not have permission to make this change.',
 };

@@ -11,6 +11,7 @@ const supabaseTestSchema = `
   create table auth.users (
     id uuid primary key,
     email text,
+    role text,
     email_confirmed_at timestamptz,
     raw_user_meta_data jsonb default '{}'::jsonb
   );

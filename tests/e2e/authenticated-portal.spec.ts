@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 
 type FixtureRecord = Record<string, unknown>;
 type FixtureDatabase = {
@@ -27,6 +27,7 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
   const orderLine = randomUUID();
   const shippingUser = randomUUID().slice(0, 8);
   const emailA = `customer-a-${orderA.slice(0, 8)}@example.test`;
+  const adminEmail = `admin-${shippingUser}@example.test`;
   const staffEmail = `shipping-${shippingUser}@example.test`;
   let service: ReturnType<typeof createClient<FixtureDatabase>>;
 
@@ -39,7 +40,8 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
     service = createClient<FixtureDatabase>(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
     const customer = await service.auth.admin.createUser({ email: emailA, password, email_confirm: true });
     const staff = await service.auth.admin.createUser({ email: staffEmail, password, email_confirm: true });
-    if (customer.error || staff.error || !customer.data.user || !staff.data.user) {
+    const admin = await service.auth.admin.createUser({ email: adminEmail, password, email_confirm: true });
+    if (customer.error || staff.error || admin.error || !customer.data.user || !staff.data.user || !admin.data.user) {
       throw new Error('Could not create isolated fixture users');
     }
 
@@ -48,7 +50,10 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
       { id: companyB, name: 'QA Valve Buyer B' },
     ]);
     await insert('portal_memberships', [{ user_id: customer.data.user.id, organization_id: companyA }]);
-    await insert('portal_staff', [{ user_id: staff.data.user.id, role: 'shipping' }]);
+    await insert('portal_staff', [
+      { user_id: staff.data.user.id, role: 'shipping' },
+      { user_id: admin.data.user.id, role: 'super_admin' },
+    ]);
     await insert('portal_orders', [
       { id: orderA, organization_id: companyA, order_number: 'QA-ORDER-A', order_date: '2026-01-01' },
       { id: orderB, organization_id: companyB, order_number: 'QA-ORDER-B', order_date: '2026-01-01' },
@@ -114,26 +119,71 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
     await expect(page).toHaveURL(/\/portal\/access/);
   });
 
-  test('password recovery sends only to local Mailpit and can change the password', async ({ page, request }) => {
-    await page.goto('/portal/forgot-password');
-    await page.getByLabel('Work email').fill(emailA);
-    await page.getByRole('button', { name: 'Request reset link' }).click();
-    await expect(page).toHaveURL(/notice=password_reset_requested/);
-
+  async function emailLink(request: APIRequestContext, recipientEmail: string, pattern: RegExp) {
     const inbox = 'http://127.0.0.1:54324/api/v1';
     let messageId: string | undefined;
     await expect.poll(async () => {
       const list = await request.get(`${inbox}/messages`);
       if (!list.ok()) return false;
       const result: { messages: Array<{ ID: string; To: Array<{ Address: string }> }> } = await list.json();
-      messageId = result.messages.find((message) => message.To.some((recipient) => recipient.Address === emailA))?.ID;
+      messageId = result.messages.find((message) => message.To.some(({ Address }) => Address === recipientEmail))?.ID;
       return !!messageId;
     }, { timeout: 15_000 }).toBe(true);
     const delivery = await request.get(`${inbox}/message/${encodeURIComponent(messageId!)}`);
     const message: { HTML: string } = await delivery.json();
-    const link = message.HTML.match(/href="([^"]*\/portal\/auth\/callback\?[^"]+)"/)?.[1];
-    if (!link) throw new Error('Recovery message did not contain a portal link');
-    const recovery = new URL(link.replaceAll('&amp;', '&'));
+    const link = message.HTML.match(pattern)?.[1];
+    if (!link) throw new Error('Auth email did not contain the expected link');
+    return link.replaceAll('&amp;', '&');
+  }
+
+  test('self signup, admin approval and automatic customer dashboard updates', async ({ page, browser, request }) => {
+    const newEmail = `signup-${shippingUser}@example.test`;
+    await page.goto('/portal/signup');
+    await page.getByLabel('Your name').fill('Portal Signup QA');
+    await page.getByLabel('Company name').fill('QA Valve Buyer A');
+    await page.getByLabel('Work email').fill(newEmail);
+    await page.getByLabel('Password (at least 12 characters)', { exact: true }).fill(password);
+    await page.getByLabel('Confirm password').fill(password);
+    await page.getByRole('button', { name: 'Create account' }).click();
+    await expect(page).toHaveURL(/notice=verify_signup/);
+
+    const confirmation = new URL(await emailLink(request, newEmail, /href="([^"]*\/auth\/v1\/verify\?[^"]+)"/));
+    expect(confirmation.origin).toMatch(/^http:\/\/(localhost|127\.0\.0\.1):54321$/);
+    await page.goto(confirmation.href);
+    await expect(page.getByRole('heading', { name: 'Awaiting PDC approval' })).toBeVisible();
+
+    const admin = await browser.newContext();
+    try {
+      const staff = await admin.newPage();
+      await login(staff, adminEmail, '/admin');
+      await expect(staff.getByRole('heading', { name: 'Operations overview' })).toBeVisible();
+      await staff.getByRole('link', { name: 'Customer signups' }).first().click();
+      const registration = staff.locator('article').filter({ hasText: newEmail });
+      await registration.getByLabel('Link to a verified company account').selectOption(companyA);
+      await registration.getByLabel('Review reason').fill('Verified fixture customer and company');
+      await registration.getByRole('button', { name: 'Approve account' }).click();
+      await expect(staff).toHaveURL(/notice=signup_approved/);
+      await expect(page).toHaveURL(/\/portal\/dashboard/, { timeout: 22_000 });
+      await expect(page.getByRole('row').filter({ hasText: 'QA-ORDER-A' })).toContainText('Received');
+
+      await staff.goto(`/admin/orders/${orderA}`);
+      await staff.locator('select[name="status"]').selectOption('confirmed');
+      await staff.locator('textarea[name="reason"], input[name="reason"]').first().fill('QA verified change');
+      await staff.locator('form').filter({ has: staff.locator('select[name="status"]') }).locator('button[type=submit]').click();
+      await expect(page.getByRole('row').filter({ hasText: 'QA-ORDER-A' })).toContainText('Confirmed', { timeout: 22_000 });
+    } finally {
+      await admin.close();
+    }
+  });
+
+  test('password recovery sends only to local Mailpit and can change the password', async ({ page, request }) => {
+    await page.goto('/portal/forgot-password');
+    await page.getByLabel('Work email').fill(emailA);
+    await page.getByRole('button', { name: 'Request reset link' }).click();
+    await expect(page).toHaveURL(/notice=password_reset_requested/);
+
+    const link = await emailLink(request, emailA, /href="([^"]*\/portal\/auth\/callback\?[^"]+)"/);
+    const recovery = new URL(link);
     if (recovery.origin !== 'http://localhost:3100') throw new Error('Recovery link points outside local QA');
     await page.goto(recovery.href);
     await expect(page.getByRole('heading', { name: 'Choose a new password' })).toBeVisible();

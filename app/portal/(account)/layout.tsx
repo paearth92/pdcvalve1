@@ -1,4 +1,5 @@
 import { requirePortalCustomer } from '@/lib/portal/auth';
+import { RefreshPortal } from '@/components/portal/RefreshPortal';
 import { PortalShell } from '@/components/portal/Shell';
 import type { PortalNavItem } from '@/components/portal/Navigation';
 
@@ -15,6 +16,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
   ];
   return (
     <PortalShell mode="customer" items={items} staff={Boolean(access.staffRole)} companies={access.memberships.map(({ organization }) => ({ id: organization.id, name: organization.name }))}>
+      <RefreshPortal />
       {children}
     </PortalShell>
   );

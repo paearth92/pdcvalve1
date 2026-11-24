@@ -14,6 +14,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const nav: (PortalNavItem & { permission?: StaffPermission })[] = [
     { key: 'dashboard', href: '/admin', label: 'Overview' },
     { key: 'customers', href: '/admin/customers', label: 'Customers', permission: 'customers.read' },
+    { key: 'accessRequests', href: '/admin/access-requests', label: 'Customer signups', permission: 'customers.manage' },
     { key: 'orders', href: '/admin/orders', label: 'Orders', permission: 'orders.read' },
     { key: 'shipments', href: '/admin/shipments', label: 'Shipments', permission: 'shipping.read' },
     { key: 'invoices', href: '/admin/finance', label: 'Finance', permission: 'finance.read' },

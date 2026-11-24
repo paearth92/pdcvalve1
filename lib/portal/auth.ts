@@ -91,7 +91,7 @@ export async function requirePortalCustomer(company?: string) {
   const membership = company
     ? access.memberships.find(entry => entry.organization_id === company)
     : access.memberships[0];
-  if (!membership) redirect('/portal/access');
+  if (!membership) redirect(access.memberships.length ? '/portal/access' : '/portal/access?approval=1');
   return {
     ...access,
     organization: membership.organization,

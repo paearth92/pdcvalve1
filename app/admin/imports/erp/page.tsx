@@ -109,8 +109,8 @@ export default async function ErpIntakePage({ searchParams }: {
       <Panel title="Recent ERP batches">
         <DataTable label="Recent ERP batches" columns={['Export', 'Source', 'Status', 'Orders', 'Changed']}
           rows={history.map((entry) => [
-            <Link href={'/admin/imports/erp?job=' + entry.id} className={linkClass}>{entry.source_filename}</Link>,
-            entry.source_key, <Status value={entry.state} />, entry.order_count, entry.changed_count,
+            <Link key="file" href={'/admin/imports/erp?job=' + entry.id} className={linkClass}>{entry.source_filename}</Link>,
+            entry.source_key, <Status key="status" value={entry.state} />, entry.order_count, entry.changed_count,
           ])}
           empty="No ERP exports have been processed." />
       </Panel>
