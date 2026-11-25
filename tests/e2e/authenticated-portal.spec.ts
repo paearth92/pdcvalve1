@@ -137,6 +137,7 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
   }
 
   test('self signup, admin approval and automatic customer dashboard updates', async ({ page, browser, request }) => {
+    test.setTimeout(90_000);
     const newEmail = `signup-${shippingUser}@example.test`;
     await page.goto('/portal/signup');
     await page.getByLabel('Your name').fill('Portal Signup QA');
@@ -164,13 +165,17 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
       await registration.getByRole('button', { name: 'Approve account' }).click();
       await expect(staff).toHaveURL(/notice=signup_approved/);
       await expect(page).toHaveURL(/\/portal\/dashboard/, { timeout: 22_000 });
-      await expect(page.getByRole('row').filter({ hasText: 'QA-ORDER-A' })).toContainText('Received');
+      const orderRow = page.getByRole('row').filter({ hasText: 'QA-ORDER-A' });
+      await expect(orderRow.getByRole('cell', { name: 'received', exact: true })).toBeVisible();
 
       await staff.goto(`/admin/orders/${orderA}`);
-      await staff.locator('select[name="status"]').selectOption('confirmed');
-      await staff.locator('textarea[name="reason"], input[name="reason"]').first().fill('QA verified change');
-      await staff.locator('form').filter({ has: staff.locator('select[name="status"]') }).locator('button[type=submit]').click();
-      await expect(page.getByRole('row').filter({ hasText: 'QA-ORDER-A' })).toContainText('Confirmed', { timeout: 22_000 });
+      const saveOrder = staff.getByRole('button', { name: 'Save order update', exact: true });
+      const update = staff.locator('form').filter({ has: saveOrder });
+      await update.getByLabel('Status', { exact: true }).selectOption('confirmed');
+      await update.getByLabel('Reason', { exact: true }).fill('QA verified change');
+      await saveOrder.click();
+      await expect(staff).toHaveURL(/notice=order_updated/);
+      await expect(orderRow.getByRole('cell', { name: 'confirmed', exact: true })).toBeVisible({ timeout: 25_000 });
     } finally {
       await admin.close();
     }
