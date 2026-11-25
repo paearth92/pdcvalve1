@@ -156,6 +156,8 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
     const admin = await browser.newContext();
     try {
       const staff = await admin.newPage();
+      staff.setDefaultTimeout(12_000);
+      staff.setDefaultNavigationTimeout(25_000);
       await login(staff, adminEmail, '/admin');
       await expect(staff.getByRole('heading', { name: 'Operations overview' })).toBeVisible();
       await staff.getByRole('link', { name: 'Customer signups' }).first().click();
@@ -171,7 +173,7 @@ test.describe('PDC portal with an isolated Supabase stack', () => {
       await staff.goto(`/admin/orders/${orderA}`);
       const saveOrder = staff.getByRole('button', { name: 'Save order update', exact: true });
       const update = staff.locator('form').filter({ has: saveOrder });
-      await update.getByLabel('Status', { exact: true }).selectOption('confirmed');
+      await update.locator('select[name="status"]').selectOption('confirmed');
       await update.getByLabel('Reason', { exact: true }).fill('QA verified change');
       await saveOrder.click();
       await expect(staff).toHaveURL(/notice=order_updated/);
