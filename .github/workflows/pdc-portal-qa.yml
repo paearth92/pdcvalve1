@@ -43,6 +43,8 @@ jobs:
         id: local-supabase
         continue-on-error: true
         run: |
+          # Keep the runner's test database off the default host port.
+          sed -i 's/^port = 54322$/port = 15432/' supabase/config.toml
           set +e
           npx --yes supabase@3.3.0 start 2>&1 | tee "$RUNNER_TEMP/pdc-supabase-start.log"
           start_status=${PIPESTATUS[0]}
