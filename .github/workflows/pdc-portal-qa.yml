@@ -1,0 +1,79 @@
+name: PDC portal QA
+
+on:
+  push:
+    branches: [pdc/customer-admin-portal]
+  pull_request:
+    paths:
+      - 'app/portal/**'
+      - 'app/admin/**'
+      - 'app/api/portal/**'
+      - 'components/portal/**'
+      - 'lib/portal/**'
+      - 'supabase/**'
+      - 'tests/**'
+      - '.github/workflows/pdc-portal-qa.yml'
+      - 'package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdc-portal-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:portal:db
+      - run: npm run test:portal:imports
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Start disposable local Supabase
+        id: local-supabase
+        continue-on-error: true
+        run: |
+          # Keep the runner's test database off the default host port.
+          sed -i 's/^port = 54322$/port = 15432/' supabase/config.toml
+          set +e
+          npx --yes supabase@3.3.0 start 2>&1 | tee "$RUNNER_TEMP/pdc-supabase-start.log"
+          start_status=${PIPESTATUS[0]}
+          exit "$start_status"
+      - name: Report local Supabase startup failure
+        if: always() && steps.local-supabase.outcome == 'failure'
+        run: |
+          failure_message="$(grep -Ei 'error|failed|fatal|unable|could not|invalid' "$RUNNER_TEMP/pdc-supabase-start.log" 2>/dev/null | tail -n 1 | tr '\r\n' ' ' | sed -E 's/eyJ[A-Za-z0-9._-]+/[redacted JWT]/g; s/sb_(secret|publishable)_[A-Za-z0-9_-]+/[redacted key]/g' | cut -c1-500)"
+          if [ -z "$failure_message" ]; then failure_message="Supabase start failed; see the preceding startup output."; fi
+          echo "::error title=Supabase local startup::Startup failed; see the sanitized job summary."
+          {
+            echo "### Supabase local startup failed"
+            echo
+            printf '%s\n' "$failure_message"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+      - name: Export local Supabase test credentials
+        run: |
+          npx --yes supabase@3.3.0 status -o env > "$RUNNER_TEMP/pdc-supabase.env"
+          source "$RUNNER_TEMP/pdc-supabase.env"
+          public_key="${PUBLISHABLE_KEY:-$ANON_KEY}"
+          secret_key="${SECRET_KEY:-$SERVICE_ROLE_KEY}"
+          test -n "$API_URL" && test -n "$public_key" && test -n "$secret_key"
+          echo "::add-mask::$secret_key"
+          {
+            echo "NEXT_PUBLIC_SUPABASE_URL=$API_URL"
+            echo "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$public_key"
+            echo "SUPABASE_SECRET_KEY=$secret_key"
+            echo "PORTAL_QA_SUPABASE=true"
+            echo "PORTAL_SESSION_SECRET=$(openssl rand -hex 32)"
+          } >> "$GITHUB_ENV"
+      - run: npm run test:portal:e2e
